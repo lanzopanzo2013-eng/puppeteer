@@ -209,3 +209,68 @@ URL ever 404s after a redeploy — swap the `src` back and upload those 15 JPGs 
 
 Paste-ready output: `dist/PASTE-ALL.txt` (one box), or `dist/PASTE-CSS.txt` + `dist/PASTE-HTML.txt`
 (two-panel editor).
+
+---
+
+## 9. Real source, acquired (2026-11-09)
+
+The origin refuses every datacenter IP, and that was proven the hard way before finding a way through:
+
+```
+codetabs proxy   → 522
+allorigins       → 200 (403 page, 199 b)
+corsproxy.io     → 403
+r.jina.ai        → 134 b error
+GitHub runner Chrome (real browser, real UA) → 403 Error Page
+```
+
+The Archive is not blocked, and a GitHub runner reaches the Archive. `.github/workflows/capture-site.yml`
+runs `tools/capture.mjs`, which pulls the site's own bytes into `capture/`:
+
+| Artefact | Size |
+|---|---|
+| `capture/index.html` | 28 KB — the real SSR DOM, 113 nodes |
+| `capture/css/*.css` | 1.6 MB, 51 files (the page links exactly 4 of them) |
+| `capture/img/*` | 8.6 MB, 120 images |
+
+The four stylesheets the page actually loads are now in `uma-profile/reference/real-css/`:
+`0.CeerEmeO.css`, `2.BtMVfDfi.css`, `Modal.DqwlE6Qt.css`, `NewsItem.BW2Y3wsu.css`.
+
+### The real DOM, section by section
+
+```
+.site-wrapper > .page-index
+  section.top-kv
+    .top-kv__img            ← the key visual
+    .top-kv__left           ← p.-umamusume (vertical pill), p.-scroll
+    .banner-wrap            ← .top-kv__banner.is-PC/SP (webstore banner)
+    .top-kv__contents > .contents-wrap
+      ul.store-list > li.store-steam / -appstore / -googleplay / -googleplaygames
+      a.sns-x / .sns-facebook / .sns-youtube / .sns-discord
+      .tga-baged
+  section.top-news > .top-section-box > h3.section-title + .top-section-box__contents
+  section.top-about > h3.section-title + .top-about__contents (-play-icon, -scale-img)
+  section.top-gameplay > .top-gameplay__contents > .splide (3 slides, each
+      .-umamusume > .-wrapper > .-left-contents (.-headline, .-images-list) + .-right-contents (.-text .line-break))
+  section.top-characters, section.top-media, footer
+```
+
+That is the structure the rebuild should mirror — the current `src/bio.html` is an approximation of it
+(`.uma-*` names, invented nesting). Rebuilding against these 113 nodes is the 1:1 path.
+
+### Images no longer need File Garden
+
+`capture/img/` is public in this repo, so the profile can point at the repo's own CDN copy:
+
+```
+https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@<commit>/capture/img/<file>
+```
+
+No hotlink dependency on Cygames, no uploads, and the bytes are the site's originals.
+
+### Next
+
+1. Port `top-kv` (hero, pill, scroll cue, store list, sns row) using the captured CSS values verbatim.
+2. Port `top-news` (`.section-title` ribbon geometry from `2.BtMVfDfi.css`, `.NewsItem` card from `NewsItem.BW2Y3wsu.css`).
+3. Port `top-about`, `top-gameplay` (splide → flex strip), `top-characters`, `top-media`, footer.
+4. Strip every `svelte-*` suffix and every `var()` (JAI), keep the numbers.
