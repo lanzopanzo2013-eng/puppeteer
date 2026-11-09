@@ -27,14 +27,19 @@ jobs:
           google-chrome --version || true
 
       - name: Capture
+        continue-on-error: true
         env:
           CHROME_PATH: /usr/bin/google-chrome
-        run: node tools/capture.mjs
+        run: |
+          mkdir -p capture
+          node tools/capture.mjs 2>&1 | tee runlog.txt
+          echo "capture exit: ${PIPESTATUS[0]}" | tee -a runlog.txt
 
       - name: Commit
+        if: always()
         run: |
           git config user.name "capture-bot"
           git config user.email "capture-bot@users.noreply.github.com"
-          git add -f capture
+          git add -f capture runlog.txt
           git commit -m "chore(capture): umamusume.com html + css [skip ci]" || echo "nothing to commit"
           git push

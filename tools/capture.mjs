@@ -107,14 +107,11 @@ async function main() {
   const diag = [];
   const log = (...a) => { const line = a.join(' '); console.log(line); diag.push(line); };
   await ensure(OUT);
-  console.log('attempt 1: headless chrome');
-  let html = null;
-  try { html = await viaChrome(); } catch (e) { console.log('  chrome failed:', e.message); }
-
-  if (!html) {
-    console.log('attempt 2: public CORS proxies');
-    html = await tryProxies(SITE);
-    if (html) {
+  log('attempt 1: public CORS proxies');
+  let html = await tryProxies(SITE);
+  if (html) {
+    log('  proxy returned ' + html.length + ' bytes');
+    {
       await fs.writeFile(path.join(OUT, 'index.html'), html);
       const urls = [...html.matchAll(/\/_app\/immutable\/assets\/[^"' )]+\.css/g)].map(m => m[0]);
       const uniq = [...new Set(urls)].map(u => 'https://umamusume.com' + u);
@@ -123,9 +120,14 @@ async function main() {
       for (const u of uniq) {
         const css = await tryProxies(u);
         const name = u.split('/').pop();
-        if (css) { await fs.writeFile(path.join(OUT, 'css', name), css); console.log(`    css ${name} ${css.length}b`); }
+        if (css) { await fs.writeFile(path.join(OUT, 'css', name), css); log(`    css ${name} ${css.length}b`); }
       }
     }
+  }
+
+  if (!html) {
+    log('attempt 2: headless chrome');
+    try { html = await viaChrome(); } catch (e) { log('  chrome failed: ' + e.message); }
   }
 
   if (!html) { log('CAPTURE FAILED'); await fs.writeFile(path.join(OUT, 'diag.txt'), diag.join('\n')); process.exit(0); }
