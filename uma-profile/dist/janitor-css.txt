@@ -1,0 +1,348 @@
+/* ============================================================
+   BATCH 0 — page reset
+   ============================================================ */
+.profile-about-me {
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  overflow: visible !important;
+  width: 100% !important;
+  max-width: 560px !important;
+  margin: 0 auto !important;
+}
+.profile-page-flex { align-items: center !important; }
+
+/* ============================================================
+   BATCH 1 — shell
+   ============================================================ */
+.uma-shell {
+  font-family: roboto, "Roboto", "Roboto Condensed", "Segoe UI", Arial, sans-serif;
+  color: #22262B;
+  width: 100%;
+  max-width: 560px;
+  margin: 0 auto;
+  background: #58AC3C;
+  overflow: hidden;
+  position: relative;
+  line-height: 1.35;
+  -webkit-font-smoothing: antialiased;
+}
+.uma-shell *, .uma-shell *::before, .uma-shell *::after { box-sizing: border-box; }
+.uma-shell a { text-decoration: none !important; color: inherit !important; }
+.uma-shell img { display: block; max-width: 100%; border: 0; }
+.uma-shell p { margin: 0; }
+
+/* ---- top bar ---- */
+.uma-bar {
+  height: 74px;
+  background: #0E5AFE;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 14px 0 16px;
+  position: relative;
+  z-index: 6;
+}
+.uma-mark { display: flex; align-items: center; }
+.uma-mark img { height: 44px; width: auto; }
+.uma-mark-txt { display: flex; flex-direction: column; }
+.uma-mark-txt .w1 {
+  font-family: "Roboto Condensed", roboto, Arial, sans-serif;
+  font-style: italic; font-weight: 900; font-size: 27px;
+  letter-spacing: -1.1px; line-height: 1;
+  color: #FFCF3F;
+  /* the real wordmark is a PNG; this is the type fallback with the site's
+     orange → pink sweep, flat yellow if background-clip is stripped */
+  background: linear-gradient(180deg, #FFE24A 0%, #FFA631 42%, #FF5FA8 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 2px 2px 0 rgba(200,52,30,.85);
+}
+.uma-mark-txt .w2 {
+  font-family: "Roboto Condensed", roboto, Arial, sans-serif;
+  font-style: italic; font-weight: 900; font-size: 11px;
+  letter-spacing: 2.4px; color: #fff;
+  text-shadow: 1px 1px 0 #1B3FA8; padding-left: 2px;
+}
+.uma-menu { display: flex; flex-direction: column; align-items: center; width: 46px; }
+.uma-menu-ring {
+  width: 26px; height: 26px; border: 6px solid #fff;
+  border-bottom-color: transparent; border-radius: 50%; position: relative;
+}
+.uma-menu-ring::after {
+  content: ""; position: absolute; left: 50%; bottom: -8px;
+  width: 6px; height: 9px; margin-left: -3px; background: #fff; border-radius: 3px;
+}
+.uma-menu-lbl { font-size: 10px; font-weight: 700; letter-spacing: .4px; color: #fff; margin-top: 6px; }
+
+/* ---- hero ---- */
+.uma-hero { position: relative; height: 106vw; background: #8FD46A; overflow: hidden; }
+.uma-hero-art {
+  position: absolute; left: 0; top: 0; width: 100%; height: 100%;
+  object-fit: cover; object-position: 50% 26%;
+}
+.uma-hero-wash {
+  position: absolute; left: 0; right: 0; bottom: 0; height: 230px;
+  background: linear-gradient(180deg, rgba(46,139,34,0) 0%, rgba(30,120,26,.55) 55%, rgba(20,100,20,.88) 100%);
+}
+.uma-side {
+  position: absolute; right: 7px; top: 22px; color: #fff;
+  font-size: 9px; font-weight: 800; letter-spacing: 1.8px; text-transform: uppercase;
+  writing-mode: vertical-rl; white-space: nowrap;
+  text-shadow: 0 1px 3px rgba(0,0,0,.45);
+  border: 1px solid rgba(255,255,255,.75); border-radius: 20px; padding: 10px 3px;
+}
+.uma-playnow {
+  font-family: "Roboto Condensed", roboto, Arial, sans-serif;
+  position: absolute; left: 14px; bottom: 190px; z-index: 3;
+  font-style: italic; font-weight: 900; font-size: 28px; letter-spacing: -.8px;
+  color: #FFE24A; text-shadow: 3px 3px 0 #B4301A, -2px 2px 0 #B4301A, 0 -2px 0 #B4301A;
+  transform: rotate(-3deg);
+}
+.uma-playnow span { color: #FF8FC8; }
+
+/* CTA grid */
+.uma-cta {
+  position: absolute; left: 12px; right: 12px; bottom: 12px; z-index: 3;
+  display: flex; flex-wrap: wrap; justify-content: space-between;
+}
+.uma-shell a.uma-btn {
+  color: #fff !important;
+  width: 48.6%; min-height: 42px; margin-bottom: 8px;
+  border-radius: 11px; background: #101215;
+  display: flex; align-items: center; padding: 0 10px;
+  box-shadow: 0 3px 0 rgba(0,0,0,.28);
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+.uma-shell a.uma-btn:hover { transform: translateY(-2px); box-shadow: 0 5px 0 rgba(0,0,0,.28); }
+.uma-btn-ico {
+  width: 22px; height: 22px; border-radius: 6px; margin-right: 7px; flex: 0 0 22px;
+  background: #fff; color: #101215; font-size: 13px; font-weight: 900;
+  display: flex; align-items: center; justify-content: center; text-align: center;
+}
+.uma-btn-ico.blue { background: #4EA8FF; color: #fff; }
+.uma-btn-ico.green { background: #34C759; color: #fff; }
+.uma-btn-ico.pink { background: #FF4FA8; color: #fff; }
+.uma-btn-txt { display: flex; flex-direction: column; line-height: 1.05; }
+.uma-btn-txt small {
+  font-size: 8px; letter-spacing: .6px; text-transform: uppercase;
+  opacity: .72; font-weight: 700;
+}
+.uma-btn-txt b { font-family: "Roboto Condensed", roboto, Arial, sans-serif; font-size: 13.5px; font-weight: 800; letter-spacing: -.2px; }
+
+.uma-scroll {
+  position: absolute; right: 5px; bottom: 20px; z-index: 3; color: #fff;
+  font-size: 9px; font-weight: 800; letter-spacing: 2px; writing-mode: vertical-rl; opacity: .9;
+}
+
+/* ---- promo + socials ---- */
+.uma-promo {
+  background: #fff; margin: 8px 12px 0; border-radius: 12px;
+  display: flex; align-items: center; padding: 10px 12px;
+  box-shadow: 0 2px 0 rgba(0,0,0,.12); position: relative; z-index: 4;
+}
+.uma-promo-ico {
+  width: 42px; height: 42px; border-radius: 9px; margin-right: 10px; flex: 0 0 42px;
+  background: linear-gradient(135deg, #6F7BFF, #B15CFF); color: #fff;
+  font-weight: 900; font-size: 11px; display: flex; align-items: center;
+  justify-content: center; text-align: center; line-height: 1;
+}
+.uma-promo-txt { flex: 1 1 auto; font-size: 13px; font-weight: 700; }
+.uma-promo-txt small { display: block; font-size: 10px; font-weight: 600; color: #6A7078; }
+.uma-promo-go { font-size: 18px; color: #9AA0A8; font-weight: 900; }
+
+.uma-social {
+  background: #fff; margin: 8px 12px 14px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 9px 12px; box-shadow: 0 2px 0 rgba(0,0,0,.12);
+}
+.uma-social-lbl { font-family: "Roboto Condensed", roboto, Arial, sans-serif; font-size: 11px; font-weight: 800; font-style: italic; letter-spacing: .3px; }
+.uma-social-row { display: flex; align-items: center; }
+.uma-soc {
+  width: 28px; height: 28px; border-radius: 50%; margin-left: 7px;
+  background: #EFF1F4; color: #22262B; font-size: 12px; font-weight: 900;
+  display: flex; align-items: center; justify-content: center;
+  transition: background .12s ease, color .12s ease;
+}
+.uma-soc.x { background: #111; color: #fff; }
+.uma-soc.fb { background: #1877F2; color: #fff; }
+.uma-soc.yt { background: #FF0033; color: #fff; }
+.uma-soc.dc { background: #5865F2; color: #fff; }
+
+/* ============================================================
+   BATCH 3 — section furniture (shared by every band)
+   ============================================================ */
+.uma-sec { position: relative; padding: 26px 12px 30px; overflow: hidden; }
+.uma-tag {
+  font-family: "Roboto Condensed", roboto, Arial, sans-serif;
+  display: inline-block;
+  padding: 9px 30px 11px;
+  font-style: italic; font-weight: 900; font-size: 26px; letter-spacing: -.5px;
+  color: #fff; line-height: 1;
+  position: relative; z-index: 2;
+  /* parallelogram plate - clip-path is allowed, inline vector markup is not */
+  clip-path: polygon(9% 0, 100% 0, 91% 100%, 0 100%);
+  text-shadow: 2px 2px 0 rgba(0,0,0,.18);
+}
+.uma-tag.pink  { background: linear-gradient(180deg, #FF6FBF, #FF3D9A); }
+.uma-tag.green { background: linear-gradient(180deg, #7ED957, #43A32B); }
+.uma-tag.blue  { background: linear-gradient(180deg, #6FC6FF, #2E8BF0); }
+.uma-tag.purple{ background: linear-gradient(180deg, #A98CFF, #7B5CD6); }
+.uma-tag-wrap { margin-bottom: 16px; }
+
+/* section headline (the "Train your Umamusume!" type) */
+.uma-hl {
+  font-family: "Roboto Condensed", roboto, Arial, sans-serif;
+  font-style: italic; font-weight: 900; font-size: 25px; line-height: 1.1;
+  letter-spacing: -.6px; color: #9EE86B;
+  text-shadow: 3px 0 0 #fff, -3px 0 0 #fff, 0 3px 0 #fff, 0 -3px 0 #fff, 3px 3px 0 #2E7A1C;
+  margin: 4px 0 12px;
+}
+
+/* ---------- Updates (pink) ---------- */
+.uma-news {
+  background: linear-gradient(180deg, #FFE3F1 0%, #FFD6EA 100%);
+  border-top: 6px solid #FF8FCB;
+}
+.uma-card {
+  background: #fff; border-radius: 10px; padding: 12px 12px 12px 14px;
+  margin-bottom: 10px; position: relative;
+  box-shadow: 0 2px 0 rgba(214,120,163,.35);
+  display: flex; align-items: center;
+}
+.uma-card-body { flex: 1 1 auto; min-width: 0; }
+.uma-ribbon {
+  display: inline-block; background: #4A4A4A; color: #fff;
+  font-size: 9px; font-weight: 700; letter-spacing: .3px;
+  padding: 3px 14px 3px 8px;
+  clip-path: polygon(0 0, 100% 0, 92% 100%, 0 100%);
+  margin-bottom: 7px;
+}
+.uma-meta { display: flex; align-items: center; margin-bottom: 5px; }
+.uma-pill {
+  background: #8CC63F; color: #fff; font-size: 10px; font-weight: 800;
+  padding: 2px 12px; border-radius: 20px; font-style: italic; margin-right: 7px;
+}
+.uma-date { font-size: 9px; font-weight: 700; color: #8CC63F; letter-spacing: .2px; }
+.uma-card-txt {
+  font-size: 12.5px; font-weight: 600; color: #3A3F45; line-height: 1.35;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+.uma-card-thumb { width: 96px; height: 52px; flex: 0 0 96px; margin-left: 10px; border-radius: 6px; object-fit: cover; }
+.uma-card-go { color: #9AA0A8; font-weight: 900; font-size: 15px; margin-left: 8px; }
+.uma-more {
+  display: block; width: 62%; margin: 16px auto 0; text-align: center;
+  background: linear-gradient(180deg, #FF6FBF, #FF3D9A); color: #fff !important;
+  font-style: italic; font-weight: 900; font-size: 15px; letter-spacing: -.2px;
+  padding: 11px 0; border-radius: 26px; box-shadow: 0 3px 0 rgba(178,20,102,.5);
+}
+
+/* ---------- About (sky) ---------- */
+.uma-about {
+  background: linear-gradient(180deg, #4BA8F5 0%, #9BD4FF 55%, #EAF6FF 100%);
+  padding-bottom: 34px;
+}
+.uma-about-plate {
+  position: relative; margin: 4px 6px 14px;
+  border: 5px solid #fff; border-radius: 4px;
+  box-shadow: 0 8px 0 rgba(20,80,140,.25);
+  transform: rotate(-1.2deg);
+  overflow: hidden;
+}
+.uma-about-plate img { width: 100%; }
+.uma-play-tri {
+  position: absolute; left: 50%; top: 50%; width: 54px; height: 54px;
+  margin: -27px 0 0 -27px; border-radius: 50%; background: rgba(20,90,200,.85);
+  border: 3px solid #fff;
+}
+.uma-play-tri::after {
+  content: ""; position: absolute; left: 21px; top: 15px;
+  border-left: 17px solid #fff; border-top: 11px solid transparent; border-bottom: 11px solid transparent;
+}
+.uma-about-txt {
+  background: rgba(255,255,255,.92); border-radius: 10px; padding: 13px 14px;
+  font-size: 12.5px; line-height: 1.5; color: #2B3A47; font-weight: 600;
+}
+
+/* ---------- Gameplay (green) ---------- */
+.uma-play { background: linear-gradient(180deg, #6DBF49 0%, #4E9F33 100%); }
+.uma-slide-strip {
+  display: flex; overflow-x: auto; padding: 2px 0 8px;
+  -webkit-overflow-scrolling: touch;
+}
+.uma-slide {
+  flex: 0 0 88%; margin-right: 10px; background: rgba(255,255,255,.16);
+  border: 2px solid rgba(255,255,255,.55); border-radius: 12px; padding: 8px;
+}
+.uma-slide img { width: 100%; border-radius: 8px; }
+.uma-slide-cap {
+  font-size: 12px; font-weight: 700; color: #fff; margin-top: 8px; line-height: 1.35;
+  text-shadow: 0 1px 2px rgba(0,0,0,.25);
+}
+.uma-arrows { display: flex; justify-content: space-between; margin-top: 2px; }
+.uma-arrow {
+  width: 34px; height: 34px; border-radius: 50%; background: rgba(0,0,0,.25);
+  color: #fff; font-weight: 900; font-size: 15px;
+  display: flex; align-items: center; justify-content: center;
+}
+
+/* ---------- Roster (purple) ---------- */
+.uma-roster { background: linear-gradient(180deg, #8E7BE8 0%, #6E58C8 100%); }
+.uma-grid { display: flex; flex-wrap: wrap; justify-content: space-between; }
+.uma-tile {
+  position: relative; background: #C9BFFF; border-radius: 8px; overflow: hidden;
+  margin-bottom: 8px; width: 32.2%;
+  transition: transform .14s ease;
+}
+.uma-tile:hover { transform: translateY(-3px); }
+.uma-tile.wide { width: 66.2%; }
+.uma-tile img { width: 100%; height: 100%; object-fit: cover; }
+.uma-tile-name {
+  position: absolute; right: 0; top: 0; bottom: 0;
+  background: rgba(30,20,80,.55); color: #fff;
+  font-size: 9px; font-weight: 800; letter-spacing: .6px;
+  writing-mode: vertical-rl; padding: 6px 3px;
+}
+.uma-shell a.uma-explore {
+  display: inline-flex; align-items: center; margin-top: 6px;
+  color: #fff !important; font-weight: 900; font-style: italic; font-size: 14px;
+  letter-spacing: -.2px; text-shadow: 0 1px 2px rgba(0,0,0,.3);
+}
+.uma-explore span { margin-left: 8px; }
+
+/* ---------- Media (blue) ---------- */
+.uma-media { background: linear-gradient(180deg, #35A9F5 0%, #1C7FD6 100%); }
+.uma-media-row { display: flex; justify-content: space-between; }
+.uma-media-tile {
+  width: 48.5%; border-radius: 10px; overflow: hidden; border: 3px solid rgba(255,255,255,.85);
+  position: relative;
+}
+.uma-media-tile img { width: 100%; }
+.uma-media-lbl {
+  position: absolute; left: 8px; bottom: 8px; color: #fff;
+  font-weight: 900; font-style: italic; font-size: 13px;
+  text-shadow: 0 2px 4px rgba(0,0,0,.55);
+}
+
+/* ---------- Footer ---------- */
+.uma-foot { background: #085EFF; padding: 18px 16px 22px; text-align: center; }
+.uma-foot .w1 {
+  font-family: "Roboto Condensed", roboto, Arial, sans-serif;
+  font-style: italic; font-weight: 900; font-size: 20px; letter-spacing: -.8px; color: #FFCF3F;
+  text-shadow: 2px 2px 0 #C8341E, -1px -1px 0 #fff;
+}
+.uma-foot .w2 {
+  font-style: italic; font-weight: 900; font-size: 9px; letter-spacing: 2.2px; color: #fff;
+  text-shadow: 1px 1px 0 #1B3FA8; display: block; margin-top: 2px;
+}
+.uma-foot p { font-size: 9.5px; color: rgba(255,255,255,.8); margin-top: 10px; line-height: 1.5; }
+
+/* small screens */
+@media (max-width: 380px) {
+  .uma-tag { font-size: 23px; padding: 8px 26px 9px; }
+  .uma-hl { font-size: 22px; }
+  .uma-hero { height: 122vw; }
+}
