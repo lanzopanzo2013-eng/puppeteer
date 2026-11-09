@@ -1,19 +1,11 @@
-node:internal/modules/esm/resolve:283
-    throw new ERR_MODULE_NOT_FOUND(
-          ^
-
-Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/home/runner/work/puppeteer/puppeteer/node_modules/puppeteer-core/lib/puppeteer/puppeteer-core.js' imported from /home/runner/work/puppeteer/puppeteer/tools/capture.mjs
-    at finalizeResolution (node:internal/modules/esm/resolve:283:11)
-    at moduleResolve (node:internal/modules/esm/resolve:952:10)
-    at defaultResolve (node:internal/modules/esm/resolve:1188:11)
-    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
-    at #cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
-    at ModuleLoader.resolve (node:internal/modules/esm/loader:640:38)
-    at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:264:38)
-    at ModuleJob._link (node:internal/modules/esm/module_job:168:49) {
-  code: 'ERR_MODULE_NOT_FOUND',
-  url: 'file:///home/runner/work/puppeteer/puppeteer/node_modules/puppeteer-core/lib/puppeteer/puppeteer-core.js'
-}
-
-Node.js v20.20.2
-capture exit: 1
+attempt 1: public CORS proxies
+  proxy no: 522 7243b https://api.codetabs.com/v1/proxy?quest=https%3A%2F%2Fumamus…
+  proxy no: 200 199b https://api.allorigins.win/raw?url=https%3A%2F%2Fumamusume.c…
+  proxy no: 403 322b https://corsproxy.io/?https%3A%2F%2Fumamusume.com%2F…
+  proxy no: 200 134b https://r.jina.ai/https://umamusume.com/…
+attempt 2: headless chrome
+  chrome binary: /usr/bin/google-chrome
+  chrome: title="Error Page" html=191b
+images referenced: 0
+DONE
+capture exit: 0
