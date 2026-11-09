@@ -67,7 +67,7 @@
 
     <a class="uma-card" href="#">
       <div class="uma-card-body">
-        <div class="uma-ribbon">Update</div>
+        <div class="uma-meta"><span class="uma-ribbon">Update</span><span class="uma-date">2026/11/06 09:15 (UTC)</span></div>
         <div class="uma-meta"><span class="uma-pill">Bot</span><span class="uma-date">2026/11/05 13:30 (UTC)</span></div>
         <div class="uma-card-txt">New bot: Silence Suzuka takes the lead in a quiet, hopeless romance.</div>
       </div>
@@ -77,7 +77,7 @@
 
     <a class="uma-card" href="#">
       <div class="uma-card-body">
-        <div class="uma-ribbon">Update</div>
+        <div class="uma-meta"><span class="uma-ribbon">Update</span><span class="uma-date">2026/11/05 22:00 (UTC)</span></div>
         <div class="uma-meta"><span class="uma-pill">Bot</span><span class="uma-date">2026/11/04 22:00 (UTC)</span></div>
         <div class="uma-card-txt">Reworked: Unity Cup — Tokai Teio's scenario now has three new openings.</div>
       </div>
@@ -87,7 +87,7 @@
 
     <a class="uma-card" href="#">
       <div class="uma-card-body">
-        <div class="uma-ribbon">Notice</div>
+        <div class="uma-meta"><span class="uma-ribbon">Notice</span><span class="uma-date">2026/11/02 09:15 (UTC)</span></div>
         <div class="uma-meta"><span class="uma-pill">Event</span><span class="uma-date">2026/11/01 09:15 (UTC)</span></div>
         <div class="uma-card-txt">Aquarius Cup event bot returns later this month — limited time only.</div>
       </div>
@@ -133,7 +133,11 @@
         <div class="uma-slide-cap">Scripts &amp; lorebooks — drop-in modules for any chat.</div>
       </div>
     </div>
-    <div class="uma-arrows"><div class="uma-arrow">‹</div><div class="uma-arrow">›</div></div>
+    <div class="uma-arrows">
+      <div class="uma-arrow"><img class="uma-arrow-img" alt="Previous" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@a09a44aeeeed/uma-profile/assets/site/arrow_left.png"></div>
+      <div class="uma-arrow"><img class="uma-arrow-img" alt="Next" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@a09a44aeeeed/uma-profile/assets/site/arrow_right.png"></div>
+    </div>
+    <div class="uma-pager"><img alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@a09a44aeeeed/uma-profile/assets/site/pager.png"></div>
   </div>
 
   <!-- ── Roster (Characters) ───────────────────────────────── -->

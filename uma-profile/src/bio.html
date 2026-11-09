@@ -40,7 +40,7 @@
   max-width: 560px;
   margin: 0 auto;
   background-color: #58AC3C;
-  overflow: hidden;
+  overflow-x: clip;
   position: relative;
   line-height: 1.35;
   -webkit-font-smoothing: antialiased;
@@ -52,18 +52,19 @@
 
 /* ---- top bar ---- */
 .uma-bar {
-  height: 74px;
   background: #2A5DFA;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 14px 0 16px;
-  position: relative;
-  z-index: 6;
+  padding: 7px 14px 7px 16px;
+  position: sticky; top: 0; z-index: 9;
 }
+/* the site shrinks its wordmark once you scroll; CSS-only, no JS.
+   Browsers without scroll-driven animations simply keep the large mark. */
+@keyframes uma-mark-shrink { from { width: 52%; } to { width: 30%; } }
+.uma-logo { animation: uma-mark-shrink linear both; animation-timeline: scroll(root block); animation-range: 0 260px; }
 .uma-mark { display: flex; align-items: center; }
-.uma-mark img { height: 44px; width: auto; }
-.uma-logo { display: block; width: 126px; height: auto; }
+.uma-logo { display: block; width: 52%; max-width: 240px; height: auto; }
 .uma-mark-txt { display: flex; flex-direction: column; }
 .uma-mark-txt .w1 {
   font-family: "Roboto Condensed", roboto, Arial, sans-serif;
@@ -240,8 +241,8 @@
   display: inline-block; background: #4A4A4A; color: #fff;
   font-size: 9px; font-weight: 700; letter-spacing: .3px;
   padding: 3px 14px 3px 8px;
-  clip-path: polygon(0 0, 100% 0, 92% 100%, 0 100%);
-  margin-bottom: 7px;
+  clip-path: polygon(0 0, 100% 0, 94% 100%, 0 100%);
+  margin-right: 8px;
 }
 .uma-meta { display: flex; align-items: center; margin-bottom: 5px; }
 .uma-pill {
@@ -253,7 +254,7 @@
   font-size: 12.5px; font-weight: 600; color: #3A3F45; line-height: 1.35;
   display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
 }
-.uma-card-thumb { width: 96px; height: 52px; flex: 0 0 96px; margin-left: 10px; border-radius: 6px; object-fit: cover; }
+.uma-card-thumb { width: 108px; height: 60px; flex: 0 0 108px; margin-left: 10px; border-radius: 6px; object-fit: cover; }
 .uma-card-go { color: #9AA0A8; font-weight: 900; font-size: 15px; margin-left: 8px; }
 .uma-shell a.uma-more {
   display: block; width: 62%; margin: 16px auto 0; text-align: center;
@@ -310,10 +311,12 @@
 }
 .uma-arrows { display: flex; justify-content: space-between; margin-top: 2px; }
 .uma-arrow {
-  width: 34px; height: 34px; border-radius: 50%; background: rgba(0,0,0,.25);
-  color: #fff; font-weight: 900; font-size: 15px;
+  width: 38px; height: 38px; border-radius: 50%; background: rgba(0,0,0,.22);
   display: flex; align-items: center; justify-content: center;
 }
+.uma-arrow-img { width: 11px; height: auto; opacity: .75; }
+.uma-pager { display: flex; justify-content: center; margin: 12px 0 6px; }
+.uma-pager img { width: 84px; height: auto; opacity: .92; }
 
 /* ---------- Roster (purple) ---------- */
 .uma-roster { background: linear-gradient(180deg, #8C83FF 0%, #7D75E3 100%); }
@@ -450,7 +453,7 @@
 
     <a class="uma-card" href="#">
       <div class="uma-card-body">
-        <div class="uma-ribbon">Update</div>
+        <div class="uma-meta"><span class="uma-ribbon">Update</span><span class="uma-date">2026/11/06 09:15 (UTC)</span></div>
         <div class="uma-meta"><span class="uma-pill">Bot</span><span class="uma-date">2026/11/05 13:30 (UTC)</span></div>
         <div class="uma-card-txt">New bot: Silence Suzuka takes the lead in a quiet, hopeless romance.</div>
       </div>
@@ -460,7 +463,7 @@
 
     <a class="uma-card" href="#">
       <div class="uma-card-body">
-        <div class="uma-ribbon">Update</div>
+        <div class="uma-meta"><span class="uma-ribbon">Update</span><span class="uma-date">2026/11/05 22:00 (UTC)</span></div>
         <div class="uma-meta"><span class="uma-pill">Bot</span><span class="uma-date">2026/11/04 22:00 (UTC)</span></div>
         <div class="uma-card-txt">Reworked: Unity Cup — Tokai Teio's scenario now has three new openings.</div>
       </div>
@@ -470,7 +473,7 @@
 
     <a class="uma-card" href="#">
       <div class="uma-card-body">
-        <div class="uma-ribbon">Notice</div>
+        <div class="uma-meta"><span class="uma-ribbon">Notice</span><span class="uma-date">2026/11/02 09:15 (UTC)</span></div>
         <div class="uma-meta"><span class="uma-pill">Event</span><span class="uma-date">2026/11/01 09:15 (UTC)</span></div>
         <div class="uma-card-txt">Aquarius Cup event bot returns later this month — limited time only.</div>
       </div>
@@ -516,7 +519,11 @@
         <div class="uma-slide-cap">Scripts &amp; lorebooks — drop-in modules for any chat.</div>
       </div>
     </div>
-    <div class="uma-arrows"><div class="uma-arrow">‹</div><div class="uma-arrow">›</div></div>
+    <div class="uma-arrows">
+      <div class="uma-arrow"><img class="uma-arrow-img" alt="Previous" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@a09a44aeeeed/uma-profile/assets/site/arrow_left.png"></div>
+      <div class="uma-arrow"><img class="uma-arrow-img" alt="Next" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@a09a44aeeeed/uma-profile/assets/site/arrow_right.png"></div>
+    </div>
+    <div class="uma-pager"><img alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@a09a44aeeeed/uma-profile/assets/site/pager.png"></div>
   </div>
 
   <!-- ── Roster (Characters) ───────────────────────────────── -->
