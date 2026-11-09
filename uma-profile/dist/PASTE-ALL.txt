@@ -20,7 +20,7 @@
    ============================================================ */
 .uma-shell {
   font-family: roboto, "Roboto", "Roboto Condensed", "Segoe UI", Arial, sans-serif;
-  color: #22262B;
+  color: #4D4D4D;
   width: 100%;
   max-width: 560px;
   margin: 0 auto;
@@ -38,7 +38,7 @@
 /* ---- top bar ---- */
 .uma-bar {
   height: 74px;
-  background: #0E5AFE;
+  background: #2A5DFA;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -186,10 +186,10 @@
   clip-path: polygon(9% 0, 100% 0, 91% 100%, 0 100%);
   text-shadow: 2px 2px 0 rgba(0,0,0,.18);
 }
-.uma-tag.pink  { background: linear-gradient(180deg, #FF6FBF, #FF3D9A); }
-.uma-tag.green { background: linear-gradient(180deg, #7ED957, #43A32B); }
-.uma-tag.blue  { background: linear-gradient(180deg, #6FC6FF, #2E8BF0); }
-.uma-tag.purple{ background: linear-gradient(180deg, #A98CFF, #7B5CD6); }
+.uma-tag.pink  { background: linear-gradient(180deg, #FF79D0, #E36CB9); }
+.uma-tag.green { background: linear-gradient(180deg, #4FBF43, #3CA732); }
+.uma-tag.blue  { background: linear-gradient(180deg, #5A85FF, #2A5DFA); }
+.uma-tag.purple{ background: linear-gradient(180deg, #A9A2FF, #7D75E3); }
 .uma-tag-wrap { margin-bottom: 16px; }
 
 /* section headline (the "Train your Umamusume!" type) */
@@ -203,8 +203,8 @@
 
 /* ---------- Updates (pink) ---------- */
 .uma-news {
-  background: linear-gradient(180deg, #FFE3F1 0%, #FFD6EA 100%);
-  border-top: 6px solid #FF8FCB;
+  background: linear-gradient(180deg, #FFEFF7 0%, #FFE2F1 100%);
+  border-top: 6px solid #FF79D0;
 }
 .uma-card {
   background: #fff; border-radius: 10px; padding: 12px 12px 12px 14px;
@@ -232,9 +232,9 @@
 }
 .uma-card-thumb { width: 96px; height: 52px; flex: 0 0 96px; margin-left: 10px; border-radius: 6px; object-fit: cover; }
 .uma-card-go { color: #9AA0A8; font-weight: 900; font-size: 15px; margin-left: 8px; }
-.uma-more {
+.uma-shell a.uma-more {
   display: block; width: 62%; margin: 16px auto 0; text-align: center;
-  background: linear-gradient(180deg, #FF6FBF, #FF3D9A); color: #fff !important;
+  background: linear-gradient(180deg, #FF79D0, #E36CB9); color: #fff !important;
   font-style: italic; font-weight: 900; font-size: 15px; letter-spacing: -.2px;
   padding: 11px 0; border-radius: 26px; box-shadow: 0 3px 0 rgba(178,20,102,.5);
 }
@@ -267,7 +267,7 @@
 }
 
 /* ---------- Gameplay (green) ---------- */
-.uma-play { background: linear-gradient(180deg, #6DBF49 0%, #4E9F33 100%); }
+.uma-play { background: linear-gradient(180deg, #4FBF43 0%, #3CA732 100%); }
 .uma-slide-strip {
   display: flex; overflow-x: auto; padding: 2px 0 8px;
   -webkit-overflow-scrolling: touch;
@@ -293,7 +293,7 @@
 }
 
 /* ---------- Roster (purple) ---------- */
-.uma-roster { background: linear-gradient(180deg, #8E7BE8 0%, #6E58C8 100%); }
+.uma-roster { background: linear-gradient(180deg, #8C83FF 0%, #7D75E3 100%); }
 .uma-grid { display: flex; flex-wrap: wrap; justify-content: space-between; }
 .uma-tile {
   position: relative; background: #C9BFFF; border-radius: 8px; overflow: hidden;
@@ -321,7 +321,7 @@
 .uma-explore span { margin-left: 8px; }
 
 /* ---------- Media (blue) ---------- */
-.uma-media { background: linear-gradient(180deg, #35A9F5 0%, #1C7FD6 100%); }
+.uma-media { background: linear-gradient(180deg, #4CAEFF 0%, #449BE3 100%); }
 .uma-media-row { display: flex; justify-content: space-between; }
 .uma-media-tile {
   width: 48.5%; border-radius: 10px; overflow: hidden; border: 3px solid rgba(255,255,255,.85);
@@ -335,7 +335,7 @@
 }
 
 /* ---------- Footer ---------- */
-.uma-foot { background: #085EFF; padding: 18px 16px 22px; text-align: center; }
+.uma-foot { background: #2A5DFA; padding: 18px 16px 22px; text-align: center; }
 .uma-foot .w1 {
   font-family: "Roboto Condensed", roboto, Arial, sans-serif;
   font-style: italic; font-weight: 900; font-size: 20px; letter-spacing: -.8px; color: #FFCF3F;

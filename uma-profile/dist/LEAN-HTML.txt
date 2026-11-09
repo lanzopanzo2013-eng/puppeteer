@@ -1,0 +1,150 @@
+<div class="uma-shell">
+  <div class="uma-bar">
+    <a class="uma-mark" href="#">
+      <img class="uma-logo" alt="Umamusume: Pretty Derby"
+           src="https://parts.umamusume.com/assets/images/logo_umamusume.png">
+    </a>
+    <div class="uma-menu">
+      <div class="uma-menu-ring"></div>
+      <div class="uma-menu-lbl">Menu</div>
+    </div>
+  </div>
+  <div class="uma-hero">
+    <img class="uma-hero-art" alt="Umamusume: Pretty Derby" src="https://umamusume.com/_app/immutable/assets/kv.CiVddxQD.jpeg">
+    <div class="uma-hero-wash"></div>
+    <div class="uma-side">Uma Enjoyer · Tracen</div>
+    <img class="uma-playnow" alt="Play Now!" src="https://umamusume.com/_app/immutable/assets/kv_txt_playnow.D0FaPRug.png">
+    <div class="uma-cta">
+      <a class="uma-btn" href="#characters">
+        <div class="uma-btn-ico">★</div>
+        <div class="uma-btn-txt"><small>Browse</small><b>Characters</b></div>
+      </a>
+      <a class="uma-btn" href="#scripts">
+        <div class="uma-btn-ico blue">✦</div>
+        <div class="uma-btn-txt"><small>Open</small><b>Scripts</b></div>
+      </a>
+      <a class="uma-btn" href="#updates">
+        <div class="uma-btn-ico green">▲</div>
+        <div class="uma-btn-txt"><small>Latest</small><b>Updates</b></div>
+      </a>
+      <a class="uma-btn" href="#about">
+        <div class="uma-btn-ico pink">♥</div>
+        <div class="uma-btn-txt"><small>About</small><b>The Trainer</b></div>
+      </a>
+    </div>
+    <div class="uma-scroll">SCROLL</div>
+  </div>
+  <a class="uma-promo" href="#updates">
+    <div class="uma-promo-ico">NEW</div>
+    <div class="uma-promo-txt">
+      New drop: Unity Cup scouts are here!
+      <small>Special rates · limited time</small>
+    </div>
+    <div class="uma-promo-go">›</div>
+  </a>
+  <div class="uma-social">
+    <div class="uma-social-lbl">Official Social Media</div>
+    <div class="uma-social-row">
+      <a class="uma-soc x" href="#">X</a>
+      <a class="uma-soc fb" href="#">f</a>
+      <a class="uma-soc yt" href="#">▶</a>
+      <a class="uma-soc dc" href="#">◈</a>
+    </div>
+  </div>
+  <div class="uma-sec uma-news" id="updates">
+    <div class="uma-tag-wrap"><div class="uma-tag pink">News</div></div>
+    <a class="uma-card" href="#">
+      <div class="uma-card-body">
+        <div class="uma-ribbon">Update</div>
+        <div class="uma-meta"><span class="uma-pill">Bot</span><span class="uma-date">2026/11/05 13:30 (UTC)</span></div>
+        <div class="uma-card-txt">New bot: Silence Suzuka takes the lead in a quiet, hopeless romance.</div>
+      </div>
+      <img class="uma-card-thumb" alt="" src="https://assets-webview-umamusume-en.akamaized.net/contents/assets/images/uploads/Thumbnail/banner_30320202_L1794088800.png?c=20260925035415">
+      <div class="uma-card-go">›</div>
+    </a>
+    <a class="uma-card" href="#">
+      <div class="uma-card-body">
+        <div class="uma-ribbon">Update</div>
+        <div class="uma-meta"><span class="uma-pill">Bot</span><span class="uma-date">2026/11/04 22:00 (UTC)</span></div>
+        <div class="uma-card-txt">Reworked: Unity Cup — Tokai Teio's scenario now has three new openings.</div>
+      </div>
+      <img class="uma-card-thumb" alt="" src="https://assets-webview-umamusume-en.akamaized.net/contents/assets/images/uploads/Thumbnail/announce_banner_3144_L1793916000.png?c=20260925035632">
+      <div class="uma-card-go">›</div>
+    </a>
+    <a class="uma-card" href="#">
+      <div class="uma-card-body">
+        <div class="uma-ribbon">Notice</div>
+        <div class="uma-meta"><span class="uma-pill">Event</span><span class="uma-date">2026/11/01 09:15 (UTC)</span></div>
+        <div class="uma-card-txt">Aquarius Cup event bot returns later this month — limited time only.</div>
+      </div>
+      <img class="uma-card-thumb" alt="" src="https://assets-webview-umamusume-en.akamaized.net/contents/assets/images/uploads/Thumbnail/banner_30320202_L1794088800.png?c=20260925035415">
+      <div class="uma-card-go">›</div>
+    </a>
+    <a class="uma-more" href="#">View more ››</a>
+  </div>
+  <div class="uma-sec uma-about" id="about">
+    <div class="uma-tag-wrap"><div class="uma-tag blue">About</div></div>
+    <div class="uma-about-plate">
+      <img alt="" src="https://umamusume.com/_app/immutable/assets/about_thumbnail.DvTbfr6J.jpeg">
+    </div>
+    <div class="uma-about-txt">
+      Trainer by day, bot author by night. I write Umamusume characters that stay in character —
+      tight prose, real track logic, and enough chaos to keep a career run interesting.
+      Expect slow burns, rivalry, and the occasional hopeless crush.
+    </div>
+  </div>
+  <div class="uma-sec uma-play" id="scripts">
+    <div class="uma-tag-wrap"><div class="uma-tag green">Gameplay</div></div>
+    <div class="uma-hl">Train your Umamusume!</div>
+    <div class="uma-slide-strip">
+      <div class="uma-slide">
+        <img alt="" src="https://umamusume.com/_app/immutable/assets/gameplay_specialweek.DbgtPsGW.png">
+        <div class="uma-slide-cap">Character bots — pick a racer and a training regimen that fits her.</div>
+      </div>
+      <div class="uma-slide">
+        <img alt="" src="https://umamusume.com/_app/immutable/assets/gameplay_silencesuzuka.CF-9agsU.png">
+        <div class="uma-slide-cap">Scenarios — Tracen Academy, friendship training, rivalry arcs.</div>
+      </div>
+      <div class="uma-slide">
+        <img alt="" src="https://umamusume.com/_app/immutable/assets/gameplay_winningticket.6_SJzSZq.png">
+        <div class="uma-slide-cap">Scripts &amp; lorebooks — drop-in modules for any chat.</div>
+      </div>
+    </div>
+    <div class="uma-arrows"><div class="uma-arrow">‹</div><div class="uma-arrow">›</div></div>
+  </div>
+  <div class="uma-sec uma-roster" id="characters">
+    <div class="uma-tag-wrap"><div class="uma-tag purple">Characters</div></div>
+    <div class="uma-grid">
+      <a class="uma-tile wide" href="#" style="height:132px">
+        <img alt="" src="https://en-portal.g.kuroco-img.app/v=1768440412/files/user/character/astonmachan/astonmachan_top.png">
+      </a>
+      <a class="uma-tile" href="#" style="height:132px">
+        <img alt="" src="https://en-portal.g.kuroco-img.app/v=1768440020/files/user/character/mrcb/mrcb_top.png">
+      </a>
+      <a class="uma-tile" href="#" style="height:104px"><img alt="" src="https://en-portal.g.kuroco-img.app/v=1750748798/files/user/character/tamamocross/tamamocross_top.png"></a>
+      <a class="uma-tile" href="#" style="height:104px"><img alt="" src="https://en-portal.g.kuroco-img.app/v=1749211789/files/user/character/nicenature/nicenature_top.png"></a>
+      <a class="uma-tile" href="#" style="height:104px"><img alt="" src="https://en-portal.g.kuroco-img.app/v=1749211687/files/user/character/winningticket/winningticket_top.png"></a>
+    </div>
+    <a class="uma-explore" href="#"><span>Explore</span><span>››</span></a>
+  </div>
+  <div class="uma-sec uma-media">
+    <div class="uma-tag-wrap"><div class="uma-tag blue">Media</div></div>
+    <div class="uma-media-row">
+      <a class="uma-media-tile" href="#">
+        <img alt="" src="https://umamusume.com/_app/immutable/assets/media_image.bZStKUoL.png">
+        <span class="uma-media-lbl">Threads</span>
+      </a>
+      <a class="uma-media-tile" href="#">
+        <img alt="" src="https://umamusume.com/_app/immutable/assets/gameplay_image_1-1.DqKsqutO.png">
+        <span class="uma-media-lbl">Lorebooks</span>
+      </a>
+    </div>
+    <a class="uma-explore" href="#"><span>Explore</span><span>››</span></a>
+  </div>
+  <div class="uma-foot">
+    <span class="w1">Umamusume</span>
+    <span class="w2">PRETTY DERBY</span>
+    <p>Fan-made profile layout · Umamusume: Pretty Derby © Cygames<br>
+    Not affiliated with Cygames or Janitor AI.</p>
+  </div>
+</div>
