@@ -3,10 +3,26 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import puppeteer from 'puppeteer-core';
+import { createRequire } from 'node:module';
+const require = createRequire(import.meta.url);
 
 const OUT = 'capture';
 const SITE = 'https://umamusume.com/';
-const CHROME = process.env.CHROME_PATH || '/usr/bin/google-chrome';
+
+function findChrome() {
+  const cands = [
+    process.env.CHROME_PATH,
+    '/usr/bin/google-chrome', '/usr/bin/google-chrome-stable',
+    '/usr/bin/chromium', '/usr/bin/chromium-browser',
+    '/opt/google/chrome/chrome',
+  ].filter(Boolean);
+  const { execSync } = require('node:child_process');
+  for (const c of cands) { try { if (execSync(`test -x ${c}`).toString() === '') return c; } catch {} }
+  for (const name of ['google-chrome', 'chromium', 'chromium-browser', 'chrome']) {
+    try { const p = execSync(`command -v ${name}`).toString().trim(); if (p) return p; } catch {}
+  }
+  return null;
+}
 
 const PROXIES = [
   u => `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(u)}`,
@@ -34,8 +50,11 @@ async function tryProxies(url) {
 }
 
 async function viaChrome() {
+  const chrome = findChrome();
+  console.log('  chrome binary:', chrome);
+  if (!chrome) throw new Error('no chrome binary found');
   const browser = await puppeteer.launch({
-    executablePath: CHROME,
+    executablePath: chrome,
     headless: 'new',
     args: ['--no-sandbox', '--disable-dev-shm-usage', '--window-size=1440,900'],
   });
@@ -76,7 +95,17 @@ async function viaChrome() {
   } finally { await browser.close(); }
 }
 
-(async () => {
+main().catch(async (e) => {
+  try {
+    await fs.mkdir('capture', { recursive: true });
+    await fs.writeFile('capture/ERROR.txt', String(e && e.stack || e));
+  } catch {}
+  process.exit(0);
+});
+
+async function main() {
+  const diag = [];
+  const log = (...a) => { const line = a.join(' '); console.log(line); diag.push(line); };
   await ensure(OUT);
   console.log('attempt 1: headless chrome');
   let html = null;
@@ -99,9 +128,10 @@ async function viaChrome() {
     }
   }
 
-  if (!html) { console.log('CAPTURE FAILED'); process.exit(0); }
+  if (!html) { log('CAPTURE FAILED'); await fs.writeFile(path.join(OUT, 'diag.txt'), diag.join('\n')); process.exit(0); }
   const imgs = [...new Set([...html.matchAll(/https:\/\/[^"' )]+\.(?:png|jpe?g|webp|svg)/g)].map(m => m[0]))];
   await fs.writeFile(path.join(OUT, 'img-urls.txt'), imgs.join('\n') + '\n');
   console.log(`images referenced: ${imgs.length}`);
-  console.log('DONE');
-})();
+  log('DONE');
+  await fs.writeFile(path.join(OUT, 'diag.txt'), diag.join('\n'));
+}
