@@ -1,139 +1,81 @@
-// Capture umamusume.com from a GitHub runner: a real Chrome first (the block is
-// fingerprint-sensitive), then public CORS proxies if the IP is refused outright.
+// The origin 403s every datacenter IP (verified: 4 proxies + GitHub runners).
+// The Internet Archive holds the site, and a runner can reach the Archive, so we
+// pull the real bytes from there: HTML, every stylesheet, and the artwork.
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import { createRequire } from 'node:module';
-const require = createRequire(import.meta.url);
 
 const OUT = 'capture';
-const SITE = 'https://umamusume.com/';
+const SNAPSHOT = '2026';           // newest capture year
+const CDX = 'https://web.archive.org/cdx/search/cdx';
+const sleep = ms => new Promise(r => setTimeout(r, ms));
 
-function findChrome() {
-  const cands = [
-    process.env.CHROME_PATH,
-    '/usr/bin/google-chrome', '/usr/bin/google-chrome-stable',
-    '/usr/bin/chromium', '/usr/bin/chromium-browser',
-    '/opt/google/chrome/chrome',
-  ].filter(Boolean);
-  const { execSync } = require('node:child_process');
-  for (const c of cands) { try { if (execSync(`test -x ${c}`).toString() === '') return c; } catch {} }
-  for (const name of ['google-chrome', 'chromium', 'chromium-browser', 'chrome']) {
-    try { const p = execSync(`command -v ${name}`).toString().trim(); if (p) return p; } catch {}
-  }
-  return null;
-}
-
-const PROXIES = [
-  u => `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(u)}`,
-  u => `https://api.allorigins.win/raw?url=${encodeURIComponent(u)}`,
-  u => `https://corsproxy.io/?${encodeURIComponent(u)}`,
-  u => `https://r.jina.ai/${u}`,
-];
-
-async function ensure(dir) { await fs.mkdir(dir, { recursive: true }); }
-
-async function tryProxies(url) {
-  for (const make of PROXIES) {
-    const proxied = make(url);
+async function get(url, tries = 3) {
+  for (let i = 0; i < tries; i++) {
     try {
-      const res = await fetch(proxied, { headers: { 'user-agent': 'Mozilla/5.0' }, redirect: 'follow' });
-      const text = await res.text();
-      if (res.ok && text && text.length > 500 && !/403 Error|Access Denied/i.test(text.slice(0, 400))) {
-        console.log(`  proxy ok (${res.status}, ${text.length}b): ${proxied.slice(0, 70)}…`);
-        return text;
-      }
-      console.log(`  proxy no: ${res.status} ${text.length}b ${proxied.slice(0, 60)}…`);
-    } catch (e) { console.log(`  proxy err ${proxied.slice(0, 60)}: ${e.message}`); }
+      const res = await fetch(url, { headers: { 'user-agent': 'Mozilla/5.0 capture' }, redirect: 'follow' });
+      if (res.ok) return Buffer.from(await res.arrayBuffer());
+      if (res.status === 404) return null;
+      console.log(`    ${res.status} retry ${i + 1}: ${url.slice(0, 90)}`);
+    } catch (e) { console.log(`    err ${e.message}: ${url.slice(0, 70)}`); }
+    await sleep(1500 * (i + 1));
   }
   return null;
 }
 
-async function viaChrome() {
-  const { default: puppeteer } = await import(process.env.PPTR || 'puppeteer-core');
-  const chrome = findChrome();
-  console.log('  chrome binary:', chrome);
-  if (!chrome) throw new Error('no chrome binary found');
-  const browser = await puppeteer.launch({
-    executablePath: chrome,
-    headless: 'new',
-    args: ['--no-sandbox', '--disable-dev-shm-usage', '--window-size=1440,900'],
-  });
+async function cdx(match, filter) {
+  const q = `${CDX}?url=${encodeURIComponent('umamusume.com' + match)}&matchType=prefix`
+    + `&output=json&collapse=urlkey&filter=${filter}&limit=400`;
+  const buf = await get(q);
+  if (!buf) return [];
   try {
-    const page = await browser.newPage();
-    await page.setViewport({ width: 1440, height: 900, deviceScaleFactor: 1 });
-    await page.goto(SITE, { waitUntil: 'networkidle2', timeout: 90000 });
-    const title = await page.title();
-    const html = await page.content();
-    console.log(`  chrome: title="${title}" html=${html.length}b`);
-    if (/403|Access Denied|Forbidden/i.test(title) && html.length < 20000) return null;
-
-    await ensure(`${OUT}/css`);
-    // stylesheet text, fetched same-origin so CORS cannot bite
-    const sheets = await page.evaluate(async () => {
-      const out = [];
-      for (const l of Array.from(document.querySelectorAll('link[rel="stylesheet"]'))) {
-        const href = l.href;
-        try { const t = await (await fetch(href)).text(); out.push({ href, text: t }); }
-        catch (e) { out.push({ href, text: '' }); }
-      }
-      // inline <style> blocks too
-      const inl = Array.from(document.querySelectorAll('style')).map(s => s.textContent);
-      return { sheets: out, inline: inl };
-    });
-    let i = 0;
-    for (const s of sheets.sheets) {
-      const name = (s.href.split('/').pop() || `sheet${i}`).replace(/[^\w.-]/g, '_');
-      await fs.writeFile(path.join(OUT, 'css', name), s.text || '');
-      console.log(`    css ${name} ${s.text.length}b`);
-      i++;
-    }
-    for (let j = 0; j < sheets.inline.length; j++) {
-      await fs.writeFile(path.join(OUT, 'css', `inline-${j}.css`), sheets.inline[j] || '');
-    }
-    await fs.writeFile(path.join(OUT, 'index.html'), html);
-    return html;
-  } finally { await browser.close(); }
+    const rows = JSON.parse(buf.toString());
+    return rows.slice(1).map(r => ({ ts: r[1], url: r[2], mime: r[3], size: r[4] }));
+  } catch { return []; }
 }
-
-main().catch(async (e) => {
-  try {
-    await fs.mkdir('capture', { recursive: true });
-    await fs.writeFile('capture/ERROR.txt', String(e && e.stack || e));
-  } catch {}
-  process.exit(0);
-});
 
 async function main() {
-  const diag = [];
-  const log = (...a) => { const line = a.join(' '); console.log(line); diag.push(line); };
-  await ensure(OUT);
-  log('attempt 1: public CORS proxies');
-  let html = await tryProxies(SITE);
-  if (html) {
-    log('  proxy returned ' + html.length + ' bytes');
-    {
-      await fs.writeFile(path.join(OUT, 'index.html'), html);
-      const urls = [...html.matchAll(/\/_app\/immutable\/assets\/[^"' )]+\.css/g)].map(m => m[0]);
-      const uniq = [...new Set(urls)].map(u => 'https://umamusume.com' + u);
-      console.log(`  stylesheet urls: ${uniq.length}`);
-      await ensure(`${OUT}/css`);
-      for (const u of uniq) {
-        const css = await tryProxies(u);
-        const name = u.split('/').pop();
-        if (css) { await fs.writeFile(path.join(OUT, 'css', name), css); log(`    css ${name} ${css.length}b`); }
-      }
-    }
-  }
+  await fs.mkdir(OUT, { recursive: true });
 
-  if (!html) {
-    log('attempt 2: headless chrome');
-    try { html = await viaChrome(); } catch (e) { log('  chrome failed: ' + e.message); }
-  }
+  // 1. the page itself
+  console.log('page');
+  const html = await get(`https://web.archive.org/web/${SNAPSHOT}id_/https://umamusume.com/`);
+  if (html) { await fs.writeFile(`${OUT}/index.html`, html); console.log(`  html ${html.length}b`); }
 
-  if (!html) { log('CAPTURE FAILED'); await fs.writeFile(path.join(OUT, 'diag.txt'), diag.join('\n')); process.exit(0); }
-  const imgs = [...new Set([...html.matchAll(/https:\/\/[^"' )]+\.(?:png|jpe?g|webp|svg)/g)].map(m => m[0]))];
-  await fs.writeFile(path.join(OUT, 'img-urls.txt'), imgs.join('\n') + '\n');
-  console.log(`images referenced: ${imgs.length}`);
-  log('DONE');
-  await fs.writeFile(path.join(OUT, 'diag.txt'), diag.join('\n'));
+  // 2. stylesheets
+  console.log('css');
+  const cssRows = await cdx('/_app/immutable/assets/', 'mimetype:text/css');
+  console.log(`  index lists ${cssRows.length}`);
+  await fs.mkdir(`${OUT}/css`, { recursive: true });
+  let n = 0;
+  for (const r of cssRows) {
+    const dest = `${OUT}/css/${r.url.split('/').pop().replace(/[^\w.-]/g, '_')}`;
+    const buf = await get(`https://web.archive.org/web/${r.ts}id_/${r.url}`);
+    if (buf && buf.length > 100) { await fs.writeFile(dest, buf); n++; console.log(`  ${r.url.split('/').pop()} ${buf.length}b`); }
+    await sleep(400);
+  }
+  console.log(`  saved ${n} stylesheets`);
+
+  // 3. artwork
+  console.log('img');
+  const imgRows = await cdx('/_app/immutable/assets/', 'mimetype:image/.*');
+  await fs.mkdir(`${OUT}/img`, { recursive: true });
+  let m = 0;
+  for (const r of imgRows.slice(0, 120)) {
+    const base = r.url.split('/').pop().replace(/[^\w.-]/g, '_');
+    const dest = `${OUT}/img/${base}`;
+    const buf = await get(`https://web.archive.org/web/${r.ts}id_/${r.url}`);
+    if (buf && buf.length > 200) { await fs.writeFile(dest, buf); m++; }
+    await sleep(300);
+  }
+  console.log(`  saved ${m} images`);
+
+  const listing = await fs.readdir(`${OUT}/img`).catch(() => []);
+  await fs.writeFile(`${OUT}/files.txt`, listing.join('\n') + '\n');
+  console.log('DONE');
 }
+
+main().catch(async e => {
+  await fs.mkdir(OUT, { recursive: true });
+  await fs.writeFile(`${OUT}/ERROR.txt`, String(e && e.stack || e));
+  process.exit(0);
+});

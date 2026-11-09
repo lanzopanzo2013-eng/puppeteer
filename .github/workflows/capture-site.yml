@@ -18,13 +18,6 @@ jobs:
         with:
           node-version: 20
 
-      - name: Install puppeteer-core outside the monorepo
-        run: |
-          mkdir -p /tmp/cap
-          cp tools/capture.mjs /tmp/cap/
-          cd /tmp/cap
-          npm init -y >/dev/null 2>&1
-          npm i puppeteer-core@23 --no-audit --no-fund
 
       - name: Find Chrome
         run: |
