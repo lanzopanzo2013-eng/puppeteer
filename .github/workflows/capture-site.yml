@@ -30,8 +30,7 @@ jobs:
           CHROME_PATH: /usr/bin/google-chrome
         run: |
           mkdir -p capture
-          cp tools/capture.mjs /tmp/cap/ 2>/dev/null || true
-          node /tmp/cap/capture.mjs 2>&1 | tee runlog.txt
+          node tools/capture.mjs 2>&1 | tee runlog.txt
           echo "capture exit: ${PIPESTATUS[0]}" | tee -a runlog.txt
 
       - name: Commit
