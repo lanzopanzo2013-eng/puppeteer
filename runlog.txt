@@ -1,6 +1,7 @@
 page
   html 26514b
 css
+    504 retry 1: https://web.archive.org/cdx/search/cdx?url=umamusume.com%2F_app%2Fimmutable%2Fassets%2F&ma
   index lists 51
   0.6wHZuKGw.css 67626b
   0.9wywBPq6.css 33540b
@@ -56,5 +57,32 @@ css
   saved 51 stylesheets
 img
   saved 120 images
+css-referenced assets
+  25 unique asset refs
+  teitetsu.BNI5mUfy.svg 1241b
+  bg_playnow.zS7x0-r_.png 40907b
+  arrow_double.nHmJyBTy.svg 344b
+  bg_playnow.CF2AIRPv.png 12121b
+  bg_playnow.zYrq3gyM.png 35027b
+  bg_playnow.l0g7hpDs.png 11948b
+  decoration_base.ax2DgMiQ.svg 274b
+  decoration_square.CPV5Y4-u.svg 294b
+  line_deco_long.DgQLaaZ4.svg 1428b
+  kv_mask.DhgZQNMI.svg 166b
+  kv_mask.D_S7j30e.svg 166b
+  campaign_horseshoe.C3fDAxC0.svg 1057b
+  bg_texture.CcDnqVED.jpg 968979b
+  bg_footer.Bv3mbSyW.jpg 2637297b
+  icon_play.DDT9Nirq.svg 143b
+  icon_search.CTVh2p5-.svg 386b
+  icon_voice.COVfYm1w.svg 1622b
+  title_anime.TdTTyllB.png 4608b
+  title_anime.B8rRHcQS.png 5691b
+  title_music.C_1bkdYM.png 10698b
+  title_music.DrOssGOV.png 13118b
+  bg_parts.R4Qt6y_s.png 7020b
+  bg_parts.CyiqND7u.png 7023b
+  bg_title.HYB_fX5K.png 216522b
+  saved 24 assets
 DONE
 capture exit: 0
