@@ -69,6 +69,27 @@ async function main() {
   }
   console.log(`  saved ${m} images`);
 
+  // 4. every asset the stylesheets point at (decoration svgs, icons, fonts)
+  console.log('css-referenced assets');
+  await fs.mkdir(`${OUT}/assets`, { recursive: true });
+  const cssFiles = await fs.readdir(`${OUT}/css`).catch(() => []);
+  const refs = new Set();
+  for (const f of cssFiles) {
+    const t = await fs.readFile(`${OUT}/css/${f}`, 'utf8').catch(() => '');
+    for (const m of t.matchAll(/url\((?:["']?)(\.?\/?[A-Za-z0-9_.\-]+\.(?:svg|png|jpe?g|webp))(?:["']?)\)/g)) {
+      refs.add(m[1].replace(/^\.\//, '').replace(/^\//, ''));
+    }
+  }
+  console.log(`  ${refs.size} unique asset refs`);
+  let a = 0;
+  for (const r of refs) {
+    const dest = `${OUT}/assets/${r}`;
+    const buf = await get(`https://web.archive.org/web/${SNAPSHOT}id_/https://umamusume.com/_app/immutable/assets/${r}`);
+    if (buf && buf.length > 50) { await fs.writeFile(dest, buf); a++; console.log(`  ${r} ${buf.length}b`); }
+    await sleep(300);
+  }
+  console.log(`  saved ${a} assets`);
+
   const listing = await fs.readdir(`${OUT}/img`).catch(() => []);
   await fs.writeFile(`${OUT}/files.txt`, listing.join('\n') + '\n');
   console.log('DONE');
