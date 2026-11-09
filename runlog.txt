@@ -1,15 +1,60 @@
-node:internal/modules/cjs/loader:1210
-  throw err;
-  ^
-
-Error: Cannot find module '/tmp/cap/capture.mjs'
-    at Module._resolveFilename (node:internal/modules/cjs/loader:1207:15)
-    at Module._load (node:internal/modules/cjs/loader:1038:27)
-    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:164:12)
-    at node:internal/main/run_main_module:28:49 {
-  code: 'MODULE_NOT_FOUND',
-  requireStack: []
-}
-
-Node.js v20.20.2
-capture exit: 1
+page
+  html 26514b
+css
+  index lists 51
+  0.6wHZuKGw.css 67626b
+  0.9wywBPq6.css 33540b
+  0.BmAsMBl3.css 66619b
+  0.BSibHN9V.css 18953b
+  0.C14U7oDT.css 68860b
+  0.Cbz8NXWD.css 33541b
+  0.CeerEmeO.css 33628b
+  0.CkVMssa5.css 19434b
+  0.CrYuBmWZ.css 66768b
+  0.DlllqkSW.css 67654b
+  1.BFJOTM7r.css 5531b
+  1.ChmY5eNW.css 5581b
+  1.Hu4yNCub.css 801b
+  10.DDdQ9x9h.css 12321b
+  10.SvqBPst_.css 12271b
+  11.B4wbRpJb.css 2129b
+  11.DpuLNhxI.css 2074b
+  13.CsweyMWT.css 946b
+  14.CsweyMWT.css 946b
+  14.H1nngETr.css 694b
+  15.H1nngETr.css 694b
+  2.8dywn4l4.css 134766b
+  2.9r6p6YF7.css 61828b
+  2.Br2sU4IO.css 135873b
+  2.BtMVfDfi.css 63801b
+  2.DqdCFVu7.css 61548b
+  2.DUeiiZaP.css 133175b
+  2.tLMOjYu4.css 61590b
+  3.BNAmx9Tx.css 255b
+  3.FKCjzwz_.css 288b
+  4.DBnK5a_4.css 32977b
+  4.DYuFveAM.css 32700b
+  5.awmcU7ut.css 38132b
+  5.mqPmDMDs.css 37669b
+  6.C6qUA8MI.css 936b
+  7.CJGj11PN.css 650b
+  8.B5HoIw9_.css 25643b
+  8.CadhOIyJ.css 25980b
+  9.CVDkr8qk.css 12398b
+  9.D8nL0m7S.css 12378b
+  BreadCrumb.DaR8leF4.css 1990b
+  ButtonBase.CTjxTSjT.css 2693b
+  ButtonBase.DAU0tdJM.css 2715b
+  kv_logo.C6gnihHf.css 4209b
+  LowerLayout.Bv_KjZ6O.css 3403b
+  LowerLayout.OrFN1E7Y.css 3478b
+  LowerLayout.Yfz66R1X.css 9744b
+  Modal.DpjFcpB0.css 6370b
+  Modal.DqwlE6Qt.css 6392b
+  NewsItem.BW2Y3wsu.css 9614b
+  NewsItem.ByyZ3Emy.css 9592b
+  saved 51 stylesheets
+img
+  saved 120 images
+DONE
+capture exit: 0
