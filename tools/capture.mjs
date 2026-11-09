@@ -2,7 +2,6 @@
 // fingerprint-sensitive), then public CORS proxies if the IP is refused outright.
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import puppeteer from 'puppeteer-core';
 import { createRequire } from 'node:module';
 const require = createRequire(import.meta.url);
 
@@ -50,6 +49,7 @@ async function tryProxies(url) {
 }
 
 async function viaChrome() {
+  const { default: puppeteer } = await import(process.env.PPTR || 'puppeteer-core');
   const chrome = findChrome();
   console.log('  chrome binary:', chrome);
   if (!chrome) throw new Error('no chrome binary found');

@@ -18,8 +18,13 @@ jobs:
         with:
           node-version: 20
 
-      - name: Install puppeteer-core
-        run: npm init -y >/dev/null 2>&1; npm i puppeteer-core@23 --no-audit --no-fund
+      - name: Install puppeteer-core outside the monorepo
+        run: |
+          mkdir -p /tmp/cap
+          cp tools/capture.mjs /tmp/cap/
+          cd /tmp/cap
+          npm init -y >/dev/null 2>&1
+          npm i puppeteer-core@23 --no-audit --no-fund
 
       - name: Find Chrome
         run: |
@@ -32,7 +37,8 @@ jobs:
           CHROME_PATH: /usr/bin/google-chrome
         run: |
           mkdir -p capture
-          node tools/capture.mjs 2>&1 | tee runlog.txt
+          cp tools/capture.mjs /tmp/cap/ 2>/dev/null || true
+          node /tmp/cap/capture.mjs 2>&1 | tee runlog.txt
           echo "capture exit: ${PIPESTATUS[0]}" | tee -a runlog.txt
 
       - name: Commit
