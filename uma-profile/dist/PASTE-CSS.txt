@@ -23,7 +23,7 @@
   width: 100%;
   max-width: 560px;
   margin: 0 auto;
-  background: #58AC3C;
+  background-color: #58AC3C;
   overflow: hidden;
   position: relative;
   line-height: 1.35;
@@ -174,6 +174,14 @@
    BATCH 3 — section furniture (shared by every band)
    ============================================================ */
 .uma-sec { position: relative; padding: 26px 12px 30px; overflow: hidden; }
+.uma-sec-bg {
+  position: absolute; left: 0; top: 0; width: 100%; height: 100%;
+  object-fit: cover; object-position: 50% 40%; z-index: 0; opacity: .9;
+}
+.uma-sec > .uma-tag-wrap, .uma-sec > .uma-hl, .uma-sec > .uma-card,
+.uma-sec > .uma-more, .uma-sec > .uma-about-plate, .uma-sec > .uma-about-txt,
+.uma-sec > .uma-slide-strip, .uma-sec > .uma-arrows, .uma-sec > .uma-grid,
+.uma-sec > .uma-explore, .uma-sec > .uma-media-row { position: relative; z-index: 1; }
 .uma-tag {
   font-family: "Roboto Condensed", roboto, Arial, sans-serif;
   display: inline-block;
@@ -240,7 +248,7 @@
 
 /* ---------- About (sky) ---------- */
 .uma-about {
-  background: linear-gradient(180deg, #4BA8F5 0%, #9BD4FF 55%, #EAF6FF 100%);
+  background: #4BA8F5;
   padding-bottom: 34px;
 }
 .uma-about-plate {

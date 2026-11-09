@@ -100,6 +100,7 @@
 
   <!-- ── About ─────────────────────────────────────────────── -->
   <div class="uma-sec uma-about" id="about">
+    <img class="uma-sec-bg" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@eb4e9213be85/uma-profile/assets/site/about_bg.jpg">
     <div class="uma-tag-wrap"><div class="uma-tag blue">About</div></div>
 
     <div class="uma-about-plate">
