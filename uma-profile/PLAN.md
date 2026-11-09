@@ -64,15 +64,15 @@ Each batch is a self-contained diff to `src/bio.html`, previewed in the studio *
 
 | # | Batch | Output | Acceptance |
 |---|---|---|---|
-| **0** | Harness + page reset | `preview/index.html`, reset block in `bio.html` | Our block renders inside a Janitor-shaped DOM without inherited padding/background. |
+| **0** | Harness + page reset | `preview/index.html`, reset block in `bio.html` | Our block renders inside a Janitor-shaped DOM without inherited padding/background.  ✅ |
 | **1** | Top bar + hero | wordmark, blue bar, key-art `<img>` layer, PLAY NOW plate, 2×2 CTA grid, side label, scroll cue | Renders on a 390 px viewport with no horizontal scroll. |
-| 2 | Promo + socials | white promo card, social pill row | — |
-| 3 | Updates | pink band, angled tag, ribbon cards, View-more | Three cards, 1:1 with site. |
-| 4 | About | sky band, image plate + play triangle (CSS) | — |
-| 5 | Gameplay | green band, giant headline, 3-slide strip, arrows | Arrows work without JS. |
-| 6 | Roster + Elsewhere | purple mosaic (8 tiles), blue tiles | Names vertical, hover states. |
-| 7 | Footer + mobile pass | credits, breakpoints 390/430/520 | No clipped text, images ≤ 300 KB each. |
-| 8 | Copy swap + File Garden URLs | final `bio.html` with `@uma_enjoyer` copy | Studio linter clean. |
+| 2 | Promo + socials | white promo card, social pill row | —  ✅ |
+| 3 | Updates | pink band, angled tag, ribbon cards, View-more | Three cards, 1:1 with site.  ✅ |
+| 4 | About | sky band, image plate + play triangle (CSS) | —  ✅ |
+| 5 | Gameplay | green band, giant headline, 3-slide strip, arrows | Arrows work without JS.  ✅ |
+| 6 | Roster + Elsewhere | purple mosaic (8 tiles), blue tiles | Names vertical, hover states.  ✅ |
+| 7 | Footer + mobile pass | credits, breakpoints 390/430/520 | No clipped text, images ≤ 300 KB each.  ⏳ |
+| 8 | Copy swap + File Garden URLs | final `bio.html` with `@uma_enjoyer` copy | Studio linter clean.  ⏳ |
 
 ---
 
@@ -117,3 +117,16 @@ Naming convention for File Garden, so the HTML stays readable:
 3. Does the CSS panel have a character ceiling that our ~1,200-line stylesheet would hit? If yes we split per-section.
 
 Each answer changes one batch, not the architecture.
+
+
+---
+
+## 6. Current state (2026-11-09)
+
+- Batches 0–6 implemented in `src/bio.html` (330 lines of CSS, 12.7 KB, 15 `<img>` layers).
+- Screenshots rendered with a real Chromium in the sandbox:
+  `docs/preview-430.png` (mobile), `docs/preview-1440.png` (desktop).
+- `preview/index.html` = live harness (reload-friendly, no build step).
+- `preview/standalone.html` = single self-contained file with images inlined
+  (`python3 tools/build_standalone.py`).
+- All imagery is TEMP: local crops from the reference screenshots. Slots are marked `IMG:`.
