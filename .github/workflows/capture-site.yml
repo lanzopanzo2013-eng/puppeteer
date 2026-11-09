@@ -14,40 +14,27 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Fetch umamusume.com HTML
-        run: |
-          mkdir -p capture/css capture/img
-          curl -sSL --compressed -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0 Safari/537.36" \
-            https://umamusume.com/ -o capture/index.html
-          echo "html bytes: $(wc -c < capture/index.html)"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
 
-      - name: Grab every stylesheet
-        run: |
-          grep -oE '(/|https://umamusume\.com/)_app/immutable/assets/[^"'"'"' )]+\.css' capture/index.html \
-            | sed 's#^/_app#https://umamusume.com/_app#' | sort -u > capture/css-urls.txt
-          echo "found $(wc -l < capture/css-urls.txt) stylesheets"
-          while read -r u; do
-            curl -sSL --compressed -A "Mozilla/5.0" "$u" -o "capture/css/$(basename "$u")"
-          done < capture/css-urls.txt
-          du -sh capture/css
-          ls -la capture/css
+      - name: Install puppeteer-core
+        run: npm init -y >/dev/null 2>&1; npm i puppeteer-core@23 --no-audit --no-fund
 
-      - name: Grab every referenced image
+      - name: Find Chrome
         run: |
-          grep -oE 'https://[^"'"'"' )]+\.(png|jpe?g|webp|svg)' capture/index.html | sort -u > capture/img-urls.txt
-          echo "found $(wc -l < capture/img-urls.txt) images"
-          i=0
-          while read -r u; do
-            i=$((i+1))
-            name=$(echo "$u" | md5sum | cut -c1-8)_$(basename "${u%%\?*}")
-            curl -sSL --compressed -A "Mozilla/5.0" "$u" -o "capture/img/$name" || true
-          done < capture/img-urls.txt
-          du -sh capture/img
+          which google-chrome || which chromium-browser || which chromium || true
+          google-chrome --version || true
 
-      - name: Commit the capture
+      - name: Capture
+        env:
+          CHROME_PATH: /usr/bin/google-chrome
+        run: node tools/capture.mjs
+
+      - name: Commit
         run: |
           git config user.name "capture-bot"
           git config user.email "capture-bot@users.noreply.github.com"
           git add -f capture
-          git commit -m "chore(capture): umamusume.com html, css and images [skip ci]" || echo "nothing to commit"
+          git commit -m "chore(capture): umamusume.com html + css [skip ci]" || echo "nothing to commit"
           git push
