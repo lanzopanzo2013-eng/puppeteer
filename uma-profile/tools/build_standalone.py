@@ -34,6 +34,29 @@ def inline_images(html: str) -> str:
     return re.sub(r'(src)="([^"]+)"', repl, html)
 
 
+def font_faces() -> str:
+    """Inline the harness fonts so the single file renders like an Android device."""
+    faces = [
+        ("Roboto", 400, "normal", "roboto-latin-400-normal.woff2"),
+        ("Roboto", 700, "normal", "roboto-latin-700-normal.woff2"),
+        ("Roboto", 900, "normal", "roboto-latin-900-normal.woff2"),
+        ("Roboto Condensed", 700, "italic", "roboto-condensed-latin-700-italic.woff2"),
+        ("Roboto Condensed", 900, "italic", "roboto-condensed-latin-900-italic.woff2"),
+        ("Roboto Condensed", 900, "normal", "roboto-condensed-latin-900-normal.woff2"),
+    ]
+    out = []
+    for family, weight, style, name in faces:
+        path = ROOT / "preview" / "fonts" / name
+        if not path.exists():
+            continue
+        data = base64.b64encode(path.read_bytes()).decode()
+        out.append(
+            '@font-face{font-family:"%s";src:url(data:font/woff2;base64,%s) format("woff2");'
+            "font-weight:%d;font-style:%s;font-display:block}" % (family, data, weight, style)
+        )
+    return "<style>\n  " + "\n  ".join(out) + "\n</style>\n"
+
+
 CHROME = """<!doctype html>
 <html lang="en">
 <head>
@@ -110,7 +133,8 @@ def main() -> None:
     print("building standalone preview")
     bio = inline_images(BIO.read_text())
     OUT.parent.mkdir(parents=True, exist_ok=True)
-    OUT.write_text(CHROME.replace("__BIO__", bio))
+    html = CHROME.replace("__BIO__", bio).replace("<head>", "<head>\n" + font_faces(), 1)
+    OUT.write_text(html)
     print(f"  → {OUT.relative_to(ROOT)}  {OUT.stat().st_size/1024:.0f} KB")
 
 

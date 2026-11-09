@@ -34,7 +34,7 @@
    BATCH 1 — shell
    ============================================================ */
 .uma-shell {
-  font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: roboto, "Roboto", "Roboto Condensed", "Segoe UI", Arial, sans-serif;
   color: #22262B;
   width: 100%;
   max-width: 560px;
@@ -53,7 +53,7 @@
 /* ---- top bar ---- */
 .uma-bar {
   height: 74px;
-  background: #0E5CFE;
+  background: #0E5AFE;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -65,11 +65,20 @@
 .uma-mark img { height: 44px; width: auto; }
 .uma-mark-txt { display: flex; flex-direction: column; }
 .uma-mark-txt .w1 {
+  font-family: "Roboto Condensed", roboto, Arial, sans-serif;
   font-style: italic; font-weight: 900; font-size: 27px;
-  letter-spacing: -1.1px; line-height: .95; color: #FFCF3F;
-  text-shadow: 2px 2px 0 #C8341E, -1px -1px 0 #fff;
+  letter-spacing: -1.1px; line-height: 1;
+  color: #FFCF3F;
+  /* the real wordmark is a PNG; this is the type fallback with the site's
+     orange → pink sweep, flat yellow if background-clip is stripped */
+  background: linear-gradient(180deg, #FFE24A 0%, #FFA631 42%, #FF5FA8 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 2px 2px 0 rgba(200,52,30,.85);
 }
 .uma-mark-txt .w2 {
+  font-family: "Roboto Condensed", roboto, Arial, sans-serif;
   font-style: italic; font-weight: 900; font-size: 11px;
   letter-spacing: 2.4px; color: #fff;
   text-shadow: 1px 1px 0 #1B3FA8; padding-left: 2px;
@@ -86,10 +95,10 @@
 .uma-menu-lbl { font-size: 10px; font-weight: 700; letter-spacing: .4px; color: #fff; margin-top: 6px; }
 
 /* ---- hero ---- */
-.uma-hero { position: relative; height: 452px; background: #8FD46A; overflow: hidden; }
+.uma-hero { position: relative; height: 106vw; background: #8FD46A; overflow: hidden; }
 .uma-hero-art {
   position: absolute; left: 0; top: 0; width: 100%; height: 100%;
-  object-fit: cover; object-position: 50% 18%;
+  object-fit: cover; object-position: 50% 26%;
 }
 .uma-hero-wash {
   position: absolute; left: 0; right: 0; bottom: 0; height: 230px;
@@ -103,6 +112,7 @@
   border: 1px solid rgba(255,255,255,.75); border-radius: 20px; padding: 10px 3px;
 }
 .uma-playnow {
+  font-family: "Roboto Condensed", roboto, Arial, sans-serif;
   position: absolute; left: 14px; bottom: 190px; z-index: 3;
   font-style: italic; font-weight: 900; font-size: 28px; letter-spacing: -.8px;
   color: #FFE24A; text-shadow: 3px 3px 0 #B4301A, -2px 2px 0 #B4301A, 0 -2px 0 #B4301A;
@@ -117,7 +127,7 @@
 }
 .uma-shell a.uma-btn {
   color: #fff !important;
-  width: 48.6%; min-height: 50px; margin-bottom: 8px;
+  width: 48.6%; min-height: 42px; margin-bottom: 8px;
   border-radius: 11px; background: #101215;
   display: flex; align-items: center; padding: 0 10px;
   box-shadow: 0 3px 0 rgba(0,0,0,.28);
@@ -125,7 +135,7 @@
 }
 .uma-shell a.uma-btn:hover { transform: translateY(-2px); box-shadow: 0 5px 0 rgba(0,0,0,.28); }
 .uma-btn-ico {
-  width: 26px; height: 26px; border-radius: 6px; margin-right: 8px; flex: 0 0 26px;
+  width: 22px; height: 22px; border-radius: 6px; margin-right: 7px; flex: 0 0 22px;
   background: #fff; color: #101215; font-size: 13px; font-weight: 900;
   display: flex; align-items: center; justify-content: center; text-align: center;
 }
@@ -137,7 +147,7 @@
   font-size: 8px; letter-spacing: .6px; text-transform: uppercase;
   opacity: .72; font-weight: 700;
 }
-.uma-btn-txt b { font-size: 14px; font-weight: 800; letter-spacing: -.2px; }
+.uma-btn-txt b { font-family: "Roboto Condensed", roboto, Arial, sans-serif; font-size: 13.5px; font-weight: 800; letter-spacing: -.2px; }
 
 .uma-scroll {
   position: absolute; right: 5px; bottom: 20px; z-index: 3; color: #fff;
@@ -165,7 +175,7 @@
   display: flex; align-items: center; justify-content: space-between;
   padding: 9px 12px; box-shadow: 0 2px 0 rgba(0,0,0,.12);
 }
-.uma-social-lbl { font-size: 11px; font-weight: 800; font-style: italic; letter-spacing: .3px; }
+.uma-social-lbl { font-family: "Roboto Condensed", roboto, Arial, sans-serif; font-size: 11px; font-weight: 800; font-style: italic; letter-spacing: .3px; }
 .uma-social-row { display: flex; align-items: center; }
 .uma-soc {
   width: 28px; height: 28px; border-radius: 50%; margin-left: 7px;
@@ -183,6 +193,7 @@
    ============================================================ */
 .uma-sec { position: relative; padding: 26px 12px 30px; overflow: hidden; }
 .uma-tag {
+  font-family: "Roboto Condensed", roboto, Arial, sans-serif;
   display: inline-block;
   padding: 9px 30px 11px;
   font-style: italic; font-weight: 900; font-size: 26px; letter-spacing: -.5px;
@@ -200,6 +211,7 @@
 
 /* section headline (the "Train your Umamusume!" type) */
 .uma-hl {
+  font-family: "Roboto Condensed", roboto, Arial, sans-serif;
   font-style: italic; font-weight: 900; font-size: 25px; line-height: 1.1;
   letter-spacing: -.6px; color: #9EE86B;
   text-shadow: 3px 0 0 #fff, -3px 0 0 #fff, 0 3px 0 #fff, 0 -3px 0 #fff, 3px 3px 0 #2E7A1C;
@@ -332,8 +344,9 @@
 }
 
 /* ---------- Footer ---------- */
-.uma-foot { background: #0E5CFE; padding: 18px 16px 22px; text-align: center; }
+.uma-foot { background: #085EFF; padding: 18px 16px 22px; text-align: center; }
 .uma-foot .w1 {
+  font-family: "Roboto Condensed", roboto, Arial, sans-serif;
   font-style: italic; font-weight: 900; font-size: 20px; letter-spacing: -.8px; color: #FFCF3F;
   text-shadow: 2px 2px 0 #C8341E, -1px -1px 0 #fff;
 }
@@ -347,7 +360,7 @@
 @media (max-width: 380px) {
   .uma-tag { font-size: 23px; padding: 8px 26px 9px; }
   .uma-hl { font-size: 22px; }
-  .uma-hero { height: 420px; }
+  .uma-hero { height: 122vw; }
 }
 </style>
 

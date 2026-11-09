@@ -83,6 +83,17 @@
     font-size: 11px; color: #6f7681;
   }
 </style>
+<style>
+  /* Harness-only: real Roboto / Roboto Condensed so the screenshot matches an
+     Android device. These @font-face rules are NOT part of src/bio.html —
+     Janitor strips url(), so the profile relies on the device's own Roboto. */
+  @font-face{font-family:Roboto;src:url(fonts/roboto-latin-400-normal.woff2) format("woff2");font-weight:400;font-style:normal;font-display:block}
+  @font-face{font-family:Roboto;src:url(fonts/roboto-latin-700-normal.woff2) format("woff2");font-weight:700;font-style:normal;font-display:block}
+  @font-face{font-family:Roboto;src:url(fonts/roboto-latin-900-normal.woff2) format("woff2");font-weight:900;font-style:normal;font-display:block}
+  @font-face{font-family:"Roboto Condensed";src:url(fonts/roboto-condensed-latin-700-italic.woff2) format("woff2");font-weight:700;font-style:italic;font-display:block}
+  @font-face{font-family:"Roboto Condensed";src:url(fonts/roboto-condensed-latin-900-italic.woff2) format("woff2");font-weight:900;font-style:italic;font-display:block}
+  @font-face{font-family:"Roboto Condensed";src:url(fonts/roboto-condensed-latin-900-normal.woff2) format("woff2");font-weight:900;font-style:normal;font-display:block}
+</style>
 </head>
 <body>
 

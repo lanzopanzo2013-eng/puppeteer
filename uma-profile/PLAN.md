@@ -130,3 +130,53 @@ Each answer changes one batch, not the architecture.
 - `preview/standalone.html` = single self-contained file with images inlined
   (`python3 tools/build_standalone.py`).
 - All imagery is TEMP: local crops from the reference screenshots. Slots are marked `IMG:`.
+
+---
+
+## 7. Pulling the real source (how the numbers got in)
+
+The sandbox egress policy allows only npm/GitHub/PyPI, so a local clone of umamusume.com is impossible
+from here — proven, not assumed:
+
+```
+$ curl -s -o /dev/null -w "%{http_code}" https://registry.npmjs.org/   → 200
+$ curl -s -o /dev/null -w "%{http_code}" https://umamusume.com/        → 000   (TLS handshake stalls)
+```
+
+But the Wayback Machine's CDX index *is* reachable through the page-fetcher, and it hands back the
+site's original stylesheets verbatim:
+
+```
+# index of every archived stylesheet
+https://web.archive.org/cdx/search/cdx?url=umamusume.com&matchType=domain&output=text
+    &filter=mimetype:text/css&collapse=urlkey
+
+# the bytes, exactly as served
+https://web.archive.org/web/<timestamp>id_/https://umamusume.com/_app/immutable/assets/<file>.css
+```
+
+What that gave us, now baked into `src/bio.html`:
+
+| Finding | Source rule | Applied as |
+|---|---|---|
+| Typeface | `@font-face{font-family:roboto;src:url(…/Roboto-VariableFont_wdth,wght.woff2)}` and `roboto-condensed` | `font-family: roboto…` body, `"Roboto Condensed"` for every display/italic element |
+| Hero proportions | `.top-kv{height:190.66vw}` (mobile), `.__contents{top:111.46vw}` | hero set in `vw`, not px |
+| Store badges | `.store-list img{height:9.7066vw}` | CTA blocks 9.7vw tall |
+| Side pill | `right:2.4vw; top:49.33vw; width:6.13vw; padding:3.2vw 1.6vw` | same geometry |
+| Scroll cue | `right:3.73vw; top:140.8vw` | same geometry |
+| Header / footer blue | measured off the live paint + sheet | `#0E5AFE` / `#085EFF` |
+
+Fonts are the one thing that cannot travel through CSS on Janitor (`url()` is stripped), so the
+profile asks for `roboto` / `"Roboto Condensed"` and lets the device supply them — an Android phone,
+which is what the reference screenshots were taken on, has both.
+
+### If you want a byte-exact capture (recommended, needs your machine)
+
+SingleFile is already one of your forks. On any machine with normal internet:
+
+```bash
+npx single-file-cli https://umamusume.com/ umamusume.html --browser-executable-path=/path/to/chrome
+```
+
+Drop `umamusume.html` in this folder and I can port section-for-section against the real DOM and the
+real stylesheet instead of the Wayback copy — that is the last gap between "very close" and "identical".
