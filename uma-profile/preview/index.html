@@ -152,12 +152,15 @@
       'gameplay_specialweek': 'play1.jpg', 'gameplay_silencesuzuka': 'play2.jpg',
       'gameplay_winningticket': 'play2.jpg', 'gameplay_image_1-1': 'media_b.jpg',
       'media_image': 'media_a.jpg',
+      'about_bg.jpg': '../assets/site/about_bg.jpg',
+      'page_bg.jpg': '../assets/site/page_bg.jpg',
       'astonmachan': 'char_a.jpg', 'mrcb': 'char_b.jpg', 'tamamocross': 'char_c.jpg',
       'nicenature': 'char_d.jpg', 'winningticket': 'char_a.jpg'
     };
     html = html.replace(/(src=")([^"]+)(")/g, (m, a, url, c) => {
       const hit = Object.keys(OFFLINE).find(k => url.indexOf(k) > -1);
-      return hit ? a + '../assets/tmp/' + OFFLINE[hit] + c : m;
+      const target = OFFLINE[hit].startsWith('../') ? OFFLINE[hit] : '../assets/tmp/' + OFFLINE[hit];
+      return hit ? a + target + c : m;
     });
     const doc = new DOMParser().parseFromString(html, 'text/html');
     // move <style> + markup in, exactly like pasting the whole file into the editor
