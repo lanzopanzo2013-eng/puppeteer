@@ -54,10 +54,10 @@
   <div class="uma-social">
     <div class="uma-social-lbl">Official Social Media</div>
     <div class="uma-social-row">
-      <a class="uma-soc x" href="#">X</a>
-      <a class="uma-soc fb" href="#">f</a>
-      <a class="uma-soc yt" href="#">▶</a>
-      <a class="uma-soc dc" href="#">◈</a>
+      <a class="uma-soc x" href="#"><img alt="X" src="https://parts.umamusume.com/assets/images/sns-x.svg"></a>
+      <a class="uma-soc fb" href="#"><img alt="Facebook" src="https://parts.umamusume.com/assets/images/sns-facebook.svg"></a>
+      <a class="uma-soc yt" href="#"><img alt="YouTube" src="https://parts.umamusume.com/assets/images/sns-youtube.svg"></a>
+      <a class="uma-soc dc" href="#"><img alt="Discord" src="https://parts.umamusume.com/assets/images/sns-discord.svg"></a>
     </div>
   </div>
 

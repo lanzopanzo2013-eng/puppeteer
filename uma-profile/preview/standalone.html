@@ -245,15 +245,12 @@
 .uma-social-lbl { font-family: "Roboto Condensed", roboto, Arial, sans-serif; font-size: 11px; font-weight: 800; font-style: italic; letter-spacing: .3px; }
 .uma-social-row { display: flex; align-items: center; }
 .uma-soc {
-  width: 28px; height: 28px; border-radius: 50%; margin-left: 7px;
-  background: #EFF1F4; color: #22262B; font-size: 12px; font-weight: 900;
+  width: 26px; height: 26px; margin-left: 9px;
   display: flex; align-items: center; justify-content: center;
-  transition: background .12s ease, color .12s ease;
+  transition: transform .12s ease;
 }
-.uma-soc.x { background: #111; color: #fff; }
-.uma-soc.fb { background: #1877F2; color: #fff; }
-.uma-soc.yt { background: #FF0033; color: #fff; }
-.uma-soc.dc { background: #5865F2; color: #fff; }
+.uma-soc:hover { transform: scale(.9); }
+.uma-soc img { width: 22px; height: 22px; object-fit: contain; }
 
 /* ============================================================
    BATCH 3 — section furniture (shared by every band)
@@ -508,10 +505,10 @@
   <div class="uma-social">
     <div class="uma-social-lbl">Official Social Media</div>
     <div class="uma-social-row">
-      <a class="uma-soc x" href="#">X</a>
-      <a class="uma-soc fb" href="#">f</a>
-      <a class="uma-soc yt" href="#">▶</a>
-      <a class="uma-soc dc" href="#">◈</a>
+      <a class="uma-soc x" href="#"><img alt="X" src="https://parts.umamusume.com/assets/images/sns-x.svg"></a>
+      <a class="uma-soc fb" href="#"><img alt="Facebook" src="https://parts.umamusume.com/assets/images/sns-facebook.svg"></a>
+      <a class="uma-soc yt" href="#"><img alt="YouTube" src="https://parts.umamusume.com/assets/images/sns-youtube.svg"></a>
+      <a class="uma-soc dc" href="#"><img alt="Discord" src="https://parts.umamusume.com/assets/images/sns-discord.svg"></a>
     </div>
   </div>
 
