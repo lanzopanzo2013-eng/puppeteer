@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Janitor preview — @uma_enjoyer</title>
+<style>
+  /* This file is ONLY the local harness. Nothing here ships to Janitor.
+     It imitates the real profile DOM (class names from the JAI page breakdown)
+     so src/bio.html can be judged in context. */
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: #181818;
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    color: #eee;
+  }
+  .toolbar {
+    position: sticky; top: 0; z-index: 99;
+    display: flex; align-items: center; gap: 10px;
+    padding: 10px 16px;
+    background: #101114;
+    border-bottom: 1px solid #24262b;
+    font-size: 12px;
+  }
+  .toolbar b { color: #9ad; letter-spacing: .4px; }
+  .toolbar button {
+    background: #1d2026; color: #cfd3da; border: 1px solid #2c3037;
+    border-radius: 6px; padding: 5px 10px; font-size: 11px; cursor: pointer;
+  }
+  .toolbar button:hover { background: #262a31; }
+  .toolbar .spacer { flex: 1; }
+  .toolbar small { color: #6f7681; }
+
+  #root { background: #181818; min-height: 100vh; padding-bottom: 60px; }
+  .profile-page-container { padding-top: 12px; }
+  .profile-page-flex {
+    display: flex; flex-direction: column; align-items: center;
+  }
+
+  /* fake profile chrome, styled like Janitor defaults */
+  .profile-top-bar {
+    width: 100%; height: 48px; background: #1f2127;
+    display: flex; align-items: center; padding: 0 16px;
+    font-size: 12px; color: #8d939c; border-bottom: 1px solid #262a31;
+  }
+  .profile-info-hstack {
+    display: flex; align-items: center; width: 100%; max-width: 560px;
+    padding: 16px; gap: 12px;
+  }
+  .profile-avatar {
+    width: 64px; height: 64px; border-radius: 50%;
+    background: linear-gradient(135deg, #ff7bc4, #6f7bff);
+  }
+  .profile-name { font-size: 18px; font-weight: 700; }
+  .profile-name small { display: block; font-size: 12px; color: #8d939c; font-weight: 400; }
+
+  /* the bio box, Janitor default look (padding + card bg) */
+  .profile-about-me {
+    width: 100%; max-width: 560px;
+    background: #22242a;
+    border: 1px solid #2c2f36;
+    border-radius: 12px;
+    padding: 16px;
+    margin: 8px 0 16px;
+  }
+
+  .profile-tabs {
+    width: 100%; max-width: 560px; display: flex; gap: 18px;
+    padding: 10px 16px; font-size: 13px; color: #9aa1ab;
+    border-bottom: 1px solid #262a31; margin-bottom: 8px;
+  }
+  .profile-tabs b { color: #fff; border-bottom: 2px solid #f5a; padding-bottom: 8px; }
+
+  .characters-list-container-flex {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+    width: 100%; max-width: 560px; padding: 16px;
+  }
+  .fake-bot {
+    background: #23262c; border-radius: 10px; height: 120px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; color: #6f7681;
+  }
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <b>JANITOR HARNESS</b>
+  <small>src/bio.html injected into .profile-about-me</small>
+  <span class="spacer"></span>
+  <button data-w="390">390 mobile</button>
+  <button data-w="430">430</button>
+  <button data-w="560">560</button>
+  <button id="reload">Reload</button>
+</div>
+
+<div id="root">
+  <div class="profile-top-bar">‹ JanitorAI · profile chrome (not ours) ›</div>
+
+  <div class="profile-page-container">
+    <div class="profile-page-flex">
+
+      <div class="profile-info-hstack">
+        <div class="profile-avatar"></div>
+        <div class="profile-name">@uma_enjoyer<small>1,192 followers · Member since …</small></div>
+      </div>
+
+      <div class="profile-tabs"><b>Characters</b><span>Scripts</span></div>
+
+      <!-- ↓↓↓ Janitor injects the About Me HTML here ↓↓↓ -->
+      <div class="profile-about-me" id="slot"></div>
+      <!-- ↑↑↑ Janitor injects the About Me HTML here ↑↑↑ -->
+
+      <div class="characters-list-container-flex">
+        <div class="fake-bot">bot card</div>
+        <div class="fake-bot">bot card</div>
+        <div class="fake-bot">bot card</div>
+        <div class="fake-bot">bot card</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+  const slot = document.getElementById('slot');
+
+  async function load() {
+    const res = await fetch('../src/bio.html?t=' + Date.now());
+    const html = await res.text();
+    const doc = new DOMParser().parseFromString(html, 'text/html');
+    // move <style> + markup in, exactly like pasting the whole file into the editor
+    slot.innerHTML = '';
+    doc.querySelectorAll('style, link[rel="stylesheet"]').forEach(n => slot.appendChild(n.cloneNode(true)));
+    doc.body.childNodes.forEach(n => slot.appendChild(n.cloneNode(true)));
+  }
+
+  document.querySelectorAll('[data-w]').forEach(b => {
+    b.onclick = () => {
+      document.documentElement.style.setProperty('--w', b.dataset.w + 'px');
+      document.getElementById('root').style.maxWidth = b.dataset.w + 'px';
+      document.getElementById('root').style.margin = '0 auto';
+      document.body.style.background = '#101114';
+    };
+  });
+  document.getElementById('reload').onclick = load;
+
+  load();
+</script>
+</body>
+</html>
