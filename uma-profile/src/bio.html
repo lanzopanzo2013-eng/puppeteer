@@ -63,6 +63,7 @@
 }
 .uma-mark { display: flex; align-items: center; }
 .uma-mark img { height: 44px; width: auto; }
+.uma-logo { display: block; width: 126px; height: auto; }
 .uma-mark-txt { display: flex; flex-direction: column; }
 .uma-mark-txt .w1 {
   font-family: "Roboto Condensed", roboto, Arial, sans-serif;
@@ -95,10 +96,10 @@
 .uma-menu-lbl { font-size: 10px; font-weight: 700; letter-spacing: .4px; color: #fff; margin-top: 6px; }
 
 /* ---- hero ---- */
-.uma-hero { position: relative; height: 106vw; background: #8FD46A; overflow: hidden; }
+.uma-hero { position: relative; height: 124vw; background: #8FD46A; overflow: hidden; }
 .uma-hero-art {
   position: absolute; left: 0; top: 0; width: 100%; height: 100%;
-  object-fit: cover; object-position: 50% 26%;
+  object-fit: cover; object-position: 50% 0;
 }
 .uma-hero-wash {
   position: absolute; left: 0; right: 0; bottom: 0; height: 230px;
@@ -112,13 +113,10 @@
   border: 1px solid rgba(255,255,255,.75); border-radius: 20px; padding: 10px 3px;
 }
 .uma-playnow {
-  font-family: "Roboto Condensed", roboto, Arial, sans-serif;
-  position: absolute; left: 14px; bottom: 190px; z-index: 3;
-  font-style: italic; font-weight: 900; font-size: 28px; letter-spacing: -.8px;
-  color: #FFE24A; text-shadow: 3px 3px 0 #B4301A, -2px 2px 0 #B4301A, 0 -2px 0 #B4301A;
-  transform: rotate(-3deg);
+  position: absolute; left: 14px; bottom: 184px; z-index: 3;
+  width: 44%; height: auto;
+  filter: drop-shadow(2px 3px 0 rgba(120,26,12,.45));
 }
-.uma-playnow span { color: #FF8FC8; }
 
 /* CTA grid */
 .uma-cta {
@@ -293,7 +291,11 @@
   flex: 0 0 88%; margin-right: 10px; background: rgba(255,255,255,.16);
   border: 2px solid rgba(255,255,255,.55); border-radius: 12px; padding: 8px;
 }
-.uma-slide img { width: 100%; border-radius: 8px; }
+.uma-slide img {
+  width: 100%; height: 156px; border-radius: 8px;
+  object-fit: contain; object-position: 50% 100%;
+  background: #E4F4DA;
+}
 .uma-slide-cap {
   font-size: 12px; font-weight: 700; color: #fff; margin-top: 8px; line-height: 1.35;
   text-shadow: 0 1px 2px rgba(0,0,0,.25);
@@ -315,7 +317,11 @@
 }
 .uma-tile:hover { transform: translateY(-3px); }
 .uma-tile.wide { width: 66.2%; }
-.uma-tile img { width: 100%; height: 100%; object-fit: cover; }
+.uma-tile img {
+  width: 100%; height: 100%;
+  object-fit: contain; object-position: 50% 100%;
+  background: linear-gradient(180deg,#F5F0FC,#DCD0F2);
+}
 .uma-tile-name {
   position: absolute; right: 0; top: 0; bottom: 0;
   background: rgba(30,20,80,.55); color: #fff;
@@ -372,11 +378,8 @@
   <!-- ── top bar ───────────────────────────────────────────── -->
   <div class="uma-bar">
     <a class="uma-mark" href="#">
-      <!-- IMG:LOGO → upload logo_umamusume.png to File Garden -->
-      <div class="uma-mark-txt">
-        <span class="w1">Umamusume</span>
-        <span class="w2">PRETTY DERBY</span>
-      </div>
+      <img class="uma-logo" alt="Umamusume: Pretty Derby"
+           src="https://parts.umamusume.com/assets/images/logo_umamusume.png">
     </a>
     <div class="uma-menu">
       <div class="uma-menu-ring"></div>
@@ -387,10 +390,10 @@
   <!-- ── hero ──────────────────────────────────────────────── -->
   <div class="uma-hero">
     <!-- IMG:KV → TEMP local crop -->
-    <img class="uma-hero-art" alt="" src="../assets/tmp/hero.jpg">
+    <img class="uma-hero-art" alt="Umamusume: Pretty Derby" src="https://umamusume.com/_app/immutable/assets/kv.CiVddxQD.jpeg">
     <div class="uma-hero-wash"></div>
     <div class="uma-side">Uma Enjoyer · Tracen</div>
-    <div class="uma-playnow">Play <span>Now!</span></div>
+    <img class="uma-playnow" alt="Play Now!" src="https://umamusume.com/_app/immutable/assets/kv_txt_playnow.D0FaPRug.png">
 
     <div class="uma-cta">
       <a class="uma-btn" href="#characters">
@@ -443,7 +446,7 @@
         <div class="uma-meta"><span class="uma-pill">Bot</span><span class="uma-date">2026/11/05 13:30 (UTC)</span></div>
         <div class="uma-card-txt">New bot: Silence Suzuka takes the lead in a quiet, hopeless romance.</div>
       </div>
-      <img class="uma-card-thumb" alt="" src="../assets/tmp/news1.jpg">
+      <img class="uma-card-thumb" alt="" src="https://assets-webview-umamusume-en.akamaized.net/contents/assets/images/uploads/Thumbnail/banner_30320202_L1794088800.png?c=20260925035415">
       <div class="uma-card-go">›</div>
     </a>
 
@@ -453,7 +456,7 @@
         <div class="uma-meta"><span class="uma-pill">Bot</span><span class="uma-date">2026/11/04 22:00 (UTC)</span></div>
         <div class="uma-card-txt">Reworked: Unity Cup — Tokai Teio's scenario now has three new openings.</div>
       </div>
-      <img class="uma-card-thumb" alt="" src="../assets/tmp/news2.jpg">
+      <img class="uma-card-thumb" alt="" src="https://assets-webview-umamusume-en.akamaized.net/contents/assets/images/uploads/Thumbnail/announce_banner_3144_L1793916000.png?c=20260925035632">
       <div class="uma-card-go">›</div>
     </a>
 
@@ -463,7 +466,7 @@
         <div class="uma-meta"><span class="uma-pill">Event</span><span class="uma-date">2026/11/01 09:15 (UTC)</span></div>
         <div class="uma-card-txt">Aquarius Cup event bot returns later this month — limited time only.</div>
       </div>
-      <img class="uma-card-thumb" alt="" src="../assets/tmp/news3.jpg">
+      <img class="uma-card-thumb" alt="" src="https://assets-webview-umamusume-en.akamaized.net/contents/assets/images/uploads/Thumbnail/banner_30320202_L1794088800.png?c=20260925035415">
       <div class="uma-card-go">›</div>
     </a>
 
@@ -475,7 +478,7 @@
     <div class="uma-tag-wrap"><div class="uma-tag blue">About</div></div>
 
     <div class="uma-about-plate">
-      <img alt="" src="../assets/tmp/about.jpg">
+      <img alt="" src="https://umamusume.com/_app/immutable/assets/about_thumbnail.DvTbfr6J.jpeg">
     </div>
 
     <div class="uma-about-txt">
@@ -492,15 +495,15 @@
 
     <div class="uma-slide-strip">
       <div class="uma-slide">
-        <img alt="" src="../assets/tmp/play1.jpg">
+        <img alt="" src="https://umamusume.com/_app/immutable/assets/gameplay_specialweek.DbgtPsGW.png">
         <div class="uma-slide-cap">Character bots — pick a racer and a training regimen that fits her.</div>
       </div>
       <div class="uma-slide">
-        <img alt="" src="../assets/tmp/play2.jpg">
+        <img alt="" src="https://umamusume.com/_app/immutable/assets/gameplay_silencesuzuka.CF-9agsU.png">
         <div class="uma-slide-cap">Scenarios — Tracen Academy, friendship training, rivalry arcs.</div>
       </div>
       <div class="uma-slide">
-        <img alt="" src="../assets/tmp/play2.jpg">
+        <img alt="" src="https://umamusume.com/_app/immutable/assets/gameplay_winningticket.6_SJzSZq.png">
         <div class="uma-slide-cap">Scripts &amp; lorebooks — drop-in modules for any chat.</div>
       </div>
     </div>
@@ -513,16 +516,16 @@
 
     <div class="uma-grid">
       <a class="uma-tile wide" href="#" style="height:132px">
-        <img alt="" src="../assets/tmp/char_a.jpg">
+        <img alt="" src="https://en-portal.g.kuroco-img.app/v=1768440412/files/user/character/astonmachan/astonmachan_top.png">
         
       </a>
       <a class="uma-tile" href="#" style="height:132px">
-        <img alt="" src="../assets/tmp/char_b.jpg">
+        <img alt="" src="https://en-portal.g.kuroco-img.app/v=1768440020/files/user/character/mrcb/mrcb_top.png">
         
       </a>
-      <a class="uma-tile" href="#" style="height:104px"><img alt="" src="../assets/tmp/char_c.jpg"></a>
-      <a class="uma-tile" href="#" style="height:104px"><img alt="" src="../assets/tmp/char_d.jpg"></a>
-      <a class="uma-tile" href="#" style="height:104px"><img alt="" src="../assets/tmp/char_a.jpg"></a>
+      <a class="uma-tile" href="#" style="height:104px"><img alt="" src="https://en-portal.g.kuroco-img.app/v=1750748798/files/user/character/tamamocross/tamamocross_top.png"></a>
+      <a class="uma-tile" href="#" style="height:104px"><img alt="" src="https://en-portal.g.kuroco-img.app/v=1749211789/files/user/character/nicenature/nicenature_top.png"></a>
+      <a class="uma-tile" href="#" style="height:104px"><img alt="" src="https://en-portal.g.kuroco-img.app/v=1749211687/files/user/character/winningticket/winningticket_top.png"></a>
     </div>
 
     <a class="uma-explore" href="#"><span>Explore</span><span>››</span></a>
@@ -534,11 +537,11 @@
 
     <div class="uma-media-row">
       <a class="uma-media-tile" href="#">
-        <img alt="" src="../assets/tmp/media_a.jpg">
+        <img alt="" src="https://umamusume.com/_app/immutable/assets/media_image.bZStKUoL.png">
         <span class="uma-media-lbl">Threads</span>
       </a>
       <a class="uma-media-tile" href="#">
-        <img alt="" src="../assets/tmp/media_b.jpg">
+        <img alt="" src="https://umamusume.com/_app/immutable/assets/gameplay_image_1-1.DqKsqutO.png">
         <span class="uma-media-lbl">Lorebooks</span>
       </a>
     </div>

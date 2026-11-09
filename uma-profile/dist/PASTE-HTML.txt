@@ -3,11 +3,8 @@
   <!-- ── top bar ───────────────────────────────────────────── -->
   <div class="uma-bar">
     <a class="uma-mark" href="#">
-      <!-- IMG:LOGO → upload logo_umamusume.png to File Garden -->
-      <div class="uma-mark-txt">
-        <span class="w1">Umamusume</span>
-        <span class="w2">PRETTY DERBY</span>
-      </div>
+      <img class="uma-logo" alt="Umamusume: Pretty Derby"
+           src="https://parts.umamusume.com/assets/images/logo_umamusume.png">
     </a>
     <div class="uma-menu">
       <div class="uma-menu-ring"></div>
@@ -18,10 +15,10 @@
   <!-- ── hero ──────────────────────────────────────────────── -->
   <div class="uma-hero">
     <!-- IMG:KV → TEMP local crop -->
-    <img class="uma-hero-art" alt="" src="../assets/tmp/hero.jpg">
+    <img class="uma-hero-art" alt="Umamusume: Pretty Derby" src="https://umamusume.com/_app/immutable/assets/kv.CiVddxQD.jpeg">
     <div class="uma-hero-wash"></div>
     <div class="uma-side">Uma Enjoyer · Tracen</div>
-    <div class="uma-playnow">Play <span>Now!</span></div>
+    <img class="uma-playnow" alt="Play Now!" src="https://umamusume.com/_app/immutable/assets/kv_txt_playnow.D0FaPRug.png">
 
     <div class="uma-cta">
       <a class="uma-btn" href="#characters">
@@ -74,7 +71,7 @@
         <div class="uma-meta"><span class="uma-pill">Bot</span><span class="uma-date">2026/11/05 13:30 (UTC)</span></div>
         <div class="uma-card-txt">New bot: Silence Suzuka takes the lead in a quiet, hopeless romance.</div>
       </div>
-      <img class="uma-card-thumb" alt="" src="../assets/tmp/news1.jpg">
+      <img class="uma-card-thumb" alt="" src="https://assets-webview-umamusume-en.akamaized.net/contents/assets/images/uploads/Thumbnail/banner_30320202_L1794088800.png?c=20260925035415">
       <div class="uma-card-go">›</div>
     </a>
 
@@ -84,7 +81,7 @@
         <div class="uma-meta"><span class="uma-pill">Bot</span><span class="uma-date">2026/11/04 22:00 (UTC)</span></div>
         <div class="uma-card-txt">Reworked: Unity Cup — Tokai Teio's scenario now has three new openings.</div>
       </div>
-      <img class="uma-card-thumb" alt="" src="../assets/tmp/news2.jpg">
+      <img class="uma-card-thumb" alt="" src="https://assets-webview-umamusume-en.akamaized.net/contents/assets/images/uploads/Thumbnail/announce_banner_3144_L1793916000.png?c=20260925035632">
       <div class="uma-card-go">›</div>
     </a>
 
@@ -94,7 +91,7 @@
         <div class="uma-meta"><span class="uma-pill">Event</span><span class="uma-date">2026/11/01 09:15 (UTC)</span></div>
         <div class="uma-card-txt">Aquarius Cup event bot returns later this month — limited time only.</div>
       </div>
-      <img class="uma-card-thumb" alt="" src="../assets/tmp/news3.jpg">
+      <img class="uma-card-thumb" alt="" src="https://assets-webview-umamusume-en.akamaized.net/contents/assets/images/uploads/Thumbnail/banner_30320202_L1794088800.png?c=20260925035415">
       <div class="uma-card-go">›</div>
     </a>
 
@@ -106,7 +103,7 @@
     <div class="uma-tag-wrap"><div class="uma-tag blue">About</div></div>
 
     <div class="uma-about-plate">
-      <img alt="" src="../assets/tmp/about.jpg">
+      <img alt="" src="https://umamusume.com/_app/immutable/assets/about_thumbnail.DvTbfr6J.jpeg">
     </div>
 
     <div class="uma-about-txt">
@@ -123,15 +120,15 @@
 
     <div class="uma-slide-strip">
       <div class="uma-slide">
-        <img alt="" src="../assets/tmp/play1.jpg">
+        <img alt="" src="https://umamusume.com/_app/immutable/assets/gameplay_specialweek.DbgtPsGW.png">
         <div class="uma-slide-cap">Character bots — pick a racer and a training regimen that fits her.</div>
       </div>
       <div class="uma-slide">
-        <img alt="" src="../assets/tmp/play2.jpg">
+        <img alt="" src="https://umamusume.com/_app/immutable/assets/gameplay_silencesuzuka.CF-9agsU.png">
         <div class="uma-slide-cap">Scenarios — Tracen Academy, friendship training, rivalry arcs.</div>
       </div>
       <div class="uma-slide">
-        <img alt="" src="../assets/tmp/play2.jpg">
+        <img alt="" src="https://umamusume.com/_app/immutable/assets/gameplay_winningticket.6_SJzSZq.png">
         <div class="uma-slide-cap">Scripts &amp; lorebooks — drop-in modules for any chat.</div>
       </div>
     </div>
@@ -144,16 +141,16 @@
 
     <div class="uma-grid">
       <a class="uma-tile wide" href="#" style="height:132px">
-        <img alt="" src="../assets/tmp/char_a.jpg">
+        <img alt="" src="https://en-portal.g.kuroco-img.app/v=1768440412/files/user/character/astonmachan/astonmachan_top.png">
         
       </a>
       <a class="uma-tile" href="#" style="height:132px">
-        <img alt="" src="../assets/tmp/char_b.jpg">
+        <img alt="" src="https://en-portal.g.kuroco-img.app/v=1768440020/files/user/character/mrcb/mrcb_top.png">
         
       </a>
-      <a class="uma-tile" href="#" style="height:104px"><img alt="" src="../assets/tmp/char_c.jpg"></a>
-      <a class="uma-tile" href="#" style="height:104px"><img alt="" src="../assets/tmp/char_d.jpg"></a>
-      <a class="uma-tile" href="#" style="height:104px"><img alt="" src="../assets/tmp/char_a.jpg"></a>
+      <a class="uma-tile" href="#" style="height:104px"><img alt="" src="https://en-portal.g.kuroco-img.app/v=1750748798/files/user/character/tamamocross/tamamocross_top.png"></a>
+      <a class="uma-tile" href="#" style="height:104px"><img alt="" src="https://en-portal.g.kuroco-img.app/v=1749211789/files/user/character/nicenature/nicenature_top.png"></a>
+      <a class="uma-tile" href="#" style="height:104px"><img alt="" src="https://en-portal.g.kuroco-img.app/v=1749211687/files/user/character/winningticket/winningticket_top.png"></a>
     </div>
 
     <a class="uma-explore" href="#"><span>Explore</span><span>››</span></a>
@@ -165,11 +162,11 @@
 
     <div class="uma-media-row">
       <a class="uma-media-tile" href="#">
-        <img alt="" src="../assets/tmp/media_a.jpg">
+        <img alt="" src="https://umamusume.com/_app/immutable/assets/media_image.bZStKUoL.png">
         <span class="uma-media-lbl">Threads</span>
       </a>
       <a class="uma-media-tile" href="#">
-        <img alt="" src="../assets/tmp/media_b.jpg">
+        <img alt="" src="https://umamusume.com/_app/immutable/assets/gameplay_image_1-1.DqKsqutO.png">
         <span class="uma-media-lbl">Lorebooks</span>
       </a>
     </div>

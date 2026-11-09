@@ -1,4 +1,3 @@
-<style>
 /* ============================================================
    BATCH 0 — page reset
    ============================================================ */
@@ -48,6 +47,7 @@
 }
 .uma-mark { display: flex; align-items: center; }
 .uma-mark img { height: 44px; width: auto; }
+.uma-logo { display: block; width: 126px; height: auto; }
 .uma-mark-txt { display: flex; flex-direction: column; }
 .uma-mark-txt .w1 {
   font-family: "Roboto Condensed", roboto, Arial, sans-serif;
@@ -80,10 +80,10 @@
 .uma-menu-lbl { font-size: 10px; font-weight: 700; letter-spacing: .4px; color: #fff; margin-top: 6px; }
 
 /* ---- hero ---- */
-.uma-hero { position: relative; height: 106vw; background: #8FD46A; overflow: hidden; }
+.uma-hero { position: relative; height: 124vw; background: #8FD46A; overflow: hidden; }
 .uma-hero-art {
   position: absolute; left: 0; top: 0; width: 100%; height: 100%;
-  object-fit: cover; object-position: 50% 26%;
+  object-fit: cover; object-position: 50% 0;
 }
 .uma-hero-wash {
   position: absolute; left: 0; right: 0; bottom: 0; height: 230px;
@@ -97,13 +97,10 @@
   border: 1px solid rgba(255,255,255,.75); border-radius: 20px; padding: 10px 3px;
 }
 .uma-playnow {
-  font-family: "Roboto Condensed", roboto, Arial, sans-serif;
-  position: absolute; left: 14px; bottom: 190px; z-index: 3;
-  font-style: italic; font-weight: 900; font-size: 28px; letter-spacing: -.8px;
-  color: #FFE24A; text-shadow: 3px 3px 0 #B4301A, -2px 2px 0 #B4301A, 0 -2px 0 #B4301A;
-  transform: rotate(-3deg);
+  position: absolute; left: 14px; bottom: 184px; z-index: 3;
+  width: 44%; height: auto;
+  filter: drop-shadow(2px 3px 0 rgba(120,26,12,.45));
 }
-.uma-playnow span { color: #FF8FC8; }
 
 /* CTA grid */
 .uma-cta {
@@ -278,7 +275,11 @@
   flex: 0 0 88%; margin-right: 10px; background: rgba(255,255,255,.16);
   border: 2px solid rgba(255,255,255,.55); border-radius: 12px; padding: 8px;
 }
-.uma-slide img { width: 100%; border-radius: 8px; }
+.uma-slide img {
+  width: 100%; height: 156px; border-radius: 8px;
+  object-fit: contain; object-position: 50% 100%;
+  background: #E4F4DA;
+}
 .uma-slide-cap {
   font-size: 12px; font-weight: 700; color: #fff; margin-top: 8px; line-height: 1.35;
   text-shadow: 0 1px 2px rgba(0,0,0,.25);
@@ -300,7 +301,11 @@
 }
 .uma-tile:hover { transform: translateY(-3px); }
 .uma-tile.wide { width: 66.2%; }
-.uma-tile img { width: 100%; height: 100%; object-fit: cover; }
+.uma-tile img {
+  width: 100%; height: 100%;
+  object-fit: contain; object-position: 50% 100%;
+  background: linear-gradient(180deg,#F5F0FC,#DCD0F2);
+}
 .uma-tile-name {
   position: absolute; right: 0; top: 0; bottom: 0;
   background: rgba(30,20,80,.55); color: #fff;
@@ -347,192 +352,3 @@
   .uma-hl { font-size: 22px; }
   .uma-hero { height: 122vw; }
 }
-</style>
-
-<div class="uma-shell">
-
-  <!-- ── top bar ───────────────────────────────────────────── -->
-  <div class="uma-bar">
-    <a class="uma-mark" href="#">
-      <!-- IMG:LOGO → upload logo_umamusume.png to File Garden -->
-      <div class="uma-mark-txt">
-        <span class="w1">Umamusume</span>
-        <span class="w2">PRETTY DERBY</span>
-      </div>
-    </a>
-    <div class="uma-menu">
-      <div class="uma-menu-ring"></div>
-      <div class="uma-menu-lbl">Menu</div>
-    </div>
-  </div>
-
-  <!-- ── hero ──────────────────────────────────────────────── -->
-  <div class="uma-hero">
-    <!-- IMG:KV → TEMP local crop -->
-    <img class="uma-hero-art" alt="" src="../assets/tmp/hero.jpg">
-    <div class="uma-hero-wash"></div>
-    <div class="uma-side">Uma Enjoyer · Tracen</div>
-    <div class="uma-playnow">Play <span>Now!</span></div>
-
-    <div class="uma-cta">
-      <a class="uma-btn" href="#characters">
-        <div class="uma-btn-ico">★</div>
-        <div class="uma-btn-txt"><small>Browse</small><b>Characters</b></div>
-      </a>
-      <a class="uma-btn" href="#scripts">
-        <div class="uma-btn-ico blue">✦</div>
-        <div class="uma-btn-txt"><small>Open</small><b>Scripts</b></div>
-      </a>
-      <a class="uma-btn" href="#updates">
-        <div class="uma-btn-ico green">▲</div>
-        <div class="uma-btn-txt"><small>Latest</small><b>Updates</b></div>
-      </a>
-      <a class="uma-btn" href="#about">
-        <div class="uma-btn-ico pink">♥</div>
-        <div class="uma-btn-txt"><small>About</small><b>The Trainer</b></div>
-      </a>
-    </div>
-    <div class="uma-scroll">SCROLL</div>
-  </div>
-
-  <!-- ── promo + socials ───────────────────────────────────── -->
-  <a class="uma-promo" href="#updates">
-    <div class="uma-promo-ico">NEW</div>
-    <div class="uma-promo-txt">
-      New drop: Unity Cup scouts are here!
-      <small>Special rates · limited time</small>
-    </div>
-    <div class="uma-promo-go">›</div>
-  </a>
-
-  <div class="uma-social">
-    <div class="uma-social-lbl">Official Social Media</div>
-    <div class="uma-social-row">
-      <a class="uma-soc x" href="#">X</a>
-      <a class="uma-soc fb" href="#">f</a>
-      <a class="uma-soc yt" href="#">▶</a>
-      <a class="uma-soc dc" href="#">◈</a>
-    </div>
-  </div>
-
-  <!-- ── Updates (News) ────────────────────────────────────── -->
-  <div class="uma-sec uma-news" id="updates">
-    <div class="uma-tag-wrap"><div class="uma-tag pink">News</div></div>
-
-    <a class="uma-card" href="#">
-      <div class="uma-card-body">
-        <div class="uma-ribbon">Update</div>
-        <div class="uma-meta"><span class="uma-pill">Bot</span><span class="uma-date">2026/11/05 13:30 (UTC)</span></div>
-        <div class="uma-card-txt">New bot: Silence Suzuka takes the lead in a quiet, hopeless romance.</div>
-      </div>
-      <img class="uma-card-thumb" alt="" src="../assets/tmp/news1.jpg">
-      <div class="uma-card-go">›</div>
-    </a>
-
-    <a class="uma-card" href="#">
-      <div class="uma-card-body">
-        <div class="uma-ribbon">Update</div>
-        <div class="uma-meta"><span class="uma-pill">Bot</span><span class="uma-date">2026/11/04 22:00 (UTC)</span></div>
-        <div class="uma-card-txt">Reworked: Unity Cup — Tokai Teio's scenario now has three new openings.</div>
-      </div>
-      <img class="uma-card-thumb" alt="" src="../assets/tmp/news2.jpg">
-      <div class="uma-card-go">›</div>
-    </a>
-
-    <a class="uma-card" href="#">
-      <div class="uma-card-body">
-        <div class="uma-ribbon">Notice</div>
-        <div class="uma-meta"><span class="uma-pill">Event</span><span class="uma-date">2026/11/01 09:15 (UTC)</span></div>
-        <div class="uma-card-txt">Aquarius Cup event bot returns later this month — limited time only.</div>
-      </div>
-      <img class="uma-card-thumb" alt="" src="../assets/tmp/news3.jpg">
-      <div class="uma-card-go">›</div>
-    </a>
-
-    <a class="uma-more" href="#">View more ››</a>
-  </div>
-
-  <!-- ── About ─────────────────────────────────────────────── -->
-  <div class="uma-sec uma-about" id="about">
-    <div class="uma-tag-wrap"><div class="uma-tag blue">About</div></div>
-
-    <div class="uma-about-plate">
-      <img alt="" src="../assets/tmp/about.jpg">
-    </div>
-
-    <div class="uma-about-txt">
-      Trainer by day, bot author by night. I write Umamusume characters that stay in character —
-      tight prose, real track logic, and enough chaos to keep a career run interesting.
-      Expect slow burns, rivalry, and the occasional hopeless crush.
-    </div>
-  </div>
-
-  <!-- ── Gameplay ──────────────────────────────────────────── -->
-  <div class="uma-sec uma-play" id="scripts">
-    <div class="uma-tag-wrap"><div class="uma-tag green">Gameplay</div></div>
-    <div class="uma-hl">Train your Umamusume!</div>
-
-    <div class="uma-slide-strip">
-      <div class="uma-slide">
-        <img alt="" src="../assets/tmp/play1.jpg">
-        <div class="uma-slide-cap">Character bots — pick a racer and a training regimen that fits her.</div>
-      </div>
-      <div class="uma-slide">
-        <img alt="" src="../assets/tmp/play2.jpg">
-        <div class="uma-slide-cap">Scenarios — Tracen Academy, friendship training, rivalry arcs.</div>
-      </div>
-      <div class="uma-slide">
-        <img alt="" src="../assets/tmp/play2.jpg">
-        <div class="uma-slide-cap">Scripts &amp; lorebooks — drop-in modules for any chat.</div>
-      </div>
-    </div>
-    <div class="uma-arrows"><div class="uma-arrow">‹</div><div class="uma-arrow">›</div></div>
-  </div>
-
-  <!-- ── Roster (Characters) ───────────────────────────────── -->
-  <div class="uma-sec uma-roster" id="characters">
-    <div class="uma-tag-wrap"><div class="uma-tag purple">Characters</div></div>
-
-    <div class="uma-grid">
-      <a class="uma-tile wide" href="#" style="height:132px">
-        <img alt="" src="../assets/tmp/char_a.jpg">
-        
-      </a>
-      <a class="uma-tile" href="#" style="height:132px">
-        <img alt="" src="../assets/tmp/char_b.jpg">
-        
-      </a>
-      <a class="uma-tile" href="#" style="height:104px"><img alt="" src="../assets/tmp/char_c.jpg"></a>
-      <a class="uma-tile" href="#" style="height:104px"><img alt="" src="../assets/tmp/char_d.jpg"></a>
-      <a class="uma-tile" href="#" style="height:104px"><img alt="" src="../assets/tmp/char_a.jpg"></a>
-    </div>
-
-    <a class="uma-explore" href="#"><span>Explore</span><span>››</span></a>
-  </div>
-
-  <!-- ── Media ─────────────────────────────────────────────── -->
-  <div class="uma-sec uma-media">
-    <div class="uma-tag-wrap"><div class="uma-tag blue">Media</div></div>
-
-    <div class="uma-media-row">
-      <a class="uma-media-tile" href="#">
-        <img alt="" src="../assets/tmp/media_a.jpg">
-        <span class="uma-media-lbl">Threads</span>
-      </a>
-      <a class="uma-media-tile" href="#">
-        <img alt="" src="../assets/tmp/media_b.jpg">
-        <span class="uma-media-lbl">Lorebooks</span>
-      </a>
-    </div>
-    <a class="uma-explore" href="#"><span>Explore</span><span>››</span></a>
-  </div>
-
-  <!-- ── Footer ────────────────────────────────────────────── -->
-  <div class="uma-foot">
-    <span class="w1">Umamusume</span>
-    <span class="w2">PRETTY DERBY</span>
-    <p>Fan-made profile layout · Umamusume: Pretty Derby © Cygames<br>
-    Not affiliated with Cygames or Janitor AI.</p>
-  </div>
-
-</div>

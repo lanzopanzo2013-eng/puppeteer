@@ -180,3 +180,32 @@ npx single-file-cli https://umamusume.com/ umamusume.html --browser-executable-p
 
 Drop `umamusume.html` in this folder and I can port section-for-section against the real DOM and the
 real stylesheet instead of the Wayback copy — that is the last gap between "very close" and "identical".
+
+---
+
+## 8. Asset strategy, final (2026-11-09)
+
+The page fetcher reaches the live site even though bash cannot, so today's build was read directly from
+`https://umamusume.com/` and every image slot now points at Cygames' own CDN — no uploads, no
+placeholders, nothing to File Garden first:
+
+| Slot | Live URL (verified in today's HTML) |
+|---|---|
+| Logo | `parts.umamusume.com/assets/images/logo_umamusume.png` |
+| Hero KV | `umamusume.com/_app/immutable/assets/kv.CiVddxQD.jpeg` |
+| "Play Now!" | `…/kv_txt_playnow.D0FaPRug.png` |
+| News thumbs | `assets-webview-umamusume-en.akamaized.net/…/banner_30320202_L1794088800.png` |
+| About | `…/about_thumbnail.DvTbfr6J.jpeg` |
+| Gameplay ×3 | `…/gameplay_specialweek.DbgtPsGW.png`, `gameplay_silencesuzuka.CF-9agsU.png`, `gameplay_winningticket.6_SJzSZq.png` |
+| Roster ×5 | `en-portal.g.kuroco-img.app/v=<ver>/files/user/character/<slug>/<slug>_top.png` (transparent cut-outs) |
+| Media ×2 | `…/media_image.bZStKUoL.png`, `…/gameplay_image_1-1.DqKsqutO.png` |
+
+Because bash egress is blocked, the sandbox itself cannot download those pixels — `preview/index.html`
+therefore carries an **offline shim** that swaps each CDN URL for the matching local crop at paint time,
+so harness screenshots stay representative. The shipped files never use it.
+
+The old cropped set is preserved in `src/bio-local-crops.html` + `assets/tmp/` as the fallback if a CDN
+URL ever 404s after a redeploy — swap the `src` back and upload those 15 JPGs to File Garden.
+
+Paste-ready output: `dist/PASTE-ALL.txt` (one box), or `dist/PASTE-CSS.txt` + `dist/PASTE-HTML.txt`
+(two-panel editor).

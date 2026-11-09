@@ -140,7 +140,25 @@
 
   async function load() {
     const res = await fetch('../src/bio.html?t=' + Date.now());
-    const html = await res.text();
+    let html = await res.text();
+    // Harness-only: the sandbox has no internet, so swap the live CDN art for the
+    // local crops before painting. The real file keeps the CDN URLs.
+    const OFFLINE = {
+      'kv.CiVddxQD.jpeg': 'hero.jpg',
+      'kv_txt_playnow.D0FaPRug.png': 'news1.jpg',
+      'logo_umamusume.png': 'hero.jpg',
+      'banner_30320202': 'news1.jpg', 'announce_banner_3144': 'news2.jpg',
+      'about_thumbnail': 'about.jpg',
+      'gameplay_specialweek': 'play1.jpg', 'gameplay_silencesuzuka': 'play2.jpg',
+      'gameplay_winningticket': 'play2.jpg', 'gameplay_image_1-1': 'media_b.jpg',
+      'media_image': 'media_a.jpg',
+      'astonmachan': 'char_a.jpg', 'mrcb': 'char_b.jpg', 'tamamocross': 'char_c.jpg',
+      'nicenature': 'char_d.jpg', 'winningticket': 'char_a.jpg'
+    };
+    html = html.replace(/(src=")([^"]+)(")/g, (m, a, url, c) => {
+      const hit = Object.keys(OFFLINE).find(k => url.indexOf(k) > -1);
+      return hit ? a + '../assets/tmp/' + OFFLINE[hit] + c : m;
+    });
     const doc = new DOMParser().parseFromString(html, 'text/html');
     // move <style> + markup in, exactly like pasting the whole file into the editor
     slot.innerHTML = '';
