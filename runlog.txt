@@ -1,11 +1,15 @@
-attempt 1: public CORS proxies
-  proxy no: 522 7243b https://api.codetabs.com/v1/proxy?quest=https%3A%2F%2Fumamus…
-  proxy no: 200 199b https://api.allorigins.win/raw?url=https%3A%2F%2Fumamusume.c…
-  proxy no: 403 322b https://corsproxy.io/?https%3A%2F%2Fumamusume.com%2F…
-  proxy no: 200 134b https://r.jina.ai/https://umamusume.com/…
-attempt 2: headless chrome
-  chrome binary: /usr/bin/google-chrome
-  chrome: title="Error Page" html=191b
-images referenced: 0
-DONE
-capture exit: 0
+node:internal/modules/cjs/loader:1210
+  throw err;
+  ^
+
+Error: Cannot find module '/tmp/cap/capture.mjs'
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1207:15)
+    at Module._load (node:internal/modules/cjs/loader:1038:27)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:164:12)
+    at node:internal/main/run_main_module:28:49 {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: []
+}
+
+Node.js v20.20.2
+capture exit: 1
