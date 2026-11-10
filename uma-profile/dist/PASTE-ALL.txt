@@ -138,37 +138,6 @@
   font-size: 9px; font-weight: 800; letter-spacing: 2px; writing-mode: vertical-rl; opacity: .9;
 }
 
-/* ---- promo + socials ---- */
-.uma-promo {
-  background: #fff; margin: 8px 12px 0; border-radius: 12px;
-  display: flex; align-items: center; padding: 10px 12px;
-  box-shadow: 0 2px 0 rgba(0,0,0,.12); position: relative; z-index: 4;
-}
-.uma-promo-ico {
-  width: 42px; height: 42px; border-radius: 9px; margin-right: 10px; flex: 0 0 42px;
-  background: linear-gradient(135deg, #6F7BFF, #B15CFF); color: #fff;
-  font-weight: 900; font-size: 11px; display: flex; align-items: center;
-  justify-content: center; text-align: center; line-height: 1;
-}
-.uma-promo-txt { flex: 1 1 auto; font-size: 13px; font-weight: 700; }
-.uma-promo-txt small { display: block; font-size: 10px; font-weight: 600; color: #6A7078; }
-.uma-promo-go { font-size: 18px; color: #9AA0A8; font-weight: 900; }
-
-.uma-social {
-  background: #fff; margin: 8px 12px 14px; border-radius: 12px;
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 9px 12px; box-shadow: 0 2px 0 rgba(0,0,0,.12);
-}
-.uma-social-lbl { font-family: "Roboto Condensed", roboto, Arial, sans-serif; font-size: 11px; font-weight: 800; font-style: italic; letter-spacing: .3px; }
-.uma-social-row { display: flex; align-items: center; }
-.uma-soc {
-  width: 26px; height: 26px; margin-left: 9px;
-  display: flex; align-items: center; justify-content: center;
-  transition: transform .12s ease;
-}
-.uma-soc:hover { transform: scale(.9); }
-.uma-soc img { width: 22px; height: 22px; object-fit: contain; }
-
 /* ============================================================
    BATCH 3 — section furniture (shared by every band)
    ============================================================ */
@@ -254,6 +223,29 @@
   background: #4BA8F5;
   padding-bottom: 34px;
 }
+.uma-profile-card {
+  position: relative; z-index: 1;
+  background: rgba(255,255,255,.94); border-radius: 14px;
+  padding: 14px; display: flex; align-items: flex-start;
+  box-shadow: 0 6px 0 rgba(20,80,140,.22);
+  margin: 4px 2px 12px;
+}
+.uma-pfp {
+  flex: 0 0 84px; width: 84px; height: 84px; border-radius: 12px; overflow: hidden;
+  border: 3px solid #fff; box-shadow: 0 3px 0 rgba(20,80,140,.25); margin-right: 12px;
+  background: #DCEBFF;
+}
+.uma-pfp img { width: 100%; height: 100%; object-fit: cover; }
+.uma-pfp-name { font-family: "Roboto Condensed", roboto, Arial, sans-serif; font-style: italic;
+  font-weight: 900; font-size: 18px; color: #1F3550; line-height: 1; letter-spacing: -.3px; }
+.uma-pfp-sub { font-size: 10px; font-weight: 700; color: #5B7A96; margin: 4px 0 8px; letter-spacing: .2px; }
+.uma-pfp-txt { font-size: 12px; line-height: 1.45; color: #33475C; font-weight: 600; }
+.uma-pfp-rows { margin-top: 9px; }
+.uma-pfp-row { display: flex; justify-content: space-between; font-size: 10.5px;
+  padding: 4px 0; border-top: 1px solid rgba(31,53,80,.1); }
+.uma-pfp-row span { color: #6B839B; font-weight: 700; }
+.uma-pfp-row b { color: #1F3550; font-weight: 800; }
+
 .uma-about-plate {
   position: relative; margin: 4px 6px 14px;
   border: 5px solid #fff; border-radius: 4px;
@@ -380,6 +372,73 @@
 }
 .uma-foot p { font-size: 9.5px; color: rgba(255,255,255,.8); margin-top: 10px; line-height: 1.5; }
 
+/* ============================================================
+   WHOLE-PROFILE SKIN
+   Janitor's real page classes, lifted from the user's previous theme:
+   .pp-page-background / .pp-uc-* (user card) / .pp-tabs-* / .pp-cc-* (cards)
+   / .profile-top-bar-*. Styling these is what makes the theme cover the page
+   instead of only the About Me block.
+   ============================================================ */
+.pp-page-background {
+  background: #EAF3FF !important;
+}
+.pp-uc-background, .pp-uc-background > * {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+.pp-uc-title, .profile-uc-title {
+  font-family: "Roboto Condensed", roboto, Arial, sans-serif !important;
+  font-style: italic; font-weight: 900; letter-spacing: -.3px;
+  color: #12386E !important;
+}
+.pp-uc-followers-count, .profile-uc-followers-count { color: #4A6C96 !important; font-weight: 700 !important; }
+.pp-uc-about-me { background: transparent !important; }
+
+/* avatar: the site's blue plate + white ring */
+.pp-uc-avatar-container, .profile-avatar {
+  background: #2A5DFA !important;
+  border-radius: 14px !important;
+  box-shadow: 0 4px 0 rgba(18,56,110,.35) !important;
+  overflow: hidden !important;
+}
+.pp-uc-avatar, .profile-avatar img { border-radius: 12px !important; }
+
+/* tabs: condensed italic, pink underline (site's news pink) */
+.pp-tabs-wrapper, .profile-tabs-wrapper {
+  background: transparent !important;
+  border-bottom: 2px solid rgba(42,93,250,.18) !important;
+}
+.pp-tabs-button, .profile-tabs-button {
+  font-family: "Roboto Condensed", roboto, Arial, sans-serif !important;
+  font-style: italic !important; font-weight: 900 !important; font-size: 15px !important;
+  color: #4A6C96 !important;
+}
+.pp-tabs-button[data-active="true"], .pp-tabs-button.active, .profile-tabs-button.active {
+  color: #12386E !important;
+}
+.pp-tabs-indicator, .profile-tabs-indicator {
+  background: #FF79D0 !important; height: 3px !important; border-radius: 3px !important;
+}
+
+/* character cards: the roster look */
+.pp-cc-wrapper, .profile-character-card-stack {
+  background: #fff !important;
+  border-radius: 12px !important;
+  box-shadow: 0 3px 0 rgba(18,56,110,.16) !important;
+  overflow: hidden !important;
+}
+.pp-cc-name, .profile-character-card-name {
+  font-family: "Roboto Condensed", roboto, Arial, sans-serif !important;
+  font-style: italic; font-weight: 900; color: #12386E !important;
+}
+.pp-cc-chats { color: #5B7A96 !important; font-weight: 700 !important; }
+
+/* top bar */
+.pp-top-bar, .profile-top-bar {
+  background: #2A5DFA !important;
+  border-bottom: 3px solid #FF79D0 !important;
+}
+
 /* small screens */
 @media (max-width: 380px) {
   .uma-tag { font-size: 23px; padding: 8px 26px 9px; }
@@ -431,29 +490,9 @@
     <div class="uma-scroll">SCROLL</div>
   </div>
 
-  <!-- ── promo + socials ───────────────────────────────────── -->
-  <a class="uma-promo" href="#updates">
-    <div class="uma-promo-ico">NEW</div>
-    <div class="uma-promo-txt">
-      New drop: Unity Cup scouts are here!
-      <small>Special rates · limited time</small>
-    </div>
-    <div class="uma-promo-go">›</div>
-  </a>
-
-  <div class="uma-social">
-    <div class="uma-social-lbl">Official Social Media</div>
-    <div class="uma-social-row">
-      <a class="uma-soc x" href="#"><img alt="X" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@15f8a23cd8ac/uma-profile/assets/site/sns-x.png"></a>
-      <a class="uma-soc fb" href="#"><img alt="Facebook" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@15f8a23cd8ac/uma-profile/assets/site/sns-facebook.png"></a>
-      <a class="uma-soc yt" href="#"><img alt="YouTube" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@15f8a23cd8ac/uma-profile/assets/site/sns-youtube.png"></a>
-      <a class="uma-soc dc" href="#"><img alt="Discord" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@15f8a23cd8ac/uma-profile/assets/site/sns-discord.png"></a>
-    </div>
-  </div>
-
   <!-- ── Updates (News) ────────────────────────────────────── -->
   <div class="uma-sec uma-news" id="updates">
-    <img class="uma-band-pat" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@15f8a23cd8ac/uma-profile/assets/site/pattern.png">
+    <img class="uma-band-pat" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@34b80acd79e0/uma-profile/assets/site/pattern.png">
     <div class="uma-tag-wrap"><div class="uma-tag pink">News</div></div>
 
     <a class="uma-card" href="#">
@@ -491,23 +530,39 @@
 
   <!-- ── About ─────────────────────────────────────────────── -->
   <div class="uma-sec uma-about" id="about">
-    <img class="uma-sec-bg" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@15f8a23cd8ac/uma-profile/assets/site/about_bg.jpg">
+    <img class="uma-sec-bg" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@34b80acd79e0/uma-profile/assets/site/about_bg.jpg">
     <div class="uma-tag-wrap"><div class="uma-tag blue">About</div></div>
 
-    <div class="uma-about-plate">
-      <img alt="" src="https://umamusume.com/_app/immutable/assets/about_thumbnail.DvTbfr6J.jpeg">
+    <div class="uma-profile-card">
+      <div class="uma-pfp">
+        <img alt="Profile picture" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@34b80acd79e0/uma-profile/assets/site/pfp.jpg">
+      </div>
+      <div class="uma-pfp-body">
+        <div class="uma-pfp-name">@uma_enjoyer</div>
+        <div class="uma-pfp-sub">Trainer · Lorebook author · Tracen Academy</div>
+        <div class="uma-pfp-txt">
+          Trainer by day, bot author by night. I write Umamusume characters that stay in
+          character — tight prose, real track logic, and enough chaos to keep a career run
+          interesting. Expect slow burns, rivalry, and the occasional hopeless crush.
+        </div>
+        <div class="uma-pfp-rows">
+          <div class="uma-pfp-row"><span>Writing since</span><b>2025</b></div>
+          <div class="uma-pfp-row"><span>Bots live</span><b>13</b></div>
+          <div class="uma-pfp-row"><span>Lorebooks</span><b>V4 → FV14</b></div>
+        </div>
+      </div>
     </div>
 
     <div class="uma-about-txt">
-      Trainer by day, bot author by night. I write Umamusume characters that stay in character —
-      tight prose, real track logic, and enough chaos to keep a career run interesting.
-      Expect slow burns, rivalry, and the occasional hopeless crush.
+      Everything here is hand-written. Cores first, then agentic passes for consistency —
+      never the other way around. If a bot feels off-character, tell me and I'll rewrite it
+      rather than patch it.
     </div>
   </div>
 
   <!-- ── Gameplay ──────────────────────────────────────────── -->
   <div class="uma-sec uma-play" id="scripts">
-    <img class="uma-band-pat" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@15f8a23cd8ac/uma-profile/assets/site/pattern.png">
+    <img class="uma-band-pat" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@34b80acd79e0/uma-profile/assets/site/pattern.png">
     <div class="uma-tag-wrap"><div class="uma-tag green">Gameplay</div></div>
     <div class="uma-hl">Train your Umamusume!</div>
 
@@ -522,31 +577,31 @@
         <div class="uma-track">
           <div class="uma-slide">
             <img alt="" src="https://umamusume.com/_app/immutable/assets/gameplay_specialweek.DbgtPsGW.png">
-            <div class="uma-slide-cap">Character bots — pick a racer and a training regimen that fits her.</div>
+            <div class="uma-slide-cap"><b>Lorebooks</b> — the world state, the schedules, the rivalry web. Dropped in, no setup.</div>
           </div>
           <div class="uma-slide">
             <img alt="" src="https://umamusume.com/_app/immutable/assets/gameplay_silencesuzuka.CF-9agsU.png">
-            <div class="uma-slide-cap">Scenarios — Tracen Academy, friendship training, rivalry arcs.</div>
+            <div class="uma-slide-cap"><b>How it runs</b> — V4 today, V10 final, then FV11 to FV14. Each pass tightens canon.</div>
           </div>
           <div class="uma-slide">
             <img alt="" src="https://umamusume.com/_app/immutable/assets/gameplay_winningticket.6_SJzSZq.png">
-            <div class="uma-slide-cap">Scripts &amp; lorebooks — drop-in modules for any chat.</div>
+            <div class="uma-slide-cap"><b>Using them</b> — attach the book, pick a racer, start the career run. That is it.</div>
           </div>
         </div>
       </div>
 
-      <div class="uma-ctl c1"><a class="uma-arrow" href="#g3"><img class="uma-arrow-img" alt="Previous" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@15f8a23cd8ac/uma-profile/assets/site/arrow_left.png"></a><a class="uma-arrow" href="#g2"><img class="uma-arrow-img" alt="Next" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@15f8a23cd8ac/uma-profile/assets/site/arrow_right.png"></a></div>
-      <div class="uma-ctl c2"><a class="uma-arrow" href="#g1"><img class="uma-arrow-img" alt="Previous" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@15f8a23cd8ac/uma-profile/assets/site/arrow_left.png"></a><a class="uma-arrow" href="#g3"><img class="uma-arrow-img" alt="Next" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@15f8a23cd8ac/uma-profile/assets/site/arrow_right.png"></a></div>
-      <div class="uma-ctl c3"><a class="uma-arrow" href="#g2"><img class="uma-arrow-img" alt="Previous" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@15f8a23cd8ac/uma-profile/assets/site/arrow_left.png"></a><a class="uma-arrow" href="#g1"><img class="uma-arrow-img" alt="Next" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@15f8a23cd8ac/uma-profile/assets/site/arrow_right.png"></a></div>
+      <div class="uma-ctl c1"><a class="uma-arrow" href="#g3"><img class="uma-arrow-img" alt="Previous" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@34b80acd79e0/uma-profile/assets/site/arrow_left.png"></a><a class="uma-arrow" href="#g2"><img class="uma-arrow-img" alt="Next" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@34b80acd79e0/uma-profile/assets/site/arrow_right.png"></a></div>
+      <div class="uma-ctl c2"><a class="uma-arrow" href="#g1"><img class="uma-arrow-img" alt="Previous" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@34b80acd79e0/uma-profile/assets/site/arrow_left.png"></a><a class="uma-arrow" href="#g3"><img class="uma-arrow-img" alt="Next" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@34b80acd79e0/uma-profile/assets/site/arrow_right.png"></a></div>
+      <div class="uma-ctl c3"><a class="uma-arrow" href="#g2"><img class="uma-arrow-img" alt="Previous" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@34b80acd79e0/uma-profile/assets/site/arrow_left.png"></a><a class="uma-arrow" href="#g1"><img class="uma-arrow-img" alt="Next" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@34b80acd79e0/uma-profile/assets/site/arrow_right.png"></a></div>
 
-      <div class="uma-pg p1"><img alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@15f8a23cd8ac/uma-profile/assets/site/pager_1.png"></div>
-      <div class="uma-pg p2"><img alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@15f8a23cd8ac/uma-profile/assets/site/pager_2.png"></div>
-      <div class="uma-pg p3"><img alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@15f8a23cd8ac/uma-profile/assets/site/pager_3.png"></div>
+      <div class="uma-pg p1"><img alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@34b80acd79e0/uma-profile/assets/site/pager_1.png"></div>
+      <div class="uma-pg p2"><img alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@34b80acd79e0/uma-profile/assets/site/pager_2.png"></div>
+      <div class="uma-pg p3"><img alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@34b80acd79e0/uma-profile/assets/site/pager_3.png"></div>
     </div>
 
   <!-- ── Roster (Characters) ───────────────────────────────── -->
   <div class="uma-sec uma-roster" id="characters">
-    <img class="uma-band-pat" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@15f8a23cd8ac/uma-profile/assets/site/pattern.png">
+    <img class="uma-band-pat" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@34b80acd79e0/uma-profile/assets/site/pattern.png">
     <div class="uma-tag-wrap"><div class="uma-tag purple">Characters</div></div>
 
     <div class="uma-grid">
@@ -558,9 +613,15 @@
         <img alt="" src="https://en-portal.g.kuroco-img.app/v=1768440020/files/user/character/mrcb/mrcb_top.png">
         
       </a>
-      <a class="uma-tile" href="#" style="height:104px"><img alt="" src="https://en-portal.g.kuroco-img.app/v=1750748798/files/user/character/tamamocross/tamamocross_top.png"></a>
-      <a class="uma-tile" href="#" style="height:104px"><img alt="" src="https://en-portal.g.kuroco-img.app/v=1749211789/files/user/character/nicenature/nicenature_top.png"></a>
-      <a class="uma-tile" href="#" style="height:104px"><img alt="" src="https://en-portal.g.kuroco-img.app/v=1749211687/files/user/character/winningticket/winningticket_top.png"></a>
+      <a class="uma-tile" href="#" style="height:104px"><img alt="" src="https://en-portal.g.kuroco-img.app/v=1750748798/files/user/character/tamamocross/tamamocross_top.png">
+        <span class="uma-tile-name">Tamamo Cross</span>
+      </a>
+      <a class="uma-tile" href="#" style="height:104px"><img alt="" src="https://en-portal.g.kuroco-img.app/v=1749211789/files/user/character/nicenature/nicenature_top.png">
+        <span class="uma-tile-name">Nice Nature</span>
+      </a>
+      <a class="uma-tile" href="#" style="height:104px"><img alt="" src="https://en-portal.g.kuroco-img.app/v=1749211687/files/user/character/winningticket/winningticket_top.png">
+        <span class="uma-tile-name">Winning Ticket</span>
+      </a>
     </div>
 
     <a class="uma-explore" href="#"><span>Explore</span><span>››</span></a>
@@ -568,17 +629,17 @@
 
   <!-- ── Media ─────────────────────────────────────────────── -->
   <div class="uma-sec uma-media">
-    <img class="uma-band-pat" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@15f8a23cd8ac/uma-profile/assets/site/pattern.png">
+    <img class="uma-band-pat" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@34b80acd79e0/uma-profile/assets/site/pattern.png">
     <div class="uma-tag-wrap"><div class="uma-tag blue">Media</div></div>
 
     <div class="uma-media-row">
       <a class="uma-media-tile" href="#">
         <img alt="" src="https://umamusume.com/_app/immutable/assets/media_image.bZStKUoL.png">
-        <span class="uma-media-lbl">Threads</span>
+        <span class="uma-media-lbl">Anime</span>
       </a>
       <a class="uma-media-tile" href="#">
         <img alt="" src="https://umamusume.com/_app/immutable/assets/gameplay_image_1-1.DqKsqutO.png">
-        <span class="uma-media-lbl">Lorebooks</span>
+        <span class="uma-media-lbl">Gacha</span>
       </a>
     </div>
     <a class="uma-explore" href="#"><span>Explore</span><span>››</span></a>

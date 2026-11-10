@@ -137,37 +137,6 @@
   font-size: 9px; font-weight: 800; letter-spacing: 2px; writing-mode: vertical-rl; opacity: .9;
 }
 
-/* ---- promo + socials ---- */
-.uma-promo {
-  background: #fff; margin: 8px 12px 0; border-radius: 12px;
-  display: flex; align-items: center; padding: 10px 12px;
-  box-shadow: 0 2px 0 rgba(0,0,0,.12); position: relative; z-index: 4;
-}
-.uma-promo-ico {
-  width: 42px; height: 42px; border-radius: 9px; margin-right: 10px; flex: 0 0 42px;
-  background: linear-gradient(135deg, #6F7BFF, #B15CFF); color: #fff;
-  font-weight: 900; font-size: 11px; display: flex; align-items: center;
-  justify-content: center; text-align: center; line-height: 1;
-}
-.uma-promo-txt { flex: 1 1 auto; font-size: 13px; font-weight: 700; }
-.uma-promo-txt small { display: block; font-size: 10px; font-weight: 600; color: #6A7078; }
-.uma-promo-go { font-size: 18px; color: #9AA0A8; font-weight: 900; }
-
-.uma-social {
-  background: #fff; margin: 8px 12px 14px; border-radius: 12px;
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 9px 12px; box-shadow: 0 2px 0 rgba(0,0,0,.12);
-}
-.uma-social-lbl { font-family: "Roboto Condensed", roboto, Arial, sans-serif; font-size: 11px; font-weight: 800; font-style: italic; letter-spacing: .3px; }
-.uma-social-row { display: flex; align-items: center; }
-.uma-soc {
-  width: 26px; height: 26px; margin-left: 9px;
-  display: flex; align-items: center; justify-content: center;
-  transition: transform .12s ease;
-}
-.uma-soc:hover { transform: scale(.9); }
-.uma-soc img { width: 22px; height: 22px; object-fit: contain; }
-
 /* ============================================================
    BATCH 3 — section furniture (shared by every band)
    ============================================================ */
@@ -253,6 +222,29 @@
   background: #4BA8F5;
   padding-bottom: 34px;
 }
+.uma-profile-card {
+  position: relative; z-index: 1;
+  background: rgba(255,255,255,.94); border-radius: 14px;
+  padding: 14px; display: flex; align-items: flex-start;
+  box-shadow: 0 6px 0 rgba(20,80,140,.22);
+  margin: 4px 2px 12px;
+}
+.uma-pfp {
+  flex: 0 0 84px; width: 84px; height: 84px; border-radius: 12px; overflow: hidden;
+  border: 3px solid #fff; box-shadow: 0 3px 0 rgba(20,80,140,.25); margin-right: 12px;
+  background: #DCEBFF;
+}
+.uma-pfp img { width: 100%; height: 100%; object-fit: cover; }
+.uma-pfp-name { font-family: "Roboto Condensed", roboto, Arial, sans-serif; font-style: italic;
+  font-weight: 900; font-size: 18px; color: #1F3550; line-height: 1; letter-spacing: -.3px; }
+.uma-pfp-sub { font-size: 10px; font-weight: 700; color: #5B7A96; margin: 4px 0 8px; letter-spacing: .2px; }
+.uma-pfp-txt { font-size: 12px; line-height: 1.45; color: #33475C; font-weight: 600; }
+.uma-pfp-rows { margin-top: 9px; }
+.uma-pfp-row { display: flex; justify-content: space-between; font-size: 10.5px;
+  padding: 4px 0; border-top: 1px solid rgba(31,53,80,.1); }
+.uma-pfp-row span { color: #6B839B; font-weight: 700; }
+.uma-pfp-row b { color: #1F3550; font-weight: 800; }
+
 .uma-about-plate {
   position: relative; margin: 4px 6px 14px;
   border: 5px solid #fff; border-radius: 4px;
@@ -378,6 +370,73 @@
   text-shadow: 1px 1px 0 #1B3FA8; display: block; margin-top: 2px;
 }
 .uma-foot p { font-size: 9.5px; color: rgba(255,255,255,.8); margin-top: 10px; line-height: 1.5; }
+
+/* ============================================================
+   WHOLE-PROFILE SKIN
+   Janitor's real page classes, lifted from the user's previous theme:
+   .pp-page-background / .pp-uc-* (user card) / .pp-tabs-* / .pp-cc-* (cards)
+   / .profile-top-bar-*. Styling these is what makes the theme cover the page
+   instead of only the About Me block.
+   ============================================================ */
+.pp-page-background {
+  background: #EAF3FF !important;
+}
+.pp-uc-background, .pp-uc-background > * {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+.pp-uc-title, .profile-uc-title {
+  font-family: "Roboto Condensed", roboto, Arial, sans-serif !important;
+  font-style: italic; font-weight: 900; letter-spacing: -.3px;
+  color: #12386E !important;
+}
+.pp-uc-followers-count, .profile-uc-followers-count { color: #4A6C96 !important; font-weight: 700 !important; }
+.pp-uc-about-me { background: transparent !important; }
+
+/* avatar: the site's blue plate + white ring */
+.pp-uc-avatar-container, .profile-avatar {
+  background: #2A5DFA !important;
+  border-radius: 14px !important;
+  box-shadow: 0 4px 0 rgba(18,56,110,.35) !important;
+  overflow: hidden !important;
+}
+.pp-uc-avatar, .profile-avatar img { border-radius: 12px !important; }
+
+/* tabs: condensed italic, pink underline (site's news pink) */
+.pp-tabs-wrapper, .profile-tabs-wrapper {
+  background: transparent !important;
+  border-bottom: 2px solid rgba(42,93,250,.18) !important;
+}
+.pp-tabs-button, .profile-tabs-button {
+  font-family: "Roboto Condensed", roboto, Arial, sans-serif !important;
+  font-style: italic !important; font-weight: 900 !important; font-size: 15px !important;
+  color: #4A6C96 !important;
+}
+.pp-tabs-button[data-active="true"], .pp-tabs-button.active, .profile-tabs-button.active {
+  color: #12386E !important;
+}
+.pp-tabs-indicator, .profile-tabs-indicator {
+  background: #FF79D0 !important; height: 3px !important; border-radius: 3px !important;
+}
+
+/* character cards: the roster look */
+.pp-cc-wrapper, .profile-character-card-stack {
+  background: #fff !important;
+  border-radius: 12px !important;
+  box-shadow: 0 3px 0 rgba(18,56,110,.16) !important;
+  overflow: hidden !important;
+}
+.pp-cc-name, .profile-character-card-name {
+  font-family: "Roboto Condensed", roboto, Arial, sans-serif !important;
+  font-style: italic; font-weight: 900; color: #12386E !important;
+}
+.pp-cc-chats { color: #5B7A96 !important; font-weight: 700 !important; }
+
+/* top bar */
+.pp-top-bar, .profile-top-bar {
+  background: #2A5DFA !important;
+  border-bottom: 3px solid #FF79D0 !important;
+}
 
 /* small screens */
 @media (max-width: 380px) {

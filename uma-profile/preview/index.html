@@ -107,28 +107,28 @@
   <button id="reload">Reload</button>
 </div>
 
-<div id="root">
-  <div class="profile-top-bar">‹ JanitorAI · profile chrome (not ours) ›</div>
+<div id="root" class="pp-page-background">
+  <div class="pp-top-bar profile-top-bar">‹ JanitorAI · profile chrome (not ours) ›</div>
 
-  <div class="profile-page-container">
+  <div class="profile-page-container pp-uc-background">
     <div class="profile-page-flex">
 
       <div class="profile-info-hstack">
-        <div class="profile-avatar"></div>
-        <div class="profile-name">@uma_enjoyer<small>1,192 followers · Member since …</small></div>
+        <div class="pp-uc-avatar-container profile-avatar"></div>
+        <div class="profile-name pp-uc-title">@uma_enjoyer<small class="pp-uc-followers-count">1,192 followers · Member since …</small></div>
       </div>
 
-      <div class="profile-tabs"><b>Characters</b><span>Scripts</span></div>
+      <div class="pp-tabs-wrapper profile-tabs"><b class="pp-tabs-button active">Characters</b><span class="pp-tabs-button">Scripts</span><i class="pp-tabs-indicator"></i></div>
 
       <!-- ↓↓↓ Janitor injects the About Me HTML here ↓↓↓ -->
       <div class="profile-about-me" id="slot"></div>
       <!-- ↑↑↑ Janitor injects the About Me HTML here ↑↑↑ -->
 
       <div class="characters-list-container-flex">
-        <div class="fake-bot">bot card</div>
-        <div class="fake-bot">bot card</div>
-        <div class="fake-bot">bot card</div>
-        <div class="fake-bot">bot card</div>
+        <div class="fake-bot pp-cc-wrapper">bot card<span class="pp-cc-name">name</span><span class="pp-cc-chats">0 chats</span></div>
+        <div class="fake-bot pp-cc-wrapper">bot card<span class="pp-cc-name">name</span><span class="pp-cc-chats">0 chats</span></div>
+        <div class="fake-bot pp-cc-wrapper">bot card<span class="pp-cc-name">name</span><span class="pp-cc-chats">0 chats</span></div>
+        <div class="fake-bot pp-cc-wrapper">bot card<span class="pp-cc-name">name</span><span class="pp-cc-chats">0 chats</span></div>
       </div>
 
     </div>
@@ -159,6 +159,7 @@
       'pager_1.png': '../assets/site/pager_1.png',
       'pager_2.png': '../assets/site/pager_2.png',
       'pager_3.png': '../assets/site/pager_3.png',
+      'pfp.jpg': '../assets/site/pfp.jpg',
       'pattern.png': '../assets/site/pattern.png',
       'sns-x.png': '../assets/site/sns-x.png',
       'sns-facebook.png': '../assets/site/sns-facebook.png',

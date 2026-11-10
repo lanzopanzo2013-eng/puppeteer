@@ -41,29 +41,9 @@
     <div class="uma-scroll">SCROLL</div>
   </div>
 
-  <!-- ── promo + socials ───────────────────────────────────── -->
-  <a class="uma-promo" href="#updates">
-    <div class="uma-promo-ico">NEW</div>
-    <div class="uma-promo-txt">
-      New drop: Unity Cup scouts are here!
-      <small>Special rates · limited time</small>
-    </div>
-    <div class="uma-promo-go">›</div>
-  </a>
-
-  <div class="uma-social">
-    <div class="uma-social-lbl">Official Social Media</div>
-    <div class="uma-social-row">
-      <a class="uma-soc x" href="#"><img alt="X" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@15f8a23cd8ac/uma-profile/assets/site/sns-x.png"></a>
-      <a class="uma-soc fb" href="#"><img alt="Facebook" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@15f8a23cd8ac/uma-profile/assets/site/sns-facebook.png"></a>
-      <a class="uma-soc yt" href="#"><img alt="YouTube" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@15f8a23cd8ac/uma-profile/assets/site/sns-youtube.png"></a>
-      <a class="uma-soc dc" href="#"><img alt="Discord" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@15f8a23cd8ac/uma-profile/assets/site/sns-discord.png"></a>
-    </div>
-  </div>
-
   <!-- ── Updates (News) ────────────────────────────────────── -->
   <div class="uma-sec uma-news" id="updates">
-    <img class="uma-band-pat" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@15f8a23cd8ac/uma-profile/assets/site/pattern.png">
+    <img class="uma-band-pat" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@34b80acd79e0/uma-profile/assets/site/pattern.png">
     <div class="uma-tag-wrap"><div class="uma-tag pink">News</div></div>
 
     <a class="uma-card" href="#">
@@ -101,23 +81,39 @@
 
   <!-- ── About ─────────────────────────────────────────────── -->
   <div class="uma-sec uma-about" id="about">
-    <img class="uma-sec-bg" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@15f8a23cd8ac/uma-profile/assets/site/about_bg.jpg">
+    <img class="uma-sec-bg" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@34b80acd79e0/uma-profile/assets/site/about_bg.jpg">
     <div class="uma-tag-wrap"><div class="uma-tag blue">About</div></div>
 
-    <div class="uma-about-plate">
-      <img alt="" src="https://umamusume.com/_app/immutable/assets/about_thumbnail.DvTbfr6J.jpeg">
+    <div class="uma-profile-card">
+      <div class="uma-pfp">
+        <img alt="Profile picture" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@34b80acd79e0/uma-profile/assets/site/pfp.jpg">
+      </div>
+      <div class="uma-pfp-body">
+        <div class="uma-pfp-name">@uma_enjoyer</div>
+        <div class="uma-pfp-sub">Trainer · Lorebook author · Tracen Academy</div>
+        <div class="uma-pfp-txt">
+          Trainer by day, bot author by night. I write Umamusume characters that stay in
+          character — tight prose, real track logic, and enough chaos to keep a career run
+          interesting. Expect slow burns, rivalry, and the occasional hopeless crush.
+        </div>
+        <div class="uma-pfp-rows">
+          <div class="uma-pfp-row"><span>Writing since</span><b>2025</b></div>
+          <div class="uma-pfp-row"><span>Bots live</span><b>13</b></div>
+          <div class="uma-pfp-row"><span>Lorebooks</span><b>V4 → FV14</b></div>
+        </div>
+      </div>
     </div>
 
     <div class="uma-about-txt">
-      Trainer by day, bot author by night. I write Umamusume characters that stay in character —
-      tight prose, real track logic, and enough chaos to keep a career run interesting.
-      Expect slow burns, rivalry, and the occasional hopeless crush.
+      Everything here is hand-written. Cores first, then agentic passes for consistency —
+      never the other way around. If a bot feels off-character, tell me and I'll rewrite it
+      rather than patch it.
     </div>
   </div>
 
   <!-- ── Gameplay ──────────────────────────────────────────── -->
   <div class="uma-sec uma-play" id="scripts">
-    <img class="uma-band-pat" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@15f8a23cd8ac/uma-profile/assets/site/pattern.png">
+    <img class="uma-band-pat" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@34b80acd79e0/uma-profile/assets/site/pattern.png">
     <div class="uma-tag-wrap"><div class="uma-tag green">Gameplay</div></div>
     <div class="uma-hl">Train your Umamusume!</div>
 
@@ -132,31 +128,31 @@
         <div class="uma-track">
           <div class="uma-slide">
             <img alt="" src="https://umamusume.com/_app/immutable/assets/gameplay_specialweek.DbgtPsGW.png">
-            <div class="uma-slide-cap">Character bots — pick a racer and a training regimen that fits her.</div>
+            <div class="uma-slide-cap"><b>Lorebooks</b> — the world state, the schedules, the rivalry web. Dropped in, no setup.</div>
           </div>
           <div class="uma-slide">
             <img alt="" src="https://umamusume.com/_app/immutable/assets/gameplay_silencesuzuka.CF-9agsU.png">
-            <div class="uma-slide-cap">Scenarios — Tracen Academy, friendship training, rivalry arcs.</div>
+            <div class="uma-slide-cap"><b>How it runs</b> — V4 today, V10 final, then FV11 to FV14. Each pass tightens canon.</div>
           </div>
           <div class="uma-slide">
             <img alt="" src="https://umamusume.com/_app/immutable/assets/gameplay_winningticket.6_SJzSZq.png">
-            <div class="uma-slide-cap">Scripts &amp; lorebooks — drop-in modules for any chat.</div>
+            <div class="uma-slide-cap"><b>Using them</b> — attach the book, pick a racer, start the career run. That is it.</div>
           </div>
         </div>
       </div>
 
-      <div class="uma-ctl c1"><a class="uma-arrow" href="#g3"><img class="uma-arrow-img" alt="Previous" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@15f8a23cd8ac/uma-profile/assets/site/arrow_left.png"></a><a class="uma-arrow" href="#g2"><img class="uma-arrow-img" alt="Next" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@15f8a23cd8ac/uma-profile/assets/site/arrow_right.png"></a></div>
-      <div class="uma-ctl c2"><a class="uma-arrow" href="#g1"><img class="uma-arrow-img" alt="Previous" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@15f8a23cd8ac/uma-profile/assets/site/arrow_left.png"></a><a class="uma-arrow" href="#g3"><img class="uma-arrow-img" alt="Next" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@15f8a23cd8ac/uma-profile/assets/site/arrow_right.png"></a></div>
-      <div class="uma-ctl c3"><a class="uma-arrow" href="#g2"><img class="uma-arrow-img" alt="Previous" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@15f8a23cd8ac/uma-profile/assets/site/arrow_left.png"></a><a class="uma-arrow" href="#g1"><img class="uma-arrow-img" alt="Next" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@15f8a23cd8ac/uma-profile/assets/site/arrow_right.png"></a></div>
+      <div class="uma-ctl c1"><a class="uma-arrow" href="#g3"><img class="uma-arrow-img" alt="Previous" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@34b80acd79e0/uma-profile/assets/site/arrow_left.png"></a><a class="uma-arrow" href="#g2"><img class="uma-arrow-img" alt="Next" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@34b80acd79e0/uma-profile/assets/site/arrow_right.png"></a></div>
+      <div class="uma-ctl c2"><a class="uma-arrow" href="#g1"><img class="uma-arrow-img" alt="Previous" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@34b80acd79e0/uma-profile/assets/site/arrow_left.png"></a><a class="uma-arrow" href="#g3"><img class="uma-arrow-img" alt="Next" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@34b80acd79e0/uma-profile/assets/site/arrow_right.png"></a></div>
+      <div class="uma-ctl c3"><a class="uma-arrow" href="#g2"><img class="uma-arrow-img" alt="Previous" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@34b80acd79e0/uma-profile/assets/site/arrow_left.png"></a><a class="uma-arrow" href="#g1"><img class="uma-arrow-img" alt="Next" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@34b80acd79e0/uma-profile/assets/site/arrow_right.png"></a></div>
 
-      <div class="uma-pg p1"><img alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@15f8a23cd8ac/uma-profile/assets/site/pager_1.png"></div>
-      <div class="uma-pg p2"><img alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@15f8a23cd8ac/uma-profile/assets/site/pager_2.png"></div>
-      <div class="uma-pg p3"><img alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@15f8a23cd8ac/uma-profile/assets/site/pager_3.png"></div>
+      <div class="uma-pg p1"><img alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@34b80acd79e0/uma-profile/assets/site/pager_1.png"></div>
+      <div class="uma-pg p2"><img alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@34b80acd79e0/uma-profile/assets/site/pager_2.png"></div>
+      <div class="uma-pg p3"><img alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@34b80acd79e0/uma-profile/assets/site/pager_3.png"></div>
     </div>
 
   <!-- ── Roster (Characters) ───────────────────────────────── -->
   <div class="uma-sec uma-roster" id="characters">
-    <img class="uma-band-pat" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@15f8a23cd8ac/uma-profile/assets/site/pattern.png">
+    <img class="uma-band-pat" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@34b80acd79e0/uma-profile/assets/site/pattern.png">
     <div class="uma-tag-wrap"><div class="uma-tag purple">Characters</div></div>
 
     <div class="uma-grid">
@@ -168,9 +164,15 @@
         <img alt="" src="https://en-portal.g.kuroco-img.app/v=1768440020/files/user/character/mrcb/mrcb_top.png">
         
       </a>
-      <a class="uma-tile" href="#" style="height:104px"><img alt="" src="https://en-portal.g.kuroco-img.app/v=1750748798/files/user/character/tamamocross/tamamocross_top.png"></a>
-      <a class="uma-tile" href="#" style="height:104px"><img alt="" src="https://en-portal.g.kuroco-img.app/v=1749211789/files/user/character/nicenature/nicenature_top.png"></a>
-      <a class="uma-tile" href="#" style="height:104px"><img alt="" src="https://en-portal.g.kuroco-img.app/v=1749211687/files/user/character/winningticket/winningticket_top.png"></a>
+      <a class="uma-tile" href="#" style="height:104px"><img alt="" src="https://en-portal.g.kuroco-img.app/v=1750748798/files/user/character/tamamocross/tamamocross_top.png">
+        <span class="uma-tile-name">Tamamo Cross</span>
+      </a>
+      <a class="uma-tile" href="#" style="height:104px"><img alt="" src="https://en-portal.g.kuroco-img.app/v=1749211789/files/user/character/nicenature/nicenature_top.png">
+        <span class="uma-tile-name">Nice Nature</span>
+      </a>
+      <a class="uma-tile" href="#" style="height:104px"><img alt="" src="https://en-portal.g.kuroco-img.app/v=1749211687/files/user/character/winningticket/winningticket_top.png">
+        <span class="uma-tile-name">Winning Ticket</span>
+      </a>
     </div>
 
     <a class="uma-explore" href="#"><span>Explore</span><span>››</span></a>
@@ -178,17 +180,17 @@
 
   <!-- ── Media ─────────────────────────────────────────────── -->
   <div class="uma-sec uma-media">
-    <img class="uma-band-pat" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@15f8a23cd8ac/uma-profile/assets/site/pattern.png">
+    <img class="uma-band-pat" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@34b80acd79e0/uma-profile/assets/site/pattern.png">
     <div class="uma-tag-wrap"><div class="uma-tag blue">Media</div></div>
 
     <div class="uma-media-row">
       <a class="uma-media-tile" href="#">
         <img alt="" src="https://umamusume.com/_app/immutable/assets/media_image.bZStKUoL.png">
-        <span class="uma-media-lbl">Threads</span>
+        <span class="uma-media-lbl">Anime</span>
       </a>
       <a class="uma-media-tile" href="#">
         <img alt="" src="https://umamusume.com/_app/immutable/assets/gameplay_image_1-1.DqKsqutO.png">
-        <span class="uma-media-lbl">Lorebooks</span>
+        <span class="uma-media-lbl">Gacha</span>
       </a>
     </div>
     <a class="uma-explore" href="#"><span>Explore</span><span>››</span></a>
