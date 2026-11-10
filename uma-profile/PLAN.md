@@ -274,3 +274,27 @@ No hotlink dependency on Cygames, no uploads, and the bytes are the site's origi
 2. Port `top-news` (`.section-title` ribbon geometry from `2.BtMVfDfi.css`, `.NewsItem` card from `NewsItem.BW2Y3wsu.css`).
 3. Port `top-about`, `top-gameplay` (splide → flex strip), `top-characters`, `top-media`, footer.
 4. Strip every `svelte-*` suffix and every `var()` (JAI), keep the numbers.
+
+---
+
+## 10. The vanishing-SVG bug (2026-11-09, day 2)
+
+Symptom reported: the SVG images render once, then disappear after the editor reloads the profile.
+
+Cause, corroborated by the studio's own changelog (`tools.from-avalon.com/janitor-profile-maker`):
+*"the preview is a capture of the real profile page … and what JanitorAI would strip is stripped here too"*
+and *"the linter underlines every declaration JanitorAI throws away"*. SVG `<img>` sources don't survive
+Janitor's sanitiser — they paint until the draft is re-saved, then they're gone.
+
+Fix: no `.svg` anywhere. The four brand marks were rebuilt as PNGs:
+
+```
+capture/parts/sns-{x,facebook,youtube,discord}.svg   ← fetched from parts.umamusume.com by the runner
+  ⤷ rasterised 8× in headless Chrome, trimmed to 128 px, png32 with alpha
+uma-profile/assets/site/sns-*.png                     ← 2.2–4.2 KB each
+```
+
+Verified: `grep -c '.svg' JANITOR-PASTE.txt` went 4 → 0. Every raster in the profile is now
+PNG/JPEG/WEBP. The chevrons, pager, band watermark and About backdrop were already PNG/JPEG.
+
+Rule going forward: never ship an `.svg` source, always rasterise.
