@@ -90,6 +90,23 @@ async function main() {
   }
   console.log(`  saved ${a} assets`);
 
+  // 5. brand marks and badges from the parts CDN (SVG sources, for PNG conversion)
+  console.log('parts cdn');
+  await fs.mkdir(`${OUT}/parts`, { recursive: true });
+  const PARTS = [
+    'sns-x.svg', 'sns-facebook.svg', 'sns-youtube.svg', 'sns-discord.svg',
+    'logo_umamusume.png', 'app_icon.png',
+    'badge-steam.png', 'badge-appstore.png', 'badge-googleplay.png', 'badge-googleplaygames.png',
+  ];
+  let pn = 0;
+  for (const f of PARTS) {
+    const buf = await get(`https://parts.umamusume.com/assets/images/${f}`);
+    if (buf && buf.length > 50) { await fs.writeFile(`${OUT}/parts/${f}`, buf); pn++; console.log(`  ${f} ${buf.length}b`); }
+    else console.log(`  ${f} — not fetched`);
+    await sleep(400);
+  }
+  console.log(`  saved ${pn} parts`);
+
   const listing = await fs.readdir(`${OUT}/img`).catch(() => []);
   await fs.writeFile(`${OUT}/files.txt`, listing.join('\n') + '\n');
   console.log('DONE');
