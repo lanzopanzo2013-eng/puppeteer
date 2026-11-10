@@ -1,7 +1,6 @@
 page
   html 26514b
 css
-    504 retry 1: https://web.archive.org/cdx/search/cdx?url=umamusume.com%2F_app%2Fimmutable%2Fassets%2F&ma
   index lists 51
   0.6wHZuKGw.css 67626b
   0.9wywBPq6.css 33540b
@@ -59,6 +58,7 @@ img
   saved 120 images
 css-referenced assets
   25 unique asset refs
+    err fetch failed: https://web.archive.org/web/2026id_/https://umamusume.com/_app/immutab
   teitetsu.BNI5mUfy.svg 1241b
   bg_playnow.zS7x0-r_.png 40907b
   arrow_double.nHmJyBTy.svg 344b
@@ -71,6 +71,7 @@ css-referenced assets
   kv_mask.DhgZQNMI.svg 166b
   kv_mask.D_S7j30e.svg 166b
   campaign_horseshoe.C3fDAxC0.svg 1057b
+    err fetch failed: https://web.archive.org/web/2026id_/https://umamusume.com/_app/immutab
   bg_texture.CcDnqVED.jpg 968979b
   bg_footer.Bv3mbSyW.jpg 2637297b
   icon_play.DDT9Nirq.svg 143b
@@ -84,5 +85,17 @@ css-referenced assets
   bg_parts.CyiqND7u.png 7023b
   bg_title.HYB_fX5K.png 216522b
   saved 24 assets
+parts cdn
+  sns-x.svg 463b
+  sns-facebook.svg 606b
+  sns-youtube.svg 784b
+  sns-discord.svg 1301b
+  logo_umamusume.png 132471b
+  app_icon.png 513750b
+  badge-steam.png 9717b
+  badge-appstore.png 8822b
+  badge-googleplay.png 8821b
+  badge-googleplaygames.png 20271b
+  saved 10 parts
 DONE
 capture exit: 0
