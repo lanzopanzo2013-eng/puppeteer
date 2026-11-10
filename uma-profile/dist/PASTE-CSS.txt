@@ -154,20 +154,27 @@
 .uma-sec > .uma-carousel, .uma-sec > .uma-grid,
 .uma-sec > .uma-explore, .uma-sec > .uma-media-row { position: relative; z-index: 1; }
 .uma-tag {
-  font-family: "Roboto Condensed", roboto, Arial, sans-serif;
-  display: inline-block;
-  padding: 9px 30px 11px;
-  font-style: italic; font-weight: 900; font-size: 26px; letter-spacing: -.5px;
-  color: #fff; line-height: 1;
+  display: inline-flex; align-items: center;
+  height: 9.6vw; max-height: 46px;
+  transform: skew(-15deg);
   position: relative; z-index: 2;
-  /* parallelogram plate - clip-path is allowed, inline vector markup is not */
-  clip-path: polygon(9% 0, 100% 0, 91% 100%, 0 100%);
-  text-shadow: 2px 2px 0 rgba(0,0,0,.18);
+  font-family: "Roboto Condensed", roboto, Arial, sans-serif;
+  font-style: italic; font-weight: 700;
+  font-size: 7.4666vw; line-height: 1; letter-spacing: .05em;
+  color: #fff;
 }
-.uma-tag.pink  { background: linear-gradient(180deg, #FF79D0, #E36CB9); }
-.uma-tag.green { background: linear-gradient(180deg, #4FBF43, #3CA732); }
-.uma-tag.blue  { background: linear-gradient(180deg, #5A85FF, #2A5DFA); }
-.uma-tag.purple{ background: linear-gradient(180deg, #A9A2FF, #7D75E3); }
+.uma-tag span {
+  display: inline-block; transform: skew(15deg);
+  padding-left: 6.1333vw; padding-right: 6.9333vw;
+  text-shadow: 1px 1px 0 rgba(0,0,0,.14);
+}
+.uma-tag.pink  { background: #FF79D0; }
+.uma-tag.green { background: #3CA732; }
+.uma-tag.blue  { background: #2A5DFA; }
+.uma-tag.purple{ background: #8C83FF; }
+/* About is the white plate with blue lettering on the real site */
+.uma-tag-white { background: #fff; }
+.uma-tag-white span { color: #2A5DFA; text-shadow: none; }
 .uma-tag-wrap { margin-bottom: 16px; }
 
 /* section headline (the "Train your Umamusume!" type) */
@@ -349,9 +356,13 @@
 .uma-media-row { display: flex; justify-content: space-between; }
 .uma-media-tile {
   width: 48.5%; border-radius: 10px; overflow: hidden; border: 3px solid rgba(255,255,255,.85);
-  position: relative;
+  position: relative; display: block;
 }
-.uma-media-tile img { width: 100%; }
+.uma-media-tile > img { width: 100%; height: auto; display: block; }
+.uma-media-tile img.uma-media-title {
+  position: absolute; left: 10px; bottom: 10px; width: 62%; height: auto; z-index: 2;
+  filter: drop-shadow(0 2px 3px rgba(0,0,0,.5));
+}
 .uma-media-lbl {
   position: absolute; left: 8px; bottom: 8px; color: #fff;
   font-weight: 900; font-style: italic; font-size: 13px;

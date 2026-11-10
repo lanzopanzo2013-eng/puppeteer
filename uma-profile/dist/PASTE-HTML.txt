@@ -43,8 +43,8 @@
 
   <!-- ── Updates (News) ────────────────────────────────────── -->
   <div class="uma-sec uma-news" id="updates">
-    <img class="uma-band-pat" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@34b80acd79e0/uma-profile/assets/site/pattern.png">
-    <div class="uma-tag-wrap"><div class="uma-tag pink">News</div></div>
+    <img class="uma-band-pat" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@f9e968e5359e/uma-profile/assets/site/pattern.png">
+    <div class="uma-tag-wrap"><div class="uma-tag pink"><span>News</span></div></div>
 
     <a class="uma-card" href="#">
       <div class="uma-card-body">
@@ -81,12 +81,12 @@
 
   <!-- ── About ─────────────────────────────────────────────── -->
   <div class="uma-sec uma-about" id="about">
-    <img class="uma-sec-bg" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@34b80acd79e0/uma-profile/assets/site/about_bg.jpg">
-    <div class="uma-tag-wrap"><div class="uma-tag blue">About</div></div>
+    <img class="uma-sec-bg" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@f9e968e5359e/uma-profile/assets/site/about_bg.jpg">
+    <div class="uma-tag-wrap"><div class="uma-tag blue uma-tag-white"><span>About</span></div></div>
 
     <div class="uma-profile-card">
       <div class="uma-pfp">
-        <img alt="Profile picture" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@34b80acd79e0/uma-profile/assets/site/pfp.jpg">
+        <img alt="Profile picture" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@f9e968e5359e/uma-profile/assets/site/pfp.jpg">
       </div>
       <div class="uma-pfp-body">
         <div class="uma-pfp-name">@uma_enjoyer</div>
@@ -113,8 +113,8 @@
 
   <!-- ── Gameplay ──────────────────────────────────────────── -->
   <div class="uma-sec uma-play" id="scripts">
-    <img class="uma-band-pat" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@34b80acd79e0/uma-profile/assets/site/pattern.png">
-    <div class="uma-tag-wrap"><div class="uma-tag green">Gameplay</div></div>
+    <img class="uma-band-pat" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@f9e968e5359e/uma-profile/assets/site/pattern.png">
+    <div class="uma-tag-wrap"><div class="uma-tag green"><span>Gameplay</span></div></div>
     <div class="uma-hl">Train your Umamusume!</div>
 
     <!-- arrows drive the slides through :target, which is the only way to do this
@@ -141,19 +141,19 @@
         </div>
       </div>
 
-      <div class="uma-ctl c1"><a class="uma-arrow" href="#g3"><img class="uma-arrow-img" alt="Previous" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@34b80acd79e0/uma-profile/assets/site/arrow_left.png"></a><a class="uma-arrow" href="#g2"><img class="uma-arrow-img" alt="Next" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@34b80acd79e0/uma-profile/assets/site/arrow_right.png"></a></div>
-      <div class="uma-ctl c2"><a class="uma-arrow" href="#g1"><img class="uma-arrow-img" alt="Previous" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@34b80acd79e0/uma-profile/assets/site/arrow_left.png"></a><a class="uma-arrow" href="#g3"><img class="uma-arrow-img" alt="Next" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@34b80acd79e0/uma-profile/assets/site/arrow_right.png"></a></div>
-      <div class="uma-ctl c3"><a class="uma-arrow" href="#g2"><img class="uma-arrow-img" alt="Previous" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@34b80acd79e0/uma-profile/assets/site/arrow_left.png"></a><a class="uma-arrow" href="#g1"><img class="uma-arrow-img" alt="Next" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@34b80acd79e0/uma-profile/assets/site/arrow_right.png"></a></div>
+      <div class="uma-ctl c1"><a class="uma-arrow" href="#g3"><img class="uma-arrow-img" alt="Previous" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@f9e968e5359e/uma-profile/assets/site/arrow_left.png"></a><a class="uma-arrow" href="#g2"><img class="uma-arrow-img" alt="Next" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@f9e968e5359e/uma-profile/assets/site/arrow_right.png"></a></div>
+      <div class="uma-ctl c2"><a class="uma-arrow" href="#g1"><img class="uma-arrow-img" alt="Previous" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@f9e968e5359e/uma-profile/assets/site/arrow_left.png"></a><a class="uma-arrow" href="#g3"><img class="uma-arrow-img" alt="Next" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@f9e968e5359e/uma-profile/assets/site/arrow_right.png"></a></div>
+      <div class="uma-ctl c3"><a class="uma-arrow" href="#g2"><img class="uma-arrow-img" alt="Previous" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@f9e968e5359e/uma-profile/assets/site/arrow_left.png"></a><a class="uma-arrow" href="#g1"><img class="uma-arrow-img" alt="Next" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@f9e968e5359e/uma-profile/assets/site/arrow_right.png"></a></div>
 
-      <div class="uma-pg p1"><img alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@34b80acd79e0/uma-profile/assets/site/pager_1.png"></div>
-      <div class="uma-pg p2"><img alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@34b80acd79e0/uma-profile/assets/site/pager_2.png"></div>
-      <div class="uma-pg p3"><img alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@34b80acd79e0/uma-profile/assets/site/pager_3.png"></div>
+      <div class="uma-pg p1"><img alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@f9e968e5359e/uma-profile/assets/site/pager_1.png"></div>
+      <div class="uma-pg p2"><img alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@f9e968e5359e/uma-profile/assets/site/pager_2.png"></div>
+      <div class="uma-pg p3"><img alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@f9e968e5359e/uma-profile/assets/site/pager_3.png"></div>
     </div>
 
   <!-- ── Roster (Characters) ───────────────────────────────── -->
   <div class="uma-sec uma-roster" id="characters">
-    <img class="uma-band-pat" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@34b80acd79e0/uma-profile/assets/site/pattern.png">
-    <div class="uma-tag-wrap"><div class="uma-tag purple">Characters</div></div>
+    <img class="uma-band-pat" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@f9e968e5359e/uma-profile/assets/site/pattern.png">
+    <div class="uma-tag-wrap"><div class="uma-tag purple"><span>Characters</span></div></div>
 
     <div class="uma-grid">
       <a class="uma-tile wide" href="#" style="height:132px">
@@ -180,17 +180,17 @@
 
   <!-- ── Media ─────────────────────────────────────────────── -->
   <div class="uma-sec uma-media">
-    <img class="uma-band-pat" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@34b80acd79e0/uma-profile/assets/site/pattern.png">
-    <div class="uma-tag-wrap"><div class="uma-tag blue">Media</div></div>
+    <img class="uma-band-pat" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@f9e968e5359e/uma-profile/assets/site/pattern.png">
+    <div class="uma-tag-wrap"><div class="uma-tag blue"><span>Media</span></div></div>
 
     <div class="uma-media-row">
       <a class="uma-media-tile" href="#">
         <img alt="" src="https://umamusume.com/_app/immutable/assets/media_image.bZStKUoL.png">
-        <span class="uma-media-lbl">Anime</span>
+        <img class="uma-media-title" alt="Anime" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@f9e968e5359e/uma-profile/assets/site/title_anime.png">
       </a>
       <a class="uma-media-tile" href="#">
         <img alt="" src="https://umamusume.com/_app/immutable/assets/gameplay_image_1-1.DqKsqutO.png">
-        <span class="uma-media-lbl">Gacha</span>
+        <img class="uma-media-title" alt="Music" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@f9e968e5359e/uma-profile/assets/site/title_music.png">
       </a>
     </div>
     <a class="uma-explore" href="#"><span>Explore</span><span>››</span></a>
