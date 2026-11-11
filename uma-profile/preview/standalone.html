@@ -104,9 +104,10 @@
 .uma-shell {
   font-family: roboto, "Roboto", "Roboto Condensed", "Segoe UI", Arial, sans-serif;
   color: #4D4D4D;
-  width: 100%;
-  max-width: 560px;
-  margin: 0 auto;
+  width: auto;
+  max-width: none;
+  /* break out of the About Me column so the page reads as a site, not a card */
+  margin-inline: calc(50% - 50vw);
   background-color: #58AC3C;
   overflow-x: clip;
   position: relative;
@@ -120,7 +121,7 @@
 
 /* ---- top bar ---- */
 /* ---- hero ---- */
-.uma-hero { position: relative; height: 124vw; background: #8FD46A; overflow: hidden; }
+.uma-hero { position: relative; height: min(124vw, 780px); background: #8FD46A; overflow: hidden; }
 .uma-hero-art {
   position: absolute; left: 0; top: 0; width: 100%; height: 100%;
   object-fit: cover; object-position: 50% 0;
@@ -198,18 +199,18 @@
 .uma-sec > .uma-explore, .uma-sec > .uma-media-row { position: relative; z-index: 1; }
 .uma-tag {
   display: inline-flex; align-items: center;
-  height: 9.6vw; max-height: 46px;
+  height: min(9.6vw, 83px);
   transform: skew(-15deg);
   box-shadow: 0 6px 16px rgba(20,20,60,.22);
   position: relative; z-index: 2;
   font-family: "Roboto Condensed", roboto, Arial, sans-serif;
   font-style: italic; font-weight: 700;
-  font-size: 7.4666vw; line-height: 1; letter-spacing: .05em;
+  font-size: min(7.4666vw, 61px); line-height: 1; letter-spacing: .05em;
   color: #fff;
 }
 .uma-tag span {
   display: inline-block; transform: skew(15deg);
-  padding-left: 6.1333vw; padding-right: 6.9333vw;
+  padding-left: min(6.1333vw, 50px); padding-right: min(6.9333vw, 56px);
   text-shadow: 1px 1px 0 rgba(0,0,0,.14);
 }
 .uma-tag.pink  { background: #FF79D0; }
@@ -221,8 +222,8 @@
 .uma-tag.uma-tag-white span { color: #2A5DFA; text-shadow: none; }
 .uma-tag-wrap { margin-bottom: 16px; }
 .uma-tag span { white-space: nowrap; }
-.uma-tag.long  span { font-size: 4.7vw; letter-spacing: .03em; }
-.uma-tag.xlong span { font-size: 3.85vw; letter-spacing: .02em; }
+.uma-tag.long  span { font-size: min(4.7vw, 44px); letter-spacing: .03em; }
+.uma-tag.xlong span { font-size: min(3.85vw, 36px); letter-spacing: .02em; }
 
 /* section headline (the "Train your Umamusume!" type) */
 .uma-hl {
@@ -430,6 +431,27 @@
   text-shadow: 0 2px 4px rgba(0,0,0,.45);
 }
 
+
+/* ---------- Download (the site's blue band) ---------- */
+.uma-dl {
+  background: #2A5DFA; padding: 26px 18px 22px; text-align: center;
+}
+.uma-dl-icon {
+  width: 78px; height: 78px; margin: 0 auto 12px; border-radius: 18px;
+  border: 3px solid rgba(255,255,255,.55); object-fit: cover;
+}
+.uma-dl-title {
+  font-family: "Roboto Condensed", roboto, Arial, sans-serif;
+  font-style: italic; font-weight: 900; font-size: 24px; color: #fff; margin-bottom: 16px;
+}
+.uma-dl-badges { display: flex; flex-wrap: wrap; justify-content: center; gap: 9px; }
+.uma-dl-badges a { display: block; width: 47.6%; }
+.uma-dl-badges img { width: 100%; height: auto; }
+.uma-dl-legal {
+  margin-top: 16px; text-align: left;
+  font-size: 9.5px; line-height: 1.55; color: rgba(255,255,255,.82);
+}
+
 /* ---------- Footer ---------- */
 .uma-foot { background: #2A5DFA; padding: 18px 16px 22px; text-align: center; }
 .uma-foot .w1 {
@@ -452,7 +474,18 @@
    ============================================================ */
 .pp-page-background {
   background: #EAF3FF !important;
+  overflow-x: clip !important;
 }
+/* Janitor wraps the About Me block in its own padded column. Zeroing the
+   padding and letting the wrapper disappear (display:contents — the same trick
+   the previous theme used) is what lets .uma-shell span the whole viewport. */
+.pp-uc-background, .pp-uc-background > *,
+.pp-uc-about-me, .profile-about-me {
+  padding: 0 !important; margin-left: 0 !important; margin-right: 0 !important;
+  max-width: none !important;
+}
+.pp-uc-about-me, .profile-about-me { display: contents !important; }
+.pp-uc-about-me > *, .profile-about-me > * { max-width: none !important; }
 .pp-uc-background, .pp-uc-background > * {
   background: transparent !important;
   box-shadow: none !important;
@@ -509,14 +542,14 @@
    -logo-name / -logo-sub-name); painting it as a background keeps the image
    off the DOM, so nothing about it can be stripped by the editor. */
 .pp-top-bar, .profile-top-bar, .pp-top-bar-inner {
-  background: #fff !important;
-  border-bottom: 2px solid #E3E8F2 !important;
+  background: #2A5DFA !important;
+  border-bottom: 0 !important;
   box-shadow: none !important;
 }
 .pp-top-bar-logo, .profile-top-bar-logo {
   width: 132px !important; height: 40px !important;
   min-width: 132px !important; max-width: 132px !important;
-  background: url("https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@f01e1862f174/uma-profile/assets/site/logo.png") no-repeat left center / contain !important;
+  background: url("https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@d98bae508e96/uma-profile/assets/site/logo.png") no-repeat left center / contain !important;
   border-radius: 0 !important; box-shadow: none !important;
   overflow: hidden;
 }
@@ -524,19 +557,41 @@
 .profile-top-bar-logo-name, .profile-top-bar-logo-sub-name {
   visibility: hidden !important;
 }
-.pp-top-bar-title, .profile-top-bar-title { color: #12386E !important; }
+.pp-top-bar-title, .profile-top-bar-title { color: #fff !important; }
 .pp-top-bar-back-button, .pp-top-bar-search-icon,
 .pp-top-bar-notifications-button { color: #2A5DFA !important; }
 .pp-top-bar-search, .pp-top-bar-search-input {
-  background: #F2F5FB !important; border: 1px solid #DCE3F0 !important; color: #12386E !important;
+  background: rgba(255,255,255,.16) !important; border: 1px solid rgba(255,255,255,.34) !important;
+  color: #fff !important;
 }
-.pp-top-bar-create-char { color: #2A5DFA !important; border: 1px solid #C9D6F0 !important; }
+.pp-top-bar-create-char { color: #fff !important; border: 1px solid rgba(255,255,255,.45) !important; }
+/* the site's white menu dial, sitting where Janitor keeps its round button */
+.pp-top-bar-notifications-button, .profile-top-bar-notifications-button {
+  background: #fff !important; color: #2A5DFA !important;
+  border-radius: 50% !important; width: 34px !important; height: 34px !important;
+  display: inline-flex !important; align-items: center !important; justify-content: center !important;
+}
 
 /* small screens */
+/* wide screens: the bands stay edge to edge, the content inside them keeps a
+   readable measure — the way the site behaves between phone and desktop. */
+@media (min-width: 820px) {
+  .uma-sec { padding-left: calc(50% - 500px); padding-right: calc(50% - 500px); }
+  .uma-cta { left: calc(50% - 500px); right: calc(50% - 500px); }
+  .uma-playnow { left: calc(50% - 500px + 4px); }
+  .uma-side { right: calc(50% - 500px + 7px); }
+  .uma-dl { padding-left: calc(50% - 500px); padding-right: calc(50% - 500px); }
+  .uma-tile, .uma-tile:last-child { width: 18.4%; aspect-ratio: 3 / 4; }
+  .uma-tile:last-child img { object-position: 50% 100%; }
+  .uma-media-row { flex-direction: row; }
+  .uma-media-tile { width: 48.6%; }
+  .uma-card-thumb { width: 168px; }
+}
+
 @media (max-width: 380px) {
   .uma-tag { font-size: 23px; padding: 8px 26px 9px; }
   .uma-hl { font-size: 22px; }
-  .uma-hero { height: 122vw; }
+  .uma-hero { height: min(122vw, 780px); }
 }
 </style>
 
@@ -548,7 +603,7 @@
   <!-- ── hero ──────────────────────────────────────────────── -->
   <div class="uma-hero">
     <!-- IMG:KV → TEMP local crop -->
-    <img class="uma-hero-art" alt="Umamusume: Pretty Derby" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@f01e1862f174/uma-profile/assets/site/hero.jpg">
+    <img class="uma-hero-art" alt="Umamusume: Pretty Derby" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@d98bae508e96/uma-profile/assets/site/hero.jpg">
     <div class="uma-hero-wash"></div>
     <div class="uma-side">Uma Enjoyer · Tracen</div>
     <div class="uma-playnow"><span>PLAY NOW!</span></div>
@@ -576,7 +631,7 @@
 
   <!-- ── Updates (News) ────────────────────────────────────── -->
   <div class="uma-sec uma-news" id="updates">
-    <img class="uma-band-pat" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@f01e1862f174/uma-profile/assets/site/pattern.png">
+    <img class="uma-band-pat" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@d98bae508e96/uma-profile/assets/site/pattern.png">
     <div class="uma-tag-wrap"><div class="uma-tag pink long"><span>Current OWN Doings</span></div></div>
 
     <a class="uma-card" href="#">
@@ -585,7 +640,7 @@
         <div class="uma-meta"><span class="uma-pill">Bot</span><span class="uma-date">2026/11/05 13:30 (UTC)</span></div>
         <div class="uma-card-txt">New bot: Silence Suzuka takes the lead in a quiet, hopeless romance.</div>
       </div>
-      <img class="uma-card-thumb" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@f01e1862f174/uma-profile/assets/site/news1.jpg">
+      <img class="uma-card-thumb" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@d98bae508e96/uma-profile/assets/site/news1.jpg">
       <div class="uma-card-go">›</div>
     </a>
 
@@ -595,7 +650,7 @@
         <div class="uma-meta"><span class="uma-pill">Bot</span><span class="uma-date">2026/11/04 22:00 (UTC)</span></div>
         <div class="uma-card-txt">Reworked: Unity Cup — Tokai Teio's scenario now has three new openings.</div>
       </div>
-      <img class="uma-card-thumb" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@f01e1862f174/uma-profile/assets/site/news2.jpg">
+      <img class="uma-card-thumb" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@d98bae508e96/uma-profile/assets/site/news2.jpg">
       <div class="uma-card-go">›</div>
     </a>
 
@@ -605,7 +660,7 @@
         <div class="uma-meta"><span class="uma-pill">Event</span><span class="uma-date">2026/11/01 09:15 (UTC)</span></div>
         <div class="uma-card-txt">Aquarius Cup event bot returns later this month — limited time only.</div>
       </div>
-      <img class="uma-card-thumb" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@f01e1862f174/uma-profile/assets/site/news1.jpg">
+      <img class="uma-card-thumb" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@d98bae508e96/uma-profile/assets/site/news1.jpg">
       <div class="uma-card-go">›</div>
     </a>
 
@@ -614,12 +669,12 @@
 
   <!-- ── About ─────────────────────────────────────────────── -->
   <div class="uma-sec uma-about" id="about">
-    <img class="uma-sec-bg" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@f01e1862f174/uma-profile/assets/site/about_bg.jpg">
+    <img class="uma-sec-bg" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@d98bae508e96/uma-profile/assets/site/about_bg.jpg">
     <div class="uma-tag-wrap"><div class="uma-tag blue uma-tag-white"><span>About Me</span></div></div>
 
     <div class="uma-profile-card">
       <div class="uma-pfp">
-        <img alt="Profile picture" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@f01e1862f174/uma-profile/assets/site/pfp.jpg">
+        <img alt="Profile picture" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@d98bae508e96/uma-profile/assets/site/pfp.jpg">
       </div>
       <div class="uma-pfp-body">
         <div class="uma-pfp-name">@uma_enjoyer</div>
@@ -646,7 +701,7 @@
 
   <!-- ── Gameplay ──────────────────────────────────────────── -->
   <div class="uma-sec uma-play" id="scripts">
-    <img class="uma-band-pat" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@f01e1862f174/uma-profile/assets/site/pattern.png">
+    <img class="uma-band-pat" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@d98bae508e96/uma-profile/assets/site/pattern.png">
     <div class="uma-tag-wrap"><div class="uma-tag green"><span>The Lorebooks</span></div></div>
     <div class="uma-hl">Train your Umamusume!</div>
 
@@ -660,32 +715,32 @@
       <div class="uma-viewport">
         <div class="uma-track">
           <div class="uma-slide">
-            <img alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@f01e1862f174/uma-profile/assets/site/slide1.jpg">
+            <img alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@d98bae508e96/uma-profile/assets/site/slide1.jpg">
             <div class="uma-slide-cap"><b>Lorebooks</b> — the world state, the schedules, the rivalry web. Dropped in, no setup.</div>
           </div>
           <div class="uma-slide">
-            <img alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@f01e1862f174/uma-profile/assets/site/slide2.jpg">
+            <img alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@d98bae508e96/uma-profile/assets/site/slide2.jpg">
             <div class="uma-slide-cap"><b>How it runs</b> — V4 today, V10 final, then FV11 to FV14. Each pass tightens canon.</div>
           </div>
           <div class="uma-slide">
-            <img alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@f01e1862f174/uma-profile/assets/site/slide1.jpg">
+            <img alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@d98bae508e96/uma-profile/assets/site/slide1.jpg">
             <div class="uma-slide-cap"><b>Using them</b> — attach the book, pick a racer, start the career run. That is it.</div>
           </div>
         </div>
       </div>
 
-      <div class="uma-ctl c1"><a class="uma-arrow" href="#g3"><img class="uma-arrow-img" alt="Previous" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@f01e1862f174/uma-profile/assets/site/arrow_left.png"></a><a class="uma-arrow" href="#g2"><img class="uma-arrow-img" alt="Next" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@f01e1862f174/uma-profile/assets/site/arrow_right.png"></a></div>
-      <div class="uma-ctl c2"><a class="uma-arrow" href="#g1"><img class="uma-arrow-img" alt="Previous" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@f01e1862f174/uma-profile/assets/site/arrow_left.png"></a><a class="uma-arrow" href="#g3"><img class="uma-arrow-img" alt="Next" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@f01e1862f174/uma-profile/assets/site/arrow_right.png"></a></div>
-      <div class="uma-ctl c3"><a class="uma-arrow" href="#g2"><img class="uma-arrow-img" alt="Previous" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@f01e1862f174/uma-profile/assets/site/arrow_left.png"></a><a class="uma-arrow" href="#g1"><img class="uma-arrow-img" alt="Next" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@f01e1862f174/uma-profile/assets/site/arrow_right.png"></a></div>
+      <div class="uma-ctl c1"><a class="uma-arrow" href="#g3"><img class="uma-arrow-img" alt="Previous" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@d98bae508e96/uma-profile/assets/site/arrow_left.png"></a><a class="uma-arrow" href="#g2"><img class="uma-arrow-img" alt="Next" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@d98bae508e96/uma-profile/assets/site/arrow_right.png"></a></div>
+      <div class="uma-ctl c2"><a class="uma-arrow" href="#g1"><img class="uma-arrow-img" alt="Previous" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@d98bae508e96/uma-profile/assets/site/arrow_left.png"></a><a class="uma-arrow" href="#g3"><img class="uma-arrow-img" alt="Next" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@d98bae508e96/uma-profile/assets/site/arrow_right.png"></a></div>
+      <div class="uma-ctl c3"><a class="uma-arrow" href="#g2"><img class="uma-arrow-img" alt="Previous" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@d98bae508e96/uma-profile/assets/site/arrow_left.png"></a><a class="uma-arrow" href="#g1"><img class="uma-arrow-img" alt="Next" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@d98bae508e96/uma-profile/assets/site/arrow_right.png"></a></div>
 
-      <div class="uma-pg p1"><img alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@f01e1862f174/uma-profile/assets/site/pager_1.png"></div>
-      <div class="uma-pg p2"><img alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@f01e1862f174/uma-profile/assets/site/pager_2.png"></div>
-      <div class="uma-pg p3"><img alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@f01e1862f174/uma-profile/assets/site/pager_3.png"></div>
+      <div class="uma-pg p1"><img alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@d98bae508e96/uma-profile/assets/site/pager_1.png"></div>
+      <div class="uma-pg p2"><img alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@d98bae508e96/uma-profile/assets/site/pager_2.png"></div>
+      <div class="uma-pg p3"><img alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@d98bae508e96/uma-profile/assets/site/pager_3.png"></div>
     </div>
 
   <!-- ── Roster (Characters) ───────────────────────────────── -->
   <div class="uma-sec uma-roster" id="characters">
-    <img class="uma-band-pat" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@f01e1862f174/uma-profile/assets/site/pattern.png">
+    <img class="uma-band-pat" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@d98bae508e96/uma-profile/assets/site/pattern.png">
     <div class="uma-tag-wrap"><div class="uma-tag purple xlong"><span>My Favourite Umamusume Characters</span></div></div>
 
     <div class="uma-grid">
@@ -713,22 +768,35 @@
 
   <!-- ── Media ─────────────────────────────────────────────── -->
   <div class="uma-sec uma-media">
-    <img class="uma-band-pat" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@f01e1862f174/uma-profile/assets/site/pattern.png">
+    <img class="uma-band-pat" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@d98bae508e96/uma-profile/assets/site/pattern.png">
     <div class="uma-tag-wrap"><div class="uma-tag blue"><span>Fandoms</span></div></div>
 
     <div class="uma-media-row">
       <a class="uma-media-tile" href="#">
-        <img alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@f01e1862f174/uma-profile/assets/site/media_a.jpg">
-        <img class="uma-media-plate" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@f01e1862f174/uma-profile/assets/site/title_anime.png">
+        <img alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@d98bae508e96/uma-profile/assets/site/media_a.jpg">
+        <img class="uma-media-plate" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@d98bae508e96/uma-profile/assets/site/title_anime.png">
         <span class="uma-media-lbl">Anime</span>
       </a>
       <a class="uma-media-tile" href="#">
-        <img alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@f01e1862f174/uma-profile/assets/site/media_b.jpg">
-        <img class="uma-media-plate" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@f01e1862f174/uma-profile/assets/site/title_music.png">
+        <img alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@d98bae508e96/uma-profile/assets/site/media_b.jpg">
+        <img class="uma-media-plate" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@d98bae508e96/uma-profile/assets/site/title_music.png">
         <span class="uma-media-lbl">Music</span>
       </a>
     </div>
     <a class="uma-explore" href="#"><span>Explore</span><span>››</span></a>
+  </div>
+
+  <!-- ── Download (the site's blue band) ──────────────────── -->
+  <div class="uma-dl">
+    <img class="uma-dl-icon" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@d98bae508e96/uma-profile/assets/site/pfp.jpg">
+    <div class="uma-dl-title">Download</div>
+    <div class="uma-dl-badges">
+      <a href="#"><img alt="Steam" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@d98bae508e96/uma-profile/assets/site/badge-steam.png"></a>
+      <a href="#"><img alt="App Store" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@d98bae508e96/uma-profile/assets/site/badge-appstore.png"></a>
+      <a href="#"><img alt="Google Play" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@d98bae508e96/uma-profile/assets/site/badge-googleplay.png"></a>
+      <a href="#"><img alt="Google Play Games" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@d98bae508e96/uma-profile/assets/site/badge-googleplaygames.png"></a>
+    </div>
+    <p class="uma-dl-legal">Apple and the Apple logo are trademarks of Apple Inc., registered in the U.S. and other countries and regions. Google Play and the Google Play logo are trademarks of Google LLC. ©2025 Valve Corporation. Steam and the Steam logo are trademarks and/or registered trademarks of Valve Corporation in the U.S. and/or other countries.</p>
   </div>
 
   <!-- ── Footer ────────────────────────────────────────────── -->

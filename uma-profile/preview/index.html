@@ -165,6 +165,10 @@
       'gameplay_winningticket': 'play2.jpg', 'gameplay_image_1-1': 'media_b.jpg',
       'media_image': 'media_a.jpg',
       'media_a.jpg': 'media_a.jpg', 'media_b.jpg': 'media_b.jpg',
+      'badge-steam.png': '../assets/site/badge-steam.png',
+      'badge-appstore.png': '../assets/site/badge-appstore.png',
+      'badge-googleplaygames.png': '../assets/site/badge-googleplaygames.png',
+      'badge-googleplay.png': '../assets/site/badge-googleplay.png',
       'logo.png': '../assets/site/logo.png', 'hero.jpg': '../assets/site/hero.jpg',
       'slide1.jpg': '../assets/site/slide1.jpg', 'slide2.jpg': '../assets/site/slide2.jpg',
       'news1.jpg': '../assets/site/news1.jpg', 'news2.jpg': '../assets/site/news2.jpg',
@@ -192,8 +196,9 @@
       (m, q, full, file) => 'url("../assets/site/' + file + '")');
     html = html.replace(/(src=")([^"]+)(")/g, (m, a, url, c) => {
       const hit = Object.keys(OFFLINE).find(k => url.indexOf(k) > -1);
+      if (!hit) return m;                      // unknown art: leave it to 404
       const target = OFFLINE[hit].startsWith('../') ? OFFLINE[hit] : '../assets/tmp/' + OFFLINE[hit];
-      return hit ? a + target + c : m;
+      return a + target + c;
     });
     const doc = new DOMParser().parseFromString(html, 'text/html');
     // move <style> + markup in, exactly like pasting the whole file into the editor
