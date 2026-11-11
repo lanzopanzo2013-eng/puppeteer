@@ -35,51 +35,6 @@
 .uma-shell p { margin: 0; }
 
 /* ---- top bar ---- */
-.uma-bar {
-  background: #2A5DFA;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 7px 14px 7px 16px;
-  position: sticky; top: 0; z-index: 9;
-}
-/* the site shrinks its wordmark once you scroll; CSS-only, no JS.
-   Browsers without scroll-driven animations simply keep the large mark. */
-@keyframes uma-mark-shrink { from { width: 52%; } to { width: 30%; } }
-.uma-logo { animation: uma-mark-shrink linear both; animation-timeline: scroll(root block); animation-range: 0 260px; }
-.uma-mark { display: flex; align-items: center; }
-.uma-logo { display: block; width: 52%; max-width: 240px; height: auto; }
-.uma-mark-txt { display: flex; flex-direction: column; }
-.uma-mark-txt .w1 {
-  font-family: "Roboto Condensed", roboto, Arial, sans-serif;
-  font-style: italic; font-weight: 900; font-size: 27px;
-  letter-spacing: -1.1px; line-height: 1;
-  color: #FFCF3F;
-  /* the real wordmark is a PNG; this is the type fallback with the site's
-     orange → pink sweep, flat yellow if background-clip is stripped */
-  background: linear-gradient(180deg, #FFE24A 0%, #FFA631 42%, #FF5FA8 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-shadow: 2px 2px 0 rgba(200,52,30,.85);
-}
-.uma-mark-txt .w2 {
-  font-family: "Roboto Condensed", roboto, Arial, sans-serif;
-  font-style: italic; font-weight: 900; font-size: 11px;
-  letter-spacing: 2.4px; color: #fff;
-  text-shadow: 1px 1px 0 #1B3FA8; padding-left: 2px;
-}
-.uma-menu { display: flex; flex-direction: column; align-items: center; width: 46px; }
-.uma-menu-ring {
-  width: 26px; height: 26px; border: 6px solid #fff;
-  border-bottom-color: transparent; border-radius: 50%; position: relative;
-}
-.uma-menu-ring::after {
-  content: ""; position: absolute; left: 50%; bottom: -8px;
-  width: 6px; height: 9px; margin-left: -3px; background: #fff; border-radius: 3px;
-}
-.uma-menu-lbl { font-size: 10px; font-weight: 700; letter-spacing: .4px; color: #fff; margin-top: 6px; }
-
 /* ---- hero ---- */
 .uma-hero { position: relative; height: 124vw; background: #8FD46A; overflow: hidden; }
 .uma-hero-art {
@@ -97,10 +52,14 @@
   text-shadow: 0 1px 3px rgba(0,0,0,.45);
   border: 1px solid rgba(255,255,255,.75); border-radius: 20px; padding: 10px 3px;
 }
-.uma-playnow {
-  position: absolute; left: 14px; bottom: 184px; z-index: 3;
-  width: 44%; height: auto;
-  filter: drop-shadow(2px 3px 0 rgba(120,26,12,.45));
+.uma-playnow { position: absolute; left: 16px; bottom: 182px; z-index: 3; }
+.uma-playnow span {
+  display: block;
+  font-family: "Roboto Condensed", roboto, Arial, sans-serif;
+  font-style: italic; font-weight: 900; font-size: 26px; line-height: 1;
+  letter-spacing: -.4px; color: #fff; transform: rotate(-3deg);
+  text-shadow: 2px 0 0 #E23B2A, -2px 0 0 #E23B2A, 0 2px 0 #E23B2A, 0 -2px 0 #E23B2A,
+               3px 3px 0 #A8221A, 6px 7px 12px rgba(0,0,0,.32);
 }
 
 /* CTA grid */
@@ -157,6 +116,7 @@
   display: inline-flex; align-items: center;
   height: 9.6vw; max-height: 46px;
   transform: skew(-15deg);
+  box-shadow: 0 6px 16px rgba(20,20,60,.22);
   position: relative; z-index: 2;
   font-family: "Roboto Condensed", roboto, Arial, sans-serif;
   font-style: italic; font-weight: 700;
@@ -171,11 +131,14 @@
 .uma-tag.pink  { background: #FF79D0; }
 .uma-tag.green { background: #3CA732; }
 .uma-tag.blue  { background: #2A5DFA; }
-.uma-tag.purple{ background: #8C83FF; }
+.uma-tag.purple{ background: #9E97FF; }
 /* About is the white plate with blue lettering on the real site */
-.uma-tag-white { background: #fff; }
-.uma-tag-white span { color: #2A5DFA; text-shadow: none; }
+.uma-tag.uma-tag-white { background: #fff; }   /* two classes: beats .uma-tag.blue */
+.uma-tag.uma-tag-white span { color: #2A5DFA; text-shadow: none; }
 .uma-tag-wrap { margin-bottom: 16px; }
+.uma-tag span { white-space: nowrap; }
+.uma-tag.long  span { font-size: 4.7vw; letter-spacing: .03em; }
+.uma-tag.xlong span { font-size: 3.85vw; letter-spacing: .02em; }
 
 /* section headline (the "Train your Umamusume!" type) */
 .uma-hl {
@@ -326,6 +289,10 @@
 /* ---------- Roster (purple) ---------- */
 .uma-roster { background: linear-gradient(180deg, #8C83FF 0%, #7D75E3 100%); }
 .uma-grid { display: flex; flex-wrap: wrap; justify-content: space-between; }
+/* five favourites, two per row: the last one spans the row instead of
+   leaving a hole, the way the site closes its grids. */
+.uma-tile:last-child { width: 100%; aspect-ratio: 16 / 7; }
+.uma-tile:last-child img { object-fit: cover; object-position: 50% 28%; }
 .uma-tile {
   position: relative; background: #C9BFFF; border-radius: 8px; overflow: hidden;
   margin-bottom: 8px; width: 48.6%;
@@ -453,11 +420,33 @@
 }
 .pp-cc-chats { color: #5B7A96 !important; font-weight: 700 !important; }
 
-/* top bar */
-.pp-top-bar, .profile-top-bar {
-  background: #2A5DFA !important;
-  border-bottom: 3px solid #FF79D0 !important;
+/* the page header: the site's white bar with the Umamusume wordmark in it.
+   .pp-top-bar-logo is the real logo slot (see the previous theme's rules for
+   -logo-name / -logo-sub-name); painting it as a background keeps the image
+   off the DOM, so nothing about it can be stripped by the editor. */
+.pp-top-bar, .profile-top-bar, .pp-top-bar-inner {
+  background: #fff !important;
+  border-bottom: 2px solid #E3E8F2 !important;
+  box-shadow: none !important;
 }
+.pp-top-bar-logo, .profile-top-bar-logo {
+  width: 132px !important; height: 40px !important;
+  min-width: 132px !important; max-width: 132px !important;
+  background: url("https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@f01e1862f174/uma-profile/assets/site/logo.png") no-repeat left center / contain !important;
+  border-radius: 0 !important; box-shadow: none !important;
+  overflow: hidden;
+}
+.pp-top-bar-logo-name, .pp-top-bar-logo-sub-name,
+.profile-top-bar-logo-name, .profile-top-bar-logo-sub-name {
+  visibility: hidden !important;
+}
+.pp-top-bar-title, .profile-top-bar-title { color: #12386E !important; }
+.pp-top-bar-back-button, .pp-top-bar-search-icon,
+.pp-top-bar-notifications-button { color: #2A5DFA !important; }
+.pp-top-bar-search, .pp-top-bar-search-input {
+  background: #F2F5FB !important; border: 1px solid #DCE3F0 !important; color: #12386E !important;
+}
+.pp-top-bar-create-char { color: #2A5DFA !important; border: 1px solid #C9D6F0 !important; }
 
 /* small screens */
 @media (max-width: 380px) {

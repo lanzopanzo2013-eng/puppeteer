@@ -84,6 +84,13 @@
   }
 </style>
 <style>
+  /* harness chrome only — Janitor lays its own header out */
+  .pp-top-bar { display: flex; align-items: center; gap: 10px; padding: 8px 12px; }
+  .pp-top-bar-search { flex: 1; border-radius: 8px; padding: 6px 10px; font: 500 12px/1 Roboto, Arial, sans-serif; }
+  .pp-top-bar-create-char { font: 700 12px/1 Roboto, Arial, sans-serif; border-radius: 8px; padding: 7px 10px; }
+  .pp-top-bar-back-button { font-size: 18px; }
+</style>
+<style>
   /* Harness-only: real Roboto / Roboto Condensed so the screenshot matches an
      Android device. These @font-face rules are NOT part of src/bio.html —
      Janitor strips url(), so the profile relies on the device's own Roboto. */
@@ -108,7 +115,15 @@
 </div>
 
 <div id="root" class="pp-page-background">
-  <div class="pp-top-bar profile-top-bar">‹ JanitorAI · profile chrome (not ours) ›</div>
+  <div class="pp-top-bar profile-top-bar">
+    <div class="pp-top-bar-back-button">‹</div>
+    <div class="pp-top-bar-logo profile-top-bar-logo">
+      <div class="pp-top-bar-logo-name">JanitorAI</div>
+      <div class="pp-top-bar-logo-sub-name">beta</div>
+    </div>
+    <div class="pp-top-bar-search">Search characters…</div>
+    <div class="pp-top-bar-create-char">+ Create</div>
+  </div>
 
   <div class="profile-page-container pp-uc-background">
     <div class="profile-page-flex">
@@ -144,15 +159,16 @@
     // Harness-only: the sandbox has no internet, so swap the live CDN art for the
     // local crops before painting. The real file keeps the CDN URLs.
     const OFFLINE = {
-      'kv.CiVddxQD.jpeg': 'hero.jpg',
-      'kv_txt_playnow.D0FaPRug.png': 'news1.jpg',
-      'logo_umamusume.png': 'hero.jpg',
       'banner_30320202': 'news1.jpg', 'announce_banner_3144': 'news2.jpg',
       'about_thumbnail': 'about.jpg',
       'gameplay_specialweek': 'play1.jpg', 'gameplay_silencesuzuka': 'play2.jpg',
       'gameplay_winningticket': 'play2.jpg', 'gameplay_image_1-1': 'media_b.jpg',
       'media_image': 'media_a.jpg',
       'media_a.jpg': 'media_a.jpg', 'media_b.jpg': 'media_b.jpg',
+      'logo.png': '../assets/site/logo.png', 'hero.jpg': '../assets/site/hero.jpg',
+      'slide1.jpg': '../assets/site/slide1.jpg', 'slide2.jpg': '../assets/site/slide2.jpg',
+      'news1.jpg': '../assets/site/news1.jpg', 'news2.jpg': '../assets/site/news2.jpg',
+      'news3.jpg': '../assets/site/news3.jpg',
       'about_bg.jpg': '../assets/site/about_bg.jpg',
       'arrow_left.png': '../assets/site/arrow_left.png',
       'arrow_right.png': '../assets/site/arrow_right.png',
@@ -172,6 +188,8 @@
       'astonmachan': 'char_1.jpg', 'mrcb': 'char_2.jpg', 'tamamocross': 'char_3.jpg',
       'nicenature': 'char_4.jpg', 'winningticket': 'char_5.jpg'
     };
+    html = html.replace(/url\((["']?)(https:\/\/cdn\.jsdelivr\.net\/gh\/lanzopanzo2013-eng\/puppeteer@[0-9a-f]+\/uma-profile\/assets\/site\/([^"')]+))\1\)/g,
+      (m, q, full, file) => 'url("../assets/site/' + file + '")');
     html = html.replace(/(src=")([^"]+)(")/g, (m, a, url, c) => {
       const hit = Object.keys(OFFLINE).find(k => url.indexOf(k) > -1);
       const target = OFFLINE[hit].startsWith('../') ? OFFLINE[hit] : '../assets/tmp/' + OFFLINE[hit];
