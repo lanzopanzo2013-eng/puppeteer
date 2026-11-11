@@ -21,7 +21,7 @@
 .uma-shell {
   font-family: roboto, "Roboto", "Roboto Condensed", "Segoe UI", Arial, sans-serif;
   color: #4D4D4D;
-  width: auto;
+  width: 100vw;
   max-width: none;
   /* break out of the About Me column so the page reads as a site, not a card */
   margin-inline: calc(50% - 50vw);
@@ -349,6 +349,24 @@
 }
 
 
+/* ---------- the site's own header bar (markup, not CSS art) ---------- */
+.uma-topbar {
+  display: flex; align-items: center; justify-content: space-between;
+  background: #2A5DFA; padding: 8px 14px 9px; position: relative; z-index: 5;
+}
+.uma-brand { display: block; flex: 0 1 auto; min-width: 0; }
+.uma-brand-img { display: block; width: 168px; max-width: 54vw; height: auto; }
+.uma-menu { display: flex; flex-direction: column; align-items: center; width: 44px; flex: 0 0 auto; }
+.uma-menu-ring {
+  width: 22px; height: 22px; border: 5px solid #fff;
+  border-bottom-color: transparent; border-radius: 50%; position: relative;
+}
+.uma-menu-ring::after {
+  content: ""; position: absolute; left: 50%; bottom: -7px;
+  width: 5px; height: 8px; margin-left: -2.5px; background: #fff; border-radius: 3px;
+}
+.uma-menu-lbl { font-size: 10px; font-weight: 700; letter-spacing: .3px; color: #fff; margin-top: 6px; }
+
 /* ---------- Download (the site's blue band) ---------- */
 .uma-dl {
   background: #2A5DFA; padding: 26px 18px 22px; text-align: center;
@@ -463,17 +481,7 @@
   border-bottom: 0 !important;
   box-shadow: none !important;
 }
-.pp-top-bar-logo, .profile-top-bar-logo {
-  width: 132px !important; height: 40px !important;
-  min-width: 132px !important; max-width: 132px !important;
-  background: url("https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@d98bae508e96/uma-profile/assets/site/logo.png") no-repeat left center / contain !important;
-  border-radius: 0 !important; box-shadow: none !important;
-  overflow: hidden;
-}
-.pp-top-bar-logo-name, .pp-top-bar-logo-sub-name,
-.profile-top-bar-logo-name, .profile-top-bar-logo-sub-name {
-  visibility: hidden !important;
-}
+
 .pp-top-bar-title, .profile-top-bar-title { color: #fff !important; }
 .pp-top-bar-back-button, .pp-top-bar-search-icon,
 .pp-top-bar-notifications-button { color: #2A5DFA !important; }
@@ -505,7 +513,14 @@
   .uma-card-thumb { width: 168px; }
 }
 
-@media (max-width: 380px) {
+@media (prefers-reduced-motion: reduce) {
+  .uma-shell *, .uma-shell *::before, .uma-shell *::after {
+    animation-duration: .001ms !important; animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important; scroll-behavior: auto !important;
+  }
+}
+
+@media (max-width: 575.98px) {
   .uma-tag { font-size: 23px; padding: 8px 26px 9px; }
   .uma-hl { font-size: 22px; }
   .uma-hero { height: min(122vw, 780px); }
@@ -513,6 +528,17 @@
 </style>
 
 <div class="uma-shell">
+
+  <!-- ── header (the site's blue bar) ─────────────────────── -->
+  <div class="uma-topbar">
+    <a class="uma-brand" href="#updates">
+      <img class="uma-brand-img" alt="Umamusume: Pretty Derby" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@d98bae508e96/uma-profile/assets/site/logo.png">
+    </a>
+    <div class="uma-menu">
+      <div class="uma-menu-ring"></div>
+      <div class="uma-menu-lbl">Menu</div>
+    </div>
+  </div>
 
   <!-- ── hero ──────────────────────────────────────────────── -->
   <div class="uma-hero">
@@ -651,6 +677,7 @@
       <div class="uma-pg p2"><img alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@d98bae508e96/uma-profile/assets/site/pager_2.png"></div>
       <div class="uma-pg p3"><img alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@d98bae508e96/uma-profile/assets/site/pager_3.png"></div>
     </div>
+  </div>
 
   <!-- ── Roster (Characters) ───────────────────────────────── -->
   <div class="uma-sec uma-roster" id="characters">

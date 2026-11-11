@@ -1,5 +1,16 @@
 <div class="uma-shell">
 
+  <!-- ── header (the site's blue bar) ─────────────────────── -->
+  <div class="uma-topbar">
+    <a class="uma-brand" href="#updates">
+      <img class="uma-brand-img" alt="Umamusume: Pretty Derby" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@d98bae508e96/uma-profile/assets/site/logo.png">
+    </a>
+    <div class="uma-menu">
+      <div class="uma-menu-ring"></div>
+      <div class="uma-menu-lbl">Menu</div>
+    </div>
+  </div>
+
   <!-- ── hero ──────────────────────────────────────────────── -->
   <div class="uma-hero">
     <!-- IMG:KV → TEMP local crop -->
@@ -137,6 +148,7 @@
       <div class="uma-pg p2"><img alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@d98bae508e96/uma-profile/assets/site/pager_2.png"></div>
       <div class="uma-pg p3"><img alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@d98bae508e96/uma-profile/assets/site/pager_3.png"></div>
     </div>
+  </div>
 
   <!-- ── Roster (Characters) ───────────────────────────────── -->
   <div class="uma-sec uma-roster" id="characters">
