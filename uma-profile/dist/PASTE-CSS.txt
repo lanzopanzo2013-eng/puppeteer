@@ -139,20 +139,27 @@
 .uma-tag-wrap { margin-bottom: 16px; }
 .uma-tag span { white-space: nowrap; }
 .uma-tag.long  span { font-size: min(4.7vw, 44px); letter-spacing: .03em; }
-.uma-tag.xlong { height: auto; padding: 7px 0 8px; }
+/* the longest board title still rides one line, the way the site's plates do;
+   the type shrinks instead of the plate growing */
 .uma-tag.xlong span {
-  font-size: min(4.6vw, 27px); letter-spacing: .02em; line-height: 1.14;
-  white-space: normal; max-width: 74vw;
+  font-size: min(3.2vw, 24px); letter-spacing: 0;
+  padding-left: min(4vw, 30px); padding-right: min(4.4vw, 34px);
 }
 
 /* section headline (the "Train your Umamusume!" type) */
+/* The site's outlined headline. -webkit-text-stroke paints over the glyph
+   counters here, so the ring is drawn with eight text-shadows instead: the
+   holes in a and e stay open and the fill keeps its colour. */
 .uma-hl {
   font-family: "Roboto Condensed", roboto, Arial, sans-serif;
   font-style: italic; font-weight: 900;
-  font-size: clamp(21px, 7vw, 40px); line-height: 1.05;
-  letter-spacing: -.01em; color: #5FA82F;
-  -webkit-text-stroke: 4px #fff; paint-order: stroke fill;
-  text-shadow: 3px 4px 0 rgba(24,72,16,.35);
+  font-size: clamp(19px, 6.2vw, 36px); line-height: 1.08;
+  letter-spacing: 0; color: #8FE05B; white-space: nowrap;
+  text-shadow:
+    -2.5px -2.5px 0 #fff, 2.5px -2.5px 0 #fff,
+    -2.5px 2.5px 0 #fff, 2.5px 2.5px 0 #fff,
+    0 -3px 0 #fff, 0 3px 0 #fff, -3px 0 0 #fff, 3px 0 0 #fff,
+    0 8px 0 rgba(24,72,16,.32);
   margin: 2px 0 18px; display: inline-block;
 }
 
@@ -358,7 +365,7 @@
 .uma-topbar {
   display: flex; align-items: center; justify-content: space-between;
   background: #2A5DFA; padding: 8px 14px 9px;
-  position: sticky; top: 0; z-index: 999;
+  position: sticky; top: 0; z-index: 1002;
   box-shadow: 0 3px 10px rgba(16,40,120,.22);
 }
 .uma-brand { display: block; flex: 0 1 auto; min-width: 0; }

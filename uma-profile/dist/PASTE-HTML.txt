@@ -1,3 +1,6 @@
+<!-- ============================================================
+     MARKUP   (split line for the two-panel editor is right below)
+     ============================================================ -->
 <div class="uma-shell">
 
   <!-- ── header (the site's blue bar) ─────────────────────── -->

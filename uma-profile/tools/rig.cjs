@@ -14,7 +14,12 @@ const chromium = require('@sparticuz/chromium').default;
 const puppeteer = require('puppeteer-core');
 
 const ROOT = path.resolve(__dirname, '..');
-const src = fs.readFileSync(path.join(ROOT, 'src/bio.html'), 'utf8');
+// `node tools/rig.cjs paste` renders the delivered one-line paste instead of
+// the readable source, so the rig checks exactly what gets pasted.
+const FROM_PASTE = process.argv.includes('paste');
+const src = fs.readFileSync(
+  FROM_PASTE ? path.join(ROOT, 'dist', 'PASTE-ALL.txt') : path.join(ROOT, 'src', 'bio.html'),
+  'utf8');
 const styleBlock = src.match(/<style>([\s\S]*?)<\/style>/)[1];
 const markup = src.slice(src.indexOf('</style>') + 8);
 
@@ -73,7 +78,7 @@ const PAGE = `<!doctype html><html><head><meta charset="utf-8">
 const WIDTHS = [360, 390, 414, 1280];
 const OUT = path.join(ROOT, 'docs');
 fs.mkdirSync(OUT, { recursive: true });
-const tmp = path.join(os.tmpdir(), 'rig.html');
+const tmp = path.join(os.tmpdir(), FROM_PASTE ? 'rig-paste.html' : 'rig.html');
 fs.writeFileSync(tmp, PAGE);
 
 (async () => {
@@ -113,7 +118,7 @@ fs.writeFileSync(tmp, PAGE);
     if (!ok) failed = true;
     console.log(`${w}px  spill=${r.spill}  shell=${r.shell}  ${ok ? 'PASS' : 'FAIL'}`);
     r.offenders.forEach((o) => console.log('    offender:', o));
-    await page.screenshot({ path: path.join(OUT, `rig-${w}.png`), fullPage: true });
+    await page.screenshot({ path: path.join(OUT, `${FROM_PASTE ? 'paste' : 'rig'}-${w}.png`), fullPage: true });
   }
   await browser.close();
   process.exit(failed ? 1 : 0);
