@@ -155,15 +155,21 @@
 .uma-tag-wrap { margin-bottom: 16px; }
 .uma-tag span { white-space: nowrap; }
 .uma-tag.long  span { font-size: min(4.7vw, 44px); letter-spacing: .03em; }
-.uma-tag.xlong span { font-size: min(3.85vw, 36px); letter-spacing: .02em; }
+.uma-tag.xlong { height: auto; padding: 7px 0 8px; }
+.uma-tag.xlong span {
+  font-size: min(4.6vw, 27px); letter-spacing: .02em; line-height: 1.14;
+  white-space: normal; max-width: 74vw;
+}
 
 /* section headline (the "Train your Umamusume!" type) */
 .uma-hl {
   font-family: "Roboto Condensed", roboto, Arial, sans-serif;
-  font-style: italic; font-weight: 900; font-size: 25px; line-height: 1.1;
-  letter-spacing: -.6px; color: #9EE86B;
-  text-shadow: 3px 0 0 #fff, -3px 0 0 #fff, 0 3px 0 #fff, 0 -3px 0 #fff, 3px 3px 0 #2E7A1C;
-  margin: 6px 0 20px;
+  font-style: italic; font-weight: 900;
+  font-size: clamp(21px, 7vw, 40px); line-height: 1.05;
+  letter-spacing: -.01em; color: #5FA82F;
+  -webkit-text-stroke: 4px #fff; paint-order: stroke fill;
+  text-shadow: 3px 4px 0 rgba(24,72,16,.35);
+  margin: 2px 0 18px; display: inline-block;
 }
 
 /* ---------- Updates (pink) ---------- */
@@ -193,7 +199,7 @@
 .uma-date { font-size: 9px; font-weight: 700; color: #8CC63F; letter-spacing: .2px; }
 .uma-card-txt {
   font-size: 12.5px; font-weight: 600; color: #3A3F45; line-height: 1.35;
-  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+  display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
 }
 .uma-card-thumb { width: 108px; height: 60px; flex: 0 0 108px; margin-left: 10px; border-radius: 6px; object-fit: cover; }
 .uma-card-go { color: #9AA0A8; font-weight: 900; font-size: 15px; margin-left: 8px; }
@@ -367,7 +373,9 @@
 /* ---------- the site's own header bar (markup, not CSS art) ---------- */
 .uma-topbar {
   display: flex; align-items: center; justify-content: space-between;
-  background: #2A5DFA; padding: 8px 14px 9px; position: relative; z-index: 5;
+  background: #2A5DFA; padding: 8px 14px 9px;
+  position: sticky; top: 0; z-index: 999;
+  box-shadow: 0 3px 10px rgba(16,40,120,.22);
 }
 .uma-brand { display: block; flex: 0 1 auto; min-width: 0; }
 .uma-brand-img { display: block; width: 168px; max-width: 54vw; height: auto; }
