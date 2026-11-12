@@ -24,7 +24,7 @@
   max-width: none;
   /* break out of the About Me column so the page reads as a site, not a card */
   margin-inline: calc(50% - 50vw);
-  background-color: #58AC3C;
+  background-color: #2A5DFA;
   overflow-x: clip;
   position: relative;
   line-height: 1.35;
@@ -100,7 +100,10 @@
 /* ============================================================
    BATCH 3 — section furniture (shared by every band)
    ============================================================ */
-.uma-sec { position: relative; padding: 26px 12px 30px; overflow: hidden; }
+/* overflow:clip, not hidden. overflow:hidden turns the band into a scroll
+   container, and a view() scroll timeline binds to the nearest one, which
+   would freeze every reveal at its from-state or its to-state. */
+.uma-sec { position: relative; padding: 26px 12px 30px; overflow: hidden; overflow: clip; }
 .uma-band-pat {
   position: absolute; left: 0; top: 0; width: 100%; height: 100%;
   object-fit: cover; opacity: .13; z-index: 0; pointer-events: none;
@@ -255,7 +258,9 @@
 .uma-play { background: linear-gradient(180deg, #4FBF43 0%, #3CA732 100%); }
 .uma-carousel { position: relative; }
 .uma-anchor { position: absolute; top: 0; left: 0; width: 1px; height: 1px; }
-.uma-viewport { overflow: hidden; border-radius: 12px; }
+/* the lorebook shots are 700 px wide art, so the carousel keeps a 700 px
+   measure on desktop instead of stretching to a letterboxed 1000 px */
+.uma-viewport { overflow: hidden; border-radius: 12px; max-width: 700px; margin-inline: auto; }
 .uma-track {
   display: flex; align-items: stretch;
   transition: transform .5s cubic-bezier(.19,1,.22,1);
@@ -266,7 +271,7 @@
   border: 2px solid rgba(255,255,255,.55); border-radius: 12px; padding: 8px;
 }
 .uma-slide img {
-  width: 100%; height: 190px; border-radius: 8px;
+  width: 100%; height: clamp(190px, 26vw, 340px); border-radius: 8px;
   object-fit: contain; object-position: 50% 50%;
   background: transparent;
 }
@@ -403,13 +408,13 @@
   }
 }
 .uma-menu { display: flex; flex-direction: column; align-items: center; width: 44px; flex: 0 0 auto; }
+/* the site's horseshoe: a ring with the middle of its base clipped away, which
+   leaves the two legs and the gap. Same construction in the header and over the
+   notifications slot, so the two marks match. */
 .uma-menu-ring {
-  width: 22px; height: 22px; border: 5px solid #fff;
-  border-bottom-color: transparent; border-radius: 50%; position: relative;
-}
-.uma-menu-ring::after {
-  content: ""; position: absolute; left: 50%; bottom: -7px;
-  width: 5px; height: 8px; margin-left: -2.5px; background: #fff; border-radius: 3px;
+  width: 22px; height: 22px; box-sizing: border-box;
+  border: 5.5px solid #fff; border-radius: 50%;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 70% 100%, 70% 50%, 30% 50%, 30% 100%, 0 100%);
 }
 .uma-menu-lbl { font-size: 10px; font-weight: 700; letter-spacing: .3px; color: #fff; margin-top: 6px; }
 
@@ -426,8 +431,10 @@
   font-style: italic; font-weight: 900; font-size: 24px; color: #fff; margin-bottom: 16px;
 }
 .uma-dl-badges { display: flex; flex-wrap: wrap; justify-content: center; gap: 9px; }
-.uma-dl-badges a { display: block; width: 47.6%; }
-.uma-dl-badges img { width: 100%; height: auto; }
+/* every badge sits in the same box height, so the two rows line up even
+   though the official art is cut to four different aspect ratios */
+.uma-dl-badges a { display: flex; align-items: center; justify-content: center; width: 47.6%; height: clamp(54px, 6vw, 76px); }
+.uma-dl-badges img { width: 100%; height: 100%; object-fit: contain; }
 .uma-dl-legal {
   margin-top: 16px; text-align: left;
   font-size: 9.5px; line-height: 1.55; color: rgba(255,255,255,.82);
@@ -488,18 +495,21 @@
 }
 .pp-uc-avatar, .profile-avatar img { border-radius: 12px !important; }
 
-/* tabs: condensed italic, pink underline (site's news pink) */
+/* tabs: they sit in the header strip, so they carry the header blue and white
+   labels instead of leaving a pale band between the two blue bars */
 .pp-tabs-wrapper, .profile-tabs-wrapper {
-  background: transparent !important;
-  border-bottom: 2px solid rgba(42,93,250,.18) !important;
+  background: #2A5DFA !important;
+  border-bottom: 0 !important;
+  margin: 0 !important;
+  padding-top: 6px !important;
 }
 .pp-tabs-button, .profile-tabs-button {
   font-family: "Roboto Condensed", roboto, Arial, sans-serif !important;
   font-style: italic !important; font-weight: 900 !important; font-size: 15px !important;
-  color: #4A6C96 !important;
+  color: rgba(255,255,255,.82) !important;
 }
 .pp-tabs-button[data-active="true"], .pp-tabs-button.active, .profile-tabs-button.active {
-  color: #12386E !important;
+  color: #fff !important;
 }
 .pp-tabs-indicator, .profile-tabs-indicator {
   background: #FF79D0 !important; height: 3px !important; border-radius: 3px !important;
@@ -578,14 +588,14 @@
 .pp-top-bar-notifications-button svg,
 .profile-top-bar-notifications-button svg,
 .pp-top-bar-notifications-button img { display: none !important; }
-/* an omega is the closest typeface match to the site's horseshoe: one glyph,
-   so the arch and its two feet can never be clipped apart. */
+/* the horseshoe is drawn: a ring with a notch clipped out of the bottom, which
+   leaves the two legs and the gap. No glyph, no url(), nothing to strip. */
 .pp-top-bar-notifications-button::before,
 .profile-top-bar-notifications-button::before {
-  content: "\03A9"; position: absolute; left: 50%; top: 0;
-  transform: translateX(-50%);
-  font-family: "Roboto Condensed", Arial, sans-serif;
-  font-size: 26px; line-height: 28px; font-weight: 700; color: #fff;
+  content: ""; position: absolute; left: 50%; top: 5px; margin-left: -11px;
+  width: 22px; height: 22px; box-sizing: border-box;
+  border: 5.5px solid #fff; border-radius: 50%;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 70% 100%, 70% 50%, 30% 50%, 30% 100%, 0 100%);
 }
 .pp-top-bar-notifications-button::after,
 .profile-top-bar-notifications-button::after {

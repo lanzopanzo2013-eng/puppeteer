@@ -92,6 +92,9 @@ fs.writeFileSync(tmp, PAGE);
     args: chromium.args, executablePath: await chromium.executablePath(), headless: 'shell',
   });
   const page = await browser.newPage();
+  // the full-page shots are captured with motion off, so the scroll-reveal
+  // animations are not stuck at their from-state in the screenshot
+  await page.emulateMediaFeatures([{ name: 'prefers-reduced-motion', value: 'reduce' }]);
   let failed = false;
   for (const w of WIDTHS) {
     await page.setViewport({ width: w, height: 900, deviceScaleFactor: 1 });
@@ -126,6 +129,22 @@ fs.writeFileSync(tmp, PAGE);
     r.offenders.forEach((o) => console.log('    offender:', o));
     await page.screenshot({ path: path.join(OUT, `${FROM_PASTE ? 'paste' : 'rig'}-${w}.png`), fullPage: true });
   }
+  // motion back on: prove the scroll reveal actually fires
+  await page.emulateMediaFeatures([{ name: 'prefers-reduced-motion', value: 'no-preference' }]);
+  await page.setViewport({ width: 390, height: 844, deviceScaleFactor: 1 });
+  await page.goto('file://' + tmp, { waitUntil: 'load' });
+  const opacities = await page.evaluate(() =>
+    [...document.querySelectorAll('.uma-roster .uma-grid, .uma-media .uma-media-row, .uma-play .uma-hl')]
+      .map((e) => Number(getComputedStyle(e).opacity))
+  );
+  console.log('reveal at scroll 0 ->', opacities.slice(0, 6).join(','));
+  await page.evaluate(() => window.scrollTo(0, 1400));
+  await new Promise((r) => setTimeout(r, 400));
+  const after = await page.evaluate(() =>
+    [...document.querySelectorAll('.uma-roster .uma-grid, .uma-media .uma-media-row, .uma-play .uma-hl')]
+      .map((e) => Number(getComputedStyle(e).opacity))
+  );
+  console.log('reveal at scroll 1400 ->', after.slice(0, 6).join(','));
   await browser.close();
   process.exit(failed ? 1 : 0);
 })();

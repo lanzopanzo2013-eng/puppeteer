@@ -52,7 +52,7 @@
       <div class="uma-card-body">
         <div class="uma-meta"><span class="uma-ribbon">Update</span><span class="uma-date">2026/11/06 09:15 (UTC)</span></div>
         <div class="uma-meta"><span class="uma-pill">Bot</span><span class="uma-date">2026/11/05 13:30 (UTC)</span></div>
-        <div class="uma-card-txt">New bot: Silence Suzuka takes the lead in a quiet, hopeless romance.</div>
+        <div class="uma-card-txt">New bot · Silence Suzuka takes the lead in a quiet, hopeless romance.</div>
       </div>
       <img class="uma-card-thumb" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@d98bae508e96/uma-profile/assets/site/news1.jpg">
       <div class="uma-card-go">›</div>
@@ -62,7 +62,7 @@
       <div class="uma-card-body">
         <div class="uma-meta"><span class="uma-ribbon">Update</span><span class="uma-date">2026/11/05 22:00 (UTC)</span></div>
         <div class="uma-meta"><span class="uma-pill">Bot</span><span class="uma-date">2026/11/04 22:00 (UTC)</span></div>
-        <div class="uma-card-txt">Reworked: Unity Cup — Tokai Teio's scenario now has three new openings.</div>
+        <div class="uma-card-txt">Reworked · Unity Cup · Tokai Teio's scenario now has three new openings.</div>
       </div>
       <img class="uma-card-thumb" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@d98bae508e96/uma-profile/assets/site/news2.jpg">
       <div class="uma-card-go">›</div>
@@ -72,7 +72,7 @@
       <div class="uma-card-body">
         <div class="uma-meta"><span class="uma-ribbon">Notice</span><span class="uma-date">2026/11/02 09:15 (UTC)</span></div>
         <div class="uma-meta"><span class="uma-pill">Event</span><span class="uma-date">2026/11/01 09:15 (UTC)</span></div>
-        <div class="uma-card-txt">Aquarius Cup event bot returns later this month — limited time only.</div>
+        <div class="uma-card-txt">Aquarius Cup event bot returns later this month. Limited time only.</div>
       </div>
       <img class="uma-card-thumb" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@d98bae508e96/uma-profile/assets/site/news1.jpg">
       <div class="uma-card-go">›</div>
@@ -95,7 +95,7 @@
         <div class="uma-pfp-sub">Trainer · Lorebook author · Tracen Academy</div>
         <div class="uma-pfp-txt">
           Trainer by day, bot author by night. I write Umamusume characters that stay in
-          character — tight prose, real track logic, and enough chaos to keep a career run
+          character. Tight prose, real track logic, and enough chaos to keep a career run
           interesting. Expect slow burns, rivalry, and the occasional hopeless crush.
         </div>
         <div class="uma-pfp-rows">
@@ -107,7 +107,7 @@
     </div>
 
     <div class="uma-about-txt">
-      Everything here is hand-written. Cores first, then agentic passes for consistency —
+      Everything here is hand-written. Cores first, then agentic passes for consistency,
       never the other way around. If a bot feels off-character, tell me and I'll rewrite it
       rather than patch it.
     </div>
@@ -130,15 +130,15 @@
         <div class="uma-track">
           <div class="uma-slide">
             <img alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@d98bae508e96/uma-profile/assets/site/slide1.jpg">
-            <div class="uma-slide-cap"><b>Lorebooks</b> — the world state, the schedules, the rivalry web. Dropped in, no setup.</div>
+            <div class="uma-slide-cap"><b>Lorebooks</b> · the world state, the schedules, the rivalry web. Dropped in, no setup.</div>
           </div>
           <div class="uma-slide">
             <img alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@d98bae508e96/uma-profile/assets/site/slide2.jpg">
-            <div class="uma-slide-cap"><b>How it runs</b> — V4 today, V10 final, then FV11 to FV14. Each pass tightens canon.</div>
+            <div class="uma-slide-cap"><b>How it runs</b> · V4 today, V10 final, then FV11 to FV14. Each pass tightens canon.</div>
           </div>
           <div class="uma-slide">
             <img alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@d98bae508e96/uma-profile/assets/site/slide1.jpg">
-            <div class="uma-slide-cap"><b>Using them</b> — attach the book, pick a racer, start the career run. That is it.</div>
+            <div class="uma-slide-cap"><b>Using them</b> · attach the book, pick a racer, start the career run. That is it.</div>
           </div>
         </div>
       </div>
@@ -188,7 +188,7 @@
 
     <div class="uma-media-row">
       <a class="uma-media-tile" href="#">
-        <img alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@d98bae508e96/uma-profile/assets/site/media_a.jpg">
+        <img alt="" style="object-position:50% 30%" src="https://file.garden/apVBH6JH-X_MR0Je/kv.-RnlVFGO.jpeg">
         <img class="uma-media-plate" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@d98bae508e96/uma-profile/assets/site/title_anime.png">
         <span class="uma-media-lbl">Anime</span>
       </a>
