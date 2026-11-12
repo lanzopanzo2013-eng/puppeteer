@@ -25,6 +25,9 @@ const markup = src.slice(src.indexOf('</style>') + 8);
 
 // the sandbox has no internet: swap the CDN art for the files on disk
 const local = markup.replace(
+  /https:\/\/file\.garden\/apVBH6JH-X_MR0Je\/kv\.-RnlVFGO\.jpeg/g,
+  'file://' + path.join(ROOT, 'assets', 'site', 'hero.jpg')
+).replace(
   /https:\/\/en-portal\.g\.kuroco-img\.app\/[^"]*\/(astonmachan|mrcb|tamamocross|nicenature|winningticket)\/[^"]+/g,
   (m, slug) => {
     const i = { astonmachan: 1, mrcb: 2, tamamocross: 3, nicenature: 4, winningticket: 5 }[slug];
@@ -59,12 +62,14 @@ const CHROME = `
   <div class="pp-top-bar-title">Profile of @uma_enjoyer</div>
 </div></div>
 <div class="pp-page-background">
+  <div class="pp-uc-background">
   <div class="profile-info-hstack">
     <div class="pp-uc-avatar-container"></div>
     <div class="profile-info-stack-inner">
       <h2 class="pp-uc-title">uma_enjoyer</h2>
       <div class="pp-uc-followers-count"><span>1,192</span> <span>followers</span></div>
     </div>
+  </div>
   </div>
   <div class="pp-tabs-wrapper"><div class="pp-tabs-button">Characters</div><div class="pp-tabs-button">Scripts</div></div>
   <div class="pp-tabs-indicator"></div>

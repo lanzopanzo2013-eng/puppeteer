@@ -495,6 +495,28 @@
   border-bottom: 0 !important;
   box-shadow: none !important;
 }
+/* Janitor's own profile card is out: the identity (avatar, handle, bio, stats)
+   now lives inside the About Me section a few screens down. Every child is
+   hidden rather than the wrapper, so nothing else in that container can be
+   caught by accident — an empty box collapses to zero height. */
+.pp-uc-background .profile-info-hstack,
+.pp-uc-background .profile-info-stack-inner,
+.pp-uc-background .pp-uc-avatar-container,
+.pp-uc-background .pp-uc-title,
+.pp-uc-background .pp-uc-followers-count,
+.pp-uc-background .pp-uc-member-since,
+.pp-uc-background .profile-badges,
+.pp-uc-background .profile-badge-flex-outer,
+.pp-uc-background .profile-uc-follow-flex,
+.pp-uc-background .pp-uc-follow-button,
+.pp-uc-background .pp-uc-options-menu {
+  display: none !important;
+}
+.pp-uc-background {
+  min-height: 0 !important; padding: 0 !important; margin: 0 !important;
+  background: transparent !important; box-shadow: none !important; border: 0 !important;
+}
+
 /* Janitor's bar is sticky at top:0 and ours is too, so the two stacked and cut
    the wordmark and the menu dial in half. Only one header can own the top of
    the page: ours does, Janitor's keeps its place at the top of the document. */
