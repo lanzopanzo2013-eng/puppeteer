@@ -430,9 +430,9 @@
    leaves the two legs and the gap. Same construction in the header and over the
    notifications slot, so the two marks match. */
 .uma-menu-ring {
-  width: 30px; height: 31.5px; box-sizing: border-box;
-  border: 8px solid #fff; border-radius: 50%;
-  clip-path: polygon(38.8% 0%,24% 4.8%,16.3% 9.5%,11.3% 14.3%,7.5% 19%,5% 23.8%,2.5% 28.6%,0% 35.7%,0% 50%,0% 57.1%,2.5% 64.3%,6.3% 71.4%,10% 78.6%,6.3% 83.3%,3.8% 88.1%,8.8% 92.9%,13.8% 100%,22.5% 92.9%,30% 88.1%,37.5% 83.3%,36.3% 78.6%,30% 71.4%,27.5% 64.3%,26.3% 57.1%,26.3% 50%,27.5% 42.9%,32.5% 35.7%,37.5% 31%,62.5% 31%,66.3% 35.7%,71.3% 42.9%,72.5% 50%,72.5% 57.1%,71.3% 64.3%,68.8% 71.4%,63.8% 78.6%,62.5% 83.3%,70% 88.1%,77.5% 92.9%,86.3% 100%,91.3% 92.9%,96.3% 88.1%,90% 78.6%,93.8% 71.4%,97.5% 64.3%,100% 57.1%,100% 50%,100% 35.7%,97.5% 28.6%,95% 23.8%,92.5% 19%,88.8% 14.3%,83.8% 9.5%,76% 4.8%,60.8% 0%);
+  width: 22px; height: 22px; box-sizing: border-box;
+  border: 5.5px solid #fff; border-radius: 50%;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 70% 100%, 70% 50%, 30% 50%, 30% 100%, 0 100%);
 }
 .uma-menu-lbl {
   font-family: "Roboto Condensed", roboto, Arial, sans-serif;
@@ -495,10 +495,9 @@
 .pp-uc-about-me, .profile-about-me {
   padding: 0 !important; margin-top: 0 !important; margin-left: 0 !important; margin-right: 0 !important;
   max-width: none !important;
+  /* never clip here: the shell is 100vw and would be cut down to this column */
+  overflow: visible !important;
 }
-/* clip, never hidden: an overflow scroller here would capture the view()
-   timeline and freeze every reveal in one state */
-.pp-uc-background { overflow: clip !important; }
 .pp-uc-about-me, .profile-about-me { display: contents !important; }
 .pp-uc-about-me > *, .profile-about-me > * { max-width: none !important; }
 .pp-uc-background, .pp-uc-background > * {
@@ -619,10 +618,10 @@
    leaves the two legs and the gap. No glyph, no url(), nothing to strip. */
 .pp-top-bar-notifications-button::before,
 .profile-top-bar-notifications-button::before {
-  content: ""; position: absolute; left: 50%; top: 3px; margin-left: -12px;
-  width: 24px; height: 25px; box-sizing: border-box;
-  border: 6.4px solid #fff; border-radius: 50%;
-  clip-path: polygon(38.8% 0%,24% 4.8%,16.3% 9.5%,11.3% 14.3%,7.5% 19%,5% 23.8%,2.5% 28.6%,0% 35.7%,0% 50%,0% 57.1%,2.5% 64.3%,6.3% 71.4%,10% 78.6%,6.3% 83.3%,3.8% 88.1%,8.8% 92.9%,13.8% 100%,22.5% 92.9%,30% 88.1%,37.5% 83.3%,36.3% 78.6%,30% 71.4%,27.5% 64.3%,26.3% 57.1%,26.3% 50%,27.5% 42.9%,32.5% 35.7%,37.5% 31%,62.5% 31%,66.3% 35.7%,71.3% 42.9%,72.5% 50%,72.5% 57.1%,71.3% 64.3%,68.8% 71.4%,63.8% 78.6%,62.5% 83.3%,70% 88.1%,77.5% 92.9%,86.3% 100%,91.3% 92.9%,96.3% 88.1%,90% 78.6%,93.8% 71.4%,97.5% 64.3%,100% 57.1%,100% 50%,100% 35.7%,97.5% 28.6%,95% 23.8%,92.5% 19%,88.8% 14.3%,83.8% 9.5%,76% 4.8%,60.8% 0%);
+  content: ""; position: absolute; left: 50%; top: 5px; margin-left: -11px;
+  width: 22px; height: 22px; box-sizing: border-box;
+  border: 5.5px solid #fff; border-radius: 50%;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 70% 100%, 70% 50%, 30% 50%, 30% 100%, 0 100%);
 }
 .pp-top-bar-notifications-button::after,
 .profile-top-bar-notifications-button::after {
