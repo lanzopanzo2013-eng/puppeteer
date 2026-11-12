@@ -160,7 +160,7 @@
     -2.5px -2.5px 0 #fff, 2.5px -2.5px 0 #fff,
     -2.5px 2.5px 0 #fff, 2.5px 2.5px 0 #fff,
     0 -3px 0 #fff, 0 3px 0 #fff, -3px 0 0 #fff, 3px 0 0 #fff,
-    0 8px 0 rgba(24,72,16,.32);
+    0 6px 7px rgba(24,72,16,.34);
   margin: 2px 0 18px; display: inline-block;
 }
 
@@ -495,6 +495,13 @@
   background: #2A5DFA !important;
   border-bottom: 0 !important;
   box-shadow: none !important;
+}
+/* Janitor's bar is sticky at top:0 and ours is too, so the two stacked and cut
+   the wordmark and the menu dial in half. Only one header can own the top of
+   the page: ours does, Janitor's keeps its place at the top of the document. */
+.pp-top-bar-outer, .pp-top-bar, .profile-top-bar {
+  position: static !important;
+  top: auto !important;
 }
 
 .pp-top-bar-title, .profile-top-bar-title { color: #fff !important; }
