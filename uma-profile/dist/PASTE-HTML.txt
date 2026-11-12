@@ -147,9 +147,9 @@
       <div class="uma-ctl c2"><a class="uma-arrow" href="#g1"><img class="uma-arrow-img" alt="Previous" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@d98bae508e96/uma-profile/assets/site/arrow_left.png"></a><a class="uma-arrow" href="#g3"><img class="uma-arrow-img" alt="Next" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@d98bae508e96/uma-profile/assets/site/arrow_right.png"></a></div>
       <div class="uma-ctl c3"><a class="uma-arrow" href="#g2"><img class="uma-arrow-img" alt="Previous" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@d98bae508e96/uma-profile/assets/site/arrow_left.png"></a><a class="uma-arrow" href="#g1"><img class="uma-arrow-img" alt="Next" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@d98bae508e96/uma-profile/assets/site/arrow_right.png"></a></div>
 
-      <div class="uma-pg p1"><img alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@d98bae508e96/uma-profile/assets/site/pager_1.png"></div>
-      <div class="uma-pg p2"><img alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@d98bae508e96/uma-profile/assets/site/pager_2.png"></div>
-      <div class="uma-pg p3"><img alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@d98bae508e96/uma-profile/assets/site/pager_3.png"></div>
+      <div class="uma-pg p1"><i class="uma-hs"></i><i class="uma-dot"></i><i class="uma-dot"></i></div>
+      <div class="uma-pg p2"><i class="uma-dot"></i><i class="uma-hs"></i><i class="uma-dot"></i></div>
+      <div class="uma-pg p3"><i class="uma-dot"></i><i class="uma-dot"></i><i class="uma-hs"></i></div>
     </div>
   </div>
 

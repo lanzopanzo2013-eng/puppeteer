@@ -60,6 +60,7 @@ const CHROME = `
 <div class="pp-top-bar-outer"><div class="pp-top-bar profile-top-bar">
   <button class="pp-top-bar-back-button">&#8249;</button>
   <div class="pp-top-bar-title">Profile of @uma_enjoyer</div>
+  <button class="pp-top-bar-notifications-button"><svg width="16" height="16" viewBox="0 0 16 16"><path d="M8 1a4 4 0 0 0-4 4v3l-1 3h10l-1-3V5a4 4 0 0 0-4-4z"/></svg></button>
 </div></div>
 <div class="pp-page-background">
   <div class="pp-uc-background">

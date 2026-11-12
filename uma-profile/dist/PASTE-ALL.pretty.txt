@@ -292,14 +292,32 @@
 }
 .uma-arrow-img { width: 11px; height: auto; opacity: .75; }
 
-.uma-pg { display: none; justify-content: center; margin: 12px 0 6px; }
+.uma-pg {
+  display: none; justify-content: center; align-items: center; gap: 15px;
+  margin: 14px 0 8px;
+}
+/* the pager is drawn, not a scaled bitmap: two dots and the horseshoe that
+   marks the live slide. At 15px the PNG row went soft and lost its right edge. */
+.uma-pg i { display: block; flex: 0 0 auto; }
+.uma-dot { width: 9px; height: 9px; border-radius: 50%; background: #fff; opacity: .92; }
+.uma-hs { position: relative; width: 16px; height: 16px; }
+.uma-hs::before {
+  content: ""; position: absolute; left: 0; top: 0; width: 16px; height: 16px;
+  border: 5.5px solid #fff; border-bottom-color: transparent; border-radius: 50%;
+  box-sizing: border-box;
+}
+.uma-hs::after {
+  content: ""; position: absolute; left: 2px; bottom: 0;
+  width: 5px; height: 5px; background: #fff; border-radius: 1px;
+  box-shadow: 9px 0 0 #fff;
+}
 .uma-pg.p1 { display: flex; }
 #g1:target ~ .uma-pg.p2, #g1:target ~ .uma-pg.p3,
 #g2:target ~ .uma-pg.p1, #g2:target ~ .uma-pg.p3,
 #g3:target ~ .uma-pg.p1, #g3:target ~ .uma-pg.p2 { display: none; }
 #g2:target ~ .uma-pg.p2, #g3:target ~ .uma-pg.p3 { display: flex; }
 #g1:target ~ .uma-pg.p1 { display: flex; }
-.uma-pg img { width: 84px; height: auto; opacity: .92; }
+
 
 /* ---------- Roster (purple) ---------- */
 .uma-roster { background: linear-gradient(180deg, #8C83FF 0%, #7D75E3 100%); }
@@ -371,6 +389,20 @@
 }
 .uma-brand { display: block; flex: 0 1 auto; min-width: 0; }
 .uma-brand-img { display: block; width: 168px; max-width: 54vw; height: auto; }
+/* on the site the mark hangs over the blue bar at the top of the page and
+   settles to bar height once you scroll. Scroll-driven animations only: the
+   @supports guard keeps every other engine on the static 168px mark. */
+@supports (animation-timeline: scroll()) {
+  @keyframes uma-brand-shrink {
+    from { width: 232px; max-width: 74vw; }
+    to   { width: 168px; max-width: 54vw; }
+  }
+  .uma-brand-img {
+    animation: uma-brand-shrink linear both;
+    animation-timeline: scroll(root block);
+    animation-range: 0 190px;
+  }
+}
 .uma-menu { display: flex; flex-direction: column; align-items: center; width: 44px; flex: 0 0 auto; }
 .uma-menu-ring {
   width: 22px; height: 22px; border: 5px solid #fff;
@@ -535,10 +567,33 @@
 }
 .pp-top-bar-create-char { color: #fff !important; border: 1px solid rgba(255,255,255,.45) !important; }
 /* the site's white menu dial, sitting where Janitor keeps its round button */
+/* the bell becomes the site's white horseshoe with a caption under it. The
+   glyphs are CSS shapes, so nothing can be stripped and nothing needs a url(). */
 .pp-top-bar-notifications-button, .profile-top-bar-notifications-button {
-  background: #fff !important; color: #2A5DFA !important;
-  border-radius: 50% !important; width: 34px !important; height: 34px !important;
-  display: inline-flex !important; align-items: center !important; justify-content: center !important;
+  position: relative !important;
+  width: 52px !important; height: 46px !important;
+  background: transparent !important; box-shadow: none !important;
+  border: 0 !important; border-radius: 0 !important;
+  display: inline-block !important;
+}
+.pp-top-bar-notifications-button svg,
+.profile-top-bar-notifications-button svg,
+.pp-top-bar-notifications-button img { display: none !important; }
+/* an omega is the closest typeface match to the site's horseshoe: one glyph,
+   so the arch and its two feet can never be clipped apart. */
+.pp-top-bar-notifications-button::before,
+.profile-top-bar-notifications-button::before {
+  content: "\03A9"; position: absolute; left: 50%; top: 0;
+  transform: translateX(-50%);
+  font-family: "Roboto Condensed", Arial, sans-serif;
+  font-size: 26px; line-height: 28px; font-weight: 700; color: #fff;
+}
+.pp-top-bar-notifications-button::after,
+.profile-top-bar-notifications-button::after {
+  content: "Notifications"; position: absolute; left: 50%; bottom: 4px;
+  transform: translateX(-50%); white-space: nowrap;
+  font-family: roboto, Arial, sans-serif; font-size: 8px; font-weight: 700;
+  letter-spacing: .2px; color: #fff;
 }
 
 /* small screens */
@@ -555,6 +610,28 @@
   .uma-media-row { flex-direction: row; }
   .uma-media-tile { width: 48.6%; }
   .uma-card-thumb { width: 168px; }
+}
+
+/* Sections settle in as they arrive, so the page has some life as you scroll.
+   Scroll-driven only, and only when the reader has not asked for less motion. */
+@supports (animation-timeline: view()) {
+  @keyframes uma-reveal {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .uma-sec > .uma-tag-wrap,
+    .uma-sec > .uma-hl,
+    .uma-sec > .uma-card,
+    .uma-sec > .uma-more,
+    .uma-sec > .uma-grid,
+    .uma-sec > .uma-media-row,
+    .uma-sec > .uma-explore {
+      animation: uma-reveal linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 60%;
+    }
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -720,9 +797,9 @@
       <div class="uma-ctl c2"><a class="uma-arrow" href="#g1"><img class="uma-arrow-img" alt="Previous" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@d98bae508e96/uma-profile/assets/site/arrow_left.png"></a><a class="uma-arrow" href="#g3"><img class="uma-arrow-img" alt="Next" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@d98bae508e96/uma-profile/assets/site/arrow_right.png"></a></div>
       <div class="uma-ctl c3"><a class="uma-arrow" href="#g2"><img class="uma-arrow-img" alt="Previous" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@d98bae508e96/uma-profile/assets/site/arrow_left.png"></a><a class="uma-arrow" href="#g1"><img class="uma-arrow-img" alt="Next" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@d98bae508e96/uma-profile/assets/site/arrow_right.png"></a></div>
 
-      <div class="uma-pg p1"><img alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@d98bae508e96/uma-profile/assets/site/pager_1.png"></div>
-      <div class="uma-pg p2"><img alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@d98bae508e96/uma-profile/assets/site/pager_2.png"></div>
-      <div class="uma-pg p3"><img alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@d98bae508e96/uma-profile/assets/site/pager_3.png"></div>
+      <div class="uma-pg p1"><i class="uma-hs"></i><i class="uma-dot"></i><i class="uma-dot"></i></div>
+      <div class="uma-pg p2"><i class="uma-dot"></i><i class="uma-hs"></i><i class="uma-dot"></i></div>
+      <div class="uma-pg p3"><i class="uma-dot"></i><i class="uma-dot"></i><i class="uma-hs"></i></div>
     </div>
   </div>
 
