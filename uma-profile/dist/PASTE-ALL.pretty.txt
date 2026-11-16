@@ -403,9 +403,15 @@
 /* Anchored to the FOOT of Janitor's bar rather than its top, so the wordmark
    lands inside the bar whatever height their bar happens to be: the row is
    pulled up by its own height and gives that height straight back to the flow. */
+/* Their bar cannot hold an <img> (this profile strips every CSS image
+   reference, and the markup of that bar is not ours to edit). So the site's
+   wordmark and horseshoe are drawn as a fixed layer at the top of the viewport
+   with the largest z-index there is: their own bar stays exactly as Janitor
+   paints it underneath, buttons and caption included, and the two marks sit on
+   it. Height follows a 44-52px bar, which is what the live site uses. */
 .uma-hdr {
-  position: relative; z-index: 1002;
-  height: 44px; margin-bottom: -44px; transform: translateY(-44px);
+  position: fixed; top: 0; left: 0; right: 0; z-index: 2147483647;
+  height: 50px; margin: 0;
   display: flex; align-items: center; justify-content: space-between;
   padding: 0 12px; background: transparent; pointer-events: none;
 }
@@ -422,7 +428,7 @@
 }
 .uma-hdr-brand img { display: block; width: auto; height: 30px; max-width: 58vw; }
 /* the horseshoe sits over the notification button, above its caption */
-.uma-hdr-menu { position: absolute; right: 4%; bottom: 19px; width: 74px; display: flex; justify-content: center; }
+.uma-hdr-menu { position: absolute; right: 4%; top: 1px; width: 74px; display: flex; justify-content: center; }
 .uma-hdr-menu img { display: block; width: 20px; height: auto; }
 
 /* ---------- Download (the site's blue band) ---------- */
@@ -545,9 +551,9 @@
    off the DOM, so nothing about it can be stripped by the editor. */
 .pp-top-bar, .pp-top-bar-outer, .profile-top-bar, .profile-top-bar-outer,
 .pp-top-bar-inner {
-  /* the wordmark lives in our row behind this bar; their own fill would hide it.
-     Buttons, layout and spacing stay entirely theirs. */
-  background: transparent !important;
+  /* their own bar, painted the site's blue. Nothing of it is removed: the
+     wordmark and the horseshoe are a fixed layer on top of it. */
+  background: #0F57FB !important;
   border-bottom: 0 !important;
   box-shadow: none !important;
 }
