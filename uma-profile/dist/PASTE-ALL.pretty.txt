@@ -38,14 +38,13 @@
 
 /* ---- top bar ---- */
 /* ---- hero ---- */
-.uma-hero { position: relative; height: min(124vw, 780px); background: #8FD46A; overflow: hidden; }
-.uma-hero-art {
-  position: absolute; left: 0; top: 0; width: 100%; height: 100%;
-  object-fit: cover; object-position: 50% 0;
-}
+/* The intro art is shown whole on phones, the way the site shows it, instead of
+   being cropped to a fixed band, and its foot fades out to white. */
+.uma-hero { position: relative; background: #8FD46A; overflow: hidden; line-height: 0; }
+.uma-hero-art { position: relative; display: block; width: 100%; height: auto; }
 .uma-hero-wash {
-  position: absolute; left: 0; right: 0; bottom: 0; height: 230px;
-  background: linear-gradient(180deg, rgba(46,139,34,0) 0%, rgba(30,120,26,.55) 55%, rgba(20,100,20,.88) 100%);
+  position: absolute; left: 0; right: 0; bottom: 0; height: 32%;
+  background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.5) 58%, #fff 100%);
 }
 .uma-side {
   position: absolute; right: 7px; top: 22px; color: #fff;
@@ -256,7 +255,31 @@
 }
 
 /* ---------- Gameplay (green) ---------- */
-.uma-play { background: linear-gradient(180deg, #4FBF43 0%, #3CA732 100%); }
+/* The Gameplay backdrops from the site, one per slide, swapped by the same
+   :target anchors that drive the carousel. Cropped to drop the baked arrows,
+   the "Gameplay" tag and the pager. Phones show a window of each: left, middle,
+   right, so the three read as one panning scene. */
+.uma-play { background: #3CA732; }
+.uma-lb-bg {
+  position: absolute; left: 0; top: 0; width: 100%; height: 100%;
+  object-fit: cover; object-position: 50% 50%;
+  /* the site blurs and dims the frame behind the slider, so the baked-in game
+     UI reads as texture instead of competing with the card */
+  filter: blur(3px) saturate(1.05); transform: scale(1.08);
+  opacity: 0; transition: opacity .45s ease; z-index: 0; pointer-events: none;
+}
+.uma-play .uma-lb-bg.b1,
+#g1:target ~ .uma-lb-bg.b1,
+#g2:target ~ .uma-lb-bg.b2,
+#g3:target ~ .uma-lb-bg.b3 { opacity: 1; }
+#g2:target ~ .uma-lb-bg.b1,
+#g3:target ~ .uma-lb-bg.b1 { opacity: 0; }
+/* a green veil so the white headline and captions keep their contrast */
+.uma-play::after {
+  content: ""; position: absolute; left: 0; top: 0; right: 0; bottom: 0;
+  background: linear-gradient(180deg, rgba(60,167,50,.3) 0%, rgba(60,167,50,.12) 42%, rgba(60,167,50,.45) 100%);
+  z-index: 0; pointer-events: none;
+}
 .uma-carousel { position: relative; }
 .uma-anchor { position: absolute; top: 0; left: 0; width: 1px; height: 1px; }
 /* the lorebook shots are 700 px wide art, so the carousel keeps a 700 px
@@ -280,16 +303,16 @@
   font-size: 12px; font-weight: 700; color: #fff; margin-top: 8px; line-height: 1.35;
   text-shadow: 0 1px 2px rgba(0,0,0,.25);
 }
-#g2:target ~ .uma-viewport .uma-track { transform: translateX(-100%); }
-#g3:target ~ .uma-viewport .uma-track { transform: translateX(-200%); }
+#g2:target ~ .uma-carousel .uma-viewport .uma-track { transform: translateX(-100%); }
+#g3:target ~ .uma-carousel .uma-viewport .uma-track { transform: translateX(-200%); }
 
 .uma-ctl { display: none; justify-content: space-between; margin-top: 8px; }
 .uma-ctl.c1 { display: flex; }
-#g1:target ~ .uma-ctl.c2, #g1:target ~ .uma-ctl.c3,
-#g2:target ~ .uma-ctl.c1, #g2:target ~ .uma-ctl.c3,
-#g3:target ~ .uma-ctl.c1, #g3:target ~ .uma-ctl.c2 { display: none; }
-#g2:target ~ .uma-ctl.c2, #g3:target ~ .uma-ctl.c3 { display: flex; }
-#g1:target ~ .uma-ctl.c1 { display: flex; }
+#g1:target ~ .uma-carousel .uma-ctl.c2, #g1:target ~ .uma-carousel .uma-ctl.c3,
+#g2:target ~ .uma-carousel .uma-ctl.c1, #g2:target ~ .uma-carousel .uma-ctl.c3,
+#g3:target ~ .uma-carousel .uma-ctl.c1, #g3:target ~ .uma-carousel .uma-ctl.c2 { display: none; }
+#g2:target ~ .uma-carousel .uma-ctl.c2, #g3:target ~ .uma-carousel .uma-ctl.c3 { display: flex; }
+#g1:target ~ .uma-carousel .uma-ctl.c1 { display: flex; }
 
 .uma-shell a.uma-arrow {
   width: 38px; height: 38px; border-radius: 50%; background: rgba(0,0,0,.22);
@@ -305,23 +328,14 @@
    marks the live slide. At 15px the PNG row went soft and lost its right edge. */
 .uma-pg i { display: block; flex: 0 0 auto; }
 .uma-dot { width: 9px; height: 9px; border-radius: 50%; background: #fff; opacity: .92; }
-.uma-hs { position: relative; width: 16px; height: 16px; }
-.uma-hs::before {
-  content: ""; position: absolute; left: 0; top: 0; width: 16px; height: 16px;
-  border: 5.5px solid #fff; border-bottom-color: transparent; border-radius: 50%;
-  box-sizing: border-box;
-}
-.uma-hs::after {
-  content: ""; position: absolute; left: 2px; bottom: 0;
-  width: 5px; height: 5px; background: #fff; border-radius: 1px;
-  box-shadow: 9px 0 0 #fff;
-}
+/* the pager mark is the real horseshoe artwork */
+.uma-hs { width: 15px; height: auto; display: block; }
 .uma-pg.p1 { display: flex; }
-#g1:target ~ .uma-pg.p2, #g1:target ~ .uma-pg.p3,
-#g2:target ~ .uma-pg.p1, #g2:target ~ .uma-pg.p3,
-#g3:target ~ .uma-pg.p1, #g3:target ~ .uma-pg.p2 { display: none; }
-#g2:target ~ .uma-pg.p2, #g3:target ~ .uma-pg.p3 { display: flex; }
-#g1:target ~ .uma-pg.p1 { display: flex; }
+#g1:target ~ .uma-carousel .uma-pg.p2, #g1:target ~ .uma-carousel .uma-pg.p3,
+#g2:target ~ .uma-carousel .uma-pg.p1, #g2:target ~ .uma-carousel .uma-pg.p3,
+#g3:target ~ .uma-carousel .uma-pg.p1, #g3:target ~ .uma-carousel .uma-pg.p2 { display: none; }
+#g2:target ~ .uma-carousel .uma-pg.p2, #g3:target ~ .uma-carousel .uma-pg.p3 { display: flex; }
+#g1:target ~ .uma-carousel .uma-pg.p1 { display: flex; }
 
 
 /* ---------- Roster (purple) ---------- */
@@ -386,43 +400,20 @@
 
 
 /* ---------- the site's own header bar (markup, not CSS art) ---------- */
+/* No second header. The wordmark is pinned over Janitor's own profile bar and
+   Janitor's title is made transparent behind it, so the site mark sits inside
+   the real header instead of a copy of it. */
 .uma-topbar {
-  display: flex; align-items: center; justify-content: space-between;
-  background: #2A5DFA; padding: 0 14px;
-  /* a fixed height, so shrinking the wordmark never resizes the bar around it */
-  height: 76px; box-sizing: border-box;
-  position: sticky; top: 0; z-index: 1002;
-  box-shadow: 0 3px 10px rgba(16,40,120,.22);
+  position: fixed; left: 0; right: 0; top: 0;
+  height: 44px; display: flex; align-items: center; justify-content: center;
+  pointer-events: none; z-index: 1005;
 }
-.uma-brand { display: block; flex: 0 1 auto; min-width: 0; }
-.uma-brand-img { display: block; width: 168px; max-width: 54vw; height: auto; }
-/* on the site the mark hangs over the blue bar at the top of the page and
-   settles to bar height once you scroll. Scroll-driven animations only: the
-   @supports guard keeps every other engine on the static 168px mark. */
-@supports (animation-timeline: scroll()) {
-  @keyframes uma-brand-shrink {
-    from { width: 232px; max-width: 74vw; }
-    to   { width: 168px; max-width: 54vw; }
-  }
-  .uma-brand-img {
-    animation: uma-brand-shrink linear both;
-    animation-timeline: scroll(root block);
-    animation-range: 0 190px;
-  }
-}
-.uma-menu { display: flex; flex-direction: column; align-items: center; width: 46px; flex: 0 0 auto; }
-/* the site's horseshoe: a ring with the middle of its base clipped away, which
-   leaves the two legs and the gap. Same construction in the header and over the
-   notifications slot, so the two marks match. */
-.uma-menu-ring {
-  width: 22px; height: 22px; box-sizing: border-box;
-  border: 5.5px solid #fff; border-radius: 50%;
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 70% 100%, 70% 50%, 30% 50%, 30% 100%, 0 100%);
-}
-.uma-menu-lbl {
-  font-family: "Roboto Condensed", roboto, Arial, sans-serif;
-  font-style: italic; font-weight: 900; font-size: 11px; letter-spacing: -.1px;
-  color: #fff; margin-top: 5px;
+.uma-brand { display: block; pointer-events: auto; line-height: 0; }
+.uma-brand-img { display: block; width: auto; height: 30px; max-width: 58vw; }
+/* the notification mark is the real artwork, not a drawn ring */
+.uma-hs-notif {
+  position: fixed; right: 12px; top: 6px; width: 22px; height: auto;
+  z-index: 1006; pointer-events: none;
 }
 
 /* ---------- Download (the site's blue band) ---------- */
@@ -573,12 +564,8 @@
 /* Janitor's bar is sticky at top:0 and ours is too, so the two stacked and cut
    the wordmark and the menu dial in half. Only one header can own the top of
    the page: ours does, Janitor's keeps its place at the top of the document. */
-.pp-top-bar-outer, .pp-top-bar, .profile-top-bar {
-  position: static !important;
-  top: auto !important;
-}
-
-.pp-top-bar-title, .profile-top-bar-title { color: #fff !important; }
+/* their bar keeps its own sticky behaviour now that ours is gone */
+.pp-top-bar-title, .profile-top-bar-title { color: transparent !important; }
 .pp-top-bar-back-button, .pp-top-bar-search-icon,
 .pp-top-bar-notifications-button { color: #2A5DFA !important; }
 .pp-top-bar-search, .pp-top-bar-search-input {
@@ -602,12 +589,7 @@
 /* the horseshoe is drawn: a ring with a notch clipped out of the bottom, which
    leaves the two legs and the gap. No glyph, no url(), nothing to strip. */
 .pp-top-bar-notifications-button::before,
-.profile-top-bar-notifications-button::before {
-  content: ""; position: absolute; left: 50%; top: 5px; margin-left: -11px;
-  width: 22px; height: 22px; box-sizing: border-box;
-  border: 5.5px solid #fff; border-radius: 50%;
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 70% 100%, 70% 50%, 30% 50%, 30% 100%, 0 100%);
-}
+.profile-top-bar-notifications-button::before { content: none !important; }
 .pp-top-bar-notifications-button::after,
 .profile-top-bar-notifications-button::after {
   content: "Notifications"; position: absolute; left: 50%; bottom: 4px;
@@ -622,6 +604,11 @@
    readable measure — the way the site behaves between phone and desktop. */
 @media (min-width: 820px) {
   .uma-sec { padding-left: calc(50% - 500px); padding-right: calc(50% - 500px); }
+  .uma-hero { height: min(58vw, 700px); }
+  .uma-hero-art {
+    position: absolute; left: 0; top: 0; width: 100%; height: 100%;
+    object-fit: cover; object-position: 50% 12%;
+  }
   .uma-cta { left: calc(50% - 500px); right: calc(50% - 500px); }
   .uma-playnow { left: calc(50% - 500px + 4px); }
   .uma-side { right: calc(50% - 500px + 7px); }
@@ -637,7 +624,7 @@
    Scroll-driven only, and only when the reader has not asked for less motion. */
 @supports (animation-timeline: view()) {
   @keyframes uma-reveal {
-    from { opacity: 0; transform: translateY(20px); }
+    from { opacity: .35; transform: translateY(26px); }
     to   { opacity: 1; transform: translateY(0); }
   }
   @media (prefers-reduced-motion: no-preference) {
@@ -647,10 +634,13 @@
     .uma-sec > .uma-more,
     .uma-sec > .uma-grid,
     .uma-sec > .uma-media-row,
+    .uma-sec > .uma-carousel,
+    .uma-sec > .uma-profile-card,
+    .uma-sec > .uma-about-txt,
     .uma-sec > .uma-explore {
       animation: uma-reveal linear both;
       animation-timeline: view();
-      animation-range: entry 0% entry 60%;
+      animation-range: entry 12% entry 52%;
     }
   }
 }
@@ -663,9 +653,12 @@
 }
 
 @media (max-width: 575.98px) {
+  /* left edge, middle, right edge: the three slides read as one panning shot */
+  .uma-lb-bg.b1 { object-position: 0% 50%; }
+  .uma-lb-bg.b2 { object-position: 50% 50%; }
+  .uma-lb-bg.b3 { object-position: 100% 50%; }
   .uma-tag { font-size: 23px; padding: 8px 26px 9px; }
   .uma-hl { font-size: 22px; }
-  .uma-hero { height: min(122vw, 780px); }
 }
 </style>
 
@@ -679,11 +672,8 @@
     <a class="uma-brand" href="#updates">
       <img class="uma-brand-img" alt="Umamusume: Pretty Derby" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@d98bae508e96/uma-profile/assets/site/logo.png">
     </a>
-    <div class="uma-menu">
-      <div class="uma-menu-ring"></div>
-      <div class="uma-menu-lbl">Menu</div>
-    </div>
   </div>
+  <img class="uma-hs-notif" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@d98bae508e96/uma-profile/assets/site/horseshoe.png">
 
   <!-- ── hero ──────────────────────────────────────────────── -->
   <div class="uma-hero">
@@ -786,16 +776,18 @@
 
   <!-- ── Gameplay ──────────────────────────────────────────── -->
   <div class="uma-sec uma-play" id="scripts">
-    <img class="uma-band-pat" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@d98bae508e96/uma-profile/assets/site/pattern.png">
+    <span id="g1" class="uma-anchor"></span>
+    <span id="g2" class="uma-anchor"></span>
+    <span id="g3" class="uma-anchor"></span>
+    <img class="uma-lb-bg b1" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@d98bae508e96/uma-profile/assets/site/lb1.jpg">
+    <img class="uma-lb-bg b2" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@d98bae508e96/uma-profile/assets/site/lb2.jpg">
+    <img class="uma-lb-bg b3" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@d98bae508e96/uma-profile/assets/site/lb3.jpg">
     <div class="uma-tag-wrap"><div class="uma-tag green"><span>The Lorebooks</span></div></div>
     <div class="uma-hl">Train your Umamusume!</div>
 
     <!-- arrows drive the slides through :target, which is the only way to do this
          without JavaScript. Each state keeps its own prev/next pair. -->
     <div class="uma-carousel">
-      <span id="g1" class="uma-anchor"></span>
-      <span id="g2" class="uma-anchor"></span>
-      <span id="g3" class="uma-anchor"></span>
 
       <div class="uma-viewport">
         <div class="uma-track">
@@ -818,9 +810,9 @@
       <div class="uma-ctl c2"><a class="uma-arrow" href="#g1"><img class="uma-arrow-img" alt="Previous" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@d98bae508e96/uma-profile/assets/site/arrow_left.png"></a><a class="uma-arrow" href="#g3"><img class="uma-arrow-img" alt="Next" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@d98bae508e96/uma-profile/assets/site/arrow_right.png"></a></div>
       <div class="uma-ctl c3"><a class="uma-arrow" href="#g2"><img class="uma-arrow-img" alt="Previous" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@d98bae508e96/uma-profile/assets/site/arrow_left.png"></a><a class="uma-arrow" href="#g1"><img class="uma-arrow-img" alt="Next" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@d98bae508e96/uma-profile/assets/site/arrow_right.png"></a></div>
 
-      <div class="uma-pg p1"><i class="uma-hs"></i><i class="uma-dot"></i><i class="uma-dot"></i></div>
-      <div class="uma-pg p2"><i class="uma-dot"></i><i class="uma-hs"></i><i class="uma-dot"></i></div>
-      <div class="uma-pg p3"><i class="uma-dot"></i><i class="uma-dot"></i><i class="uma-hs"></i></div>
+      <div class="uma-pg p1"><img class="uma-hs" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@d98bae508e96/uma-profile/assets/site/horseshoe.png"><i class="uma-dot"></i><i class="uma-dot"></i></div>
+      <div class="uma-pg p2"><i class="uma-dot"></i><img class="uma-hs" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@d98bae508e96/uma-profile/assets/site/horseshoe.png"><i class="uma-dot"></i></div>
+      <div class="uma-pg p3"><i class="uma-dot"></i><i class="uma-dot"></i><img class="uma-hs" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@d98bae508e96/uma-profile/assets/site/horseshoe.png"></div>
     </div>
   </div>
 

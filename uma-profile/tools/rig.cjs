@@ -26,7 +26,7 @@ const markup = src.slice(src.indexOf('</style>') + 8);
 // the sandbox has no internet: swap the CDN art for the files on disk
 const local = markup.replace(
   /https:\/\/file\.garden\/apVBH6JH-X_MR0Je\/kv\.-RnlVFGO\.jpeg/g,
-  'file://' + path.join(ROOT, 'assets', 'site', 'hero.jpg')
+  'file://' + path.join(ROOT, 'assets', 'site', 'kv.jpg')
 ).replace(
   /https:\/\/en-portal\.g\.kuroco-img\.app\/[^"]*\/(astonmachan|mrcb|tamamocross|nicenature|winningticket)\/[^"]+/g,
   (m, slug) => {

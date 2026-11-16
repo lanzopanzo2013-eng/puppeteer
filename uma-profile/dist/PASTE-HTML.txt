@@ -8,11 +8,8 @@
     <a class="uma-brand" href="#updates">
       <img class="uma-brand-img" alt="Umamusume: Pretty Derby" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@d98bae508e96/uma-profile/assets/site/logo.png">
     </a>
-    <div class="uma-menu">
-      <div class="uma-menu-ring"></div>
-      <div class="uma-menu-lbl">Menu</div>
-    </div>
   </div>
+  <img class="uma-hs-notif" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@d98bae508e96/uma-profile/assets/site/horseshoe.png">
 
   <!-- ── hero ──────────────────────────────────────────────── -->
   <div class="uma-hero">
@@ -115,16 +112,18 @@
 
   <!-- ── Gameplay ──────────────────────────────────────────── -->
   <div class="uma-sec uma-play" id="scripts">
-    <img class="uma-band-pat" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@d98bae508e96/uma-profile/assets/site/pattern.png">
+    <span id="g1" class="uma-anchor"></span>
+    <span id="g2" class="uma-anchor"></span>
+    <span id="g3" class="uma-anchor"></span>
+    <img class="uma-lb-bg b1" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@d98bae508e96/uma-profile/assets/site/lb1.jpg">
+    <img class="uma-lb-bg b2" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@d98bae508e96/uma-profile/assets/site/lb2.jpg">
+    <img class="uma-lb-bg b3" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@d98bae508e96/uma-profile/assets/site/lb3.jpg">
     <div class="uma-tag-wrap"><div class="uma-tag green"><span>The Lorebooks</span></div></div>
     <div class="uma-hl">Train your Umamusume!</div>
 
     <!-- arrows drive the slides through :target, which is the only way to do this
          without JavaScript. Each state keeps its own prev/next pair. -->
     <div class="uma-carousel">
-      <span id="g1" class="uma-anchor"></span>
-      <span id="g2" class="uma-anchor"></span>
-      <span id="g3" class="uma-anchor"></span>
 
       <div class="uma-viewport">
         <div class="uma-track">
@@ -147,9 +146,9 @@
       <div class="uma-ctl c2"><a class="uma-arrow" href="#g1"><img class="uma-arrow-img" alt="Previous" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@d98bae508e96/uma-profile/assets/site/arrow_left.png"></a><a class="uma-arrow" href="#g3"><img class="uma-arrow-img" alt="Next" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@d98bae508e96/uma-profile/assets/site/arrow_right.png"></a></div>
       <div class="uma-ctl c3"><a class="uma-arrow" href="#g2"><img class="uma-arrow-img" alt="Previous" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@d98bae508e96/uma-profile/assets/site/arrow_left.png"></a><a class="uma-arrow" href="#g1"><img class="uma-arrow-img" alt="Next" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@d98bae508e96/uma-profile/assets/site/arrow_right.png"></a></div>
 
-      <div class="uma-pg p1"><i class="uma-hs"></i><i class="uma-dot"></i><i class="uma-dot"></i></div>
-      <div class="uma-pg p2"><i class="uma-dot"></i><i class="uma-hs"></i><i class="uma-dot"></i></div>
-      <div class="uma-pg p3"><i class="uma-dot"></i><i class="uma-dot"></i><i class="uma-hs"></i></div>
+      <div class="uma-pg p1"><img class="uma-hs" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@d98bae508e96/uma-profile/assets/site/horseshoe.png"><i class="uma-dot"></i><i class="uma-dot"></i></div>
+      <div class="uma-pg p2"><i class="uma-dot"></i><img class="uma-hs" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@d98bae508e96/uma-profile/assets/site/horseshoe.png"><i class="uma-dot"></i></div>
+      <div class="uma-pg p3"><i class="uma-dot"></i><i class="uma-dot"></i><img class="uma-hs" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@d98bae508e96/uma-profile/assets/site/horseshoe.png"></div>
     </div>
   </div>
 
