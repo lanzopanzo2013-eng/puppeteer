@@ -72,8 +72,8 @@ const CHROME = `
     </div>
   </div>
   </div>
-  <div class="pp-tabs-wrapper"><div class="pp-tabs-button">Characters</div><div class="pp-tabs-button">Scripts</div></div>
-  <div class="pp-tabs-indicator"></div>
+  <!-- the live profile shows no tab strip above the About Me block, so the rig
+       must not invent one either: the header row is measured against the bar -->
   <div class="pp-uc-about-me profile-about-me">`;
 
 const PAGE = `<!doctype html><html><head><meta charset="utf-8">

@@ -78,39 +78,14 @@
                3px 3px 0 #A8221A, 6px 7px 12px rgba(0,0,0,.32);
 }
 
-/* CTA grid */
-.uma-cta {
-  position: absolute; left: 12px; right: 12px; bottom: 12px; z-index: 3;
-  display: flex; flex-wrap: wrap; justify-content: space-between;
-}
-.uma-shell a.uma-btn {
-  color: #fff !important;
-  width: 48.6%; min-height: 42px; margin-bottom: 8px;
-  border-radius: 11px; background: #101215;
-  display: flex; align-items: center; padding: 0 10px;
-  box-shadow: 0 3px 0 rgba(0,0,0,.28);
-  transition: transform .12s ease, box-shadow .12s ease;
-}
-.uma-shell a.uma-btn:hover { transform: translateY(-2px); box-shadow: 0 5px 0 rgba(0,0,0,.28); }
-.uma-btn-ico {
-  width: 22px; height: 22px; border-radius: 6px; margin-right: 7px; flex: 0 0 22px;
-  background: #fff; color: #101215; font-size: 13px; font-weight: 900;
-  display: flex; align-items: center; justify-content: center; text-align: center;
-}
-.uma-btn-ico.blue { background: #4EA8FF; color: #fff; }
-.uma-btn-ico.green { background: #34C759; color: #fff; }
-.uma-btn-ico.pink { background: #FF4FA8; color: #fff; }
-.uma-btn-txt { display: flex; flex-direction: column; line-height: 1.05; }
-.uma-btn-txt small {
-  font-size: 8px; letter-spacing: .6px; text-transform: uppercase;
-  opacity: .72; font-weight: 700;
-}
-.uma-btn-txt b { font-family: "Roboto Condensed", roboto, Arial, sans-serif; font-size: 13.5px; font-weight: 800; letter-spacing: -.2px; }
-
+/* the scroll cue: stacked letters down the right edge, the way the site runs it */
 .uma-scroll {
-  position: absolute; right: 5px; bottom: 20px; z-index: 3; color: #fff;
-  font-size: 9px; font-weight: 800; letter-spacing: 2px; writing-mode: vertical-rl; opacity: .9;
+  position: absolute; right: 9px; bottom: 26px; z-index: 3; color: #fff;
+  display: flex; flex-direction: column; align-items: center; gap: 5px;
+  font-size: 10px; font-weight: 800; letter-spacing: 3px;
+  writing-mode: vertical-rl; text-shadow: 0 1px 3px rgba(0,0,0,.45);
 }
+.uma-scroll span { display: block; font-size: 13px; letter-spacing: 0; }
 
 /* ============================================================
    BATCH 3 — section furniture (shared by every band)
@@ -416,23 +391,22 @@
 /* No second header. The wordmark is pinned over Janitor's own profile bar and
    Janitor's title is made transparent behind it, so the site mark sits inside
    the real header instead of a copy of it. */
-/* The site's own bar. It sits in the flow right under Janitor's bar and takes
-   the same blue with no seam, so the two read as one header: the wordmark on
-   the left like the official page, the white horseshoe and its caption on the
-   right, where Janitor keeps the notification label. */
+/* The wordmark rides inside Janitor's own bar. This row takes no height of its
+   own: it is lifted straight onto their 44px bar and never paints a band, so
+   there is no second header to see. Their bar keeps its blue from the page
+   background (its own paint is cleared below), which also means the wordmark
+   shows through even when their bar wins the stacking order. */
 .uma-hdr {
+  position: relative; z-index: 1002;
+  height: 44px; margin-top: -44px;
   display: flex; align-items: center; justify-content: space-between;
-  background: #0F57FB; padding: 5px 14px 0; margin-bottom: -6px;
-  position: relative; z-index: 4;
+  padding: 0 12px; background: transparent; pointer-events: none;
 }
 .uma-hdr-brand { display: block; line-height: 0; }
-.uma-hdr-brand img { display: block; width: auto; height: 44px; max-width: 62vw; }
-.uma-hdr-menu { display: flex; flex-direction: column; align-items: center; width: 46px; }
-.uma-hdr-menu img { display: block; width: 26px; height: auto; }
-.uma-hdr-menu span {
-  font-family: "Roboto Condensed", roboto, Arial, sans-serif;
-  font-size: 11.5px; font-weight: 800; color: #fff; letter-spacing: .2px; margin-top: 1px;
-}
+.uma-hdr-brand img { display: block; width: auto; height: 32px; max-width: 56vw; }
+/* the horseshoe sits over the notification button, above its caption */
+.uma-hdr-menu { display: flex; justify-content: center; width: 74px; margin-right: 2px; }
+.uma-hdr-menu img { display: block; width: 21px; height: auto; }
 
 /* ---------- Download (the site's blue band) ---------- */
 .uma-dl {
@@ -583,6 +557,11 @@
    the wordmark and the menu dial in half. Only one header can own the top of
    the page: ours does, Janitor's keeps its place at the top of the document. */
 /* their bar keeps its own sticky behaviour now that ours is gone */
+/* their bar paints nothing itself: the blue is the page background behind it,
+   so the wordmark lifted onto it is visible instead of covered */
+.pp-top-bar, .pp-top-bar-outer, .profile-top-bar, .profile-top-bar-outer {
+  background: transparent !important; box-shadow: none !important;
+}
 .pp-top-bar-title, .profile-top-bar-title { color: transparent !important; }
 .pp-top-bar-back-button, .pp-top-bar-search-icon,
 .pp-top-bar-notifications-button { color: #0F57FB !important; }
@@ -621,31 +600,38 @@
 /* The site's store rows, repurposed: black plates for the titles whose art
    carries its own light, white cards for the ones that need paper under them.
    Same shapes, same order, same green ground as the official page. */
+/* Same shapes as the store rows on the official page: black plates for the
+   titles whose art carries its own light, white cards for the ones that need
+   paper under them, all on the key visual's green. */
 .uma-fandom { background: linear-gradient(180deg, #4FBF43 0%, #3CA732 100%); }
 .uma-fan-rows { display: grid; gap: 10px; margin-top: 2px; }
 .uma-fan-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 .uma-fan-t {
-  display: flex; align-items: center; justify-content: center;
-  height: 66px; padding: 10px 12px; border-radius: 14px;
-  background: #0B0B0D; box-shadow: 0 3px 10px rgba(0,0,0,.20);
+  height: 54px; padding: 8px 12px; border-radius: 9px;
+  background: #000; box-shadow: 0 2px 6px rgba(0,0,0,.22);
 }
-.uma-fan-t img { display: block; width: auto; height: auto; max-height: 34px; max-width: 100%; }
+/* one logo, or several sharing the plate: a grid keeps every mark inside its
+   own column instead of letting the row push past the plate edge */
+.uma-fan-t { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; align-items: center; justify-items: center; }
+.uma-fan-t.multi { gap: 8px; }
+.uma-fan-t img { display: block; width: auto; height: auto; max-height: 26px; max-width: 100%; }
+.uma-fan-t.multi img { max-height: 22px; }
 .uma-fan-card {
-  display: flex; align-items: center; justify-content: center; gap: 12px;
-  background: #fff; border-radius: 14px; padding: 12px 14px; min-height: 58px;
-  box-shadow: 0 3px 10px rgba(0,0,0,.14);
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  background: #fff; border-radius: 9px; padding: 9px 14px; min-height: 52px;
+  box-shadow: 0 2px 6px rgba(0,0,0,.16);
 }
-.uma-fan-card img { display: block; width: auto; height: auto; max-height: 30px; max-width: 100%; }
-.uma-fan-3 img { max-width: 30%; }
-.uma-fan-2 img { max-width: 42%; }
-.uma-fan-acc { flex-direction: column; gap: 10px; padding: 13px 14px 14px; }
 .uma-fan-lbl {
   font-family: "Roboto Condensed", roboto, Arial, sans-serif;
-  font-style: italic; font-weight: 900; font-size: 15px; line-height: 1; color: #14161a;
+  font-style: italic; font-weight: 900; font-size: 14px; line-height: 1.1; color: #14161a;
+  flex: 0 0 auto;
 }
-.uma-fan-links { display: flex; align-items: center; justify-content: center; gap: 22px; }
+.uma-fan-links {
+  display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; align-items: center; justify-items: end;
+  gap: 12px; flex: 1 1 auto; min-width: 0;
+}
 .uma-fan-links a { display: block; line-height: 0; }
-.uma-fan-links img { display: block; width: auto; height: auto; max-height: 26px; max-width: 96px; }
+.uma-fan-links img { display: block; width: auto; height: auto; max-height: 24px; max-width: 100%; }
 
 /* small screens */
 /* wide screens: the bands stay edge to edge, the content inside them keeps a
@@ -657,18 +643,17 @@
     position: absolute; left: 0; top: 0; width: 100%; height: 100%;
     object-fit: cover; object-position: 50% 12%;
   }
-  .uma-cta { left: calc(50% - 500px); right: calc(50% - 500px); }
   .uma-playnow { left: calc(50% - 500px + 4px); }
   .uma-side { right: calc(50% - 500px + 7px); }
   .uma-dl { padding-left: calc(50% - 500px); padding-right: calc(50% - 500px); }
   .uma-tile, .uma-tile:last-child { width: 18.4%; aspect-ratio: 3 / 4; }
   .uma-tile:last-child img { object-position: 50% 100%; }
-  .uma-fan-t { height: 96px; padding: 16px 18px; }
-  .uma-fan-t img { max-height: 56px; }
-  .uma-fan-card { min-height: 84px; padding: 18px 20px; }
-  .uma-fan-card img { max-height: 46px; }
-  .uma-fan-lbl { font-size: 19px; }
-  .uma-fan-links img { max-height: 34px; max-width: 130px; }
+  .uma-fan-t { height: 74px; padding: 12px 18px; }
+  .uma-fan-t img { max-height: 36px; }
+  .uma-fan-t.multi img { max-height: 30px; }
+  .uma-fan-card { min-height: 66px; padding: 12px 20px; }
+  .uma-fan-lbl { font-size: 17px; }
+  .uma-fan-links img { max-height: 30px; max-width: 96px; }
   .uma-media-row { flex-direction: row; }
   .uma-media-tile { width: 48.6%; }
   .uma-card-thumb { width: 168px; }
@@ -729,43 +714,23 @@
     </a>
     <div class="uma-hdr-menu">
       <img alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@2c082ab/uma-profile/assets/site/horseshoe.png">
-      <span>Menu</span>
     </div>
   </div>
 
   <!-- ── hero ──────────────────────────────────────────────── -->
   <div class="uma-hero">
     <!-- IMG:KV → TEMP local crop -->
-    <img class="uma-hero-art" alt="Umamusume: Pretty Derby" src="https://file.garden/apVBH6JH-X_MR0Je/kv.-RnlVFGO.jpeg">
+    <img class="uma-hero-art" alt="Umamusume: Pretty Derby" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@2c082ab/uma-profile/assets/site/kv2.jpg">
     <div class="uma-hero-wash"></div>
-    <div class="uma-side">Uma Enjoyer · Tracen</div>
+    <div class="uma-side">Umamusume: Pretty Derby</div>
     <div class="uma-playnow"><span>CHAT NOW!</span></div>
 
-    <div class="uma-cta">
-      <a class="uma-btn" href="#characters">
-        <div class="uma-btn-ico">★</div>
-        <div class="uma-btn-txt"><small>Browse</small><b>Characters</b></div>
-      </a>
-      <a class="uma-btn" href="#scripts">
-        <div class="uma-btn-ico blue">✦</div>
-        <div class="uma-btn-txt"><small>Open</small><b>Lorebooks</b></div>
-      </a>
-      <a class="uma-btn" href="#updates">
-        <div class="uma-btn-ico green">▲</div>
-        <div class="uma-btn-txt"><small>Latest</small><b>Doings</b></div>
-      </a>
-      <a class="uma-btn" href="#about">
-        <div class="uma-btn-ico pink">♥</div>
-        <div class="uma-btn-txt"><small>About</small><b>The Trainer</b></div>
-      </a>
-    </div>
-    <div class="uma-scroll">SCROLL</div>
+    <div class="uma-scroll">SCROLL<span>&#8595;</span></div>
   </div>
 
-  <!-- ── Featured fandoms (the store rows, repurposed) ──────── -->
+  <!-- ── Featured fandoms, in the site's store-row shapes ──── -->
   <div class="uma-sec uma-fandom" id="fandoms">
     <div class="uma-tag-wrap"><div class="uma-tag green"><span>Featured Fandoms</span></div></div>
-    <div class="uma-hl">Pick a world!</div>
 
     <div class="uma-fan-rows">
       <div class="uma-fan-row">
@@ -774,29 +739,19 @@
       </div>
       <div class="uma-fan-row">
         <div class="uma-fan-t"><img alt="Girls und Panzer" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@2c082ab/uma-profile/assets/site/fd_gup.png"></div>
-        <div class="uma-fan-t"><img alt="Hatsune Miku: Project DIVA" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@2c082ab/uma-profile/assets/site/fd_diva.png"></div>
+        <div class="uma-fan-t multi"><img alt="Doki Doki Literature Club" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@2c082ab/uma-profile/assets/site/fd_ddlc.png"><img alt="Yandere Simulator" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@2c082ab/uma-profile/assets/site/fd_yandere.png"><img alt="Hatsune Miku: Project DIVA" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@2c082ab/uma-profile/assets/site/fd_diva.png"></div>
       </div>
-      <div class="uma-fan-card uma-fan-3">
-        <img alt="Doki Doki Literature Club" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@2c082ab/uma-profile/assets/site/fd_ddlc.png">
-        <img alt="Yandere Simulator" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@2c082ab/uma-profile/assets/site/fd_yandere.png">
-        <img alt="Ace Combat 7: Skies Unknown" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@2c082ab/uma-profile/assets/site/fd_ace.png">
+      <div class="uma-fan-card">
+        <span class="uma-fan-lbl">Racing</span>
+        <div class="uma-fan-links"><img alt="Initial D" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@2c082ab/uma-profile/assets/site/fd_initiald.png"><img alt="Wangan Midnight" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@2c082ab/uma-profile/assets/site/fd_wangan.png"><img alt="MF Ghost" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@2c082ab/uma-profile/assets/site/fd_mfghost.png"><img alt="Formula 1" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@2c082ab/uma-profile/assets/site/fd_f1.png"></div>
       </div>
-      <div class="uma-fan-card uma-fan-3">
-        <img alt="Initial D" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@2c082ab/uma-profile/assets/site/fd_initiald.png">
-        <img alt="Wangan Midnight" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@2c082ab/uma-profile/assets/site/fd_wangan.png">
-        <img alt="MF Ghost" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@2c082ab/uma-profile/assets/site/fd_mfghost.png">
+      <div class="uma-fan-card">
+        <span class="uma-fan-lbl">More worlds</span>
+        <div class="uma-fan-links"><img alt="Ace Combat 7: Skies Unknown" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@2c082ab/uma-profile/assets/site/fd_ace.png"><img alt="Japan Racing Association" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@2c082ab/uma-profile/assets/site/fd_jra.png"></div>
       </div>
-      <div class="uma-fan-card uma-fan-2">
-        <img alt="Formula 1" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@2c082ab/uma-profile/assets/site/fd_f1.png">
-        <img alt="Japan Racing Association" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@2c082ab/uma-profile/assets/site/fd_jra.png">
-      </div>
-      <div class="uma-fan-card uma-fan-acc">
+      <div class="uma-fan-card">
         <span class="uma-fan-lbl">Official Accounts</span>
-        <div class="uma-fan-links">
-          <a href="https://saucepan.ai/u/uma_enjoyer" target="_blank" rel="noopener"><img alt="Saucepan" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@2c082ab/uma-profile/assets/site/fd_saucepan.png"></a>
-          <a href="https://discord.gg/8XftR6Qd" target="_blank" rel="noopener"><img alt="Discord" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@2c082ab/uma-profile/assets/site/fd_discord.png"></a>
-          <a href="https://janitorai.com/profiles/86121955-50f2-4a0c-9e67-71e476f47f75_profile-of-uma-enjoyer" target="_blank" rel="noopener"><img alt="Janitor AI" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@2c082ab/uma-profile/assets/site/fd_janitorai.png"></a>
-        </div>
+        <div class="uma-fan-links"><a href="https://saucepan.ai/u/uma_enjoyer" target="_blank" rel="noopener"><img alt="Saucepan" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@2c082ab/uma-profile/assets/site/fd_saucepan.png"></a><a href="https://discord.gg/8XftR6Qd" target="_blank" rel="noopener"><img alt="Discord" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@2c082ab/uma-profile/assets/site/fd_discord.png"></a><a href="https://janitorai.com/profiles/86121955-50f2-4a0c-9e67-71e476f47f75_profile-of-uma-enjoyer" target="_blank" rel="noopener"><img alt="Janitor AI" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@2c082ab/uma-profile/assets/site/fd_janitorai.png"></a></div>
       </div>
     </div>
   </div>
@@ -948,7 +903,7 @@
 
     <div class="uma-media-row">
       <a class="uma-media-tile" href="#">
-        <img alt="" style="object-position:50% 30%" src="https://file.garden/apVBH6JH-X_MR0Je/kv.-RnlVFGO.jpeg">
+        <img alt="" style="object-position:50% 30%" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@2c082ab/uma-profile/assets/site/kv2.jpg">
         <img class="uma-media-plate" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@2c082ab/uma-profile/assets/site/title_anime.png">
         <span class="uma-media-lbl">Anime</span>
       </a>
