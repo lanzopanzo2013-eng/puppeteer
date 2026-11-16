@@ -542,8 +542,11 @@
    .pp-top-bar-logo is the real logo slot (see the previous theme's rules for
    -logo-name / -logo-sub-name); painting it as a background keeps the image
    off the DOM, so nothing about it can be stripped by the editor. */
-.pp-top-bar, .profile-top-bar, .pp-top-bar-inner {
-  background: #0F57FB !important;
+.pp-top-bar, .pp-top-bar-outer, .profile-top-bar, .profile-top-bar-outer,
+.pp-top-bar-inner {
+  /* the wordmark lives in our row behind this bar; their own fill would hide it.
+     Buttons, layout and spacing stay entirely theirs. */
+  background: transparent !important;
   border-bottom: 0 !important;
   box-shadow: none !important;
 }
@@ -573,13 +576,8 @@
    the wordmark and the menu dial in half. Only one header can own the top of
    the page: ours does, Janitor's keeps its place at the top of the document. */
 /* their bar keeps its own sticky behaviour now that ours is gone */
-/* Every CSS image reference is stripped on this profile, so an <img> can never
-   live inside their bar's markup. The one way to see the wordmark in that band
-   is to let the band's fill come from the page behind it: their bar keeps its
-   buttons, its layout and its shadow, and only its own fill steps aside. */
-.pp-top-bar, .pp-top-bar-outer, .profile-top-bar, .profile-top-bar-outer {
-  background-color: transparent !important;
-}
+/* Their bar's title is the only text slot we can reach, and the CSS strips any
+   image reference, so the title is emptied and the wordmark is drawn behind. */
 .pp-top-bar-title, .profile-top-bar-title { color: transparent !important; }
 .pp-top-bar-back-button, .pp-top-bar-search-icon,
 .pp-top-bar-notifications-button { color: #0F57FB !important; }
@@ -675,11 +673,13 @@
   .uma-tile, .uma-tile:last-child { width: 18.4%; aspect-ratio: 3 / 4; }
   .uma-tile:last-child img { object-position: 50% 100%; }
   .uma-fan-t { height: 74px; padding: 12px 18px; }
-  .uma-fan-t img { max-height: 36px; }
+  .uma-fan-t img { max-height: 46px; }
   .uma-fan-t.multi img { max-height: 30px; }
   .uma-fan-card { min-height: 66px; padding: 12px 20px; }
   .uma-fan-lbl { font-size: 17px; }
-  .uma-fan-links img { max-height: 30px; max-width: 96px; }
+  .uma-fan-links img { max-height: 38px; max-width: 120px; }
+  .uma-acc .uma-fan-links img { max-height: 40px; }
+  .uma-acc .uma-fan-links a:first-child img { max-height: 30px; }
   .uma-hero-stack { padding-left: calc(50% - 500px); padding-right: calc(50% - 500px); }
   .uma-playnow span { font-size: 25px; }
   .uma-media-row { flex-direction: row; }
