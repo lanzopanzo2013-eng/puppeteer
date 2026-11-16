@@ -19,21 +19,14 @@
     <img class="uma-hero-art" alt="Umamusume: Pretty Derby" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@7260d2d/uma-profile/assets/site/kv2.jpg">
     <div class="uma-hero-wash"></div>
     <div class="uma-side">Umamusume: Pretty Derby</div>
-    <div class="uma-playnow"><span>CHAT NOW!</span></div>
-
-    <div class="uma-scroll">SCROLL<span>&#8595;</span></div>
-  </div>
-
-  <!-- ── Featured fandoms, in the site's store-row shapes ──── -->
-  <div class="uma-sec uma-fandom" id="fandoms">
-    <div class="uma-tag-wrap"><div class="uma-tag green"><span>Featured Fandoms</span></div></div>
-
-    <div class="uma-fan-rows">
-      <div class="uma-fan-row">
+    <div class="uma-hero-stack">
+      <div class="uma-fan-rows">
+        <div class="uma-fan-row">
+        <div class="uma-playnow"><span>CHAT NOW!</span></div>
         <div class="uma-fan-t"><img alt="Umamusume: Pretty Derby" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@7260d2d/uma-profile/assets/site/fd_uma.png"></div>
         <div class="uma-fan-t"><img alt="Umamusume: Cinderella Gray" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@7260d2d/uma-profile/assets/site/fd_cingray.png"></div>
       </div>
-      <div class="uma-fan-row">
+        <div class="uma-fan-row">
         <div class="uma-fan-t"><img alt="Girls und Panzer" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@7260d2d/uma-profile/assets/site/fd_gup.png"></div>
         <div class="uma-fan-t multi"><img alt="Doki Doki Literature Club" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@7260d2d/uma-profile/assets/site/fd_ddlc.png"><img alt="Yandere Simulator" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@7260d2d/uma-profile/assets/site/fd_yandere.png"><img alt="Hatsune Miku: Project DIVA" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@7260d2d/uma-profile/assets/site/fd_diva.png"></div>
       </div>
@@ -50,6 +43,9 @@
         <div class="uma-fan-links"><a href="https://saucepan.ai/u/uma_enjoyer" target="_blank" rel="noopener"><img alt="Saucepan" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@7260d2d/uma-profile/assets/site/fd_saucepan.png"></a><a href="https://discord.gg/8XftR6Qd" target="_blank" rel="noopener"><img alt="Discord" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@7260d2d/uma-profile/assets/site/fd_discord.png"></a><a href="https://janitorai.com/profiles/86121955-50f2-4a0c-9e67-71e476f47f75_profile-of-uma-enjoyer" target="_blank" rel="noopener"><img alt="Janitor AI" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@7260d2d/uma-profile/assets/site/fd_janitorai.png"></a></div>
       </div>
     </div>
+    </div>
+
+    <div class="uma-scroll">SCROLL<span>&#8595;</span></div>
   </div>
 
   <!-- ── Updates (News) ────────────────────────────────────── -->

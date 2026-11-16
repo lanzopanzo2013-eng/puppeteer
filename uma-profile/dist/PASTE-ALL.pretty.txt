@@ -42,10 +42,18 @@
    being cropped to a fixed band, and its foot fades out to white. */
 .uma-hero { position: relative; background: #8FD46A; overflow: hidden; line-height: 0; }
 .uma-hero-art { position: relative; display: block; width: 100%; height: auto; }
+/* the key visual carries the badge stack itself, the way the official first
+   screen does, so the badges sit on the artwork instead of in a band below it */
 .uma-hero-wash {
-  position: absolute; left: 0; right: 0; bottom: 0; height: 32%;
-  background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.5) 58%, #fff 100%);
+  position: absolute; left: 0; right: 0; bottom: 0; height: 52%;
+  background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.34) 34%,
+              rgba(255,255,255,.72) 66%, rgba(255,255,255,.94) 100%);
 }
+.uma-hero-stack {
+  position: absolute; left: 0; right: 0; bottom: 14px; z-index: 3;
+  padding: 0 12px; line-height: normal;
+}
+.uma-hero-stack .uma-fan-rows { margin-top: 0; }
 .uma-side {
   position: absolute; right: 7px; top: 22px; color: #fff;
   font-size: 9px; font-weight: 800; letter-spacing: 1.8px; text-transform: uppercase;
@@ -53,19 +61,21 @@
   text-shadow: 0 1px 3px rgba(0,0,0,.45);
   border: 1px solid rgba(255,255,255,.75); border-radius: 20px; padding: 10px 3px;
 }
-.uma-playnow { position: absolute; left: 16px; bottom: 182px; z-index: 3; }
+/* the call to action sits in the first badge row, left of the plates, the way
+   Play Now sits beside the store badges on the official screen */
+.uma-playnow { display: flex; align-items: center; }
 .uma-playnow span {
   display: block;
   font-family: "Roboto Condensed", roboto, Arial, sans-serif;
-  font-style: italic; font-weight: 900; font-size: 26px; line-height: 1;
-  letter-spacing: -.4px; color: #fff; transform: rotate(-3deg);
-  text-shadow: 2px 0 0 #E23B2A, -2px 0 0 #E23B2A, 0 2px 0 #E23B2A, 0 -2px 0 #E23B2A,
-               3px 3px 0 #A8221A, 6px 7px 12px rgba(0,0,0,.32);
+  font-style: italic; font-weight: 900; font-size: 16.5px; line-height: 1;
+  letter-spacing: -.3px; color: #FFC23D; transform: rotate(-3deg); white-space: nowrap;
+  text-shadow: 1.5px 0 0 #fff, -1.5px 0 0 #fff, 0 1.5px 0 #fff, 0 -1.5px 0 #fff,
+               2px 2px 0 #B7761A, 4px 5px 9px rgba(0,0,0,.30);
 }
 
 /* the scroll cue: stacked letters down the right edge, the way the site runs it */
 .uma-scroll {
-  position: absolute; right: 9px; bottom: 26px; z-index: 3; color: #fff;
+  position: absolute; right: 8px; bottom: 44%; z-index: 3; color: #fff;
   display: flex; flex-direction: column; align-items: center; gap: 5px;
   font-size: 10px; font-weight: 800; letter-spacing: 3px;
   writing-mode: vertical-rl; text-shadow: 0 1px 3px rgba(0,0,0,.45);
@@ -542,11 +552,6 @@
    the wordmark and the menu dial in half. Only one header can own the top of
    the page: ours does, Janitor's keeps its place at the top of the document. */
 /* their bar keeps its own sticky behaviour now that ours is gone */
-/* their bar paints nothing itself: the blue is the page background behind it,
-   so the wordmark lifted onto it is visible instead of covered */
-.pp-top-bar, .pp-top-bar-outer, .profile-top-bar, .profile-top-bar-outer {
-  background: transparent !important; box-shadow: none !important;
-}
 .pp-top-bar-title, .profile-top-bar-title { color: transparent !important; }
 .pp-top-bar-back-button, .pp-top-bar-search-icon,
 .pp-top-bar-notifications-button { color: #0F57FB !important; }
@@ -587,10 +592,12 @@
    Same shapes, same order, same green ground as the official page. */
 /* Same shapes as the store rows on the official page: black plates for the
    titles whose art carries its own light, white cards for the ones that need
-   paper under them, all on the key visual's green. */
-.uma-fandom { background: linear-gradient(180deg, #4FBF43 0%, #3CA732 100%); }
+   paper under them, riding on the key visual. */
 .uma-fan-rows { display: grid; gap: 10px; margin-top: 2px; }
 .uma-fan-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+/* first row: the call to action takes the left slot, the two title plates
+   share the rest, which is how the official row reads */
+.uma-hero-stack .uma-fan-row:first-child { grid-template-columns: .82fr 1fr 1fr; }
 .uma-fan-t {
   height: 54px; padding: 8px 12px; border-radius: 9px;
   background: #000; box-shadow: 0 2px 6px rgba(0,0,0,.22);
@@ -639,6 +646,8 @@
   .uma-fan-card { min-height: 66px; padding: 12px 20px; }
   .uma-fan-lbl { font-size: 17px; }
   .uma-fan-links img { max-height: 30px; max-width: 96px; }
+  .uma-hero-stack { padding-left: calc(50% - 500px); padding-right: calc(50% - 500px); }
+  .uma-playnow span { font-size: 20px; }
   .uma-media-row { flex-direction: row; }
   .uma-media-tile { width: 48.6%; }
   .uma-card-thumb { width: 168px; }
@@ -708,21 +717,14 @@
     <img class="uma-hero-art" alt="Umamusume: Pretty Derby" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@7260d2d/uma-profile/assets/site/kv2.jpg">
     <div class="uma-hero-wash"></div>
     <div class="uma-side">Umamusume: Pretty Derby</div>
-    <div class="uma-playnow"><span>CHAT NOW!</span></div>
-
-    <div class="uma-scroll">SCROLL<span>&#8595;</span></div>
-  </div>
-
-  <!-- ── Featured fandoms, in the site's store-row shapes ──── -->
-  <div class="uma-sec uma-fandom" id="fandoms">
-    <div class="uma-tag-wrap"><div class="uma-tag green"><span>Featured Fandoms</span></div></div>
-
-    <div class="uma-fan-rows">
-      <div class="uma-fan-row">
+    <div class="uma-hero-stack">
+      <div class="uma-fan-rows">
+        <div class="uma-fan-row">
+        <div class="uma-playnow"><span>CHAT NOW!</span></div>
         <div class="uma-fan-t"><img alt="Umamusume: Pretty Derby" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@7260d2d/uma-profile/assets/site/fd_uma.png"></div>
         <div class="uma-fan-t"><img alt="Umamusume: Cinderella Gray" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@7260d2d/uma-profile/assets/site/fd_cingray.png"></div>
       </div>
-      <div class="uma-fan-row">
+        <div class="uma-fan-row">
         <div class="uma-fan-t"><img alt="Girls und Panzer" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@7260d2d/uma-profile/assets/site/fd_gup.png"></div>
         <div class="uma-fan-t multi"><img alt="Doki Doki Literature Club" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@7260d2d/uma-profile/assets/site/fd_ddlc.png"><img alt="Yandere Simulator" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@7260d2d/uma-profile/assets/site/fd_yandere.png"><img alt="Hatsune Miku: Project DIVA" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@7260d2d/uma-profile/assets/site/fd_diva.png"></div>
       </div>
@@ -739,6 +741,9 @@
         <div class="uma-fan-links"><a href="https://saucepan.ai/u/uma_enjoyer" target="_blank" rel="noopener"><img alt="Saucepan" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@7260d2d/uma-profile/assets/site/fd_saucepan.png"></a><a href="https://discord.gg/8XftR6Qd" target="_blank" rel="noopener"><img alt="Discord" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@7260d2d/uma-profile/assets/site/fd_discord.png"></a><a href="https://janitorai.com/profiles/86121955-50f2-4a0c-9e67-71e476f47f75_profile-of-uma-enjoyer" target="_blank" rel="noopener"><img alt="Janitor AI" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@7260d2d/uma-profile/assets/site/fd_janitorai.png"></a></div>
       </div>
     </div>
+    </div>
+
+    <div class="uma-scroll">SCROLL<span>&#8595;</span></div>
   </div>
 
   <!-- ── Updates (News) ────────────────────────────────────── -->
