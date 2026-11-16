@@ -20,9 +20,10 @@
     <div class="uma-hero-wash"></div>
     <div class="uma-side">Umamusume: Pretty Derby</div>
     <div class="uma-hero-stack">
+      <span class="uma-fan-caption">Featured Fandoms</span>
       <div class="uma-fan-rows">
         <div class="uma-fan-row">
-        <div class="uma-playnow"><span>CHAT NOW!</span></div>
+        <div class="uma-playnow"><span>Chat now!</span></div>
         <div class="uma-fan-t"><img alt="Umamusume: Pretty Derby" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@7260d2d/uma-profile/assets/site/fd_uma.png"></div>
         <div class="uma-fan-t"><img alt="Umamusume: Cinderella Gray" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@7260d2d/uma-profile/assets/site/fd_cingray.png"></div>
       </div>
@@ -38,14 +39,14 @@
         <span class="uma-fan-lbl">More worlds</span>
         <div class="uma-fan-links"><img alt="Ace Combat 7: Skies Unknown" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@7260d2d/uma-profile/assets/site/fd_ace.png"><img alt="Japan Racing Association" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@7260d2d/uma-profile/assets/site/fd_jra.png"></div>
       </div>
-      <div class="uma-fan-card">
+      <div class="uma-fan-card uma-acc">
         <span class="uma-fan-lbl">Official Accounts</span>
         <div class="uma-fan-links"><a href="https://saucepan.ai/u/uma_enjoyer" target="_blank" rel="noopener"><img alt="Saucepan" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@7260d2d/uma-profile/assets/site/fd_saucepan.png"></a><a href="https://discord.gg/8XftR6Qd" target="_blank" rel="noopener"><img alt="Discord" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@7260d2d/uma-profile/assets/site/fd_discord.png"></a><a href="https://janitorai.com/profiles/86121955-50f2-4a0c-9e67-71e476f47f75_profile-of-uma-enjoyer" target="_blank" rel="noopener"><img alt="Janitor AI" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@7260d2d/uma-profile/assets/site/fd_janitorai.png"></a></div>
       </div>
     </div>
     </div>
 
-    <div class="uma-scroll">SCROLL<span>&#8595;</span></div>
+    <div class="uma-scroll">Scroll<span>&#8595;</span></div>
   </div>
 
   <!-- ── Updates (News) ────────────────────────────────────── -->

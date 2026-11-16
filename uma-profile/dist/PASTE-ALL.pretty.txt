@@ -50,13 +50,19 @@
               rgba(255,255,255,.72) 66%, rgba(255,255,255,.94) 100%);
 }
 .uma-hero-stack {
-  position: absolute; left: 0; right: 0; bottom: 14px; z-index: 3;
-  padding: 0 12px; line-height: normal;
+  position: absolute; left: 0; right: 0; bottom: 12px; z-index: 3;
+  padding: 0 11%; line-height: normal;
+}
+.uma-hero-stack .uma-fan-caption {
+  display: block; text-align: right; margin-bottom: 5px;
+  font-family: "Roboto Condensed", roboto, Arial, sans-serif;
+  font-size: 11px; font-weight: 800; letter-spacing: .2px; color: #fff;
+  text-shadow: 0 1px 3px rgba(0,0,0,.5);
 }
 .uma-hero-stack .uma-fan-rows { margin-top: 0; }
 .uma-side {
   position: absolute; right: 7px; top: 22px; color: #fff;
-  font-size: 9px; font-weight: 800; letter-spacing: 1.8px; text-transform: uppercase;
+  font-size: 9.5px; font-weight: 800; letter-spacing: 1.2px;
   writing-mode: vertical-rl; white-space: nowrap;
   text-shadow: 0 1px 3px rgba(0,0,0,.45);
   border: 1px solid rgba(255,255,255,.75); border-radius: 20px; padding: 10px 3px;
@@ -67,10 +73,13 @@
 .uma-playnow span {
   display: block;
   font-family: "Roboto Condensed", roboto, Arial, sans-serif;
-  font-style: italic; font-weight: 900; font-size: 16.5px; line-height: 1;
-  letter-spacing: -.3px; color: #FFC23D; transform: rotate(-3deg); white-space: nowrap;
-  text-shadow: 1.5px 0 0 #fff, -1.5px 0 0 #fff, 0 1.5px 0 #fff, 0 -1.5px 0 #fff,
-               2px 2px 0 #B7761A, 4px 5px 9px rgba(0,0,0,.30);
+  font-style: italic; font-weight: 900; font-size: 21px; line-height: 1.05;
+  letter-spacing: -.4px; transform: rotate(-3deg); white-space: nowrap;
+  background: linear-gradient(180deg, #FFE45C 0%, #FFC12B 42%, #FF9A16 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  filter: drop-shadow(2px 0 0 #fff) drop-shadow(-2px 0 0 #fff)
+          drop-shadow(0 2px 0 #fff) drop-shadow(0 2px 0 #fff)
+          drop-shadow(0 3px 2px rgba(96,48,0,.35));
 }
 
 /* the scroll cue: stacked letters down the right edge, the way the site runs it */
@@ -391,17 +400,20 @@
    there is no second header to see. Their bar keeps its blue from the page
    background (its own paint is cleared below), which also means the wordmark
    shows through even when their bar wins the stacking order. */
+/* Anchored to the FOOT of Janitor's bar rather than its top, so the wordmark
+   lands inside the bar whatever height their bar happens to be: the row is
+   pulled up by its own height and gives that height straight back to the flow. */
 .uma-hdr {
   position: relative; z-index: 1002;
-  height: 44px; margin-top: -44px;
+  height: 44px; margin-bottom: -44px; transform: translateY(-44px);
   display: flex; align-items: center; justify-content: space-between;
   padding: 0 12px; background: transparent; pointer-events: none;
 }
 .uma-hdr-brand { display: block; line-height: 0; }
-.uma-hdr-brand img { display: block; width: auto; height: 32px; max-width: 56vw; }
+.uma-hdr-brand img { display: block; width: auto; height: 30px; max-width: 58vw; }
 /* the horseshoe sits over the notification button, above its caption */
-.uma-hdr-menu { display: flex; justify-content: center; width: 74px; margin-right: 2px; }
-.uma-hdr-menu img { display: block; width: 21px; height: auto; }
+.uma-hdr-menu { position: absolute; right: 4%; bottom: 19px; width: 74px; display: flex; justify-content: center; }
+.uma-hdr-menu img { display: block; width: 20px; height: auto; }
 
 /* ---------- Download (the site's blue band) ---------- */
 .uma-dl {
@@ -552,6 +564,13 @@
    the wordmark and the menu dial in half. Only one header can own the top of
    the page: ours does, Janitor's keeps its place at the top of the document. */
 /* their bar keeps its own sticky behaviour now that ours is gone */
+/* Every CSS image reference is stripped on this profile, so an <img> can never
+   live inside their bar's markup. The one way to see the wordmark in that band
+   is to let the band's fill come from the page behind it: their bar keeps its
+   buttons, its layout and its shadow, and only its own fill steps aside. */
+.pp-top-bar, .pp-top-bar-outer, .profile-top-bar, .profile-top-bar-outer {
+  background-color: transparent !important;
+}
 .pp-top-bar-title, .profile-top-bar-title { color: transparent !important; }
 .pp-top-bar-back-button, .pp-top-bar-search-icon,
 .pp-top-bar-notifications-button { color: #0F57FB !important; }
@@ -593,37 +612,43 @@
 /* Same shapes as the store rows on the official page: black plates for the
    titles whose art carries its own light, white cards for the ones that need
    paper under them, riding on the key visual. */
-.uma-fan-rows { display: grid; gap: 10px; margin-top: 2px; }
-.uma-fan-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.uma-fan-rows { display: grid; gap: 8px; margin-top: 2px; }
+.uma-fan-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
 /* first row: the call to action takes the left slot, the two title plates
    share the rest, which is how the official row reads */
-.uma-hero-stack .uma-fan-row:first-child { grid-template-columns: .82fr 1fr 1fr; }
+.uma-hero-stack .uma-fan-row:nth-child(1) { grid-template-columns: auto minmax(0,1fr) minmax(0,1.3fr); }
 .uma-fan-t {
-  height: 54px; padding: 8px 12px; border-radius: 9px;
+  height: 44px; padding: 6px 9px; border-radius: 10px;
   background: #000; box-shadow: 0 2px 6px rgba(0,0,0,.22);
 }
 /* one logo, or several sharing the plate: a grid keeps every mark inside its
    own column instead of letting the row push past the plate edge */
 .uma-fan-t { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; align-items: center; justify-items: center; }
 .uma-fan-t.multi { gap: 8px; }
-.uma-fan-t img { display: block; width: auto; height: auto; max-height: 26px; max-width: 100%; }
-.uma-fan-t.multi img { max-height: 22px; }
+.uma-fan-t img { display: block; width: auto; height: auto; max-height: 22px; max-width: 100%; }
+.uma-fan-t.multi img { max-height: 18px; }
+.uma-acc .uma-fan-links {
+  display: flex; align-items: center; justify-content: space-between; gap: 8px;
+}
+.uma-acc .uma-fan-links img { max-height: 30px; }
+.uma-acc .uma-fan-links a { min-width: 0; }
+.uma-acc .uma-fan-links a:first-child img { max-height: 22px; max-width: none; }
 .uma-fan-card {
-  display: flex; align-items: center; justify-content: space-between; gap: 12px;
-  background: #fff; border-radius: 9px; padding: 9px 14px; min-height: 52px;
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  background: #fff; border-radius: 10px; padding: 6px 11px; min-height: 44px;
   box-shadow: 0 2px 6px rgba(0,0,0,.16);
 }
 .uma-fan-lbl {
   font-family: "Roboto Condensed", roboto, Arial, sans-serif;
-  font-style: italic; font-weight: 900; font-size: 14px; line-height: 1.1; color: #14161a;
+  font-style: italic; font-weight: 900; font-size: 12.5px; line-height: 1.1; color: #14161a;
   flex: 0 0 auto;
 }
 .uma-fan-links {
   display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; align-items: center; justify-items: end;
-  gap: 12px; flex: 1 1 auto; min-width: 0;
+  gap: 10px; flex: 1 1 auto; min-width: 0;
 }
 .uma-fan-links a { display: block; line-height: 0; }
-.uma-fan-links img { display: block; width: auto; height: auto; max-height: 24px; max-width: 100%; }
+.uma-fan-links img { display: block; width: auto; height: auto; max-height: 26px; max-width: 100%; }
 
 /* small screens */
 /* wide screens: the bands stay edge to edge, the content inside them keeps a
@@ -647,7 +672,7 @@
   .uma-fan-lbl { font-size: 17px; }
   .uma-fan-links img { max-height: 30px; max-width: 96px; }
   .uma-hero-stack { padding-left: calc(50% - 500px); padding-right: calc(50% - 500px); }
-  .uma-playnow span { font-size: 20px; }
+  .uma-playnow span { font-size: 25px; }
   .uma-media-row { flex-direction: row; }
   .uma-media-tile { width: 48.6%; }
   .uma-card-thumb { width: 168px; }
@@ -718,9 +743,10 @@
     <div class="uma-hero-wash"></div>
     <div class="uma-side">Umamusume: Pretty Derby</div>
     <div class="uma-hero-stack">
+      <span class="uma-fan-caption">Featured Fandoms</span>
       <div class="uma-fan-rows">
         <div class="uma-fan-row">
-        <div class="uma-playnow"><span>CHAT NOW!</span></div>
+        <div class="uma-playnow"><span>Chat now!</span></div>
         <div class="uma-fan-t"><img alt="Umamusume: Pretty Derby" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@7260d2d/uma-profile/assets/site/fd_uma.png"></div>
         <div class="uma-fan-t"><img alt="Umamusume: Cinderella Gray" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@7260d2d/uma-profile/assets/site/fd_cingray.png"></div>
       </div>
@@ -736,14 +762,14 @@
         <span class="uma-fan-lbl">More worlds</span>
         <div class="uma-fan-links"><img alt="Ace Combat 7: Skies Unknown" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@7260d2d/uma-profile/assets/site/fd_ace.png"><img alt="Japan Racing Association" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@7260d2d/uma-profile/assets/site/fd_jra.png"></div>
       </div>
-      <div class="uma-fan-card">
+      <div class="uma-fan-card uma-acc">
         <span class="uma-fan-lbl">Official Accounts</span>
         <div class="uma-fan-links"><a href="https://saucepan.ai/u/uma_enjoyer" target="_blank" rel="noopener"><img alt="Saucepan" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@7260d2d/uma-profile/assets/site/fd_saucepan.png"></a><a href="https://discord.gg/8XftR6Qd" target="_blank" rel="noopener"><img alt="Discord" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@7260d2d/uma-profile/assets/site/fd_discord.png"></a><a href="https://janitorai.com/profiles/86121955-50f2-4a0c-9e67-71e476f47f75_profile-of-uma-enjoyer" target="_blank" rel="noopener"><img alt="Janitor AI" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@7260d2d/uma-profile/assets/site/fd_janitorai.png"></a></div>
       </div>
     </div>
     </div>
 
-    <div class="uma-scroll">SCROLL<span>&#8595;</span></div>
+    <div class="uma-scroll">Scroll<span>&#8595;</span></div>
   </div>
 
   <!-- ── Updates (News) ────────────────────────────────────── -->

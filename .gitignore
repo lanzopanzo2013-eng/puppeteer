@@ -44,3 +44,4 @@ yarn-error.log*
 
 # Wireit
 .wireit
+image-search/
