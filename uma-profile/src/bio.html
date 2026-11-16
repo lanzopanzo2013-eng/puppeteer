@@ -55,17 +55,29 @@
 /* ---- hero ---- */
 /* The intro art is shown whole on phones, the way the site shows it, instead of
    being cropped to a fixed band, and its foot fades out to white. */
-.uma-hero { position: relative; background: #8FD46A; overflow: hidden; line-height: 0; }
-.uma-hero-art { position: relative; display: block; width: 100%; height: auto; }
+/* Geometry from umamusume.com's own stylesheet: .top-kv is 190.6667vw tall and
+   the art is pinned to its top at full width, so the band runs on below the
+   picture and the badge block can sit down at the knees with artwork under it. */
+.uma-hero {
+  position: relative; overflow: hidden; line-height: 0;
+  height: 190.6667vw; background: #379A2A;
+}
+/* the band is taller than the picture is at full width, so the picture fills it
+   and the extra height comes out of the sides — the same crop the site gets */
+.uma-hero-art {
+  position: absolute; left: 0; top: 0; width: 100%; height: 100%;
+  object-fit: cover; object-position: 50% 50%;
+}
 /* the key visual carries the badge stack itself, the way the official first
    screen does, so the badges sit on the artwork instead of in a band below it */
+/* the band's foot dissolves into the page below it */
 .uma-hero-wash {
-  position: absolute; left: 0; right: 0; bottom: 0; height: 46%;
-  background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.26) 40%,
-              rgba(255,255,255,.60) 72%, rgba(255,255,255,.90) 100%);
+  position: absolute; left: 0; right: 0; bottom: 0; height: 14%;
+  background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.55) 62%,
+              rgba(255,255,255,.95) 100%);
 }
 .uma-hero-stack {
-  position: absolute; left: 0; right: 0; bottom: 68px; z-index: 3;
+  position: absolute; left: 0; right: 0; top: 111.4667vw; z-index: 3;
   padding: 0 11%; line-height: normal;
 }
 .uma-hero-stack .uma-fan-caption {
@@ -75,12 +87,14 @@
   text-shadow: 0 1px 3px rgba(0,0,0,.5);
 }
 .uma-hero-stack .uma-fan-rows { margin-top: 0; }
+/* .top-kv__left .-umamusume: width 6.1333vw, padding 3.2vw 1.6vw at 2.4vw/49.3333vw */
 .uma-side {
-  position: absolute; right: 7px; top: 22px; color: #fff;
-  font-size: 9.5px; font-weight: 800; letter-spacing: 1.2px;
+  position: absolute; right: 2.4vw; top: 49.3333vw; width: 6.1333vw; color: #fff;
+  font-size: 10px; font-weight: 800; letter-spacing: .5px;
   writing-mode: vertical-rl; white-space: nowrap;
   text-shadow: 0 1px 3px rgba(0,0,0,.45);
-  border: 1px solid rgba(255,255,255,.75); border-radius: 20px; padding: 10px 3px;
+  border: .2667vw solid rgba(255,255,255,.85); border-radius: 999px;
+  padding: 3.2vw 1.6vw; text-align: center;
 }
 /* the call to action sits in the first badge row, left of the plates, the way
    Play Now sits beside the store badges on the official screen */
@@ -98,8 +112,9 @@
 }
 
 /* the scroll cue: stacked letters down the right edge, the way the site runs it */
+/* .top-kv__left .-scroll: right 3.7333vw, top 140.8vw */
 .uma-scroll {
-  position: absolute; right: 8px; bottom: 44%; z-index: 3; color: #fff;
+  position: absolute; right: 3.7333vw; top: 140.8vw; z-index: 3; color: #fff;
   display: flex; flex-direction: column; align-items: center; gap: 5px;
   font-size: 10px; font-weight: 800; letter-spacing: 3px;
   writing-mode: vertical-rl; text-shadow: 0 1px 3px rgba(0,0,0,.45);
@@ -441,9 +456,19 @@
   .uma-acc .uma-fan-links img { max-height: 26px; }
   .uma-acc .uma-fan-links a:first-child img { max-height: 17px; }
 }
-.uma-hdr-brand img { display: block; width: auto; height: 30px; max-width: 58vw; }
+/* .header__wrapper .-logo: width 32.5333vw, margin-left 4vw */
+.uma-hdr-brand img { display: block; width: 32.5333vw; height: auto; max-width: 58vw; margin-left: 4vw; }
 /* the horseshoe sits over the notification button, above its caption */
-.uma-hdr-menu { position: absolute; right: 4%; top: 1px; width: 74px; display: flex; justify-content: center; }
+/* the horseshoe and its caption share one centre line in the bar's corner */
+.uma-hdr-menu {
+  position: absolute; right: 2.4vw; top: 4px; width: 74px;
+  display: flex; flex-direction: column; align-items: center; gap: 2px;
+}
+.uma-hdr-cap {
+  font-family: "Roboto Condensed", roboto, Arial, sans-serif;
+  font-style: italic; font-weight: 900; font-size: 11px; line-height: 1; color: #fff;
+  white-space: nowrap;
+}
 .uma-hdr-menu img { display: block; width: 20px; height: auto; }
 
 /* ---------- Download (the site's blue band) ---------- */
@@ -649,13 +674,15 @@
 /* Same shapes as the store rows on the official page: black plates for the
    titles whose art carries its own light, white cards for the ones that need
    paper under them, riding on the key visual. */
-.uma-fan-rows { display: grid; gap: 8px; margin-top: 2px; }
-.uma-fan-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.uma-fan-rows { display: grid; gap: 1.2vw; margin-top: 2px; }
+.uma-fan-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2vw; }
 /* first row: the call to action takes the left slot, the two title plates
    share the rest, which is how the official row reads */
 .uma-hero-stack .uma-fan-row:nth-child(1) { grid-template-columns: auto minmax(0,1fr) minmax(0,1.3fr); }
+/* .store-list img: height 9.7067vw with a 40px floor, and the badges carry a
+   thin white edge in the artwork itself */
 .uma-fan-t {
-  height: 44px; padding: 6px 9px; border-radius: 10px;
+  height: 9.7067vw; min-height: 40px; padding: 5px 8px; border-radius: 8px;
   background: #000; border: 1.5px solid #fff;
   box-shadow: 0 2px 6px rgba(0,0,0,.22);
 }
@@ -663,17 +690,18 @@
    own column instead of letting the row push past the plate edge */
 .uma-fan-t { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; align-items: center; justify-items: center; }
 .uma-fan-t.multi { gap: 8px; }
-.uma-fan-t img { display: block; width: auto; height: auto; max-height: 22px; max-width: 100%; }
-.uma-fan-t.multi img { max-height: 18px; }
+.uma-fan-t img { display: block; width: auto; height: auto; max-height: 20px; max-width: 100%; }
+.uma-fan-t.multi img { max-height: 16px; }
 .uma-acc .uma-fan-links {
   display: flex; align-items: center; justify-content: space-between; gap: 8px;
 }
-.uma-acc .uma-fan-links img { max-height: 30px; }
+.uma-acc .uma-fan-links img { max-height: 26px; }
 .uma-acc .uma-fan-links a { min-width: 0; }
-.uma-acc .uma-fan-links a:first-child img { max-height: 22px; max-width: none; }
+.uma-acc .uma-fan-links a:first-child img { max-height: 19px; max-width: none; }
 .uma-fan-card {
   display: flex; align-items: center; justify-content: space-between; gap: 10px;
-  background: #fff; border-radius: 10px; padding: 6px 11px; min-height: 44px;
+  background: #fff; border-radius: 1.0667vw; padding: 3px 10px;
+  height: 8.5333vw; min-height: 34px;
   box-shadow: 0 2px 6px rgba(0,0,0,.16);
 }
 .uma-fan-lbl {
@@ -686,14 +714,17 @@
   gap: 10px; flex: 1 1 auto; min-width: 0;
 }
 .uma-fan-links a { display: block; line-height: 0; }
-.uma-fan-links img { display: block; width: auto; height: auto; max-height: 26px; max-width: 100%; }
+.uma-fan-links img { display: block; width: auto; height: auto; max-height: 22px; max-width: 100%; }
 
 /* small screens */
 /* wide screens: the bands stay edge to edge, the content inside them keeps a
    readable measure — the way the site behaves between phone and desktop. */
 @media (min-width: 820px) {
   .uma-sec { padding-left: calc(50% - 500px); padding-right: calc(50% - 500px); }
-  .uma-hero { height: min(58vw, 700px); }
+  .uma-hero { height: min(58vw, 700px); background: #8FD46A; }
+  /* the site scales its header logo down again on wide screens */
+  .uma-hdr-brand img { width: 8.9583vw; margin-left: 1.9444vw; }
+  .uma-hero-art { object-position: 50% 12%; }
   .uma-hero-art {
     position: absolute; left: 0; top: 0; width: 100%; height: 100%;
     object-fit: cover; object-position: 50% 12%;
@@ -711,7 +742,7 @@
   .uma-fan-links img { max-height: 38px; max-width: 120px; }
   .uma-acc .uma-fan-links img { max-height: 40px; }
   .uma-acc .uma-fan-links a:first-child img { max-height: 30px; }
-  .uma-hero-stack { padding-left: calc(50% - 500px); padding-right: calc(50% - 500px); }
+  .uma-hero-stack { top: auto; bottom: 24px; padding-left: calc(50% - 500px); padding-right: calc(50% - 500px); }
   .uma-playnow span { font-size: 25px; }
   .uma-media-row { flex-direction: row; }
   .uma-media-tile { width: 48.6%; }
@@ -773,13 +804,14 @@
     </a>
     <div class="uma-hdr-menu">
       <img alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@8a93235/uma-profile/assets/site/horseshoe.png">
+      <span class="uma-hdr-cap">Notifications</span>
     </div>
   </div>
 
   <!-- ── hero ──────────────────────────────────────────────── -->
   <div class="uma-hero">
     <!-- IMG:KV → TEMP local crop -->
-    <img class="uma-hero-art" alt="Umamusume: Pretty Derby" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@8a93235/uma-profile/assets/site/kv2.jpg">
+    <img class="uma-hero-art" alt="Umamusume: Pretty Derby" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@8a93235/uma-profile/assets/site/kv_vfgo.jpg">
     <div class="uma-hero-wash"></div>
     <div class="uma-side">Umamusume: Pretty Derby</div>
     <div class="uma-hero-stack">
@@ -959,7 +991,7 @@
 
     <div class="uma-media-row">
       <a class="uma-media-tile" href="#">
-        <img alt="" style="object-position:50% 30%" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@8a93235/uma-profile/assets/site/kv2.jpg">
+        <img alt="" style="object-position:50% 30%" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@8a93235/uma-profile/assets/site/kv_vfgo.jpg">
         <img class="uma-media-plate" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@8a93235/uma-profile/assets/site/title_anime.png">
         <span class="uma-media-lbl">Anime</span>
       </a>
