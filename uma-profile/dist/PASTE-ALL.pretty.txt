@@ -785,10 +785,10 @@
   <!-- ── header (the site's blue bar) ─────────────────────── -->
   <div class="uma-hdr">
     <a class="uma-hdr-brand" href="#updates">
-      <img alt="Umamusume: Pretty Derby" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@8a93235/uma-profile/assets/site/logo.png">
+      <img alt="Umamusume: Pretty Derby" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@96da3f0/uma-profile/assets/site/logo.png">
     </a>
     <div class="uma-hdr-menu">
-      <img alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@8a93235/uma-profile/assets/site/horseshoe.png">
+      <img alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@96da3f0/uma-profile/assets/site/horseshoe.png">
       <span class="uma-hdr-cap">Notifications</span>
     </div>
   </div>
@@ -796,7 +796,7 @@
   <!-- ── hero ──────────────────────────────────────────────── -->
   <div class="uma-hero">
     <!-- IMG:KV → TEMP local crop -->
-    <img class="uma-hero-art" alt="Umamusume: Pretty Derby" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@8a93235/uma-profile/assets/site/kv_vfgo.jpg">
+    <img class="uma-hero-art" alt="Umamusume: Pretty Derby" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@96da3f0/uma-profile/assets/site/kv_vfgo.jpg">
     <div class="uma-hero-wash"></div>
     <div class="uma-side">Umamusume: Pretty Derby</div>
     <div class="uma-hero-stack">
@@ -804,24 +804,24 @@
       <div class="uma-fan-rows">
         <div class="uma-fan-row">
         <div class="uma-playnow"><span>Chat now!</span></div>
-        <div class="uma-fan-t"><img alt="Umamusume: Pretty Derby" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@8a93235/uma-profile/assets/site/fd_uma.png"></div>
-        <div class="uma-fan-t"><img alt="Umamusume: Cinderella Gray" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@8a93235/uma-profile/assets/site/fd_cingray.png"></div>
+        <div class="uma-fan-t"><img alt="Umamusume: Pretty Derby" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@96da3f0/uma-profile/assets/site/fd_uma.png"></div>
+        <div class="uma-fan-t"><img alt="Umamusume: Cinderella Gray" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@96da3f0/uma-profile/assets/site/fd_cingray.png"></div>
       </div>
         <div class="uma-fan-row">
-        <div class="uma-fan-t"><img alt="Girls und Panzer" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@8a93235/uma-profile/assets/site/fd_gup.png"></div>
-        <div class="uma-fan-t multi"><img alt="Doki Doki Literature Club" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@8a93235/uma-profile/assets/site/fd_ddlc.png"><img alt="Yandere Simulator" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@8a93235/uma-profile/assets/site/fd_yandere.png"><img alt="Hatsune Miku: Project DIVA" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@8a93235/uma-profile/assets/site/fd_diva.png"></div>
+        <div class="uma-fan-t"><img alt="Girls und Panzer" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@96da3f0/uma-profile/assets/site/fd_gup.png"></div>
+        <div class="uma-fan-t multi"><img alt="Doki Doki Literature Club" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@96da3f0/uma-profile/assets/site/fd_ddlc.png"><img alt="Yandere Simulator" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@96da3f0/uma-profile/assets/site/fd_yandere.png"><img alt="Hatsune Miku: Project DIVA" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@96da3f0/uma-profile/assets/site/fd_diva.png"></div>
       </div>
       <div class="uma-fan-card">
         <span class="uma-fan-lbl">Racing</span>
-        <div class="uma-fan-links"><img alt="Initial D" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@8a93235/uma-profile/assets/site/fd_initiald.png"><img alt="Wangan Midnight" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@8a93235/uma-profile/assets/site/fd_wangan.png"><img alt="MF Ghost" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@8a93235/uma-profile/assets/site/fd_mfghost.png"><img alt="Formula 1" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@8a93235/uma-profile/assets/site/fd_f1.png"></div>
+        <div class="uma-fan-links"><img alt="Initial D" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@96da3f0/uma-profile/assets/site/fd_initiald.png"><img alt="Wangan Midnight" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@96da3f0/uma-profile/assets/site/fd_wangan.png"><img alt="MF Ghost" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@96da3f0/uma-profile/assets/site/fd_mfghost.png"><img alt="Formula 1" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@96da3f0/uma-profile/assets/site/fd_f1.png"></div>
       </div>
       <div class="uma-fan-card">
         <span class="uma-fan-lbl">More worlds</span>
-        <div class="uma-fan-links"><img alt="Ace Combat 7: Skies Unknown" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@8a93235/uma-profile/assets/site/fd_ace.png"><img alt="Japan Racing Association" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@8a93235/uma-profile/assets/site/fd_jra.png"></div>
+        <div class="uma-fan-links"><img alt="Ace Combat 7: Skies Unknown" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@96da3f0/uma-profile/assets/site/fd_ace.png"><img alt="Japan Racing Association" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@96da3f0/uma-profile/assets/site/fd_jra.png"></div>
       </div>
       <div class="uma-fan-card uma-acc">
         <span class="uma-fan-lbl">Official Accounts</span>
-        <div class="uma-fan-links"><a href="https://saucepan.ai/u/uma_enjoyer" target="_blank" rel="noopener"><img alt="Saucepan" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@8a93235/uma-profile/assets/site/fd_saucepan.png"></a><a href="https://discord.gg/8XftR6Qd" target="_blank" rel="noopener"><img alt="Discord" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@8a93235/uma-profile/assets/site/fd_discord.png"></a><a href="https://janitorai.com/profiles/86121955-50f2-4a0c-9e67-71e476f47f75_profile-of-uma-enjoyer" target="_blank" rel="noopener"><img alt="Janitor AI" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@8a93235/uma-profile/assets/site/fd_janitorai.png"></a></div>
+        <div class="uma-fan-links"><a href="https://saucepan.ai/u/uma_enjoyer" target="_blank" rel="noopener"><img alt="Saucepan" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@96da3f0/uma-profile/assets/site/fd_saucepan.png"></a><a href="https://discord.gg/8XftR6Qd" target="_blank" rel="noopener"><img alt="Discord" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@96da3f0/uma-profile/assets/site/fd_discord.png"></a><a href="https://janitorai.com/profiles/86121955-50f2-4a0c-9e67-71e476f47f75_profile-of-uma-enjoyer" target="_blank" rel="noopener"><img alt="Janitor AI" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@96da3f0/uma-profile/assets/site/fd_janitorai.png"></a></div>
       </div>
     </div>
     </div>
@@ -831,7 +831,7 @@
 
   <!-- ── Updates (News) ────────────────────────────────────── -->
   <div class="uma-sec uma-news" id="updates">
-    <img class="uma-band-pat" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@8a93235/uma-profile/assets/site/pattern.png">
+    <img class="uma-band-pat" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@96da3f0/uma-profile/assets/site/pattern.png">
     <div class="uma-tag-wrap"><div class="uma-tag pink long"><span>Current OWN Doings</span></div></div>
 
     <a class="uma-card" href="#">
@@ -840,7 +840,7 @@
         <div class="uma-meta"><span class="uma-pill">Bot</span><span class="uma-date">2026/11/05 13:30 (UTC)</span></div>
         <div class="uma-card-txt">New bot · Silence Suzuka takes the lead in a quiet, hopeless romance.</div>
       </div>
-      <img class="uma-card-thumb" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@8a93235/uma-profile/assets/site/news1.jpg">
+      <img class="uma-card-thumb" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@96da3f0/uma-profile/assets/site/news1.jpg">
       <div class="uma-card-go">›</div>
     </a>
 
@@ -850,7 +850,7 @@
         <div class="uma-meta"><span class="uma-pill">Bot</span><span class="uma-date">2026/11/04 22:00 (UTC)</span></div>
         <div class="uma-card-txt">Reworked · Unity Cup · Tokai Teio's scenario now has three new openings.</div>
       </div>
-      <img class="uma-card-thumb" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@8a93235/uma-profile/assets/site/news2.jpg">
+      <img class="uma-card-thumb" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@96da3f0/uma-profile/assets/site/news2.jpg">
       <div class="uma-card-go">›</div>
     </a>
 
@@ -860,7 +860,7 @@
         <div class="uma-meta"><span class="uma-pill">Event</span><span class="uma-date">2026/11/01 09:15 (UTC)</span></div>
         <div class="uma-card-txt">Aquarius Cup event bot returns later this month. Limited time only.</div>
       </div>
-      <img class="uma-card-thumb" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@8a93235/uma-profile/assets/site/news1.jpg">
+      <img class="uma-card-thumb" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@96da3f0/uma-profile/assets/site/news1.jpg">
       <div class="uma-card-go">›</div>
     </a>
 
@@ -869,12 +869,12 @@
 
   <!-- ── About ─────────────────────────────────────────────── -->
   <div class="uma-sec uma-about" id="about">
-    <img class="uma-sec-bg" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@8a93235/uma-profile/assets/site/about_bg.jpg">
+    <img class="uma-sec-bg" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@96da3f0/uma-profile/assets/site/about_bg.jpg">
     <div class="uma-tag-wrap"><div class="uma-tag blue uma-tag-white"><span>About Me</span></div></div>
 
     <div class="uma-profile-card">
       <div class="uma-pfp">
-        <img alt="Profile picture" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@8a93235/uma-profile/assets/site/pfp.jpg">
+        <img alt="Profile picture" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@96da3f0/uma-profile/assets/site/pfp.jpg">
       </div>
       <div class="uma-pfp-body">
         <div class="uma-pfp-name">@uma_enjoyer</div>
@@ -904,9 +904,9 @@
     <span id="g1" class="uma-anchor"></span>
     <span id="g2" class="uma-anchor"></span>
     <span id="g3" class="uma-anchor"></span>
-    <img class="uma-lb-bg b1" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@8a93235/uma-profile/assets/site/lb1.jpg">
-    <img class="uma-lb-bg b2" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@8a93235/uma-profile/assets/site/lb2.jpg">
-    <img class="uma-lb-bg b3" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@8a93235/uma-profile/assets/site/lb3.jpg">
+    <img class="uma-lb-bg b1" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@96da3f0/uma-profile/assets/site/lb1.jpg">
+    <img class="uma-lb-bg b2" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@96da3f0/uma-profile/assets/site/lb2.jpg">
+    <img class="uma-lb-bg b3" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@96da3f0/uma-profile/assets/site/lb3.jpg">
     <div class="uma-tag-wrap"><div class="uma-tag green"><span>The Lorebooks</span></div></div>
     <div class="uma-hl">Train your Umamusume!</div>
 
@@ -917,33 +917,33 @@
       <div class="uma-viewport">
         <div class="uma-track">
           <div class="uma-slide">
-            <img alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@8a93235/uma-profile/assets/site/slide1.jpg">
+            <img alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@96da3f0/uma-profile/assets/site/slide1.jpg">
             <div class="uma-slide-cap"><b>Lorebooks</b> · the world state, the schedules, the rivalry web. Dropped in, no setup.</div>
           </div>
           <div class="uma-slide">
-            <img alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@8a93235/uma-profile/assets/site/slide2.jpg">
+            <img alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@96da3f0/uma-profile/assets/site/slide2.jpg">
             <div class="uma-slide-cap"><b>How it runs</b> · V4 today, V10 final, then FV11 to FV14. Each pass tightens canon.</div>
           </div>
           <div class="uma-slide">
-            <img alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@8a93235/uma-profile/assets/site/slide1.jpg">
+            <img alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@96da3f0/uma-profile/assets/site/slide1.jpg">
             <div class="uma-slide-cap"><b>Using them</b> · attach the book, pick a racer, start the career run. That is it.</div>
           </div>
         </div>
       </div>
 
-      <div class="uma-ctl c1"><a class="uma-arrow" href="#g3"><img class="uma-arrow-img" alt="Previous" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@8a93235/uma-profile/assets/site/arrow_left.png"></a><a class="uma-arrow" href="#g2"><img class="uma-arrow-img" alt="Next" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@8a93235/uma-profile/assets/site/arrow_right.png"></a></div>
-      <div class="uma-ctl c2"><a class="uma-arrow" href="#g1"><img class="uma-arrow-img" alt="Previous" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@8a93235/uma-profile/assets/site/arrow_left.png"></a><a class="uma-arrow" href="#g3"><img class="uma-arrow-img" alt="Next" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@8a93235/uma-profile/assets/site/arrow_right.png"></a></div>
-      <div class="uma-ctl c3"><a class="uma-arrow" href="#g2"><img class="uma-arrow-img" alt="Previous" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@8a93235/uma-profile/assets/site/arrow_left.png"></a><a class="uma-arrow" href="#g1"><img class="uma-arrow-img" alt="Next" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@8a93235/uma-profile/assets/site/arrow_right.png"></a></div>
+      <div class="uma-ctl c1"><a class="uma-arrow" href="#g3"><img class="uma-arrow-img" alt="Previous" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@96da3f0/uma-profile/assets/site/arrow_left.png"></a><a class="uma-arrow" href="#g2"><img class="uma-arrow-img" alt="Next" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@96da3f0/uma-profile/assets/site/arrow_right.png"></a></div>
+      <div class="uma-ctl c2"><a class="uma-arrow" href="#g1"><img class="uma-arrow-img" alt="Previous" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@96da3f0/uma-profile/assets/site/arrow_left.png"></a><a class="uma-arrow" href="#g3"><img class="uma-arrow-img" alt="Next" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@96da3f0/uma-profile/assets/site/arrow_right.png"></a></div>
+      <div class="uma-ctl c3"><a class="uma-arrow" href="#g2"><img class="uma-arrow-img" alt="Previous" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@96da3f0/uma-profile/assets/site/arrow_left.png"></a><a class="uma-arrow" href="#g1"><img class="uma-arrow-img" alt="Next" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@96da3f0/uma-profile/assets/site/arrow_right.png"></a></div>
 
-      <div class="uma-pg p1"><img class="uma-hs" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@8a93235/uma-profile/assets/site/horseshoe.png"><i class="uma-dot"></i><i class="uma-dot"></i></div>
-      <div class="uma-pg p2"><i class="uma-dot"></i><img class="uma-hs" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@8a93235/uma-profile/assets/site/horseshoe.png"><i class="uma-dot"></i></div>
-      <div class="uma-pg p3"><i class="uma-dot"></i><i class="uma-dot"></i><img class="uma-hs" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@8a93235/uma-profile/assets/site/horseshoe.png"></div>
+      <div class="uma-pg p1"><img class="uma-hs" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@96da3f0/uma-profile/assets/site/horseshoe.png"><i class="uma-dot"></i><i class="uma-dot"></i></div>
+      <div class="uma-pg p2"><i class="uma-dot"></i><img class="uma-hs" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@96da3f0/uma-profile/assets/site/horseshoe.png"><i class="uma-dot"></i></div>
+      <div class="uma-pg p3"><i class="uma-dot"></i><i class="uma-dot"></i><img class="uma-hs" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@96da3f0/uma-profile/assets/site/horseshoe.png"></div>
     </div>
   </div>
 
   <!-- ── Roster (Characters) ───────────────────────────────── -->
   <div class="uma-sec uma-roster" id="characters">
-    <img class="uma-band-pat" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@8a93235/uma-profile/assets/site/pattern.png">
+    <img class="uma-band-pat" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@96da3f0/uma-profile/assets/site/pattern.png">
     <div class="uma-tag-wrap"><div class="uma-tag purple xlong"><span>My Favourite Umamusume Characters</span></div></div>
 
     <div class="uma-grid">
@@ -971,18 +971,18 @@
 
   <!-- ── Media ─────────────────────────────────────────────── -->
   <div class="uma-sec uma-media">
-    <img class="uma-band-pat" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@8a93235/uma-profile/assets/site/pattern.png">
+    <img class="uma-band-pat" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@96da3f0/uma-profile/assets/site/pattern.png">
     <div class="uma-tag-wrap"><div class="uma-tag blue"><span>Fandoms</span></div></div>
 
     <div class="uma-media-row">
       <a class="uma-media-tile" href="#">
-        <img alt="" style="object-position:50% 30%" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@8a93235/uma-profile/assets/site/kv_vfgo.jpg">
-        <img class="uma-media-plate" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@8a93235/uma-profile/assets/site/title_anime.png">
+        <img alt="" style="object-position:50% 30%" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@96da3f0/uma-profile/assets/site/kv_vfgo.jpg">
+        <img class="uma-media-plate" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@96da3f0/uma-profile/assets/site/title_anime.png">
         <span class="uma-media-lbl">Anime</span>
       </a>
       <a class="uma-media-tile" href="#">
-        <img alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@8a93235/uma-profile/assets/site/media_b.jpg">
-        <img class="uma-media-plate" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@8a93235/uma-profile/assets/site/title_music.png">
+        <img alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@96da3f0/uma-profile/assets/site/media_b.jpg">
+        <img class="uma-media-plate" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@96da3f0/uma-profile/assets/site/title_music.png">
         <span class="uma-media-lbl">Music</span>
       </a>
     </div>
@@ -991,13 +991,13 @@
 
   <!-- ── Download (the site's blue band) ──────────────────── -->
   <div class="uma-dl">
-    <img class="uma-dl-icon" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@8a93235/uma-profile/assets/site/pfp.jpg">
+    <img class="uma-dl-icon" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@96da3f0/uma-profile/assets/site/pfp.jpg">
     <div class="uma-dl-title">Download</div>
     <div class="uma-dl-badges">
-      <a href="#"><img alt="Steam" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@8a93235/uma-profile/assets/site/badge-steam.png"></a>
-      <a href="#"><img alt="App Store" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@8a93235/uma-profile/assets/site/badge-appstore.png"></a>
-      <a href="#"><img alt="Google Play" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@8a93235/uma-profile/assets/site/badge-googleplay.png"></a>
-      <a href="#"><img alt="Google Play Games" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@8a93235/uma-profile/assets/site/badge-googleplaygames.png"></a>
+      <a href="#"><img alt="Steam" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@96da3f0/uma-profile/assets/site/badge-steam.png"></a>
+      <a href="#"><img alt="App Store" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@96da3f0/uma-profile/assets/site/badge-appstore.png"></a>
+      <a href="#"><img alt="Google Play" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@96da3f0/uma-profile/assets/site/badge-googleplay.png"></a>
+      <a href="#"><img alt="Google Play Games" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@96da3f0/uma-profile/assets/site/badge-googleplaygames.png"></a>
     </div>
     <p class="uma-dl-legal">Apple and the Apple logo are trademarks of Apple Inc., registered in the U.S. and other countries and regions. Google Play and the Google Play logo are trademarks of Google LLC. ©2025 Valve Corporation. Steam and the Steam logo are trademarks and/or registered trademarks of Valve Corporation in the U.S. and/or other countries.</p>
   </div>
