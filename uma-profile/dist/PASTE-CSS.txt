@@ -409,6 +409,16 @@
   padding: 0 12px; background: transparent; pointer-events: none;
 }
 .uma-hdr-brand { display: block; line-height: 0; }
+/* narrow phones: the label must not creep into the first plate, nor the
+   accounts row crowd itself */
+@media (max-width: 379px) {
+  .uma-playnow { padding-right: 5px; }
+  .uma-playnow span { font-size: 18px; }
+  .uma-acc .uma-fan-lbl { font-size: 11px; }
+  .uma-acc .uma-fan-links { gap: 6px; }
+  .uma-acc .uma-fan-links img { max-height: 26px; }
+  .uma-acc .uma-fan-links a:first-child img { max-height: 17px; }
+}
 .uma-hdr-brand img { display: block; width: auto; height: 30px; max-width: 58vw; }
 /* the horseshoe sits over the notification button, above its caption */
 .uma-hdr-menu { position: absolute; right: 4%; bottom: 19px; width: 74px; display: flex; justify-content: center; }
