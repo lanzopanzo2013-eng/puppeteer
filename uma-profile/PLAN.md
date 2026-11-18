@@ -376,3 +376,34 @@ scroller and a locked body with an inner panel): width 199.9 at scroll 0 → 170
 40 / 80 / 110 → 117.1 from 160 on, in both, with the band still pinned at y = 0. Base width is the
 settled one, so every failure mode (no `@supports`, reduced motion, sanitised away) lands on the
 reference size rather than on an oversized mark.
+
+---
+
+## 13. The notification block, measured (2026-11-09)
+
+Same ruler as §12: the two 1260 px screenshots (360 CSS px, DPR 3.5). The corner was isolated with a
+near-white mask on the bar's blue, the horseshoe taken as the largest blob, the label as the components
+below it:
+
+| | reference (`.header__wrapper .-menu`) | ours before | ours now |
+|---|---|---|---|
+| horseshoe | 26.9 × 27.4 css | 24.9 × 25.7 | 28.9 × 29.4* |
+| right edge | 14.9 from the screen | **24.9** | 15.1 |
+| cap of the bar | 6.6 | 5.7 | 6.3 |
+| label cap height | 6.9 | 7.1 | 7.1 |
+| label → horseshoe gap | 5.7 | 4.0 | 5.4 |
+| label right edge | 15.4 | 14.3 | 15 |
+
+\* the local renderer is sharp; a phone screenshot of the same build measures ~2 px smaller, so 29
+box pixels is the right setting for a 26.9 measured glyph.
+
+The placement bug was the flex column sizing to its widest child: `.uma-hdr-menu` was as wide as
+"Notifications", so centring the 27 px horseshoe inside a 46 px box parked it 10 px inboard. The box is
+now the horseshoe's own width (29 px) and the label is `align-self: flex-end`, so its right edge sits on
+the same 15 px inset as the reference's "Menu" and can never run off a narrow screen whatever font the
+device substitutes. The reference label is short enough to be centred; ours is three times longer, so
+the right edge is the edge worth pinning.
+
+Also this round: the hero background is `assets/site/kv_hero.jpg` (the supplied key visual, resized to
+1300 × 2288 / 437 KB), and the CDN pin moved to the commit that carries it — jsDelivr's index confirms
+`/uma-profile/assets/site/kv_hero.jpg` at 447525 bytes under `@cb91b72`.
