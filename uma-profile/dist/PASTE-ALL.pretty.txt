@@ -88,8 +88,11 @@
    (cap 7.5) with .5vw of tracking lands the ink on 158 and the capsule on 166. */
 .uma-side {
   position: absolute; right: 2.4vw; top: 34.44vw; width: 6.3vw; color: #fff;
-  font-family: "Roboto Condensed", roboto, Arial, sans-serif;
-  font-size: 3.08vw; font-weight: 600; letter-spacing: 0; line-height: 1;
+  /* Roboto, not Roboto Condensed: the site's plaque is a regular-width face —
+     its capitals are as wide as they are tall (7.4 css each at a 7.43 pitch),
+     which is why it fills 164 css with no tracking at all. */
+  font-family: roboto, "Roboto Condensed", Arial, sans-serif;
+  font-size: 3.12vw; font-weight: 600; letter-spacing: 0; line-height: 1;
   text-transform: uppercase;
   display: flex; align-items: center; justify-content: center;
   writing-mode: vertical-rl; white-space: nowrap;
