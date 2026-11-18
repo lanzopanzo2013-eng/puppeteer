@@ -500,10 +500,47 @@
   display: flex; flex-direction: column; align-items: center; gap: 4px;
 }
 .uma-hdr-menu img { display: block; width: 29px; height: auto; }
+/* Janitor draws the unread count as its own badge inside the bell button, and
+   that badge lives in the top bar's stacking context, which the blue band was
+   painted over. The band now sits *under* the bar (z 2500 vs their 3000), the
+   bar's own controls are taken out of the picture, and the badge is pulled out
+   to the corner beside the horseshoe. The bar keeps a 0px backdrop blur so it
+   remains the containing block the notification popover is anchored to. */
+.uma-hdr { z-index: 2500 !important; }
+.pp-top-bar, .pp-top-bar-inner, .profile-top-bar {
+  -webkit-backdrop-filter: blur(0px) !important;
+  backdrop-filter: blur(0px) !important;
+}
+.pp-top-bar-left, .pp-top-bar-search-wrapper, .pp-top-bar-search-box,
+.pp-top-bar-search-spacer-top, .pp-top-bar-search-spacer-bottom,
+.pp-top-bar-filter-button, .pp-top-bar-create-char, .pp-top-bar-app-menu {
+  display: none !important;
+}
+[class*="notificationsBadge"] {
+  position: fixed !important;
+  top: 7px !important; right: 52px !important; left: auto !important;
+  z-index: 2147483000 !important;
+  font-family: "Roboto Condensed", roboto, Arial, sans-serif !important;
+  font-size: 10px !important; line-height: 1 !important;
+  padding: 2px 6px !important; min-width: 0 !important; height: auto !important;
+  border: 1.5px solid #fff !important; border-radius: 9px !important;
+  color: #fff !important;
+  background: linear-gradient(135deg, #FF6B8A 0%, #E5304E 100%) !important;
+  box-shadow: 0 2px 5px rgba(0,0,0,.28) !important;
+}
+/* the supplied mark, standing where Janitor's circle used to: the top-right
+   corner of the bell, and only while there is something unread to count. */
+.uma-hdr-menu img.uma-bell-gift {
+  display: none;
+  position: absolute; right: -5px; top: -4px;
+  width: 22px; height: auto;
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,.35));
+}
+body:has([class*="notificationsBadge"]) .uma-hdr-menu img.uma-bell-gift { display: block; }
 .uma-hdr-cap {
   font-family: "Roboto Condensed", roboto, Arial, sans-serif;
   font-style: italic; font-weight: 900; font-size: 10px; line-height: 1; color: #fff;
-  white-space: nowrap; text-align: right; align-self: flex-end;
+  white-space: nowrap; text-align: center; align-self: center;
 }
 
 /* ---------- Download (the site's blue band) ---------- */

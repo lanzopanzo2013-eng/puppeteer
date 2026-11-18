@@ -10,6 +10,7 @@
     </a>
     <div class="uma-hdr-menu">
       <img alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@cb91b72/uma-profile/assets/site/horseshoe.png">
+      <img class="uma-bell-gift" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@cb91b72/uma-profile/assets/site/bell_gift.png">
       <span class="uma-hdr-cap">Notifications</span>
     </div>
   </div>
@@ -17,7 +18,7 @@
   <!-- ── hero ──────────────────────────────────────────────── -->
   <div class="uma-hero">
     <!-- IMG:KV → TEMP local crop -->
-    <img class="uma-hero-art" alt="Umamusume: Pretty Derby" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@cb91b72/uma-profile/assets/site/kv_hero.jpg">
+    <img class="uma-hero-art" alt="Umamusume: Pretty Derby" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@cb91b72/uma-profile/assets/site/kv_main.jpg">
     <div class="uma-hero-wash"></div>
     <div class="uma-side">Umamusume: Pretty Derby</div>
     <div class="uma-hero-stack">
