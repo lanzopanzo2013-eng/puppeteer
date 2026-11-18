@@ -298,3 +298,40 @@ Verified: `grep -c '.svg' JANITOR-PASTE.txt` went 4 → 0. Every raster in the p
 PNG/JPEG/WEBP. The chevrons, pager, band watermark and About backdrop were already PNG/JPEG.
 
 Rule going forward: never ship an `.svg` source, always rasterise.
+
+---
+
+## 11. Why the notifications panel never appeared (2026-11-09)
+
+Reproduced offline with Janitor's *own* stylesheet and a DOM snapshot of the real profile page
+(`preview/vendor/janitor.css` + `preview/snapshot.js` from `from-avalon/janitor-profile-maker-fr`):
+the whole `.pp-top-bar` / `#root` markup, plus the site's real CSS, in one local page with our
+stylesheet dropped on top.
+
+Janitor's notification popover, on phones, is
+
+```css
+@media (max-width:480px){ .notificationsPopover { position:fixed; right:.5rem; left:.5rem; z-index:10000 } }
+```
+
+`position:fixed` and **no `top`** — so it falls back to its static position, and its containing
+block decides where that is. On the live site that containing block is the bar itself, because
+`._bar_17iy7_26` carries `backdrop-filter: blur(10px)` and a backdrop-filter ancestor becomes the
+containing block for fixed descendants. The bar is 56 px, so the panel lands at `top: calc(100% + 8px)`
+= 64 px — just under the bar.
+
+Our stylesheet had `backdrop-filter: none !important` on that bar (added to keep it transparent).
+That deleted the containing block, so the popover's 100 % became the *viewport*: it opened at
+`800 + 8 = 808 px` on an 800 px-tall phone — eight pixels below the bottom of the screen. Clickable,
+rendered, invisible. Measured in the harness: `top: 808px` with our rule, `top: 72px` without it.
+
+Fix: never touch `backdrop-filter` on `.pp-top-bar*`. Transparent background is enough to let our
+layer show through. With the property restored the panel opens at 64.9 px, in view, on top.
+
+Corollary for the unread badge (`position:absolute; top:2px; right:2px` of the button): it is painted
+inside the 56 px strip our own blue layer covers, so it cannot be seen on this theme — the panel is
+the place where unread items show.
+
+Hit testing is *not* the problem: `elementFromPoint` at the horseshoe returns Janitor's own
+`.pp-top-bar-notifications-button` (our layer is `pointer-events:none`), and real mouse clicks fire
+its listener.
