@@ -459,16 +459,42 @@
 /* .header__wrapper .-logo: width 32.5333vw, margin-left 4vw */
 /* .header__wrapper .-logo.is-top.is-large on the site: the mark starts larger
    than the bar and settles down to its normal width once the page moves. */
-/* .header__wrapper .-logo: width 32.5333vw, margin-left 6.4vw — the width the
-   official bar carries once it has settled. The site starts a touch larger on
-   its home page and settles on scroll, but this layer is position:fixed and a
-   fixed subtree is resolved against the viewport, so a scroll-driven timeline
-   has nothing to follow here (verified against Janitor's own stylesheet and
-   markup): it froze at the large end and hung out of the bar. One size, the
-   settled one, is what the reference shows anyway. */
+/* .header__wrapper .-logo, measured off two screenshots of the official page
+   (1260 px wide, 360 CSS px, DPR 3.5):
+     settled   box 117.0 x 34.6 css at x 14.9, y 103.5  -> 32.51vw
+     at rest   box 199.9 x 59.0 css at x 15.7, y 104.0  -> 55.53vw
+   So: left 4vw, top 10px, and only the width changes as the page moves. The
+   mark is anchored near the top rather than centred, which is why the larger
+   one hangs out of the 57px bar and the small one does not. */
 .uma-hdr-brand img {
   display: block; width: 32.5333vw; height: auto;
-  margin-left: 6.4vw; margin-top: 5px;
+  margin-left: 4vw; margin-top: 10px;
+}
+/* A scroll timeline cannot attach to this layer: the band is position:fixed and
+   Chrome resolves a fixed subtree against the viewport, so scroll() has nothing
+   to follow (verified in a harness built on Janitor's own stylesheet and
+   markup). A *view* timeline is a different animal — it tracks the box of an
+   element that really is in the flow — so a zero-height sentinel parked one
+   screen down -- less the height of Janitor's own bar, which is what the shell
+   starts under -- gives us "0 at the top of the page, 1 after V px of scroll". timeline-scope hoists that name up to the shell so the fixed
+   wordmark can reference it. */
+.uma-shell { timeline-scope: --uma-settle; }
+.uma-sentinel {
+  position: absolute; left: 0; top: calc(100vh - 64px); width: 0; height: 0;
+  view-timeline: --uma-settle block; pointer-events: none;
+}
+@supports (animation-timeline: --uma-settle) {
+  @keyframes uma-logo-settle {
+    from { width: 55.5333vw; }
+    to   { width: 32.5333vw; }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .uma-hdr-brand img {
+      animation: uma-logo-settle linear both;
+      animation-timeline: --uma-settle;
+      animation-range: cover 0% cover 14%;
+    }
+  }
 }
 /* the horseshoe sits over the notification button, above its caption */
 /* the horseshoe and its caption share one centre line in the bar's corner */
@@ -740,6 +766,7 @@
   .uma-hero { height: min(58vw, 700px); background: #8FD46A; }
   /* the site scales its header logo down again on wide screens */
   .uma-hdr-brand img { width: 8.9583vw; margin-left: 1.9444vw; max-width: none; animation: none; }
+  .uma-sentinel { display: none; }
   .uma-hero-art { object-position: 50% 12%; }
   .uma-hero-art {
     position: absolute; left: 0; top: 0; width: 100%; height: 100%;
@@ -811,7 +838,7 @@
 <!-- ============================================================
      MARKUP   (split line for the two-panel editor is right below)
      ============================================================ -->
-<div class="uma-shell">
+<div class="uma-shell"><div class="uma-sentinel" aria-hidden="true"></div>
 
   <!-- ── header (the site's blue bar) ─────────────────────── -->
   <div class="uma-hdr">

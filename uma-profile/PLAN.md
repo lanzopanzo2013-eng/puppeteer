@@ -335,3 +335,44 @@ the place where unread items show.
 Hit testing is *not* the problem: `elementFromPoint` at the horseshoe returns Janitor's own
 `.pp-top-bar-notifications-button` (our layer is `pointer-events:none`), and real mouse clicks fire
 its listener.
+
+---
+
+## 12. The wordmark, measured (2026-11-09)
+
+Two screenshots of the official site, 1260 px wide = 360 CSS px (DPR 3.5). The logo was located by
+masking its own palette (the wordmark's yellow `U` and the pink lettering), taking that mask's bbox in
+the bar, and inverting the same fractions measured on `assets/site/logo.png`, so both states come off
+one ruler:
+
+| state | box (CSS) | at x | at y | width |
+|---|---|---|---|---|
+| page top (home) | 199.9 × 59.0 | 15.7 | 104.0 | 55.53vw |
+| settled | 117.0 × 34.6 | 14.9 | 105.5 | 32.51vw |
+
+Consequences: `margin-left: 4vw` (was 6.4vw — 9 px too far in), `margin-top: 10px` (top-anchored, not
+centred, which is why the big one hangs 15 px out of the bar), width 55.5333vw → 32.5333vw.
+
+How the shrink works without a scroll timeline. `scroll()` cannot attach to the band: it is
+`position: fixed`, and Chrome resolves a fixed subtree against the viewport, so the nearest scroll
+container is the (non-scrolling) viewport and the animation freezes at its start value — that was the
+round-13 "logo stays huge" bug, reproduced in the harness. A **view** timeline has no such problem,
+because it tracks the box of an element that really is in the flow:
+
+```css
+.uma-shell     { timeline-scope: --uma-settle; }
+.uma-sentinel  { position: absolute; left: 0; top: calc(100vh - 64px); width: 0; height: 0;
+                 view-timeline: --uma-settle block; }
+.uma-hdr-brand img { animation: uma-logo-settle linear both;
+                     animation-timeline: --uma-settle; animation-range: cover 0% cover 14%; }
+```
+
+A zero-height sentinel parked one screen down (minus the bar) reads `cover` progress 0 at the top of
+the page and 1 after V px of scroll; 14 % of V is the settle distance (~112 px at 800). `timeline-scope`
+hoists the name to the shell so the fixed wordmark, a sibling of the sentinel, can use it.
+
+Verified in the harness against Janitor's own stylesheet, with the page scrolled *both* ways (document
+scroller and a locked body with an inner panel): width 199.9 at scroll 0 → 170.3 / 140.8 / 118.6 at
+40 / 80 / 110 → 117.1 from 160 on, in both, with the band still pinned at y = 0. Base width is the
+settled one, so every failure mode (no `@supports`, reduced motion, sanitised away) lands on the
+reference size rather than on an oversized mark.

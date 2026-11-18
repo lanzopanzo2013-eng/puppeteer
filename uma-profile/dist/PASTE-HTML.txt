@@ -1,7 +1,7 @@
 <!-- ============================================================
      MARKUP   (split line for the two-panel editor is right below)
      ============================================================ -->
-<div class="uma-shell">
+<div class="uma-shell"><div class="uma-sentinel" aria-hidden="true"></div>
 
   <!-- ── header (the site's blue bar) ─────────────────────── -->
   <div class="uma-hdr">
