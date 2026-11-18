@@ -984,3 +984,19 @@ Built the device-pixel reading, because it is the visible two pixels in the side
 because the css reading drops the word to 129.8 — 29 css short of the reference's 158.9, which
 would no longer be a correction but a different pill. The capsule is held at 186 either way by
 re-balancing the end padding (`4.75vw`).
+
+---
+
+## 32. And 1.4 of them back (2026-11-09)
+
+Same unit as §31 — device pixels, since 1.4 css px would have pushed the type to 12.06 px,
+past the 11.23 it started at, which is the opposite of the correction being asked for.
+So the type now sits at **11.05 css px** (`3.07vw`), the word runs 155.4 against the
+reference's 158.9, and the capsule holds 185.9 with `padding: 3.98vw 1vw`.
+
+| | font | word run | capsule |
+|---|---|---|---|
+| 2 device px smaller | 10.66 | 149.8 | 185.8 |
+| **1.4 back (now)** | **11.05** | **155.4** | **185.9** |
+| before either change | 11.23 | 157.9 | 186.0 |
+| official | — | 158.9 | 186.6 |
