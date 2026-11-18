@@ -1048,4 +1048,4 @@ plate's edges gives a brightest pixel of **#AFAFAF** (left 174, top 158, foot 15
 |---|---|---|---|
 | brightest edge pixel | 174–176 | 114 | **179** |
 
-Rig: spill 0 at every width; the paste is back to 45,070 chars from 45,403.
+Rig: spill 0 at every width; the paste is back to 44,903 chars from 45,403.
