@@ -85,7 +85,7 @@
 .uma-side {
   position: absolute; right: 2.4vw; top: 49.3333vw; width: 6vw; color: #fff;
   font-family: "Roboto Condensed", roboto, Arial, sans-serif;
-  font-size: 2.9vw; font-weight: 600; letter-spacing: .5vw; line-height: 1;
+  font-size: 3.6vw; font-weight: 600; letter-spacing: .06vw; line-height: 1;
   text-transform: uppercase;
   display: flex; align-items: center; justify-content: center;
   writing-mode: vertical-rl; white-space: nowrap;
@@ -118,7 +118,7 @@
   position: absolute; right: 3.7333vw; top: 140.8vw; z-index: 3; color: #fff;
   display: block;
   font-family: "Roboto Condensed", roboto, "Helvetica Neue", Arial, sans-serif;
-  font-size: 11px; font-weight: 500; letter-spacing: .34em; text-transform: uppercase;
+  font-size: 11.5px; font-weight: 500; letter-spacing: .04em; text-transform: uppercase;
   writing-mode: vertical-rl; text-shadow: 0 1px 3px rgba(0,0,0,.45);
 }
 .uma-scroll span { display: inline; font-size: 1em; letter-spacing: .1em; }

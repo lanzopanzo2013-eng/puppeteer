@@ -727,3 +727,24 @@ from 11 % to 10.2 % (the site's plates run x 37 → 323).
 ### The scroll cue
 
 11 px instead of 10, tracking `.34em`.
+
+---
+
+## 22. The words read as words (2026-11-09)
+
+Both vertical strings were being laid out as a column of separate letters — `S C R O L L`,
+`U M A M U S U M E` — because of `letter-spacing` applied along a vertical line. The
+tracking is now effectively off, and the type is sized so the word still fills its space:
+
+| | before | now |
+|---|---|---|
+| plaque | 2.9vw / `.5vw` tracking → capsule 21.6 × 163.7 | 3.6vw / `.06vw` → capsule 21.6 × 170.3 |
+| scroll cue | 11px / `.34em` | 11.5px / `.04em` |
+
+Note for anyone comparing against the official page: the site *does* track its plaque wide
+(2.7 css of daylight between glyphs). The instruction here is explicitly the opposite — the
+strings should read as words — so tight wins over the reference.
+
+Removing the tracking shortens the run, so the glyphs had to grow from 2.9vw to 3.6vw
+(cap 9.3 css) to keep the capsule within 6 css of the reference's 164.3. If the plaque now
+reads too heavy, the knob is `font-size` (3.6 → 3.3vw) and the capsule shortens with it.
