@@ -92,7 +92,7 @@
      its capitals are as wide as they are tall (7.4 css each at a 7.43 pitch),
      which is why it fills 164 css with no tracking at all. */
   font-family: roboto, "Roboto Condensed", Arial, sans-serif;
-  font-size: 3.45vw; font-weight: 600; letter-spacing: 0; line-height: 1;
+  font-size: 3.56vw; font-weight: 600; letter-spacing: 0; line-height: 1;
   text-transform: uppercase;
   display: flex; align-items: center; justify-content: center;
   writing-mode: vertical-rl; white-space: nowrap;
