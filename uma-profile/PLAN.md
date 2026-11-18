@@ -1119,3 +1119,21 @@ because the shell flattens every anchor to the body colour.
 The four discs point at the game's own accounts, taken from umamusume.com itself:
 x.com/umamusume_eng, facebook.com/umamusume.eng, youtube.com/@umamusume_eng,
 discord.gg/umamusume-eng.
+
+## 37. Not the game's accounts — the profile's (2026-11-09)
+
+The row above the note was pointing at umamusume.com's socials; it should point at the
+profile's own three, the ones the "Official Accounts" card already carries:
+
+| | href | mark |
+|---|---|---|
+| Saucepan | saucepan.ai/u/uma_enjoyer | `fd_saucepan.png` (3.93 : 1 wordmark) |
+| Discord | discord.gg/8XftR6Qd | `fd_discord.png` (1 : 1) |
+| Janitor AI | janitorai.com/profiles/86121955-… | `fd_janitorai.png` (0.8 : 1) |
+
+Because the Saucepan mark is a wordmark, the discs became badges: equal height (9.6vw),
+width following the mark, radius 99px. The two square marks come out as circles on their own,
+which keeps the official row's rhythm without squashing the wordmark into a smudge.
+
+Label reads **Official Accounts**. Foot is 86.7vw tall at every width, inside the sheet's
+92vw reserve. The `sns-*.png` files stay in the repo, now unreferenced.
