@@ -491,3 +491,59 @@ exactly the "all images disappeared again" symptom (it is one broken ref, not 51
 
 The paste now reads `@84edeec7167f0f0d1552f633bb50e99362432311` in all 51 URLs (41 063 chars), and the
 pin only has to move when an *asset* changes — CSS and markup travel inside the paste itself.
+
+---
+
+## 16. The count goes inside the glyph, and the hero is re-cut from the 8192px upload (2026-11-09)
+
+### Why no number was visible
+
+The count is Janitor's own element — a `<span>` with a hashed class inside the bell button
+(`._notificationsBadge_1jwi8_41 { position: absolute; top: 2px; right: 2px; min-width: 22px }`), rendered by
+React **only when there is something unread**. Two things were wrong with how we handled it:
+
+1. the old rule keyed on the exact string `notificationsBadge`, so any rename in a Janitor release silently
+   stops matching;
+2. it was pulled out of the button with `position: fixed; right: 52px`, i.e. *beside* the horseshoe, where a
+   count that is one character wide reads as decoration.
+
+Now the bell button is re-seated on the glyph itself and the count is anchored inside it:
+
+```css
+.pp-top-bar-notifications { position: fixed; top: 6px; right: 16px; width: 29px; height: 29px }
+.pp-top-bar-notifications-button { position: absolute; left: -5.5px; top: -5.5px; width: 40px; height: 40px }
+.pp-top-bar-notifications-button::after { content: ""; position: absolute; ... 46px box }   /* tap area */
+.pp-top-bar-notifications-button > span,
+.pp-top-bar-notifications-button [class*="adge"] { position: absolute; left: 50%; top: 62%;
+  transform: translate(-50%,-50%); ... pink pill ... }
+.pp-top-bar-notifications-icon { display: none }
+```
+
+`[class*="adge"]` is hash-agnostic: it matches `_notificationsBadge_1jwi8_41`, `_badge_9zz1a_12`, and whatever
+the next release calls it, and it is scoped to the bell button so the badges in the popover list are untouched.
+The live number is Janitor's; nothing here invents one — with nothing unread there is no element to place, and
+the glyph stands alone, exactly as the reference bell does.
+
+Probed at 360 × 800, DPR 3.5, in both scrollers:
+
+| probe | result |
+|---|---|
+| container / glyph | both `[315, 6, 29, 29.9]`, 16 px from the right edge |
+| count (class `_notificationsBadge_1jwi8_41`, "12") | `[320.5, 17.8, 18, 15]`, **inside** the glyph |
+| count (renamed class `_badge_9zz1a_12`) | `[319.2, 17.8, 20.5, 15]`, inside — proves the selector |
+| tap at the glyph's centre | `BUTTON._notificationsButton_1jwi8_7` |
+| popover | `[8, 64, 344, …]` — Janitor's own `position: fixed; right: .5rem; left: .5rem`, untouched |
+| gift mark | `none` with no count, `block` with one |
+
+### Hero
+
+`assets/site/kv_front.jpg` — 1400 × 2464, 653 KB — is a fresh LANCZOS reduction of the **4654 × 8192**,
+7.2 MB upload, not of the earlier 1300 px file. Whole art visible: the band is 190.6667 vw tall and the
+picture is `object-fit: cover` at 50 % 50 %, so nothing of the group is cropped away on a phone.
+
+### Note on measuring fixed elements
+
+Headless Chrome reserves a classic 6 px scrollbar, so the initial containing block is 354 px while the
+in-flow bar is 360 px — a band anchored `right: 16px` and a bar anchored `right: 16px` then sit 6 px apart and
+the count looks misaligned in a way no phone can reproduce. The harness hides the scrollbar
+(`::-webkit-scrollbar { display: none }`) and both land on 315.

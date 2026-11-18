@@ -516,17 +516,53 @@
 .pp-top-bar-filter-button, .pp-top-bar-create-char, .pp-top-bar-app-menu {
   display: none !important;
 }
-[class*="notificationsBadge"] {
+/* The bell button is re-seated on the glyph itself, so the count Janitor renders
+   inside that button lands *in* the horseshoe rather than beside it. The
+   container carries the popover, so it keeps its geometry; only the button's
+   hit area is widened (a pseudo-element), never the layout. */
+.pp-top-bar-notifications, .profile-top-bar-notifications {
   position: fixed !important;
-  top: 7px !important; right: 52px !important; left: auto !important;
+  top: 6px !important; right: 16px !important; left: auto !important;
+  width: 29px !important; height: 29px !important;
   z-index: 2147483000 !important;
+}
+.pp-top-bar-notifications-button, .profile-top-bar-notifications-button {
+  position: absolute !important;
+  left: -5.5px !important; top: -5.5px !important; right: auto !important; bottom: auto !important;
+  width: 40px !important; height: 40px !important;
+  padding: 0 !important; margin: 0 !important; border: 0 !important;
+  background: transparent !important; box-shadow: none !important;
+  overflow: visible !important; display: block !important;
+}
+.pp-top-bar-notifications-button::after, .profile-top-bar-notifications-button::after {
+  content: "" !important;
+  position: absolute !important; left: 50% !important; top: 50% !important;
+  width: 46px !important; height: 46px !important;
+  transform: translate(-50%, -50%) !important;
+  background: transparent !important;
+}
+.pp-top-bar-notifications-icon, .profile-top-bar-notifications-icon {
+  display: none !important;
+}
+/* hash-agnostic: whatever Janitor calls the count this release, it is a badge
+   inside the bell button, and it becomes a disc in the horseshoe's bowl. */
+.pp-top-bar-notifications-button > span,
+.pp-top-bar-notifications-button [class*="adge"],
+.profile-top-bar-notifications-button > span,
+.profile-top-bar-notifications-button [class*="adge"] {
+  position: absolute !important;
+  left: 50% !important; top: 62% !important;
+  transform: translate(-50%, -50%) !important;
+  display: flex !important; align-items: center !important; justify-content: center !important;
+  box-sizing: border-box !important;
+  min-width: 15px !important; height: 15px !important; padding: 0 3px !important;
+  margin: 0 !important;
   font-family: "Roboto Condensed", roboto, Arial, sans-serif !important;
-  font-size: 10px !important; line-height: 1 !important;
-  padding: 2px 6px !important; min-width: 0 !important; height: auto !important;
-  border: 1.5px solid #fff !important; border-radius: 9px !important;
+  font-size: 9px !important; font-weight: 700 !important; line-height: 1 !important;
   color: #fff !important;
+  border: 1.5px solid #fff !important; border-radius: 9px !important;
   background: linear-gradient(135deg, #FF6B8A 0%, #E5304E 100%) !important;
-  box-shadow: 0 2px 5px rgba(0,0,0,.28) !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,.35) !important;
 }
 /* the supplied mark, standing where Janitor's circle used to: the top-right
    corner of the bell, and only while there is something unread to count. */
@@ -536,7 +572,8 @@
   width: 22px; height: auto;
   filter: drop-shadow(0 1px 2px rgba(0,0,0,.35));
 }
-body:has([class*="notificationsBadge"]) .uma-hdr-menu img.uma-bell-gift { display: block; }
+body:has(.pp-top-bar-notifications-button [class*="adge"]) .uma-hdr-menu img.uma-bell-gift,
+body:has(.pp-top-bar-notifications-button > span) .uma-hdr-menu img.uma-bell-gift { display: block; }
 .uma-hdr-cap {
   font-family: "Roboto Condensed", roboto, Arial, sans-serif;
   font-style: italic; font-weight: 900; font-size: 8px; line-height: 1; color: #fff;
@@ -711,32 +748,13 @@ body:has([class*="notificationsBadge"]) .uma-hdr-menu img.uma-bell-gift { displa
   color: #fff !important;
 }
 .pp-top-bar-create-char { color: #fff !important; border: 1px solid rgba(255,255,255,.45) !important; }
-/* the site's white menu dial, sitting where Janitor keeps its round button */
 /* the bell becomes the site's white horseshoe with a caption under it. The
-   glyphs are CSS shapes, so nothing can be stripped and nothing needs a url(). */
-.pp-top-bar-notifications-button, .profile-top-bar-notifications-button {
-  position: relative !important;
-  width: 74px !important; height: 46px !important;
-  background: transparent !important; box-shadow: none !important;
-  border: 0 !important; border-radius: 0 !important;
-  display: inline-block !important;
-}
-/* the caption and the horseshoe reach lower than their button does */
-.pp-top-bar-notifications-button::before,
-.profile-top-bar-notifications-button::before {
-  content: "" !important; position: absolute !important;
-  left: -24px !important; right: 0 !important;
-  top: -6px !important; bottom: -18px !important;
-}
+   button itself is re-seated on the glyph and sized by the notification block
+   above, which also owns the count and the 46px tap area; all that is left to
+   do here is keep Janitor's own glyph out of the picture. */
 .pp-top-bar-notifications-button svg,
-.profile-top-bar-notifications-button svg,
-.pp-top-bar-notifications-button img { opacity: 0 !important; }
-/* the horseshoe is drawn: a ring with a notch clipped out of the bottom, which
-   leaves the two legs and the gap. No glyph, no url(), nothing to strip. */
-/* the caption is drawn once, in the layer below, on the same axis as the
-   horseshoe — this copy stays off */
-.pp-top-bar-notifications-button::after,
-.profile-top-bar-notifications-button::after { content: none !important; }
+.pp-top-bar-notifications-button img,
+.profile-top-bar-notifications-button svg { opacity: 0 !important; }
 
 /* ---------- Featured fandoms ---------- */
 /* The site's store rows, repurposed: black plates for the titles whose art
