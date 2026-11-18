@@ -428,7 +428,7 @@
   position: fixed; top: 0; left: 0; right: 0; z-index: 2147483647;
   height: 57px; margin: 0;
   display: flex; align-items: center; justify-content: space-between;
-  padding: 0 12px; background: #0F57FB; pointer-events: none;
+  padding: 0; background: #0F57FB; pointer-events: none;
 }
 .uma-hdr-brand { display: block; line-height: 0; }
 /* narrow phones: the label must not creep into the first plate, nor the
@@ -442,19 +442,24 @@
   .uma-acc .uma-fan-links a:first-child img { max-height: 17px; }
 }
 /* .header__wrapper .-logo: width 32.5333vw, margin-left 4vw */
-.uma-hdr-brand img { display: block; width: 32.5333vw; height: auto; max-width: 58vw; margin-left: 4vw; }
+.uma-hdr-brand img { display: block; width: 32.5333vw; height: auto; max-width: 58vw; margin-left: 6.4vw; }
 /* the horseshoe sits over the notification button, above its caption */
 /* the horseshoe and its caption share one centre line in the bar's corner */
+/* .header__wrapper .-menu on the site: a 27px horseshoe whose right edge is
+   15px from the screen edge, its label centred underneath, both sitting low in
+   the bar. Our label is wider than "Menu", so the box stays the horseshoe's
+   width and the text centres on it and spills both ways. */
 .uma-hdr-menu {
-  position: absolute; right: 2.4vw; top: 4px; width: 74px;
-  display: flex; flex-direction: column; align-items: center; gap: 2px;
+  position: absolute; right: 15px; bottom: 9px;
+  display: flex; flex-direction: column; align-items: center; gap: 3px;
 }
+.uma-hdr-menu img { width: 27px; height: auto; }
 .uma-hdr-cap {
   font-family: "Roboto Condensed", roboto, Arial, sans-serif;
-  font-style: italic; font-weight: 900; font-size: 11px; line-height: 1; color: #fff;
-  white-space: nowrap;
+  font-style: italic; font-weight: 900; font-size: 10px; line-height: 1; color: #fff;
+  white-space: nowrap; text-align: center;
 }
-.uma-hdr-menu img { display: block; width: 20px; height: auto; }
+.uma-hdr-menu img { display: block; width: 27px; height: auto; }
 
 /* ---------- Download (the site's blue band) ---------- */
 .uma-dl {
@@ -631,10 +636,11 @@
    glyphs are CSS shapes, so nothing can be stripped and nothing needs a url(). */
 .pp-top-bar-notifications-button, .profile-top-bar-notifications-button {
   position: relative !important;
-  width: 74px !important; height: 46px !important;
+  width: 96px !important; height: 100% !important; min-height: 52px !important;
+  align-self: stretch !important; margin: 0 !important; padding: 0 !important;
   background: transparent !important; box-shadow: none !important;
   border: 0 !important; border-radius: 0 !important;
-  display: inline-block !important;
+  display: block !important;
 }
 .pp-top-bar-notifications-button svg,
 .profile-top-bar-notifications-button svg,
@@ -643,14 +649,10 @@
    leaves the two legs and the gap. No glyph, no url(), nothing to strip. */
 .pp-top-bar-notifications-button::before,
 .profile-top-bar-notifications-button::before { content: none !important; }
+/* the caption is drawn once, in the layer below, on the same axis as the
+   horseshoe — this copy stays off */
 .pp-top-bar-notifications-button::after,
-.profile-top-bar-notifications-button::after {
-  content: "Notifications"; position: absolute; left: 50%; bottom: 3px;
-  transform: translateX(-50%); white-space: nowrap;
-  font-family: "Roboto Condensed", roboto, Arial, sans-serif;
-  font-style: italic; font-weight: 900; font-size: 11.5px;
-  letter-spacing: 0; color: #fff;
-}
+.profile-top-bar-notifications-button::after { content: none !important; }
 
 /* ---------- Featured fandoms ---------- */
 /* The site's store rows, repurposed: black plates for the titles whose art
