@@ -1031,3 +1031,21 @@ right edge meeting the plaque's left edge, its foot 13.4 css above the first pla
 `right: 8.72vw; bottom: 68.6vw; width: 32.8vw` — every term a fraction of the viewport, so at
 320 the strip is 105 wide and meets the pill at x 292, at 414 it is 135.8 and meets it at 378.
 Rig: spill 0 at every width through 1280.
+
+---
+
+## 34. The strip comes out, the plate edge goes lighter (2026-11-09)
+
+The Game Awards strip is gone — the `<img>`, its rule block and its desktop override — and
+`<img class="uma-awards">` no longer exists in the rig (`null`). The PNG stays committed at
+`b46846e`; it simply is not referenced.
+
+The black plates' edge was `rgba(255,255,255,.45)`. Sampling the official capture across a
+plate's edges gives a brightest pixel of **#AFAFAF** (left 174, top 158, foot 157), i.e. about
+0.69 white over black; ours now renders **#B3B3B3** from `rgba(255,255,255,.70)`.
+
+| | official | ours before | ours now |
+|---|---|---|---|
+| brightest edge pixel | 174–176 | 114 | **179** |
+
+Rig: spill 0 at every width; the paste is back to 45,070 chars from 45,403.
