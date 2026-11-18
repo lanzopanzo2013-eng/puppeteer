@@ -228,12 +228,11 @@
        bottom of that sheet: the social row and the note about this build. -->
   <div class="uma-sheet-foot">
     <div class="uma-foot-social">
-      <span class="uma-foot-soclabel">Official<br>Social Media</span>
+      <span class="uma-foot-soclabel">Official<br>Accounts</span>
       <div class="uma-foot-socs">
-        <a class="uma-foot-soc" href="https://x.com/umamusume_eng" target="_blank" rel="noopener"><img alt="X" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@f55adf3d97b07a67a488d28817f765881cf3a84a/uma-profile/assets/site/sns-x.png"></a>
-        <a class="uma-foot-soc" href="https://www.facebook.com/umamusume.eng" target="_blank" rel="noopener"><img alt="Facebook" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@f55adf3d97b07a67a488d28817f765881cf3a84a/uma-profile/assets/site/sns-facebook.png"></a>
-        <a class="uma-foot-soc" href="https://www.youtube.com/@umamusume_eng" target="_blank" rel="noopener"><img alt="YouTube" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@f55adf3d97b07a67a488d28817f765881cf3a84a/uma-profile/assets/site/sns-youtube.png"></a>
-        <a class="uma-foot-soc" href="https://discord.gg/umamusume-eng" target="_blank" rel="noopener"><img alt="Discord" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@f55adf3d97b07a67a488d28817f765881cf3a84a/uma-profile/assets/site/sns-discord.png"></a>
+        <a class="uma-foot-acct" href="https://saucepan.ai/u/uma_enjoyer" target="_blank" rel="noopener"><img alt="Saucepan" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@f55adf3d97b07a67a488d28817f765881cf3a84a/uma-profile/assets/site/fd_saucepan.png"></a>
+        <a class="uma-foot-acct" href="https://discord.gg/8XftR6Qd" target="_blank" rel="noopener"><img alt="Discord" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@f55adf3d97b07a67a488d28817f765881cf3a84a/uma-profile/assets/site/fd_discord.png"></a>
+        <a class="uma-foot-acct" href="https://janitorai.com/profiles/86121955-50f2-4a0c-9e67-71e476f47f75_profile-of-uma-enjoyer" target="_blank" rel="noopener"><img alt="Janitor AI" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@f55adf3d97b07a67a488d28817f765881cf3a84a/uma-profile/assets/site/fd_janitorai.png"></a>
       </div>
     </div>
     <div class="uma-foot-note">

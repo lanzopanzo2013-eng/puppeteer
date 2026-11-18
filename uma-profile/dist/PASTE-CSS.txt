@@ -697,8 +697,10 @@
    sitting in the profile but pinned to the viewport, and it exists only while
    Janitor's sheet does — `body:has(...)` is the gate. The sheet reserves the
    same band at its bottom (padding-bottom below) so no row can end up behind
-   it. The card keeps the ground the official card has: two pale horseshoes
-   behind the words, the same way umamusume.com sets its download card. */
+   it. The row above the card is the profile's own accounts, not the game's:
+   Saucepan, Discord and Janitor AI, the three the profile already links.
+   The card keeps the ground the official card has: pale horseshoes behind the
+   words, the same way umamusume.com sets its download card. */
 .uma-sheet-foot { display: none; }
 body:has([class*="otificationsPopover"]) .uma-sheet-foot {
   display: block;
@@ -710,16 +712,18 @@ body:has([class*="otificationsPopover"]) .uma-sheet-foot {
 }
 .uma-foot-social { display: flex; align-items: center; justify-content: space-between; gap: 3vw; }
 .uma-foot-soclabel {
-  font-size: 3.9vw; font-weight: 700; font-style: italic; line-height: 1.28;
+  font-size: 3.7vw; font-weight: 700; font-style: italic; line-height: 1.28;
   letter-spacing: .01em; color: #fff;
 }
-.uma-foot-socs { display: flex; align-items: center; gap: 2.3vw; flex: 0 0 auto; }
-.uma-foot-soc {
-  width: 11.5vw; height: 11.5vw; border-radius: 50%;
+.uma-foot-socs { display: flex; align-items: center; gap: 2vw; flex: 0 0 auto; }
+/* the Saucepan mark is a 3.93 : 1 wordmark, so a disc would shrink it to a
+   smudge. Equal height, width by the mark: badges, not buttons. */
+.uma-foot-acct {
+  height: 9.6vw; padding: 0 2.4vw; border-radius: 99px;
   display: flex; align-items: center; justify-content: center;
   background: #fff; box-shadow: 0 1px 4px rgba(0,0,0,.18);
 }
-.uma-foot-soc img { width: 6.2vw; height: auto; }
+.uma-foot-acct img { height: 5.4vw; width: auto; max-width: 21vw; }
 .uma-foot-note {
   margin-top: 3.8vw;
   padding: 4.4vw 4.2vw 4.4vw 3.8vw;
