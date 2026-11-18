@@ -1049,3 +1049,40 @@ plate's edges gives a brightest pixel of **#AFAFAF** (left 174, top 158, foot 15
 | brightest edge pixel | 174–176 | 114 | **179** |
 
 Rig: spill 0 at every width; the paste is back to 44,903 chars from 45,403.
+
+---
+
+## 35. The notification sheet: carrot out, unread blue, and a foot from the official menu
+
+Three things came back with the screenshot of the sheet on the phone.
+
+**The carrot is gone.** The rainbow carrot at the top-right of the horseshoe (`bell_gift.png`,
+shown only while there was something unread) is removed — markup and both rule blocks.
+
+**The grey row is blue.** Janitor paints the unread row's fill on a wrapper inside the item,
+which is why the old `background: transparent` on `.notificationItem` never reached it. The
+sheet now clears every fill inside a row and paints the unread row itself:
+`rgba(255,255,255,.18)` over the panel's blue = **#3A75FC**, with the pink edge Janitor's own
+indicator used: `box-shadow: inset .9vw 0 0 #F2739E`. The tint rule needed a compound selector
+(`[class*="otificationItem"][class*="nread"]`, 0,3,0) to beat the transparent reset at 0,2,0 —
+at equal specificity the later rule lost, which is what kept the row blue-but-blank.
+
+**The sheet now ends like the official menu** (205210): a row of circular social buttons and
+the cream card that carries the download badges on umamusume.com — with the creator's note in
+it where the badges are.
+
+Because the sheet is Janitor's own fixed layer, its foot is built from the popover's own two
+pseudo-elements, ordered after Janitor's children with `display:flex` + `order`. That keeps it
+alive only while the sheet is open, and it needs no extra DOM.
+
+| | official 205210 | ours |
+|---|---|---|
+| cream card | x 39.1 → 322.0, h 146.6 | inset 4.2vw, radius 2.6vw, `#FAF3E0` |
+| social discs | d 41.5, gap 8.4 | d 11.5vw (41.4), gap 2.3vw |
+| disc row | x 130.6 → 322 | right-anchored, same order X · f · ▶ · discord |
+
+The note is the supplied paragraph, lightly copy-edited ("that are days" → "there were days").
+The link inside it is text, not a link: a pseudo-element's content cannot carry one.
+
+Checked in a mock of the sheet at 320 / 360 / 414 (`docs/notifications-panel*.png`), not on the
+live page — the real popover only exists when the bell is tapped.
