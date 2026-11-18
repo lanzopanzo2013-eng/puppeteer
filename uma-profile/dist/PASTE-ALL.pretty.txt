@@ -586,18 +586,6 @@
   background: linear-gradient(135deg, #FF6B8A 0%, #E5304E 100%) !important;
   box-shadow: 0 1px 3px rgba(0,0,0,.35) !important;
 }
-/* the supplied mark, standing where Janitor's circle used to: the top-right
-   corner of the bell, and only while there is something unread to count. */
-.uma-hdr-menu img.uma-bell-gift {
-  display: none;
-  position: absolute; right: -7px; top: -5px;
-  width: 22px; height: auto;
-  filter: drop-shadow(0 1px 2px rgba(0,0,0,.35));
-}
-body:has(.pp-top-bar-notifications-button [class*="adge"]) .uma-hdr-menu img.uma-bell-gift,
-body:has(.pp-top-bar-notifications-button > span) .uma-hdr-menu img.uma-bell-gift,
-body:has(.pp-top-bar-notifications > [class*="adge"]) .uma-hdr-menu img.uma-bell-gift,
-body:has(.pp-top-bar [class*="adge"]) .uma-hdr-menu img.uma-bell-gift { display: block; }
 /* ---------- the notification menu ----------
    Janitor renders it as ._notificationsPopover_…, dark grey, on its own layer
    above everything (z 10000). The brief is the header's own blue, edge to edge,
@@ -635,6 +623,7 @@ body:has(.pp-top-bar [class*="adge"]) .uma-hdr-menu img.uma-bell-gift { display:
 [class*="otificationsPopover"] [class*="otificationTime"] { font-size: 3vw !important; }
 [class*="otificationsPopover"] [class*="mptyState"], 
 [class*="otificationsPopover"] [class*="oadingState"] { padding: 12vw 4vw !important; }
+/* ::before and ::after are the panel's foot — see below */
 [class*="otificationsPopover"]::before { background: none !important; }
 [class*="otificationsPopover"] * {
   color: #fff !important;
@@ -672,6 +661,95 @@ body:has(.pp-top-bar [class*="adge"]) .uma-hdr-menu img.uma-bell-gift { display:
 [class*="otificationsPopover"] [class*="oadMoreButton"] {
   border-radius: 999px !important;
 }
+/* ---------- the sheet's unread state, and its foot ----------
+   Two things came back from the phone: the unread row was painted grey by
+   Janitor (a wrapper inside the item carries a solid fill, which is why the
+   `background: transparent` on the item itself never reached it), and the sheet
+   ended in nothing. The official menu (umamusume.com, 205210) ends in a cream
+   card with badges on it and a row of circular social buttons. So: no grey
+   survives anywhere in the sheet, the unread row becomes a lighter blue, and
+   the foot borrows the official furniture — the note about how this profile was
+   built sits in the cream card where the download badges sit on the site, and
+   the site's circular social row sits under it. */
+
+/* no grey in the sheet: whatever Janitor paints behind a row goes transparent */
+[class*="otificationsPopover"] [class*="otificationItem"],
+[class*="otificationsPopover"] [class*="otificationItem"] *,
+[class*="otificationsPopover"] [class*="otificationsList"] > div {
+  background-color: transparent !important;
+  background-image: none !important;
+}
+/* an unread row is a lighter blue, not a grey card */
+[class*="otificationsPopover"] [class*="nread"],
+[class*="otificationsPopover"] [data-unread],
+[class*="otificationsPopover"] [class*="otificationItem"][class*="nread"] {
+  background-color: rgba(255,255,255,.18) !important;
+  border-radius: 2.6vw !important;
+  box-shadow: inset .9vw 0 0 #F2739E !important;
+}
+/* hairline between rows, the way the official menu separates its links */
+[class*="otificationsPopover"] [class*="otificationItem"] + [class*="otificationItem"] {
+  border-top: 1px solid rgba(255,255,255,.26) !important;
+}
+
+/* the popover becomes a column so the foot can be ordered after Janitor's own
+   children — header, list, and then our two blocks */
+[class*="otificationsPopover"] {
+  display: flex !important; flex-direction: column !important;
+}
+[class*="otificationsPopover"] > * {
+  order: 1 !important; flex: 0 0 auto !important;
+}
+[class*="otificationsPopover"]::before,
+[class*="otificationsPopover"]::after {
+  box-sizing: border-box !important; flex: 0 0 auto !important;
+  font-family: roboto, "Roboto Condensed", Arial, sans-serif !important;
+}
+
+/* the social row: label on the left, four white discs on the right — the discs
+   are radial-gradients and the marks are the same sns-*.png the profile uses,
+   anchored from the right so they keep their spacing at any width */
+[class*="otificationsPopover"]::before {
+  order: 2 !important;
+  content: "Official\A Social Media";
+  white-space: pre-line !important;
+  margin: 7vw 0 0 !important;
+  padding: 0 52vw 0 0 !important;
+  min-height: 11.5vw !important;
+  display: block !important;
+  font-size: 3.9vw !important; font-weight: 700 !important; font-style: italic !important;
+  line-height: 1.28 !important; letter-spacing: .01em !important;
+  color: #fff !important;
+  background-image:
+    url("https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@b46846efd2005a291a76a3797e4c69a87613eada/uma-profile/assets/site/sns-x.png"), url("https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@b46846efd2005a291a76a3797e4c69a87613eada/uma-profile/assets/site/sns-facebook.png"),
+    url("https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@b46846efd2005a291a76a3797e4c69a87613eada/uma-profile/assets/site/sns-youtube.png"), url("https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@b46846efd2005a291a76a3797e4c69a87613eada/uma-profile/assets/site/sns-discord.png"),
+    radial-gradient(circle at 93.7% 50%, #fff 0 5.75vw, rgba(255,255,255,0) 5.86vw),
+    radial-gradient(circle at 78.7% 50%, #fff 0 5.75vw, rgba(255,255,255,0) 5.86vw),
+    radial-gradient(circle at 63.6% 50%, #fff 0 5.75vw, rgba(255,255,255,0) 5.86vw),
+    radial-gradient(circle at 48.5% 50%, #fff 0 5.75vw, rgba(255,255,255,0) 5.86vw) !important;
+  background-repeat: no-repeat !important;
+  background-size: 6.2vw auto, 6.2vw auto, 6.2vw auto, 6.2vw auto, auto, auto, auto, auto !important;
+  background-position:
+    right 44.05vw center, right 30.25vw center, right 16.45vw center, right 2.65vw center,
+    0 0, 0 0, 0 0, 0 0 !important;
+}
+
+/* the creator's note, in the cream card */
+[class*="otificationsPopover"]::after {
+  order: 3 !important;
+  content: "CREATOR'S NOTE\A This CSS profile design really took my time to make, I really had to commit. In fact, it took me about 3-4 weeks to complete, and there were days where whenever I had the free time I would go on and force myself to work on it.\A Special thanks to tools.from-avalon.com/janitor-profile-maker/ — this profile builder helped me a ton while building this design — as well as the numerous GitHub repositories I cannot list individually.\A Credits to Umamusume & Cygames, and to their website, umamusume.com.";
+  white-space: pre-line !important;
+  margin: 5vw 0 9vw !important;
+  padding: 5.2vw 4.8vw 5.6vw 4.4vw !important;
+  border-radius: 2.6vw !important;
+  border-left: 1.4vw solid #F2739E !important;
+  background: #FAF3E0 !important;
+  color: #1B1B1B !important;
+  font-size: 3.2vw !important; line-height: 1.5 !important;
+  box-shadow: 0 2px 12px rgba(0,0,0,.18) !important;
+  text-align: left !important;
+}
+
 .uma-hdr-cap {
   font-family: "Roboto Condensed", roboto, Arial, sans-serif;
   font-style: italic; font-weight: 900; font-size: 8px; line-height: 1; color: #fff;
@@ -992,7 +1070,6 @@ body:has(.pp-top-bar [class*="adge"]) .uma-hdr-menu img.uma-bell-gift { display:
     </a>
     <div class="uma-hdr-menu">
       <img alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/horseshoe.png">
-      <img class="uma-bell-gift" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/bell_gift.png">
       <span class="uma-hdr-cap">Notifications</span>
     </div>
   </div>

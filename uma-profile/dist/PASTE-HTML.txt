@@ -10,7 +10,6 @@
     </a>
     <div class="uma-hdr-menu">
       <img alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/horseshoe.png">
-      <img class="uma-bell-gift" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/bell_gift.png">
       <span class="uma-hdr-cap">Notifications</span>
     </div>
   </div>
