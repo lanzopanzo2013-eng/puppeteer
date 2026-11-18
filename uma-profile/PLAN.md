@@ -748,3 +748,27 @@ strings should read as words — so tight wins over the reference.
 Removing the tracking shortens the run, so the glyphs had to grow from 2.9vw to 3.6vw
 (cap 9.3 css) to keep the capsule within 6 css of the reference's 164.3. If the plaque now
 reads too heavy, the knob is `font-size` (3.6 → 3.3vw) and the capsule shortens with it.
+
+---
+
+## 23. The hero is the raw key visual, not the photo (2026-11-09)
+
+Every round until now has used `IMG_20261118_160304_946.jpeg` — a photograph of the key
+visual, which is why the front page read dim and slightly green next to the site.
+
+The uploaded set now carries two clean files from the official artwork:
+
+| file | size | what it is |
+|---|---|---|
+| `kv.-RnlVFGO.jpeg` | 750 × 1320 | the raw key visual as published |
+| `kv.-RnlVFGO-2.jpeg` | 750 × 1202 | **the same, cropped by the user** — `raw[61 : 1263]`, confirmed by matching the two (mean |Δ| 2.2/255) |
+| `upscalemedia-transformed.jpeg` | 4654 × 8192 | a 6.2× upscale of the raw |
+
+`assets/site/kv_first.jpg` is now that crop at full size: the upscale trimmed to the same
+framing (`y 378 → 7837` of 8192) and resampled to 1500 × 2404, which is 4.2× the 360 css
+band. Compared back against the user's 750 × 1202 crop it differs by 3.3/255 — i.e. it is
+their crop, just not upsampled by the browser.
+
+The band is `190.6667vw` tall (ratio 0.524) against the artwork's 0.624, so `object-fit:
+cover` still trims 16 % of the height — 8 % off the top and 8 % off the foot, centred. Move
+`object-position` off `50% 50%` if a particular part of the frame needs to survive that.
