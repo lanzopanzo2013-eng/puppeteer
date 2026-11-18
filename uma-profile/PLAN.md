@@ -966,3 +966,21 @@ each end, and the earlier "the capsule hugs the letters" reading came from measu
 
 Also worth recording: the screenshot the user sent back was still the round-31 build (capsule
 ≈ 148 css, measured off the image), so the two builds in between never reached the phone.
+
+---
+
+## 31. Two pixels, and which pixels they are (2026-11-09)
+
+"Smaller by 2px" is ambiguous on a screen like this one, so both numbers are recorded here:
+
+| reading | css font-size | word run | capsule |
+|---|---|---|---|
+| 2 **device** px on a 3.5× screen | 2.96vw (10.66 px) — **built** | 149.8 | 185.8 |
+| 2 **css** px | 2.56vw (9.23 px) | 129.8 | 185.8 |
+| before | 3.12vw (11.23 px) | 157.9 | 186.0 |
+| official | — | 158.9 | 186.6 |
+
+Built the device-pixel reading, because it is the visible two pixels in the side-by-side and
+because the css reading drops the word to 129.8 — 29 css short of the reference's 158.9, which
+would no longer be a correction but a different pill. The capsule is held at 186 either way by
+re-balancing the end padding (`4.75vw`).
