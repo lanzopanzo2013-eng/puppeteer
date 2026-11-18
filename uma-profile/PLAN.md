@@ -785,3 +785,44 @@ supplied** — no crop, no upscale, no colour work. The only operation is a down
 The band is `190.6667vw` tall, ratio 0.524 against the artwork's 0.621, so `object-fit:
 cover` still trims 8 % top and 8 % foot — that is the layout, not the file. `object-position`
 is `50% 50%` on phones and `50% 12%` above 820 px.
+
+---
+
+## 25. The picture is never cut, and it holds on every phone (2026-11-09)
+
+**The width really was being cut.** The band was `190.6667vw` tall (ratio 0.524) against a
+picture of ratio 0.621, so `object-fit: cover` scaled to the band's height and threw away
+15 % of the width — 33 css off each side at 360. That is what "the width gets cut" was, and
+it was not the phone.
+
+The band is now **`161vw`** — exactly the artwork's own ratio (1600 × 2576) — so cover has
+nothing left to trim: the picture is shown whole at every width, edge to edge.
+
+Everything that rides on the picture was re-seated as a fraction of the band it had at
+`190.6667vw`, so nothing drifted when the band lost 106 css:
+
+| | before (band 190.67vw) | now (band 161vw) |
+|---|---|---|
+| plaque | top 49.33vw | **41.66vw** |
+| badge stack | top 116.47vw | **bottom 6vw** |
+| scroll cue | top 140.8vw | **118.9vw** |
+
+The stack is anchored to the *foot* rather than to a height — same 22 css off the bottom edge
+at 360, but it cannot march out of the band on a narrow screen the way an absolute top could.
+
+### Widths
+
+`tools/rig.cjs` now runs nine widths instead of four — 280, 320, 344, 360, 390, 414, 430,
+480, 1280 — and all nine pass with `spill=0`. Measured against the band's own foot:
+
+| width | band | stack foot | verdict |
+|---|---|---|---|
+| 280 | 451 | 434 | fits |
+| 320 | 515 | 496 | fits |
+| 360 | 580 | 558 | fits |
+| 414 | 667 | 642 | fits |
+| 480 | 773 | 744 | fits |
+
+Before the foot anchor, 280 and 320 overflowed the band and `overflow: hidden` ate the
+"Official Accounts" row. Everything else is in `vw`, so the whole front page scales with the
+viewport rather than being tuned to one handset.

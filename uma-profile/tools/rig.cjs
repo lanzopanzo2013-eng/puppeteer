@@ -81,7 +81,9 @@ const PAGE = `<!doctype html><html><head><meta charset="utf-8">
 <body><div class="pp-uc-about-me profile-about-me"><style>${styleBlock}</style>${local}</div>
 </div></div></body></html>`;
 
-const WIDTHS = [360, 390, 414, 1280];
+/* phones from the narrowest thing Android still ships (a fold's 280 css) up
+   through the big slabs, then a laptop */
+const WIDTHS = [280, 320, 344, 360, 390, 414, 430, 480, 1280];
 const OUT = path.join(ROOT, 'docs');
 fs.mkdirSync(OUT, { recursive: true });
 const tmp = path.join(os.tmpdir(), FROM_PASTE ? 'rig-paste.html' : 'rig.html');

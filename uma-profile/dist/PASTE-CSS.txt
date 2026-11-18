@@ -39,15 +39,16 @@
 /* ---- hero ---- */
 /* The intro art is shown whole on phones, the way the site shows it, instead of
    being cropped to a fixed band, and its foot fades out to white. */
-/* Geometry from umamusume.com's own stylesheet: .top-kv is 190.6667vw tall and
-   the art is pinned to its top at full width, so the band runs on below the
-   picture and the badge block can sit down at the knees with artwork under it. */
+/* The band is exactly as tall as the artwork is at full width (1600 x 2576 =>
+   161.0vw), so the key visual shows whole: nothing off the sides, nothing off
+   the ends. Everything that rides on the picture is placed as a fraction of it
+   (see the three notes below), which is what keeps the badges at the knees on
+   every phone instead of only on the one the geometry was traced from. */
 .uma-hero {
   position: relative; overflow: hidden; line-height: 0;
-  height: 190.6667vw; background: #379A2A;
+  height: 161vw; background: #379A2A;
 }
-/* the band is taller than the picture is at full width, so the picture fills it
-   and the extra height comes out of the sides — the same crop the site gets */
+/* 161vw against a 0.621 picture means cover has nothing left to trim */
 .uma-hero-art {
   position: absolute; left: 0; top: 0; width: 100%; height: 100%;
   object-fit: cover; object-position: 50% 50%;
@@ -61,7 +62,10 @@
               rgba(255,255,255,.95) 100%);
 }
 .uma-hero-stack {
-  position: absolute; left: 0; right: 0; top: 116.4667vw; z-index: 3;
+  /* pinned to the foot of the picture rather than to a height: the badges keep
+     the same distance from the bottom edge on every width, which is what stops
+     them spilling out of the band on a 280 css fold */
+  position: absolute; left: 0; right: 0; top: auto; bottom: 6vw; z-index: 3;
   padding: 0 10.2%; line-height: normal;
 }
 .uma-hero-stack .uma-fan-caption {
@@ -82,7 +86,7 @@
    21.7 x 164.3 with glyphs only 7.7 css tall: Roboto Condensed 600 at 2.9vw
    (cap 7.5) with .5vw of tracking lands the ink on 158 and the capsule on 166. */
 .uma-side {
-  position: absolute; right: 2.4vw; top: 49.3333vw; width: 6vw; color: #fff;
+  position: absolute; right: 2.4vw; top: 41.66vw; width: 6vw; color: #fff;
   font-family: "Roboto Condensed", roboto, Arial, sans-serif;
   font-size: 3.6vw; font-weight: 600; letter-spacing: .06vw; line-height: 1;
   text-transform: uppercase;
@@ -114,7 +118,7 @@
 /* the scroll cue: stacked letters down the right edge, the way the site runs it */
 /* .top-kv__left .-scroll: right 3.7333vw, top 140.8vw */
 .uma-scroll {
-  position: absolute; right: 3.7333vw; top: 140.8vw; z-index: 3; color: #fff;
+  position: absolute; right: 3.7333vw; top: 118.9vw; z-index: 3; color: #fff;
   display: block;
   font-family: "Roboto Condensed", roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 11.5px; font-weight: 500; letter-spacing: .04em; text-transform: uppercase;
