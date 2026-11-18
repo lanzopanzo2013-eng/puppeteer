@@ -92,13 +92,16 @@
      its capitals are as wide as they are tall (7.4 css each at a 7.43 pitch),
      which is why it fills 164 css with no tracking at all. */
   font-family: roboto, "Roboto Condensed", Arial, sans-serif;
-  font-size: 3.56vw; font-weight: 600; letter-spacing: 0; line-height: 1;
+  font-size: 3.12vw; font-weight: 600; letter-spacing: 0; line-height: 1;
   text-transform: uppercase;
   display: flex; align-items: center; justify-content: center;
   writing-mode: vertical-rl; white-space: nowrap;
   text-shadow: 0 1px 3px rgba(0,0,0,.45);
   border: .2667vw solid rgba(255,255,255,.85); border-radius: 999px;
-  padding: .55vw 1vw; text-align: center;
+  /* the type stays at its measured size; the length the reference has comes
+     from the space at the ends of the capsule. In vertical writing mode the
+     first padding value runs along the text, so that is the one that grows. */
+  padding: 3.66vw 1vw; text-align: center;
 }
 /* the call to action sits in the first badge row, left of the plates, the way
    Play Now sits beside the store badges on the official screen */
