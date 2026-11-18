@@ -913,3 +913,26 @@ Note for the ledger: the straight-section measurements (the runs I take off a sc
 border column) are not comparable between the two builds — our border is 85 % white, so its
 rounded caps fall below the threshold, and the run reads ~15 css short of the box it is
 measuring. The box numbers above come from `getBoundingClientRect`, which is exact.
+
+---
+
+## 29. The plaque, finally on the reference's own ruler (2026-11-09)
+
+Getting the two screenshots on one ruler was the whole problem: the pages put the artwork's
+top at slightly different heights (145.1 css here, 148.3 on the site), and the site's pill
+border is a thin continuous line while ours is 85 % white, so a straight-section scan reads
+~15 css short on ours and ~0 on theirs. Measured from the artwork's top with a common method:
+
+| | official | ours, before | ours, now |
+|---|---|---|---|
+| capsule, from artwork top | 120.3 → 306.8 (**186.6**) | 85.5 → 259.2 | **124.0 → 309.8 (185.8)** |
+| width | 21.7 | 22.6 | 22.7 |
+
+`font-size: 3.56vw` with `letter-spacing: 0` in regular Roboto — the length comes from the
+glyphs, not from space between them, and the capsule now runs from Kitasan's shoulder down
+to Satono Diamond's sleeve the way the reference does.
+
+The lesson worth keeping: the DOM (`getBoundingClientRect`) is the only trustworthy number in
+this loop. Screenshot measurements of a *semi-transparent* border move by 15 css with the
+threshold, which is exactly the size of the change being tuned — that is how three rounds of
+"still the same length" happened while the number was moving.
