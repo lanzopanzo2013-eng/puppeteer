@@ -600,7 +600,7 @@
   width: 100% !important; max-width: none !important;
   height: 100vh !important; max-height: none !important;
   margin: 0 !important;
-  padding: 3.4vw 4.2vw 10vw !important;
+  padding: 3.4vw 4.2vw 92vw !important;
   box-sizing: border-box !important;
   overflow-y: auto !important; overflow-x: hidden !important;
   border: 0 !important; border-radius: 0 !important;
@@ -691,62 +691,58 @@
   border-top: 1px solid rgba(255,255,255,.26) !important;
 }
 
-/* the popover becomes a column so the foot can be ordered after Janitor's own
-   children — header, list, and then our two blocks */
-[class*="otificationsPopover"] {
-  display: flex !important; flex-direction: column !important;
+/* ---------- the sheet's foot ----------
+   The sheet itself, and the link in it, cannot both come from a pseudo-element:
+   a `content` string cannot carry an anchor. So the foot is our own markup,
+   sitting in the profile but pinned to the viewport, and it exists only while
+   Janitor's sheet does — `body:has(...)` is the gate. The sheet reserves the
+   same band at its bottom (padding-bottom below) so no row can end up behind
+   it. The card keeps the ground the official card has: two pale horseshoes
+   behind the words, the same way umamusume.com sets its download card. */
+.uma-sheet-foot { display: none; }
+body:has([class*="otificationsPopover"]) .uma-sheet-foot {
+  display: block;
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 10060;
+  padding: 7vw 4.2vw 3.4vw;
+  background: linear-gradient(180deg, rgba(15,87,251,0) 0, #0F57FB 6%);
+  font-family: roboto, "Roboto Condensed", Arial, sans-serif;
+  line-height: 1.35;
 }
-[class*="otificationsPopover"] > * {
-  order: 1 !important; flex: 0 0 auto !important;
+.uma-foot-social { display: flex; align-items: center; justify-content: space-between; gap: 3vw; }
+.uma-foot-soclabel {
+  font-size: 3.9vw; font-weight: 700; font-style: italic; line-height: 1.28;
+  letter-spacing: .01em; color: #fff;
 }
-[class*="otificationsPopover"]::before,
-[class*="otificationsPopover"]::after {
-  box-sizing: border-box !important; flex: 0 0 auto !important;
-  font-family: roboto, "Roboto Condensed", Arial, sans-serif !important;
+.uma-foot-socs { display: flex; align-items: center; gap: 2.3vw; flex: 0 0 auto; }
+.uma-foot-soc {
+  width: 11.5vw; height: 11.5vw; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  background: #fff; box-shadow: 0 1px 4px rgba(0,0,0,.18);
 }
-
-/* the social row: label on the left, four white discs on the right — the discs
-   are radial-gradients and the marks are the same sns-*.png the profile uses,
-   anchored from the right so they keep their spacing at any width */
-[class*="otificationsPopover"]::before {
-  order: 2 !important;
-  content: "Official\A Social Media";
-  white-space: pre-line !important;
-  margin: 7vw 0 0 !important;
-  padding: 0 52vw 0 0 !important;
-  min-height: 11.5vw !important;
-  display: block !important;
-  font-size: 3.9vw !important; font-weight: 700 !important; font-style: italic !important;
-  line-height: 1.28 !important; letter-spacing: .01em !important;
-  color: #fff !important;
-  background-image:
-    url("https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@b46846efd2005a291a76a3797e4c69a87613eada/uma-profile/assets/site/sns-x.png"), url("https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@b46846efd2005a291a76a3797e4c69a87613eada/uma-profile/assets/site/sns-facebook.png"),
-    url("https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@b46846efd2005a291a76a3797e4c69a87613eada/uma-profile/assets/site/sns-youtube.png"), url("https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@b46846efd2005a291a76a3797e4c69a87613eada/uma-profile/assets/site/sns-discord.png"),
-    radial-gradient(circle at 93.7% 50%, #fff 0 5.75vw, rgba(255,255,255,0) 5.86vw),
-    radial-gradient(circle at 78.7% 50%, #fff 0 5.75vw, rgba(255,255,255,0) 5.86vw),
-    radial-gradient(circle at 63.6% 50%, #fff 0 5.75vw, rgba(255,255,255,0) 5.86vw),
-    radial-gradient(circle at 48.5% 50%, #fff 0 5.75vw, rgba(255,255,255,0) 5.86vw) !important;
-  background-repeat: no-repeat !important;
-  background-size: 6.2vw auto, 6.2vw auto, 6.2vw auto, 6.2vw auto, auto, auto, auto, auto !important;
-  background-position:
-    right 44.05vw center, right 30.25vw center, right 16.45vw center, right 2.65vw center,
-    0 0, 0 0, 0 0, 0 0 !important;
+.uma-foot-soc img { width: 6.2vw; height: auto; }
+.uma-foot-note {
+  margin-top: 3.8vw;
+  padding: 4.4vw 4.2vw 4.4vw 3.8vw;
+  border-radius: 2.6vw; border-left: 1.4vw solid #F2739E;
+  color: #1B1B1B;
+  background-color: #FAF3E0;
+  background-image: url("https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@f55adf3d97b07a67a488d28817f765881cf3a84a/uma-profile/assets/site/horse-mark.png"), url("https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@f55adf3d97b07a67a488d28817f765881cf3a84a/uma-profile/assets/site/horse-mark.png"), url("https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@f55adf3d97b07a67a488d28817f765881cf3a84a/uma-profile/assets/site/horse-mark.png");
+  background-repeat: no-repeat;
+  background-size: 46vw auto, 30vw auto, 26vw auto;
+  background-position: 132% -14%, -16% 118%, 92% 62%;
+  box-shadow: 0 2px 12px rgba(0,0,0,.18);
 }
-
-/* the creator's note, in the cream card */
-[class*="otificationsPopover"]::after {
-  order: 3 !important;
-  content: "CREATOR'S NOTE\A This CSS profile design really took my time to make, I really had to commit. In fact, it took me about 3-4 weeks to complete, and there were days where whenever I had the free time I would go on and force myself to work on it.\A Special thanks to tools.from-avalon.com/janitor-profile-maker/ — this profile builder helped me a ton while building this design — as well as the numerous GitHub repositories I cannot list individually.\A Credits to Umamusume & Cygames, and to their website, umamusume.com.";
-  white-space: pre-line !important;
-  margin: 5vw 0 9vw !important;
-  padding: 5.2vw 4.8vw 5.6vw 4.4vw !important;
-  border-radius: 2.6vw !important;
-  border-left: 1.4vw solid #F2739E !important;
-  background: #FAF3E0 !important;
-  color: #1B1B1B !important;
-  font-size: 3.2vw !important; line-height: 1.5 !important;
-  box-shadow: 0 2px 12px rgba(0,0,0,.18) !important;
-  text-align: left !important;
+.uma-foot-kicker {
+  display: block; margin: 0 0 2.2vw;
+  font-size: 2.85vw; font-weight: 700; letter-spacing: .05em;
+  text-transform: uppercase; color: #C2497A;
+}
+.uma-foot-note p { margin: 0 0 2.4vw; font-size: 3.05vw; line-height: 1.42; }
+.uma-foot-note p:last-child { margin-bottom: 0; }
+/* the shell flattens every anchor to the body colour, so the links restate it */
+.uma-shell .uma-foot-note a {
+  color: #1F5BD8 !important; text-decoration: underline !important;
+  font-weight: 600; text-underline-offset: .18em;
 }
 
 .uma-hdr-cap {

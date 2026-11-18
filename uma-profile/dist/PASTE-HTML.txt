@@ -223,6 +223,27 @@
     <p class="uma-dl-legal">Apple and the Apple logo are trademarks of Apple Inc., registered in the U.S. and other countries and regions. Google Play and the Google Play logo are trademarks of Google LLC. ©2025 Valve Corporation. Steam and the Steam logo are trademarks and/or registered trademarks of Valve Corporation in the U.S. and/or other countries.</p>
   </div>
 
+  <!-- ── the notification sheet's foot ────────────────────────
+       Hidden until Janitor's sheet is open (see the CSS), because it is the
+       bottom of that sheet: the social row and the note about this build. -->
+  <div class="uma-sheet-foot">
+    <div class="uma-foot-social">
+      <span class="uma-foot-soclabel">Official<br>Social Media</span>
+      <div class="uma-foot-socs">
+        <a class="uma-foot-soc" href="https://x.com/umamusume_eng" target="_blank" rel="noopener"><img alt="X" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@f55adf3d97b07a67a488d28817f765881cf3a84a/uma-profile/assets/site/sns-x.png"></a>
+        <a class="uma-foot-soc" href="https://www.facebook.com/umamusume.eng" target="_blank" rel="noopener"><img alt="Facebook" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@f55adf3d97b07a67a488d28817f765881cf3a84a/uma-profile/assets/site/sns-facebook.png"></a>
+        <a class="uma-foot-soc" href="https://www.youtube.com/@umamusume_eng" target="_blank" rel="noopener"><img alt="YouTube" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@f55adf3d97b07a67a488d28817f765881cf3a84a/uma-profile/assets/site/sns-youtube.png"></a>
+        <a class="uma-foot-soc" href="https://discord.gg/umamusume-eng" target="_blank" rel="noopener"><img alt="Discord" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@f55adf3d97b07a67a488d28817f765881cf3a84a/uma-profile/assets/site/sns-discord.png"></a>
+      </div>
+    </div>
+    <div class="uma-foot-note">
+      <span class="uma-foot-kicker">Creator&#39;s note</span>
+      <p>This CSS profile design really took my time to make, I really had to commit. In fact, this took me about 3-4 weeks to complete, and there were days where whenever I had the free time, I would go on and force myself to work on it.</p>
+      <p>Special thanks to <a href="https://tools.from-avalon.com/janitor-profile-maker/" target="_blank" rel="noopener">tools.from-avalon.com/janitor-profile-maker</a>, as this profile builder helped me a ton building this design, as well as numerous GitHub repositories I cannot list individually.</p>
+      <p>Credits to Umamusume and Cygames, as well as their website <a href="https://umamusume.com" target="_blank" rel="noopener">umamusume.com</a>.</p>
+    </div>
+  </div>
+
   <!-- ── Footer ────────────────────────────────────────────── -->
   <div class="uma-foot">
     <span class="w1">Umamusume</span>
