@@ -550,9 +550,13 @@
 .pp-top-bar-notifications-button > span,
 .pp-top-bar-notifications-button [class*="adge"],
 .profile-top-bar-notifications-button > span,
-.profile-top-bar-notifications-button [class*="adge"] {
+.profile-top-bar-notifications-button [class*="adge"],
+.pp-top-bar-notifications > [class*="adge"],
+.profile-top-bar-notifications > [class*="adge"],
+.pp-top-bar [class*="adge"],
+.profile-top-bar [class*="adge"] {
   position: absolute !important;
-  left: 50% !important; top: 62% !important;
+  left: 50% !important; right: auto !important; top: 62% !important; bottom: auto !important;
   transform: translate(-50%, -50%) !important;
   display: flex !important; align-items: center !important; justify-content: center !important;
   box-sizing: border-box !important;
@@ -574,7 +578,57 @@
   filter: drop-shadow(0 1px 2px rgba(0,0,0,.35));
 }
 body:has(.pp-top-bar-notifications-button [class*="adge"]) .uma-hdr-menu img.uma-bell-gift,
-body:has(.pp-top-bar-notifications-button > span) .uma-hdr-menu img.uma-bell-gift { display: block; }
+body:has(.pp-top-bar-notifications-button > span) .uma-hdr-menu img.uma-bell-gift,
+body:has(.pp-top-bar-notifications > [class*="adge"]) .uma-hdr-menu img.uma-bell-gift,
+body:has(.pp-top-bar [class*="adge"]) .uma-hdr-menu img.uma-bell-gift { display: block; }
+/* ---------- the notification menu ----------
+   Janitor renders it as ._notificationsPopover_…, dark grey, on its own layer
+   above everything (z 10000). The brief is the header's own blue, edge to edge,
+   so the panel, its header, its rows and its footer all take #0F57FB and the
+   type goes white. Selectors are hash-agnostic: the token, not the hash. */
+[class*="otificationsPopover"] {
+  background: #0F57FB !important;
+  border: 2px solid #2E6BFF !important;
+  color: #fff !important;
+  box-shadow: 0 12px 32px rgba(0,0,0,.35) !important;
+}
+[class*="otificationsPopover"]::before { background: none !important; }
+[class*="otificationsPopover"] * {
+  color: #fff !important;
+  border-color: rgba(255,255,255,.22) !important;
+}
+[class*="otificationsPopover"] [class*="opoverHeader"],
+[class*="otificationsPopover"] [class*="otificationsList"],
+[class*="otificationsPopover"] [class*="otificationItem"],
+[class*="otificationsPopover"] [class*="viewAllLink"],
+[class*="otificationsPopover"] [class*="eadMore"],
+[class*="otificationsPopover"] [class*="mptyState"] {
+  background: transparent !important;
+}
+[class*="otificationsPopover"] [class*="otificationItem"]:hover {
+  background: rgba(255,255,255,.10) !important;
+}
+[class*="otificationsPopover"] [class*="otificationMessage"],
+[class*="otificationsPopover"] [class*="otificationTime"],
+[class*="otificationsPopover"] [class*="mptyStateMessage"],
+[class*="otificationsPopover"] [class*="oadingText"] {
+  color: rgba(255,255,255,.78) !important;
+}
+[class*="otificationsPopover"] [class*="otificationTime"] {
+  color: rgba(255,255,255,.62) !important;
+}
+/* buttons keep their own geometry (no borders, no padding of ours) — only the
+   palette changes, so nothing in their layout can shift */
+[class*="otificationsPopover"] [class*="arkAllReadButton"],
+[class*="otificationsPopover"] [class*="oadMoreButton"],
+[class*="otificationsPopover"] [class*="iewAllLink"] {
+  color: #fff !important;
+  background: rgba(255,255,255,.14) !important;
+}
+[class*="otificationsPopover"] [class*="iewAllLink"],
+[class*="otificationsPopover"] [class*="oadMoreButton"] {
+  border-radius: 999px !important;
+}
 .uma-hdr-cap {
   font-family: "Roboto Condensed", roboto, Arial, sans-serif;
   font-style: italic; font-weight: 900; font-size: 8px; line-height: 1; color: #fff;

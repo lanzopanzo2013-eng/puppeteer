@@ -564,3 +564,46 @@ outermost figures' shoulders rather than on the subject.
 
 Pin moved to the full hash of the commit that carries the new file; `kv_front.jpg` / `kv_main.jpg` stay in
 the tree for history but nothing references them.
+
+---
+
+## 18. The count, four ways, and the menu in the header's blue (2026-11-09)
+
+### Where Janitor can put the count
+
+`._notificationsBadge_1jwi8_41 { position: absolute; top: 2px; right: 2px; min-width: 22px }` is a child of
+`._notificationsButton_1jwi8_7`, which is a child of `._notificationsContainer_1jwi8_2`. That is where it is in
+the vendored build — but a release can move it, and previous rounds only matched one placement. The rule now
+matches every plausible one, all hash-agnostic, all scoped to the bar so no other badge on the page is touched:
+
+```css
+.pp-top-bar-notifications-button > span,
+.pp-top-bar-notifications-button [class*="adge"],
+.pp-top-bar-notifications > [class*="adge"],
+.pp-top-bar [class*="adge"]                       /* widest: anywhere in the bar */
+{ position: absolute; left: 50%; right: auto; top: 62%; bottom: auto;
+  transform: translate(-50%,-50%); …pink pill… }
+```
+
+Probed at 360 × 800, DPR 3.5, one placement per row — all four land inside the horseshoe:
+
+| where the count is rendered | box | inside the glyph |
+|---|---|---|
+| inside the button, real class | `[319.2, 17.8, 20.5, 15]` | yes |
+| inside the button, renamed class | `[319.2, 17.8, 20.5, 15]` | yes |
+| as a sibling of the button | `[319.2, 16.5, 20.5, 15]` | yes (was `[303.6, 8, 38.4, 21.2]`, outside) |
+| inside a wrapper div in the button | `[319.2, 17.8, 20.5, 15]` | yes |
+
+What CSS cannot do is create the number. React renders that element only while something is unread; with an
+empty unread list there is no node to place and the horseshoe stands alone. The gift mark is the tell:
+`body:has(.pp-top-bar [class*="adge"])` shows it **only** when the count node exists, so "gift visible, number
+missing" would be a styling bug, and "neither visible" means Janitor has nothing to count.
+
+### The menu
+
+`._notificationsPopover_1jwi8_80` is `--bg-primary` (dark grey) with a `::before` sheen. It, its header, rows,
+empty/loading states and footer now take the header's own `#0F57FB`, with white type and a lighter rule between
+rows. Only the palette is forced — no widths, padding or borders of ours, so their layout cannot shift.
+
+Probed after opening: panel `rgb(15, 87, 251)`, border `rgb(46, 107, 255)`, title `#fff`, message
+`rgba(255,255,255,.78)`, time `rgba(255,255,255,.62)`, row hover `rgba(255,255,255,.10)`.
