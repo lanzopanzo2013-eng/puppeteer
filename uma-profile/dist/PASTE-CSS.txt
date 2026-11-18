@@ -426,7 +426,7 @@
 .uma-hdr {
   position: fixed; top: 0; left: 0; right: 0; z-index: 2147483647;
   height: 57px; margin: 0;
-  display: flex; align-items: center; justify-content: space-between;
+  display: flex; align-items: flex-start; justify-content: space-between;
   padding: 0; background: #0F57FB; pointer-events: none;
 }
 .uma-hdr-brand { display: block; line-height: 0; }
@@ -441,7 +441,26 @@
   .uma-acc .uma-fan-links a:first-child img { max-height: 17px; }
 }
 /* .header__wrapper .-logo: width 32.5333vw, margin-left 4vw */
-.uma-hdr-brand img { display: block; width: 32.5333vw; height: auto; max-width: 58vw; margin-left: 6.4vw; }
+/* .header__wrapper .-logo.is-top.is-large on the site: the mark starts larger
+   than the bar and settles down to its normal width once the page moves. */
+.uma-hdr-brand img {
+  display: block; width: 32.5333vw; height: auto; max-width: 58vw;
+  margin-left: 6.4vw; margin-top: 5px;
+}
+.uma-hdr-brand { --logo-big: 58vw; --logo-small: 32.5333vw; }
+@supports (animation-timeline: scroll()) {
+  @keyframes uma-logo-settle {
+    from { width: var(--logo-big); }
+    to   { width: var(--logo-small); }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .uma-hdr-brand img {
+      animation: uma-logo-settle linear both;
+      animation-timeline: scroll(root block);
+      animation-range: 0 110px;
+    }
+  }
+}
 /* the horseshoe sits over the notification button, above its caption */
 /* the horseshoe and its caption share one centre line in the bar's corner */
 /* .header__wrapper .-menu on the site: a 27px horseshoe whose right edge is
@@ -635,19 +654,23 @@
    glyphs are CSS shapes, so nothing can be stripped and nothing needs a url(). */
 .pp-top-bar-notifications-button, .profile-top-bar-notifications-button {
   position: relative !important;
-  width: 96px !important; height: 100% !important; min-height: 52px !important;
-  align-self: stretch !important; margin: 0 !important; padding: 0 !important;
+  width: 74px !important; height: 46px !important;
   background: transparent !important; box-shadow: none !important;
   border: 0 !important; border-radius: 0 !important;
-  display: block !important;
+  display: inline-block !important;
+}
+/* the caption and the horseshoe reach lower than their button does */
+.pp-top-bar-notifications-button::before,
+.profile-top-bar-notifications-button::before {
+  content: "" !important; position: absolute !important;
+  left: -24px !important; right: 0 !important;
+  top: -6px !important; bottom: -18px !important;
 }
 .pp-top-bar-notifications-button svg,
 .profile-top-bar-notifications-button svg,
-.pp-top-bar-notifications-button img { display: none !important; }
+.pp-top-bar-notifications-button img { opacity: 0 !important; }
 /* the horseshoe is drawn: a ring with a notch clipped out of the bottom, which
    leaves the two legs and the gap. No glyph, no url(), nothing to strip. */
-.pp-top-bar-notifications-button::before,
-.profile-top-bar-notifications-button::before { content: none !important; }
 /* the caption is drawn once, in the layer below, on the same axis as the
    horseshoe — this copy stays off */
 .pp-top-bar-notifications-button::after,
@@ -709,6 +732,7 @@
   .uma-sec { padding-left: calc(50% - 500px); padding-right: calc(50% - 500px); }
   .uma-hero { height: min(58vw, 700px); background: #8FD46A; }
   /* the site scales its header logo down again on wide screens */
+  .uma-hdr-brand { --logo-big: 12vw; --logo-small: 8.9583vw; }
   .uma-hdr-brand img { width: 8.9583vw; margin-left: 1.9444vw; }
   .uma-hero-art { object-position: 50% 12%; }
   .uma-hero-art {
