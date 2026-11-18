@@ -607,3 +607,51 @@ rows. Only the palette is forced — no widths, padding or borders of ours, so t
 
 Probed after opening: panel `rgb(15, 87, 251)`, border `rgb(46, 107, 255)`, title `#fff`, message
 `rgba(255,255,255,.78)`, time `rgba(255,255,255,.62)`, row hover `rgba(255,255,255,.10)`.
+
+---
+
+## 19. The side pill, the fandom block, and a full-screen menu (2026-11-09)
+
+### Why the pill's letters hung outside it
+
+`.uma-side` is `writing-mode: vertical-rl`, and in a vertical writing mode the **block axis is horizontal**.
+`padding: 3.2vw 1.6vw` therefore put 11.5 css on the left and right of a 22 css box — a negative content box,
+so the string was pushed through both walls of the pill. Two more things kept it off-centre: `vertical-rl`
+stacks lines from the right, so a single line sits against the right wall, and `text-align: center` only
+centres along the *inline* (vertical) axis.
+
+Measured against `Screenshot_20261118-144728.jpg` (the official page, 360 css at DPR 3.5):
+
+| | reference | ours, before | ours, now |
+|---|---|---|---|
+| pill box | 21.7 × 168.9 | 22.1 × 116 (and clipping its own text) | 23.8 × 168.8 |
+| text ink across | 13.5, centred | 20+, spilling both sides | 12.0, centred (ink 9.25 → 21.25 of 23.8) |
+| inset from the right | 8.9 | 8.9 | 8.9 |
+
+The fix is physical padding (`.55vw 2.75vw` = 2 css across, 9.9 css along), `display: flex` with
+`align-items: center` to centre the line box across the pill, and type sized to the reference's length:
+`font-size: 3.54vw` (12.7 px) with `letter-spacing: .14vw` gives 146.5 css of ink, so the pill lands on
+168.8 css — the reference's 168.9. The pill is 2 css wider than the reference's so the mixed-case string
+(unlike their all-caps one) has room; because the right edge is pinned at `right: 2.4vw`, the extra width
+grows leftward, which is what "make the text wider to the left" asks for.
+
+### Fandom block
+
+`.uma-hero-stack` moved from `top: 111.4667vw` to `116.4667vw` — 18 css lower — so the first card row
+(543 → 561) clears Kitasan Black's knee instead of sitting on it.
+
+### The notification menu is a sheet
+
+`._notificationsPopover_…` is now the whole screen: `position: fixed; top: 0; left: 0; width: 100%;
+height: 100vh`, no border, no radius, the header's `#0F57FB` edge to edge, with `3.4vw 4.2vw 10vw` padding
+and type in vw (`4.8` title, `3.9` row title, `3.5` message, `3` time) so it scales with the screen. Its
+containing block is the bar (which keeps `backdrop-filter: blur(0px)`), so the sheet is sized in `100%` /
+`100vh` rather than `inset: 0` — `inset: 0` made it only as tall as the 56 px bar. The close button stays
+in the header; the header actions got `white-space: nowrap`.
+
+### Tooling note
+
+The sandbox now has real **Roboto** and **Roboto Condensed** (woff2 from `@fontsource`, converted to TTF
+with fontTools and dropped in `~/.fonts`). Every earlier measurement of the caption, the side pill and the
+badges was taken against a wider fallback face; with the real fonts installed the harness agrees with the
+phone screenshot (the pill's ink length lands within 4 % of the device's).
