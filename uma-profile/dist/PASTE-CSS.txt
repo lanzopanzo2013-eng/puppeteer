@@ -112,20 +112,6 @@
 .uma-playnow { display: flex; align-items: center; }
 .uma-playnow img { display: block; width: auto; height: 4.2vw; }
 
-/* The Game Awards strip rides on the key visual, right side, its right edge
-   meeting the plaque's left edge. Measured off the official phone capture
-   (DPR 3.5, art top at 148.3 css): the strip runs x 210 -> 328.6 css
-   (118.6 wide, 1.64 : 1 art) and its foot sits at 332.6 css from the artwork's
-   top, 13.4 css above the first plate row. Right edge 328.6 = 8.72vw from the
-   right; foot 332.6 = 68.6vw up from the hero's 161vw floor. */
-.uma-awards {
-  position: absolute; display: block; pointer-events: none;
-  width: 32.8vw; height: auto;
-  right: 8.72vw; bottom: 68.6vw;
-  filter: drop-shadow(0 1px 2px rgba(0,0,0,.28));
-}
-.uma-awards img { display: block; width: 100%; height: auto; }
-
 /* the scroll cue: stacked letters down the right edge, the way the site runs it */
 /* .top-kv__left .-scroll: right 3.7333vw, top 140.8vw */
 .uma-scroll {
@@ -883,7 +869,7 @@ body:has(.pp-top-bar [class*="adge"]) .uma-hdr-menu img.uma-bell-gift { display:
    thin white edge in the artwork itself */
 .uma-fan-t {
   height: 9.75vw; min-height: 35px; padding: 4px 9px; border-radius: 10px;
-  background: #000; border: 1px solid rgba(255,255,255,.45);
+  background: #000; border: 1px solid rgba(255,255,255,.70);
   box-shadow: 0 2px 6px rgba(0,0,0,.22);
 }
 /* one logo, or several sharing the plate: a grid keeps every mark inside its
@@ -945,7 +931,6 @@ body:has(.pp-top-bar [class*="adge"]) .uma-hdr-menu img.uma-bell-gift { display:
   .uma-acc .uma-fan-links a:first-child img { max-height: 30px; }
   .uma-hero-stack { top: auto; bottom: 24px; padding-left: calc(50% - 500px); padding-right: calc(50% - 500px); }
   .uma-playnow img { height: 25px; }
-  .uma-awards { width: 176px; right: calc(50% - 500px + 78px); bottom: 96px; }
   .uma-media-row { flex-direction: row; }
   .uma-media-tile { width: 48.6%; }
   .uma-card-thumb { width: 168px; }

@@ -21,7 +21,6 @@
     <img class="uma-hero-art" alt="Umamusume: Pretty Derby" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/kv_first.jpg">
     <div class="uma-hero-wash"></div>
     <div class="uma-side">Umamusume: Pretty Derby</div>
-    <img class="uma-awards" alt="The Game Awards — Best Mobile Game Winner" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@b46846efd2005a291a76a3797e4c69a87613eada/uma-profile/assets/site/awards-tga.png">
     <div class="uma-hero-stack">
       <span class="uma-fan-caption">Featured Fandoms</span>
       <div class="uma-fan-rows">
