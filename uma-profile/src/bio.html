@@ -502,17 +502,25 @@
    15px from the screen edge, its label centred underneath, both sitting low in
    the bar. Our label is wider than "Menu", so the box stays the horseshoe's
    width and the text centres on it and spills both ways. */
+/* .header__wrapper .-menu, measured off the same screenshot pair as the
+   wordmark (1260 px = 360 CSS px, DPR 3.5):
+     horseshoe  26.9 x 27.4 css, right edge 14.9 from the screen, cap of the
+                bar 6.6 down; label cap height 6.9, centred on the horseshoe's
+                axis, 5.4 below it.
+   The box is the horseshoe's width, not the label's: a flex column sizes to its
+   widest child, which pushed the mark 10px inboard. Fixed width + centred
+   overflow keeps the right edge on 15 no matter how long the caption is. */
 .uma-hdr-menu {
-  position: absolute; right: 15px; bottom: 9px;
-  display: flex; flex-direction: column; align-items: center; gap: 3px;
+  position: absolute; right: 14px; top: 6px;
+  width: 29px;
+  display: flex; flex-direction: column; align-items: center; gap: 5px;
 }
-.uma-hdr-menu img { width: 27px; height: auto; }
+.uma-hdr-menu img { display: block; width: 29px; height: auto; }
 .uma-hdr-cap {
   font-family: "Roboto Condensed", roboto, Arial, sans-serif;
   font-style: italic; font-weight: 900; font-size: 10px; line-height: 1; color: #fff;
   white-space: nowrap; text-align: center;
 }
-.uma-hdr-menu img { display: block; width: 27px; height: auto; }
 
 /* ---------- Download (the site's blue band) ---------- */
 .uma-dl {
@@ -854,7 +862,7 @@
   <!-- ── hero ──────────────────────────────────────────────── -->
   <div class="uma-hero">
     <!-- IMG:KV → TEMP local crop -->
-    <img class="uma-hero-art" alt="Umamusume: Pretty Derby" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@49a5910/uma-profile/assets/site/kv_vfgo.jpg">
+    <img class="uma-hero-art" alt="Umamusume: Pretty Derby" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@49a5910/uma-profile/assets/site/kv_hero.jpg">
     <div class="uma-hero-wash"></div>
     <div class="uma-side">Umamusume: Pretty Derby</div>
     <div class="uma-hero-stack">

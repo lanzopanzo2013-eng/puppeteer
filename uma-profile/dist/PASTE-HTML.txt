@@ -17,7 +17,7 @@
   <!-- ── hero ──────────────────────────────────────────────── -->
   <div class="uma-hero">
     <!-- IMG:KV → TEMP local crop -->
-    <img class="uma-hero-art" alt="Umamusume: Pretty Derby" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@49a5910/uma-profile/assets/site/kv_vfgo.jpg">
+    <img class="uma-hero-art" alt="Umamusume: Pretty Derby" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@49a5910/uma-profile/assets/site/kv_hero.jpg">
     <div class="uma-hero-wash"></div>
     <div class="uma-side">Umamusume: Pretty Derby</div>
     <div class="uma-hero-stack">
