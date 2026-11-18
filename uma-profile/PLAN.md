@@ -826,3 +826,41 @@ at 360, but it cannot march out of the band on a narrow screen the way an absolu
 Before the foot anchor, 280 and 320 overflowed the band and `overflow: hidden` ate the
 "Official Accounts" row. Everything else is in `vw`, so the whole front page scales with the
 viewport rather than being tuned to one handset.
+
+---
+
+## 26. Measured against the reference, not guessed (2026-11-09)
+
+Both screenshots are 1260 × 2800 at DPR 3.5 over a 360 css viewport, so every number below is
+a direct comparison at the same scale. The page's own datum is the top of the artwork — the
+blue header band ends at 148.3 css on the site and at 145.4 css here, and everything is
+expressed from there so the phone's chrome can't skew it.
+
+### The plaque
+
+| | official | ours, before | ours, now |
+|---|---|---|---|
+| capsule | **21.7 × 164.3** | 21.4 × 155.7 | **21.4 × 164.0** |
+| top, from the artwork's top | **132.6** | 153.2 | **132.9** |
+| foot | 296.8 | 312.2 | 300.0 |
+| glyph cap | 7.4 | 9.4 | ≈ 7.6 |
+
+The type was `3.6vw` with tracking switched off — 27 % too large — so it read chunky and the
+capsule came up short. Solved from the reference instead of by eye: cap 7.4 css ⇒
+`font-size: 3.08vw`; the run has to fill 164.3 css across 23 glyphs ⇒ `letter-spacing: .48vw`;
+the capsule is 21.7 wide ⇒ `width: 6.3vw`; and the top moves `41.66vw → 34.44vw` to land on
+132.9 from the artwork's top.
+
+### The badges
+
+| | official | ours, before | ours, now |
+|---|---|---|---|
+| first plate, from the artwork's top | **346.6** | 380.0 | **346.0** |
+| plate height (black area) | 33.1 | 31.1 | **33.1** |
+
+"Too low" was 33 css — the plates had drifted down when the band was re-cut for the whole
+artwork. The stack is anchored to the picture's foot, so the correction is one number:
+`bottom: 6vw → 12.5vw`. Plate height goes `9.2vw → 9.75vw` so the black area measures the
+reference's 33.1 css rather than the 33.1 including borders.
+
+All nine rig widths still pass with `spill=0`.
