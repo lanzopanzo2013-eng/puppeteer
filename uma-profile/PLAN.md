@@ -694,3 +694,36 @@ Condensed, uppercase, `.4em` of tracking, and the two chevrons flow inline after
 (`display: flex; flex-direction: column` had been laying the `»»` out *beside* the word and
 interleaving it into the middle of it, because in a vertical writing mode a flex column runs
 horizontally).
+
+---
+
+## 21. Reading the plaque and the plates off a full phone capture (2026-11-09)
+
+`Screenshot_20261118-180923.jpg` is the whole official page at 1260 × 2800, so it is DPR 3.5
+against a 360 css viewport and every measurement in it is directly comparable to mine.
+
+### The plaque was oversized by 78 %
+
+| | official | ours (before) | ours (now) |
+|---|---|---|---|
+| capsule | 21.7 × 164.3 | 21.4 × 209.7 | 20.6 × 163.7 |
+| glyph height | 7.1 | 13.7 | 7.1 |
+| tracking | wide | .62vw | .5vw |
+| font-size | — | 3.9vw | 2.9vw |
+
+The glyphs were nearly twice the size of the reference's and the string ran 45 css past it.
+`font-size: 2.9vw` (cap 7.1), `letter-spacing: .5vw`, and the end padding cut from `2.75vw`
+to `1vw` — the official's type runs to within 2.5 css of each cap, it does not float in the
+middle of it. The capsule is now within 0.6 css of the reference's length.
+
+### The plates
+
+The edge is 1 px of `rgba(255,255,255,.45)` — a thin grey line, not the white 1.5 px I had —
+and the plates are 33 css tall instead of 40, radius 10, with the marks given 24 px of height
+so they fill the plate the way the store badges do on the site. The row gap came down to 1vw,
+which makes each plate ~4 css wider at the same stack width, and the stack's own margin went
+from 11 % to 10.2 % (the site's plates run x 37 → 323).
+
+### The scroll cue
+
+11 px instead of 10, tracking `.34em`.
