@@ -104,18 +104,27 @@
 }
 /* the call to action sits in the first badge row, left of the plates, the way
    Play Now sits beside the store badges on the official screen */
+/* The call to action is the supplied wordmark, not drawn type: the supplied
+   PNG carries the cream fill, the orange drop and the white keyline exactly, so
+   the pill no longer has to imitate it with gradients and four drop-shadows.
+   Its art is 5.12 : 1, so a 4.2vw height gives a 21.5vw mark — the width the
+   drawn type needed at 21px — and it keeps that ratio at every phone width. */
 .uma-playnow { display: flex; align-items: center; }
-.uma-playnow span {
-  display: block;
-  font-family: "Roboto Condensed", roboto, Arial, sans-serif;
-  font-style: italic; font-weight: 900; font-size: 21px; line-height: 1.05;
-  letter-spacing: -.4px; transform: rotate(-3deg); white-space: nowrap;
-  background: linear-gradient(180deg, #FFE45C 0%, #FFC12B 42%, #FF9A16 100%);
-  -webkit-background-clip: text; background-clip: text; color: transparent;
-  filter: drop-shadow(2px 0 0 #fff) drop-shadow(-2px 0 0 #fff)
-          drop-shadow(0 2px 0 #fff) drop-shadow(0 2px 0 #fff)
-          drop-shadow(0 3px 2px rgba(96,48,0,.35));
+.uma-playnow img { display: block; width: auto; height: 4.2vw; }
+
+/* The Game Awards strip rides on the key visual, right side, its right edge
+   meeting the plaque's left edge. Measured off the official phone capture
+   (DPR 3.5, art top at 148.3 css): the strip runs x 210 -> 328.6 css
+   (118.6 wide, 1.64 : 1 art) and its foot sits at 332.6 css from the artwork's
+   top, 13.4 css above the first plate row. Right edge 328.6 = 8.72vw from the
+   right; foot 332.6 = 68.6vw up from the hero's 161vw floor. */
+.uma-awards {
+  position: absolute; display: block; pointer-events: none;
+  width: 32.8vw; height: auto;
+  right: 8.72vw; bottom: 68.6vw;
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,.28));
 }
+.uma-awards img { display: block; width: 100%; height: auto; }
 
 /* the scroll cue: stacked letters down the right edge, the way the site runs it */
 /* .top-kv__left .-scroll: right 3.7333vw, top 140.8vw */
@@ -457,7 +466,6 @@
    accounts row crowd itself */
 @media (max-width: 379px) {
   .uma-playnow { padding-right: 5px; }
-  .uma-playnow span { font-size: 18px; }
   .uma-acc .uma-fan-lbl { font-size: 11px; }
   .uma-acc .uma-fan-links { gap: 6px; }
   .uma-acc .uma-fan-links img { max-height: 26px; }
@@ -936,7 +944,8 @@ body:has(.pp-top-bar [class*="adge"]) .uma-hdr-menu img.uma-bell-gift { display:
   .uma-acc .uma-fan-links img { max-height: 40px; }
   .uma-acc .uma-fan-links a:first-child img { max-height: 30px; }
   .uma-hero-stack { top: auto; bottom: 24px; padding-left: calc(50% - 500px); padding-right: calc(50% - 500px); }
-  .uma-playnow span { font-size: 25px; }
+  .uma-playnow img { height: 25px; }
+  .uma-awards { width: 176px; right: calc(50% - 500px + 78px); bottom: 96px; }
   .uma-media-row { flex-direction: row; }
   .uma-media-tile { width: 48.6%; }
   .uma-card-thumb { width: 168px; }
