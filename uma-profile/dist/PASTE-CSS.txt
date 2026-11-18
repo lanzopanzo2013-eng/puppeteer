@@ -443,23 +443,16 @@
 /* .header__wrapper .-logo: width 32.5333vw, margin-left 4vw */
 /* .header__wrapper .-logo.is-top.is-large on the site: the mark starts larger
    than the bar and settles down to its normal width once the page moves. */
+/* .header__wrapper .-logo: width 32.5333vw, margin-left 6.4vw — the width the
+   official bar carries once it has settled. The site starts a touch larger on
+   its home page and settles on scroll, but this layer is position:fixed and a
+   fixed subtree is resolved against the viewport, so a scroll-driven timeline
+   has nothing to follow here (verified against Janitor's own stylesheet and
+   markup): it froze at the large end and hung out of the bar. One size, the
+   settled one, is what the reference shows anyway. */
 .uma-hdr-brand img {
-  display: block; width: 32.5333vw; height: auto; max-width: 58vw;
+  display: block; width: 32.5333vw; height: auto;
   margin-left: 6.4vw; margin-top: 5px;
-}
-.uma-hdr-brand { --logo-big: 58vw; --logo-small: 32.5333vw; }
-@supports (animation-timeline: scroll()) {
-  @keyframes uma-logo-settle {
-    from { width: var(--logo-big); }
-    to   { width: var(--logo-small); }
-  }
-  @media (prefers-reduced-motion: no-preference) {
-    .uma-hdr-brand img {
-      animation: uma-logo-settle linear both;
-      animation-timeline: scroll(root block);
-      animation-range: 0 110px;
-    }
-  }
 }
 /* the horseshoe sits over the notification button, above its caption */
 /* the horseshoe and its caption share one centre line in the bar's corner */
@@ -604,8 +597,6 @@
      stops painting. The blue, the wordmark and the horseshoe are drawn by the
      fixed layer below; the bar's own buttons still paint over it. */
   background: transparent !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
   border-bottom: 0 !important;
   box-shadow: none !important;
 }
@@ -732,8 +723,7 @@
   .uma-sec { padding-left: calc(50% - 500px); padding-right: calc(50% - 500px); }
   .uma-hero { height: min(58vw, 700px); background: #8FD46A; }
   /* the site scales its header logo down again on wide screens */
-  .uma-hdr-brand { --logo-big: 12vw; --logo-small: 8.9583vw; }
-  .uma-hdr-brand img { width: 8.9583vw; margin-left: 1.9444vw; }
+  .uma-hdr-brand img { width: 8.9583vw; margin-left: 1.9444vw; max-width: none; animation: none; }
   .uma-hero-art { object-position: 50% 12%; }
   .uma-hero-art {
     position: absolute; left: 0; top: 0; width: 100%; height: 100%;
