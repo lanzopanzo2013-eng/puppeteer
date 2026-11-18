@@ -407,3 +407,59 @@ the right edge is the edge worth pinning.
 Also this round: the hero background is `assets/site/kv_hero.jpg` (the supplied key visual, resized to
 1300 × 2288 / 437 KB), and the CDN pin moved to the commit that carries it — jsDelivr's index confirms
 `/uma-profile/assets/site/kv_hero.jpg` at 447525 bytes under `@cb91b72`.
+
+---
+
+## 14. Unread state, gift mark, centred caption, fresh hero URL (2026-11-09)
+
+### The badge had to leave the bar's stacking context
+
+Janitor draws the unread count inside the bell button, and the button lives in `._header_17iy7_1`
+(`position: sticky; z-index: 3000; backdrop-filter: blur(10px)`). A backdrop-filtered element is its own
+stacking context, so anything the blue band painted — even at z 4000 — landed *under* the bar and the
+badge was never hit-testable (`elementFromPoint` returned `_rightElement_o5odd_67`, the bar's spacer).
+Three changes fixed it, in this order of importance:
+
+1. the band sits **under** the bar: `.uma-hdr { z-index: 2500 }`, i.e. below Janitor's 3000;
+2. the bar keeps a **0 px** backdrop blur (`backdrop-filter: blur(0px)`, not `none` — `none` drops the
+   containing block the popover is anchored to and the panel loses its position);
+3. the bar's own furniture (left block, search, filter, create-character, app menu) is hidden, so the
+   only thing left up there is the transparent notification button our horseshoe sits on.
+
+Result at 360 × 800 × 3.5, in both scrollers (document and a locked body with an inner panel):
+
+| probe | before | after |
+|---|---|---|
+| count pill | `[305.6, 11, 38.4, 21.2]` | `[287, 7, 21, 16]` |
+| hit at pill centre | `_rightElement_o5odd_67` | `_notificationsBadge_1jwi8_41` |
+| popover | `[21, 63.7, 408, 116.6]`, over the hero art | `[8, 64, 344, 124]` |
+| hit inside popover | hero art | `_popoverTitle_1jwi8_148` |
+
+The pill is pulled out of the flow with `position: fixed; top: 7px; right: 52px`, so it reads as the
+count **beside** the horseshoe (its right edge, 308, is 1 px off the glyph's left edge, 309).
+
+### The gift mark
+
+`assets/site/bell_gift.png` (72 × 72, 6208 B, the supplied `gsafespm3o3h1.png` downscaled) is an
+`<img>` inside `.uma-hdr-menu`, `position: absolute; right: -7px; top: -5px; width: 22px`, so it stands
+exactly where the old dot was — the glyph's upper-right corner — and it is hidden unless there is
+something to count: `body:has([class*="notificationsBadge"]) .uma-hdr-menu img.uma-bell-gift { display: block }`.
+Probed: `display: none` with no badge, `block` at `[323, 1, 22, 22]` with one. It stays inside its
+absolute parent, so the rig's spill check stays at 0 at all four widths.
+
+### The caption, centred and still fitting
+
+The label is centred under the glyph (`text-align: center; align-self: center`) and the menu box moved
+from `right: 15px` to `right: 16px` with the type at 8 px. That is the width where a centred twelve-letter
+word clears the screen edge even in the widest fallback font the renderer has: the box measures
+57.4 px, right edge 358.2 in the worst case, versus 46.3 px on the device's Roboto Condensed. Earlier
+attempts at 10 px overflowed a 360 px screen by 2.8 px in the fallback face and clipped the "s".
+
+### The hero
+
+The band's `<img>` is the supplied key visual. It was re-published under a **new file name**
+(`assets/site/kv_hero.jpg` → `assets/site/kv_main.jpg`, 447 525 B) so no cache, CDN edge or browser can
+serve the old art at a URL it already knows, and the pin moved to the commit that carries it. The
+measured conclusion from the pixel comparisons stands: our render and the live screenshot are the same
+artwork (mean-abs-diff 50.8 against 59.2 for the old file), so the "unchanged" band was a stale page,
+not a stale asset.
