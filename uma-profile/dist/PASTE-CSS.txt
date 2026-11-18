@@ -88,16 +88,12 @@
 .uma-side {
   position: absolute; right: 2.4vw; top: 34.44vw; width: 6.3vw; color: #fff;
   font-family: "Roboto Condensed", roboto, Arial, sans-serif;
-  font-size: 3.08vw; font-weight: 600; letter-spacing: .48vw; line-height: 1;
+  font-size: 3.08vw; font-weight: 600; letter-spacing: 0; line-height: 1;
   text-transform: uppercase;
   display: flex; align-items: center; justify-content: center;
   writing-mode: vertical-rl; white-space: nowrap;
   text-shadow: 0 1px 3px rgba(0,0,0,.45);
   border: .2667vw solid rgba(255,255,255,.85); border-radius: 999px;
-  /* the official plaque is drawn twice: a 1px capsule and a second, thinner
-     line set in from it. An inset outline follows the radius, so one
-     declaration does it without a pseudo element. */
-  outline: .18vw solid rgba(255,255,255,.5); outline-offset: -.9vw;
   padding: .55vw 1vw; text-align: center;
 }
 /* the call to action sits in the first badge row, left of the plates, the way
@@ -118,13 +114,13 @@
 /* the scroll cue: stacked letters down the right edge, the way the site runs it */
 /* .top-kv__left .-scroll: right 3.7333vw, top 140.8vw */
 .uma-scroll {
-  position: absolute; right: 3.7333vw; top: 118.9vw; z-index: 3; color: #fff;
+  position: absolute; right: 3.7333vw; top: auto; bottom: 12.5vw; z-index: 3; color: #fff;
   display: block;
   font-family: "Roboto Condensed", roboto, "Helvetica Neue", Arial, sans-serif;
-  font-size: 11.5px; font-weight: 500; letter-spacing: .04em; text-transform: uppercase;
+  font-size: 13px; font-weight: 500; letter-spacing: .04em; text-transform: uppercase;
   writing-mode: vertical-rl; text-shadow: 0 1px 3px rgba(0,0,0,.45);
 }
-.uma-scroll span { display: inline; font-size: 1em; letter-spacing: .1em; }
+.uma-scroll span { display: inline; font-size: 1.55em; letter-spacing: 0; margin-top: .35em; }
 
 /* ============================================================
    BATCH 3 — section furniture (shared by every band)

@@ -864,3 +864,24 @@ artwork. The stack is anchored to the picture's foot, so the correction is one n
 reference's 33.1 css rather than the 33.1 including borders.
 
 All nine rig widths still pass with `spill=0`.
+
+---
+
+## 27. One border, no tracking, and the cue on the card's edge (2026-11-09)
+
+- **Plaque**: the inset `outline` that drew the second line is gone — one 1 px capsule. The
+  `letter-spacing` is gone too, so the string is a word: the capsule measures **21.4 × 149.4**
+  against the site's 21.7 × 164.3, and it is still hung from the same top (132.9 vs 132.6
+  from the artwork's top). The 15 css it gives up is exactly the width the site's tracking
+  was buying; the alternatives are a longer capsule with padding at the caps, or a larger
+  `font-size`, and both trade away something the reference has.
+- **Scroll cue**: anchored to the same foot as the badge stack (`bottom: 12.5vw`), so it
+  rides lower; type 13 px; the chevrons are 1.55 em — larger than the letters rather than
+  smaller — with `.35em` of air before them. Measured: word 466.6 → 509.1 from the artwork's
+  top, chevrons 519.1 → 533.7, and the last white card's foot is at 534.9, so the arrows end
+  on the card's edge as asked (the site: 449.7 → 488.7, 500.3 → 511.7, card foot 515.4).
+
+`https://tools.from-avalon.com/janitor-profile-maker/` is reachable from here now, but it is
+a client-side studio — fetching it returns its own demo profile, not a render of our paste,
+and it states in its own copy that its phone preview uses desktop chrome. The local rig
+(docs + `tools/rig.cjs`), which reproduces Janitor's DOM at nine widths, remains the check.
