@@ -772,3 +772,16 @@ their crop, just not upsampled by the browser.
 The band is `190.6667vw` tall (ratio 0.524) against the artwork's 0.624, so `object-fit:
 cover` still trims 16 % of the height — 8 % off the top and 8 % off the foot, centred. Move
 `object-position` off `50% 50%` if a particular part of the frame needs to survive that.
+
+---
+
+## 24. The hero is used whole (2026-11-09)
+
+Final answer on the artwork: `IMG_20261118_160304_946.jpeg` (4654 × 7494, 15.4 MB) **as
+supplied** — no crop, no upscale, no colour work. The only operation is a downscale to
+1600 × 2576 (identical aspect; diffed back against the source at 0.12/255) so the asset is
+641 KB instead of 15 MB and still more than the 1260 px the phone asks for.
+
+The band is `190.6667vw` tall, ratio 0.524 against the artwork's 0.621, so `object-fit:
+cover` still trims 8 % top and 8 % foot — that is the layout, not the file. `object-position`
+is `50% 50%` on phones and `50% 12%` above 820 px.
