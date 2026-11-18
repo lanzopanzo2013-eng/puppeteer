@@ -1086,3 +1086,36 @@ The link inside it is text, not a link: a pseudo-element's content cannot carry 
 
 Checked in a mock of the sheet at 320 / 360 / 414 (`docs/notifications-panel*.png`), not on the
 live page — the real popover only exists when the bell is tapped.
+
+---
+
+## 36. The note becomes real markup: horseshoes, links, no rules broken
+
+The pseudo-element version of the foot is gone. It could carry a `content` string but not an
+anchor, and the note's two URLs had to be tappable, so the foot is now our own markup
+(`.uma-sheet-foot`), pinned to the viewport and gated on Janitor's sheet existing:
+
+```css
+.uma-sheet-foot { display: none; }
+body:has([class*="otificationsPopover"]) .uma-sheet-foot { position: fixed; bottom: 0; ... }
+```
+
+Verified both ways: with a mock sheet open it lays out, and on the profile page itself the
+element computes `display: none` with height 0 while the rig still reports spill 0 at every
+width from 280 to 1280.
+
+**The ground.** The official's download card sits on pale horseshoe marks, so the note card
+does too: `assets/site/horse-mark.png`, the header horseshoe recoloured to #E4D8BC at 90 %
+alpha, laid three times behind the words (`132% -14%`, `-16% 118%`, `92% 62%`).
+
+**Formatting and wording.** Three paragraphs, a pink uppercase kicker, 3.05vw/1.42 body, and
+no em dashes anywhere in the paste (`grep -c —` returns 0). The links restate their colour
+because the shell flattens every anchor to the body colour.
+
+**Space.** The foot is 88.6vw tall at every width (it is all vw), and the sheet now reserves
+92vw at its bottom, so no notification row can end up behind it. Measured at 320 / 360 / 414:
+283.7 / 319.1 / 366.8 css — 88.7 / 88.6 / 88.6vw.
+
+The four discs point at the game's own accounts, taken from umamusume.com itself:
+x.com/umamusume_eng, facebook.com/umamusume.eng, youtube.com/@umamusume_eng,
+discord.gg/umamusume-eng.
