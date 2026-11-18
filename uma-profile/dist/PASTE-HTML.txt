@@ -50,42 +50,35 @@
     <div class="uma-scroll">Scroll<span>&#187;&#187;</span></div>
   </div>
 
-  <!-- ── Updates (News) ────────────────────────────────────── -->
+  <!-- ── In the Works (the site's News band) ────────────────── -->
   <div class="uma-sec uma-news" id="updates">
-    <img class="uma-band-pat" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/pattern.png">
-    <div class="uma-tag-wrap"><div class="uma-tag pink long"><span>Current OWN Doings</span></div></div>
+    <div class="uma-news-frame">
+      <div class="uma-news-ribbon"><span>In the Works</span></div>
 
-    <a class="uma-card" href="#">
-      <div class="uma-card-body">
+      <a class="uma-card" href="#">
         <div class="uma-meta"><span class="uma-ribbon">Update</span><span class="uma-date">2026/11/06 09:15 (UTC)</span></div>
         <div class="uma-meta"><span class="uma-pill">Bot</span><span class="uma-date">2026/11/05 13:30 (UTC)</span></div>
-        <div class="uma-card-txt">New bot · Silence Suzuka takes the lead in a quiet, hopeless romance.</div>
-      </div>
-      <img class="uma-card-thumb" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/news1.jpg">
-      <div class="uma-card-go">›</div>
-    </a>
+        <div class="uma-card-txt">New bot: Silence Suzuka takes the lead in a quiet, hopeless romance.</div>
+        <div class="uma-card-go">&#187;&#187;</div>
+      </a>
 
-    <a class="uma-card" href="#">
-      <div class="uma-card-body">
+      <a class="uma-card" href="#">
+        <img class="uma-card-media" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@0bbde63ca8f16990368cd31e66e6b3cec12b72df/uma-profile/assets/site/news2.jpg">
         <div class="uma-meta"><span class="uma-ribbon">Update</span><span class="uma-date">2026/11/05 22:00 (UTC)</span></div>
         <div class="uma-meta"><span class="uma-pill">Bot</span><span class="uma-date">2026/11/04 22:00 (UTC)</span></div>
-        <div class="uma-card-txt">Reworked · Unity Cup · Tokai Teio's scenario now has three new openings.</div>
-      </div>
-      <img class="uma-card-thumb" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/news2.jpg">
-      <div class="uma-card-go">›</div>
-    </a>
+        <div class="uma-card-txt">Reworked: Unity Cup, Tokai Teio's scenario now has three new openings.</div>
+        <div class="uma-card-go">&#187;&#187;</div>
+      </a>
 
-    <a class="uma-card" href="#">
-      <div class="uma-card-body">
-        <div class="uma-meta"><span class="uma-ribbon">Notice</span><span class="uma-date">2026/11/02 09:15 (UTC)</span></div>
+      <a class="uma-card" href="#">
+        <img class="uma-card-media" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@0bbde63ca8f16990368cd31e66e6b3cec12b72df/uma-profile/assets/site/news1.jpg">
         <div class="uma-meta"><span class="uma-pill">Event</span><span class="uma-date">2026/11/01 09:15 (UTC)</span></div>
         <div class="uma-card-txt">Aquarius Cup event bot returns later this month. Limited time only.</div>
-      </div>
-      <img class="uma-card-thumb" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/news1.jpg">
-      <div class="uma-card-go">›</div>
-    </a>
+        <div class="uma-card-go">&#187;&#187;</div>
+      </a>
 
-    <a class="uma-more" href="#">View more ››</a>
+      <a class="uma-more" href="#">View more &#187;&#187;</a>
+    </div>
   </div>
 
   <!-- ── About ─────────────────────────────────────────────── -->

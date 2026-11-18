@@ -1137,3 +1137,43 @@ which keeps the official row's rhythm without squashing the wordmark into a smud
 
 Label reads **Official Accounts**. Foot is 86.7vw tall at every width, inside the sheet's
 92vw reserve. The `sns-*.png` files stay in the repo, now unreferenced.
+
+## 38. In the Works: the News band, drawn in CSS (2026-11-09)
+
+The front page was declared finished, so this round rebuilt the pink block that used to
+read "Current OWN Doings". The user picked **In the Works** out of four candidate titles,
+sent the official News band as the target and the pale horseshoe art as its ground, and
+asked for the frame itself in **SVG or CSS, not a bitmap**.
+
+No SVG was needed. The band is a rounded box with a `#FF79D0` border, the ribbon straddling
+its top left is a `skewX(-13deg)` rectangle whose label is counter-skewed, and the card tags
+are `clip-path` flags. Everything is CSS, so it stays crisp at any width and cost no extra
+request.
+
+Geometry, measured off the reference capture (360 css wide, 3.49 dpr):
+
+| | reference | ours at 360 |
+|---|---|---|
+| frame | x 15.8 → 345.1, 3.1 border, r ≈ 8 | x 15.8, 328.3 wide, .9vw border, r 2.4vw |
+| ribbon | x 10 → 137, y 134.6 → 169 | x 12.2, 176.6 × 30.2, top −8.6vw |
+| cards | x 34.7 → 326.2 (291.5), gap 9.4 | x 33.9, 292.1, gap 2.6vw |
+| green pill | 77.1 × 15.5, `rgb(181,217,19)` | 60.4 × 15.3 for the shorter tag |
+| date | ink 9.2 tall, same green, italic | 2.95vw |
+| body text | `rgb(79,79,79)`, two lines to 243 | 3.55vw Roboto Condensed |
+| View more | x 57.0 → 289.5, 39.8 tall | 232.5 × 41 |
+
+The band's ground is `news-bg.webp` (the user's `upscalemedia-transformed.webp`, 2304 × 4224,
+downscaled to 1000 wide). It is painted on an `::before` that reaches 12.5vw *above* the
+section and is masked with a linear gradient, so the key visual's photograph fades into the
+pale art above the frame the way `072015` shows it. Masking the ground rather than fading a
+separate block keeps one pattern aligned across the seam.
+
+Panels stack as before: the frame carries `z-index: 1` over the ground and is itself the
+scroll-reveal node, since the cards now sit one level deeper.
+
+Placeholders: the three rows keep the earlier copy (Silence Suzuka, Unity Cup, Aquarius Cup)
+and two of them lend their banner to the new media slot. `news1.jpg` and `news2.jpg` were
+cropped from 560 × 157 to 447 × 130 so the old card furniture that had been captured in them
+no longer peeks under the image.
+
+Rig: 9/9 widths, spill 0, reveal still fires. Paste 49,156 chars.

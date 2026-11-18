@@ -155,7 +155,8 @@
   object-fit: cover; object-position: 50% 40%; z-index: 0; opacity: .9;
 }
 .uma-sec > .uma-tag-wrap, .uma-sec > .uma-hl, .uma-sec > .uma-card,
-.uma-sec > .uma-more, .uma-sec > .uma-about-plate, .uma-sec > .uma-about-txt,
+.uma-sec > .uma-more, .uma-sec > .uma-news-frame,
+.uma-sec > .uma-about-plate, .uma-sec > .uma-about-txt,
 .uma-sec > .uma-carousel, .uma-sec > .uma-grid,
 .uma-sec > .uma-explore, .uma-sec > .uma-media-row { position: relative; z-index: 1; }
 .uma-tag {
@@ -208,42 +209,83 @@
   margin: 2px 0 18px; display: inline-block;
 }
 
-/* ---------- Updates (pink) ---------- */
+/* ---------- In the Works (the site's News band) ----------
+   The official band is a pink frame with a leaning ribbon straddling its top
+   left corner, white cards inside it and a pink pill under them. All of it is
+   CSS: the frame is a border on a rounded box, the ribbon is a skew, the card
+   tags are clipped flags. Geometry from the reference capture (070505, 360 css
+   wide): the frame runs x 15.8 -> 345.1 with a 3.1 css #FF79D0 edge round a
+   #FFF0F7 panel; the cards run x 34.7 -> 326.2 (291.5 wide) with 9.4 css
+   between them; the ribbon runs x 10 -> 137, y 134.6 -> 169, 13 degrees off
+   square. The ground is the pale horseshoe art, and the key visual's photograph
+   fades straight into it above the frame. */
 .uma-news {
-  background: linear-gradient(180deg, #FFEFF7 0%, #FFE2F1 100%);
-  border-top: 6px solid #FF79D0;
+  background: #EFFEE7; border-top: 0; overflow: visible;
+  padding: 9.5vw 4.4vw 9vw;
 }
-.uma-card {
-  background: #fff; border-radius: 10px; padding: 12px 12px 12px 14px;
-  margin-bottom: 10px; position: relative;
-  box-shadow: 0 2px 0 rgba(214,120,163,.35);
-  display: flex; align-items: center;
+.uma-news::before {
+  content: ""; position: absolute; left: 0; right: 0; top: -12.5vw; bottom: 0;
+  background: #EFFEE7 url("https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@0bbde63ca8f16990368cd31e66e6b3cec12b72df/uma-profile/assets/site/news-bg.webp") center top / 100% auto no-repeat;
+  -webkit-mask-image: linear-gradient(180deg, rgba(0,0,0,0) 0, #000 12.5vw);
+  mask-image: linear-gradient(180deg, rgba(0,0,0,0) 0, #000 12.5vw);
+  pointer-events: none; z-index: 0;
 }
-.uma-card-body { flex: 1 1 auto; min-width: 0; }
+.uma-news-frame {
+  position: relative; z-index: 1;
+  background: #FFF0F7; border: .9vw solid #FF79D0; border-radius: 2.4vw;
+  padding: 4.4vw 4.2vw 5.2vw;
+}
+.uma-news-ribbon {
+  position: absolute; left: -1.2vw; top: -8.6vw; z-index: 2;
+  background: #FF79D0; color: #fff; transform: skewX(-13deg);
+  padding: .85vw 4.2vw .95vw 3.6vw;
+  box-shadow: 0 .45vw 0 rgba(214,86,160,.42);
+  font-style: italic; font-weight: 900; font-size: 5.5vw; line-height: 1.2;
+  white-space: nowrap;
+}
+.uma-news-ribbon span { display: block; transform: skewX(13deg); }
+.uma-news .uma-card {
+  display: block; background: #fff; border-radius: 2.2vw;
+  padding: 2.8vw 3.3vw 3vw; margin-bottom: 2.6vw; position: relative;
+  box-shadow: 0 .35vw 1vw rgba(191,116,155,.2);
+}
+.uma-card-media {
+  display: block; width: 100%; aspect-ratio: 3.44; object-fit: cover;
+  border-radius: 1.5vw; margin: 0 0 3.2vw;
+}
+.uma-meta { display: flex; align-items: center; gap: 2.2vw; margin-bottom: .5vw; }
 .uma-ribbon {
-  display: inline-block; background: #4A4A4A; color: #fff;
-  font-size: 9px; font-weight: 700; letter-spacing: .3px;
-  padding: 3px 14px 3px 8px;
-  clip-path: polygon(0 0, 100% 0, 94% 100%, 0 100%);
-  margin-right: 8px;
+  background: #4D4D4D; color: #fff;
+  font-size: 3.1vw; font-weight: 700; line-height: 1;
+  padding: .55vw 4.4vw .58vw 2.2vw;
+  clip-path: polygon(0 0, 100% 0, 93% 100%, 0 100%);
 }
-.uma-meta { display: flex; align-items: center; margin-bottom: 5px; }
 .uma-pill {
-  background: #8CC63F; color: #fff; font-size: 10px; font-weight: 800;
-  padding: 2px 12px; border-radius: 20px; font-style: italic; margin-right: 7px;
+  background: #B5D913; color: #fff; font-size: 3.1vw; font-weight: 800;
+  font-style: italic; line-height: 1; padding: .55vw 5.4vw .6vw; border-radius: 99px;
 }
-.uma-date { font-size: 9px; font-weight: 700; color: #8CC63F; letter-spacing: .2px; }
+.uma-date {
+  font-size: 2.95vw; font-weight: 700; font-style: italic;
+  color: #B5D913; letter-spacing: 0;
+}
 .uma-card-txt {
-  font-size: 12.5px; font-weight: 600; color: #3A3F45; line-height: 1.35;
-  display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+  font-family: "Roboto Condensed", roboto, Arial, sans-serif;
+  font-size: 3.55vw; font-weight: 400; color: #4F4F4F; line-height: 1.14;
+  padding: 1vw 8vw 0 0;
 }
-.uma-card-thumb { width: 108px; height: 60px; flex: 0 0 108px; margin-left: 10px; border-radius: 6px; object-fit: cover; }
-.uma-card-go { color: #9AA0A8; font-weight: 900; font-size: 15px; margin-left: 8px; }
+.uma-card-go {
+  position: absolute; right: 3vw; bottom: 3.4vw;
+  color: #B5D913; font-weight: 900; font-size: 3.8vw;
+  letter-spacing: .12em; line-height: 1;
+}
 .uma-shell a.uma-more {
-  display: block; width: 62%; margin: 16px auto 0; text-align: center;
-  background: linear-gradient(180deg, #FF79D0, #E36CB9); color: #fff !important;
-  font-style: italic; font-weight: 900; font-size: 15px; letter-spacing: -.2px;
-  padding: 11px 0; border-radius: 26px; box-shadow: 0 3px 0 rgba(178,20,102,.5);
+  display: block; width: 64.6vw; margin: 5.8vw auto 0;
+  padding: 2.4vw 0 2.5vw; border-radius: 99px; text-align: center;
+  background: linear-gradient(180deg, #FA82CE 0%, #F06BBE 100%);
+  border: .5vw solid #E75FB2;
+  color: #fff !important; text-decoration: none;
+  font-style: italic; font-weight: 900; font-size: 4.4vw; letter-spacing: 0;
+  box-shadow: inset 0 .55vw 0 rgba(255,255,255,.42), 0 .55vw 1.2vw rgba(199,60,143,.26);
 }
 
 /* ---------- About (sky) ---------- */
@@ -1027,7 +1069,6 @@ body:has([class*="otificationsPopover"]) .uma-sheet-foot {
   .uma-playnow img { height: 25px; }
   .uma-media-row { flex-direction: row; }
   .uma-media-tile { width: 48.6%; }
-  .uma-card-thumb { width: 168px; }
 }
 
 /* Sections settle in as they arrive, so the page has some life as you scroll.
@@ -1042,6 +1083,7 @@ body:has([class*="otificationsPopover"]) .uma-sheet-foot {
     .uma-sec > .uma-hl,
     .uma-sec > .uma-card,
     .uma-sec > .uma-more,
+    .uma-sec > .uma-news-frame,
     .uma-sec > .uma-grid,
     .uma-sec > .uma-media-row,
     .uma-sec > .uma-carousel,
@@ -1125,42 +1167,35 @@ body:has([class*="otificationsPopover"]) .uma-sheet-foot {
     <div class="uma-scroll">Scroll<span>&#187;&#187;</span></div>
   </div>
 
-  <!-- ── Updates (News) ────────────────────────────────────── -->
+  <!-- ── In the Works (the site's News band) ────────────────── -->
   <div class="uma-sec uma-news" id="updates">
-    <img class="uma-band-pat" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/pattern.png">
-    <div class="uma-tag-wrap"><div class="uma-tag pink long"><span>Current OWN Doings</span></div></div>
+    <div class="uma-news-frame">
+      <div class="uma-news-ribbon"><span>In the Works</span></div>
 
-    <a class="uma-card" href="#">
-      <div class="uma-card-body">
+      <a class="uma-card" href="#">
         <div class="uma-meta"><span class="uma-ribbon">Update</span><span class="uma-date">2026/11/06 09:15 (UTC)</span></div>
         <div class="uma-meta"><span class="uma-pill">Bot</span><span class="uma-date">2026/11/05 13:30 (UTC)</span></div>
-        <div class="uma-card-txt">New bot · Silence Suzuka takes the lead in a quiet, hopeless romance.</div>
-      </div>
-      <img class="uma-card-thumb" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/news1.jpg">
-      <div class="uma-card-go">›</div>
-    </a>
+        <div class="uma-card-txt">New bot: Silence Suzuka takes the lead in a quiet, hopeless romance.</div>
+        <div class="uma-card-go">&#187;&#187;</div>
+      </a>
 
-    <a class="uma-card" href="#">
-      <div class="uma-card-body">
+      <a class="uma-card" href="#">
+        <img class="uma-card-media" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@0bbde63ca8f16990368cd31e66e6b3cec12b72df/uma-profile/assets/site/news2.jpg">
         <div class="uma-meta"><span class="uma-ribbon">Update</span><span class="uma-date">2026/11/05 22:00 (UTC)</span></div>
         <div class="uma-meta"><span class="uma-pill">Bot</span><span class="uma-date">2026/11/04 22:00 (UTC)</span></div>
-        <div class="uma-card-txt">Reworked · Unity Cup · Tokai Teio's scenario now has three new openings.</div>
-      </div>
-      <img class="uma-card-thumb" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/news2.jpg">
-      <div class="uma-card-go">›</div>
-    </a>
+        <div class="uma-card-txt">Reworked: Unity Cup, Tokai Teio's scenario now has three new openings.</div>
+        <div class="uma-card-go">&#187;&#187;</div>
+      </a>
 
-    <a class="uma-card" href="#">
-      <div class="uma-card-body">
-        <div class="uma-meta"><span class="uma-ribbon">Notice</span><span class="uma-date">2026/11/02 09:15 (UTC)</span></div>
+      <a class="uma-card" href="#">
+        <img class="uma-card-media" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@0bbde63ca8f16990368cd31e66e6b3cec12b72df/uma-profile/assets/site/news1.jpg">
         <div class="uma-meta"><span class="uma-pill">Event</span><span class="uma-date">2026/11/01 09:15 (UTC)</span></div>
         <div class="uma-card-txt">Aquarius Cup event bot returns later this month. Limited time only.</div>
-      </div>
-      <img class="uma-card-thumb" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/news1.jpg">
-      <div class="uma-card-go">›</div>
-    </a>
+        <div class="uma-card-go">&#187;&#187;</div>
+      </a>
 
-    <a class="uma-more" href="#">View more ››</a>
+      <a class="uma-more" href="#">View more &#187;&#187;</a>
+    </div>
   </div>
 
   <!-- ── About ─────────────────────────────────────────────── -->
