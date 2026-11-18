@@ -547,3 +547,20 @@ Headless Chrome reserves a classic 6 px scrollbar, so the initial containing blo
 in-flow bar is 360 px — a band anchored `right: 16px` and a bar anchored `right: 16px` then sit 6 px apart and
 the count looks misaligned in a way no phone can reproduce. The harness hides the scrollbar
 (`::-webkit-scrollbar { display: none }`) and both land on 315.
+
+---
+
+## 17. Hero corrected to the right upload (2026-11-09)
+
+The previous key visual was the wrong file: same artwork, but its 4654 × 8192 frame carries ~700 px of extra
+grass along the bottom (ratio 0.568 where the intended frame is 0.621). The one supplied as
+`IMG_20261118_160304_946.jpeg` is 4654 × 7494 and ends where the group does.
+
+`assets/site/kv_first.jpg` is that frame at 1400 × 2254 (624 KB, q84, 4:4:4) — a LANCZOS reduction of the
+16.1 MB original — and the band's `<img>` now points at it. Because the band is 190.6667 vw tall (ratio
+0.5245) and the frame is 0.6211, `object-fit: cover; object-position: 50% 50%` fills the height and trims
+≈4.5 % from each side; the composition's centre (Kitasan Black) is the anchor, so the trim lands on the
+outermost figures' shoulders rather than on the subject.
+
+Pin moved to the full hash of the commit that carries the new file; `kv_front.jpg` / `kv_main.jpg` stay in
+the tree for history but nothing references them.
