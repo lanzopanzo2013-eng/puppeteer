@@ -655,3 +655,42 @@ The sandbox now has real **Roboto** and **Roboto Condensed** (woff2 from `@fonts
 with fontTools and dropped in `~/.fonts`). Every earlier measurement of the caption, the side pill and the
 badges was taken against a wider fallback face; with the real fonts installed the harness agrees with the
 phone screenshot (the pill's ink length lands within 4 % of the device's).
+
+---
+
+## 20. The plaque, read off the phone instead of the desktop (2026-11-09)
+
+`Screenshot_20261118-174513.jpg` is the official page **on a phone**, and its plaque is a
+different animal from the one I had been copying: the string is **all caps, tracked wide,
+in a medium weight**, and the capsule is **21.3 × 239** css, not the 21.7 × 168.9 I had
+taken from the desktop capture. Ours was title case, weight 800, tight — the letters filled
+the capsule like a poster instead of floating in it.
+
+Two scale-free measurements pinned it down (both crops are 260 px wide, same device):
+the capsule's width-to-length ratio, and the ink's length-to-height ratio.
+
+| | official | ours now |
+|---|---|---|
+| capsule | 21.3 × 239 (ratio .089) | 21.8 × 230 (ratio .095) |
+| case | UPPERCASE | UPPERCASE |
+| weight | medium | 600 |
+| tracking | wide | .62vw (2.2 css at 360) |
+| ink, across | ≈ 10 | 10.0 (cap of Roboto Condensed at 3.9vw) |
+| stroke | 1 px + a second, thinner line set in | 1 px + `outline: .18vw` at `outline-offset: -.9vw` |
+
+`font-size: 3.9vw`, `letter-spacing: .62vw`, `font-weight: 600`, `text-transform: uppercase`,
+width `6vw`. The numbers come from measuring the string in the browser (Roboto Condensed
+uppercase is 5.35 px per glyph at 10 px) and solving for the ink length that lands the capsule
+on 239: `ink ≈ 11.95·F + 22·L`.
+
+Janitor already loads **Roboto Condensed as a variable font** (100..900) through its Google
+Fonts link, so the medium weight and the condensed cut are both real on the device — this is
+not a face I am hoping for.
+
+### The scroll cue
+
+It had no `font-family`, so it was inheriting the page's body serif for "Scroll". Now Roboto
+Condensed, uppercase, `.4em` of tracking, and the two chevrons flow inline after the word
+(`display: flex; flex-direction: column` had been laying the `»»` out *beside* the word and
+interleaving it into the middle of it, because in a vertical writing mode a flex column runs
+horizontally).

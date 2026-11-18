@@ -48,7 +48,7 @@
     </div>
     </div>
 
-    <div class="uma-scroll">Scroll<span>&#8595;</span></div>
+    <div class="uma-scroll">Scroll<span>&#187;&#187;</span></div>
   </div>
 
   <!-- ── Updates (News) ────────────────────────────────────── -->

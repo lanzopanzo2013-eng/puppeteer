@@ -93,15 +93,23 @@
    *block* axis is horizontal, so the horizontal padding is the first value — it
    was the second, which left a negative content box and pushed the letters
    through both walls of the pill. Type is sized so the string lands on 149 css,
-   i.e. 168.9 with the caps: Roboto Condensed 800 at 3.58vw = 12.9 px. */
+   the strings the official page runs are all caps, spaced wide, and the phone
+   reference (Screenshot_20261118-174513.jpg) puts that capsule at 21.3 x 239:
+   Roboto Condensed 700 at 3.9vw with .56vw of tracking = 217 css of glyphs,
+   238.8 with the caps. */
 .uma-side {
-  position: absolute; right: 2.4vw; top: 49.3333vw; width: 6.6vw; color: #fff;
+  position: absolute; right: 2.4vw; top: 49.3333vw; width: 6vw; color: #fff;
   font-family: "Roboto Condensed", roboto, Arial, sans-serif;
-  font-size: 3.54vw; font-weight: 800; letter-spacing: .14vw; line-height: 1;
+  font-size: 3.9vw; font-weight: 600; letter-spacing: .62vw; line-height: 1;
+  text-transform: uppercase;
   display: flex; align-items: center; justify-content: center;
   writing-mode: vertical-rl; white-space: nowrap;
   text-shadow: 0 1px 3px rgba(0,0,0,.45);
   border: .2667vw solid rgba(255,255,255,.85); border-radius: 999px;
+  /* the official plaque is drawn twice: a 1px capsule and a second, thinner
+     line set in from it. An inset outline follows the radius, so one
+     declaration does it without a pseudo element. */
+  outline: .18vw solid rgba(255,255,255,.5); outline-offset: -.9vw;
   padding: .55vw 2.75vw; text-align: center;
 }
 /* the call to action sits in the first badge row, left of the plates, the way
@@ -123,11 +131,12 @@
 /* .top-kv__left .-scroll: right 3.7333vw, top 140.8vw */
 .uma-scroll {
   position: absolute; right: 3.7333vw; top: 140.8vw; z-index: 3; color: #fff;
-  display: flex; flex-direction: column; align-items: center; gap: 5px;
-  font-size: 10px; font-weight: 800; letter-spacing: 3px;
+  display: block;
+  font-family: "Roboto Condensed", roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 10px; font-weight: 500; letter-spacing: .4em; text-transform: uppercase;
   writing-mode: vertical-rl; text-shadow: 0 1px 3px rgba(0,0,0,.45);
 }
-.uma-scroll span { display: block; font-size: 13px; letter-spacing: 0; }
+.uma-scroll span { display: inline; font-size: 1em; letter-spacing: .1em; }
 
 /* ============================================================
    BATCH 3 — section furniture (shared by every band)
@@ -1036,7 +1045,7 @@ body:has(.pp-top-bar [class*="adge"]) .uma-hdr-menu img.uma-bell-gift { display:
     </div>
     </div>
 
-    <div class="uma-scroll">Scroll<span>&#8595;</span></div>
+    <div class="uma-scroll">Scroll<span>&#187;&#187;</span></div>
   </div>
 
   <!-- ── Updates (News) ────────────────────────────────────── -->
