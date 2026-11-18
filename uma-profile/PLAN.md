@@ -463,3 +463,31 @@ serve the old art at a URL it already knows, and the pin moved to the commit tha
 measured conclusion from the pixel comparisons stands: our render and the live screenshot are the same
 artwork (mean-abs-diff 50.8 against 59.2 for the old file), so the "unchanged" band was a stale page,
 not a stale asset.
+
+---
+
+## 15. Why every image vanished, and the pin rule that prevents it (2026-11-09)
+
+The paste pins its 51 assets to one commit on jsDelivr. A **7-character short SHA is not a reliable
+`@version` for jsDelivr**: it answers
+
+```
+Couldn't find the requested file /uma-profile/assets/site/logo.png in lanzopanzo2013-eng/puppeteer
+```
+
+…for a commit that GitHub has had for minutes, while the same path with the **full 40-character SHA**
+serves the file. Checked side by side at `84edeec`:
+
+| URL | result |
+|---|---|
+| `…/@84edeec/uma-profile/PLAN.md` | jsDelivr "Couldn't find the requested file" |
+| `…/@84edeec7167f0f0d1552f633bb50e99362432311/uma-profile/PLAN.md` | 200, full document |
+| `…/@84edeec7167f0f0d1552f633bb50e99362432311/uma-profile/assets/site/logo.png` | served (binary) |
+| `…/@84edeec7167f0f0d1552f633bb50e99362432311/uma-profile/assets/site/kv_main.jpg` | served (binary) |
+
+So the rule for every future round: **pin the CDN with the full commit hash**, never the short one. A
+short pin can resolve for commits jsDelivr has already cached and silently 404 the newest one — which is
+exactly the "all images disappeared again" symptom (it is one broken ref, not 51 broken files).
+
+The paste now reads `@84edeec7167f0f0d1552f633bb50e99362432311` in all 51 URLs (41 063 chars), and the
+pin only has to move when an *asset* changes — CSS and markup travel inside the paste itself.
