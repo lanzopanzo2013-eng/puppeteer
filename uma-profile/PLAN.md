@@ -1000,3 +1000,34 @@ reference's 158.9, and the capsule holds 185.9 with `padding: 3.98vw 1vw`.
 | **1.4 back (now)** | **11.05** | **155.4** | **185.9** |
 | before either change | 11.23 | 157.9 | 186.0 |
 | official | — | 158.9 | 186.6 |
+
+---
+
+## 33. The two supplied marks, measured into place (2026-11-09)
+
+Both replaced things that were being *drawn*: the "Chat now!" was seven CSS gradients and
+four drop-shadows imitating a wordmark; the Game Awards strip did not exist at all. Both now
+come from the supplied PNGs, committed under `assets/site/` and pinned to
+`b46846e` (their own commit, so the URL stays valid whatever comes after).
+
+Only transparent margin was trimmed — the files keep every visible pixel (awards 1648×1005
+from 1728×1344, chat‑now 1792×350 from 2032×1200), then downscaled to 800 and 1100 wide, 6.8×
+and 14× their largest on-screen size.
+
+**Chat now** — `height: 4.2vw` (15.1 css) on a 5.12 : 1 mark gives a 77.3 × 15.1 cta where the
+drawn type needed 21 px; it sits centred in the plate row at x 36.7 → 114.
+
+**The Game Awards strip**, measured off the official phone capture (DPR 3.5, art top 148.3):
+the strip runs x 210 → 328.6 css and its foot is at 332.6 css from the artwork's top — its
+right edge meeting the plaque's left edge, its foot 13.4 css above the first plate row.
+
+| | official | ours |
+|---|---|---|
+| strip x | 210 → 328.6 (117.7) | 210.5 → 328.6 (118.1) |
+| strip foot, from art top | 332.6 | 332.6 |
+| first plate row top | 346.6 | 345.2 |
+| chat mark | — | 77.3 × 15.1 at x 36.7 |
+
+`right: 8.72vw; bottom: 68.6vw; width: 32.8vw` — every term a fraction of the viewport, so at
+320 the strip is 105 wide and meets the pill at x 292, at 414 it is 135.8 and meets it at 378.
+Rig: spill 0 at every width through 1280.
