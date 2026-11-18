@@ -936,3 +936,33 @@ The lesson worth keeping: the DOM (`getBoundingClientRect`) is the only trustwor
 this loop. Screenshot measurements of a *semi-transparent* border move by 15 css with the
 threshold, which is exactly the size of the change being tuned — that is how three rounds of
 "still the same length" happened while the number was moving.
+
+---
+
+## 30. Type size frozen, capsule grown at its ends (2026-11-09)
+
+The type goes back to the measured size, `3.12vw` (11.23 px, cap 8.0), `letter-spacing: 0`,
+regular Roboto — and the capsule reaches its 186 css from the space at the ends instead:
+
+```
+padding: 3.66vw 1vw;   /* 13.18 css along the text, 3.6 css across it */
+```
+
+Getting the axis right mattered: a probe of five padding pairs showed the **first** value is
+the one that runs along the text, because vertical writing mode turns the block axis
+horizontal. `1vw 4vw` widened the pill to 30.8 and left its length untouched; `4vw 1vw`
+moved it 22.7 × 163.6 → 22.7 × 188.5. `3.66vw` lands on 186.0.
+
+| | official | ours |
+|---|---|---|
+| capsule | 21.7 × 186.6 | 22.7 × **186.0** |
+| word run | 158.9 | **157.9** |
+| air at each end | 13.9 | **14.0** |
+| type | cap 7.4 | cap 8.0, no tracking |
+
+So the reference capsule was never tight around its word — it carries fourteen css of air at
+each end, and the earlier "the capsule hugs the letters" reading came from measuring a
+164-css capsule that was really 186.
+
+Also worth recording: the screenshot the user sent back was still the round-31 build (capsule
+≈ 148 css, measured off the image), so the two builds in between never reached the phone.
