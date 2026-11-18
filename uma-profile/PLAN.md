@@ -885,3 +885,31 @@ All nine rig widths still pass with `spill=0`.
 a client-side studio — fetching it returns its own demo profile, not a render of our paste,
 and it states in its own copy that its phone preview uses desktop chrome. The local rig
 (docs + `tools/rig.cjs`), which reproduces Janitor's DOM at nine widths, remains the check.
+
+---
+
+## 28. Why the plaque needed tracking at all — the face was wrong (2026-11-09)
+
+The site's plaque carries 23 glyphs across 164 css with capitals 7.4 css tall and a pitch of
+7.43 — which means its capitals are as **wide** as they are. That is a regular-width face,
+not a condensed one. Set in Roboto Condensed at the same cap height, the string only reaches
+149 css, and the only way to close that gap is the tracking that reads as loose letters.
+
+So the plaque now uses **regular Roboto** first in the stack (`roboto, "Roboto Condensed",
+Arial`), at `3.12vw` with `letter-spacing: 0`:
+
+| | official | condensed + tracking | **regular, no tracking** |
+|---|---|---|---|
+| capsule | 21.7 × 164.2 | 21.4 × 164.4 | **22.7 × 163.6** |
+| glyph cap | 7.4 | 9.4 | **≈ 8.0** |
+| tracking | none | `.48vw` | **none** |
+
+Roboto measures 140.57 px for the whole string at 10 px (0.61 em per glyph against Roboto
+Condensed's 0.54), so 23 glyphs fill the reference's length at the reference's cap size with
+nothing added between them. Janitor loads Roboto itself, and Roboto is the Android system
+face, so this is the same typeface on the phone as in the rig.
+
+Note for the ledger: the straight-section measurements (the runs I take off a screenshot's
+border column) are not comparable between the two builds — our border is 85 % white, so its
+rounded caps fall below the threshold, and the run reads ~15 css short of the box it is
+measuring. The box numbers above come from `getBoundingClientRect`, which is exact.
