@@ -1278,3 +1278,38 @@ One thing to raise with the user: Criticism and Scenario Ideas were sent with th
 form URL, so both buttons point at the same form until they send the second link.
 
 Rig 9/9, spill 0, a real click opens a box without moving the page. Paste 61,922 chars.
+
+## 42. The band climbs, and the boxes take their true measure (2026-11-09)
+
+Two things the user asked for on their live capture.
+
+**The lift.** The band sat 45 css of blank artwork plus 6.8 css of its own padding below the
+badge stack. It now carries `margin-top: -6vw`, so the whole band, ground included, climbs
+21.6 css into the key visual's fade at 360. Measured in the mock: the section starts at 602
+against a hero that ends at 623.6, the ribbon's top goes from 630.4 to 611.8, and the plates
+still sit 33 css above it, untouched at their z-index of 3.
+
+Because the band now starts inside the picture, the join needed re-timing:
+
+| piece | was | now |
+|---|---|---|
+| key visual wash | 17% of the hero | 20%, a longer, softer ramp |
+| band ground | `height: auto`, its top edge at the band's first pixel | `height: 100%; object-fit: cover`, so the art fills a band that is now much taller than 1.833 x its width |
+| band overlay | 20vw from the band's top | 28vw from −8vw, solid #EFFEE7 right across the join |
+
+A pixel walk down the join at 360 shows no step: 82,160,66 at 560 rising through 166,207,155,
+202,230,194 and settling on 239,254,231 by 604, which is eight css of clean colour before the
+frame. Roughly 44 css of dissolve, on top of the wash above it.
+
+**The boxes.** Measured off the user's own capture (1260 px for a 355 css page, so 3.497 px
+per css, taken from the 1014 px card against our 290 css one): the cards were 70.4, 70.6 and
+55.8 css tall with 9.4 gaps. The reference's equivalent box is 76.5, so ours were 6 css
+short and had their weight in the wrong place, 10.1 above the pill and 10.8 below.
+
+Now: 11.2 above the pill (reference 11.6), 7.2 between the pill row and the copy (8.2), a
+line-height of 1.1 in place of 1.16, and 14.8 below (15.4). Closed, the two-line box measures
+**76.5 css**, the reference exactly, and the one-line box 62.4. The gaps stay at 9.4.
+
+One measurement lesson worth keeping: reading the cards at x=130 on their capture under-read
+each box by about nine css, because the 7.9 css corner radius eats into the column. The same
+scan at x=150, inside the box's padding, gives the true edges.
