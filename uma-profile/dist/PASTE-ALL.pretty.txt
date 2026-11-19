@@ -400,9 +400,10 @@
 /* ---------- About (sky) ---------- */
 .uma-about {
   background: #4BA8F5;
-  /* the bottom strip the pink divider lives in: 135 css at 360, enough for the card to sit
-     centred between the tag and the band */
-  padding-bottom: 37.4vw;
+  /* the strip the pink divider lives in. The reference keeps a wide band of sky between its
+     video block and the pink diagonal, so the card no longer fills the section: this is the
+     air under it, sized so the section lands at ~124vw like the reference's. */
+  padding-bottom: 64.4vw;
 }
 /* Our copy of the About art is the landscape crop, 1100 x 688, while the official phone page
    runs a taller crop of the same painting, so the stands sit lower there. Covering a 360 x 446
@@ -423,11 +424,11 @@
 }
 .uma-about::before {
   background: #FF6DC8;
-  clip-path: polygon(0 80.6vw, 100% 38.3vw, 100% 53.9vw, 0 96.1vw);
+  clip-path: polygon(0 69.8vw, 100% 27.5vw, 100% 44vw, 0 86.3vw);
 }
 .uma-about::after {
   background: #fff;
-  clip-path: polygon(0 96.1vw, 100% 53.9vw, 100% 60vw, 0 60vw);
+  clip-path: polygon(0 86.3vw, 100% 44vw, 100% 60vw, 0 60vw);
 }
 /* The band's texture, the UMA emblem and URA lettering, is a PNG sized to the same 5:3 box as
    the layers above and drawn into the same parallelogram, so it lines up at any width. The flat
@@ -435,14 +436,17 @@
 .uma-about-pink {
   position: absolute; left: 0; right: 0; bottom: 0;
   width: 100%; height: 60vw; z-index: 1; pointer-events: none;
+  /* the artwork was drawn to the band's old seat; the band moved up 10.8vw to the reference's
+     height, and the sheet is transparent outside the pink so it can simply travel with it */
+  transform: translateY(-10.8vw);
 }
 /* The profile card and the note are parked for now, waiting on the real About build,
    so the band shows a plain white plate where the content will go. */
 .uma-about-ph {
   position: relative; z-index: 1;
-  width: auto; margin: 0 1.8vw; aspect-ratio: 3 / 2; top: 20.1vw;
+  width: auto; margin: 0 -12px; aspect-ratio: 2.6; top: 14.6vw;
   background: linear-gradient(#fff, #F5FAFF);
-  border-radius: 2.8vw; box-shadow: 0 2.2vw 0 rgba(20,80,140,.16);
+  border-radius: 0; box-shadow: none;
   box-sizing: border-box; display: flex; overflow: hidden;
   font-family: "Roboto Condensed", roboto, Arial, sans-serif;
 }
@@ -1298,6 +1302,12 @@ body:has([class*="otificationsPopover"]) .uma-sheet-foot {
   .uma-lb-bg.b3 { object-position: 100% 50%; }
   .uma-tag { font-size: 23px; padding: 8px 26px 9px; }
   .uma-hl { font-size: 22px; }
+}
+/* Past ~900 the plate's type stops scaling with vw while the card keeps its 2.6:1 window, so
+   the bio would be cut. The video proportion only matters where the reference is looked at —
+   on a phone — so the card goes back to hugging its content on wide screens. */
+@media (min-width: 900px) {
+  .uma-about-ph { aspect-ratio: auto; }
 }
 /* Live binding. The profile's own avatar and follower count are lifted into the card: they
    already exist in the page (Janitor renders them in .pp-uc-background, which this theme hides),

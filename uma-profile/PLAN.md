@@ -1581,3 +1581,48 @@ identical to `.uma-tc-port`, 116×215 at 360), the same page with the block move
 (identical, 116×215), and the deliberately broken shape where neither can resolve (both elements
 at −9999px, 0×0, and the card still showing its own art and `128,043`). The nine-width sweep is
 unchanged at 9/9.
+
+### §48 Matching the reference's video block and its pink diagonal
+
+The user supplied the official page again and asked for three things: sharp corners, the card
+sized like the reference's video block, and the pink corner's geometry brought into line. Every
+number below comes off that capture (1260 px wide, 3.23 px per css at a 390 css viewport), not
+from eyeballing.
+
+| reference measurement | css | as a fraction |
+| --- | --- | --- |
+| section height (blue band top to the green band) | 484 | 124vw |
+| video block, width | 390 | 100vw (bleeds off both edges) |
+| video block, height | 495 px ≈ 153 | 39vw |
+| pink band, top edge at the right edge, above the section's bottom | 127 | 32.6vw |
+| pink band, bottom edge at the right edge, above the section's bottom | 62 | 15.9vw |
+| pink band, thickness | 65 | 16.7vw |
+| pink band, fall across the width | 0.42 css per css | 42vw |
+
+Before this round the card was 323 x 215 css at 360 — 89.7% wide and 59.7% tall, i.e. taller than
+the reference's media block and not full-bleed — and the band's upper edge sat only 85 css above
+the section's bottom, which is why it read as a corner rather than the reference's wide stripe.
+
+Changes:
+
+* **The card is the video's box.** `margin: 0 -12px` (the section's own 12 px padding, so it
+  bleeds edge to edge exactly rather than by a vw approximation), `aspect-ratio: 2.6`, so
+  360 x 138 at 360 (38.5%) and 390 x 150 at 390. **Sharp**: `border-radius: 0`, and the drop
+  shadow is gone with it — a shadow under a full-bleed plate reads as a card edge.
+* **The section keeps the reference's height.** With the card 21vw shorter, the strip under it
+  takes the difference: `padding-bottom: 64.4vw`, giving 446.8 css at 360 and 480.6 at 390 — both
+  124vw, matching the reference.
+* **The band moved up 10.8vw** and stays 16.5vw thick: its upper edge now meets the right edge
+  **127 css above the section's bottom** and its lower edge 62 (reference: 127 / 62). The three
+  layers are bottom-anchored, so the polygon simply had its coordinates reduced; the texture PNG
+  was drawn for the old seat and carries `translateY(-10.8vw)` — it is transparent outside the
+  pink, so it travels with the band without painting over anything.
+* **Wide screens**: past 900 the plate's type stops scaling with vw while the card would keep
+  shrinking to 2.6:1, and the bio started to clip (446 of content in a 394 box at 1280). The card
+  goes back to `aspect-ratio: auto` there, so it hugs its content again.
+
+Verified: content fits its box at every width from 280 to 1280 (`scrollHeight` equals
+`clientHeight`), nine-width sweep still 9/9 with spill 0, and on the captured Janitor page the
+real avatar still lands on the new, shorter frame — `.uma-tc-port` and `.pp-uc-avatar-container`
+both `[-3, 1445, 140, 150]`, with the live count over the stand-in. `docs/about-48.png` is the
+side-by-side against the reference.
