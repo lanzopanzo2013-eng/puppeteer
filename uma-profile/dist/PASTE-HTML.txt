@@ -77,7 +77,10 @@
         <div class="uma-card-go">&#187;&#187;</div>
       </a>
 
-      <a class="uma-more" href="#">View more &#187;&#187;</a>
+      <details class="uma-morewrap">
+        <summary><img alt="View more" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@bf7537ea7507eec839ecd41452b97a4fec8f03b0/uma-profile/assets/site/view-more.png"></summary>
+        <p class="uma-nomore">Sorry...<br>there isn't actually any more.</p>
+      </details>
     </div>
   </div>
 

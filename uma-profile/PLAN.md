@@ -1177,3 +1177,30 @@ cropped from 560 × 157 to 447 × 130 so the old card furniture that had been ca
 no longer peeks under the image.
 
 Rig: 9/9 widths, spill 0, reveal still fires. Paste 49,156 chars.
+
+## 39. The pill is the user's drawing, and it answers (2026-11-09)
+
+Three changes to the band.
+
+**The ribbon.** The user answered the note at the end of §38 not by shrinking the tag but
+by nudging it: a touch lower, a touch bigger. Top went from −8.6vw to −7.6vw, type from
+5.5vw to 5.7vw, padding from .85/.95vw to .95/1.05vw. It now measures 182.9 × 31.8 at 360
+(was 176.6 × 30.2), and its bottom sits 1.1vw over the frame's top edge instead of 0.1vw.
+
+**The pill.** `view-more.png` replaces the CSS pill the user asked for. Their file is
+3920 × 824 with the artwork already on a transparent ground; the visible pill sits inside
+it at x 243 → 3741, y 91 → 702, so the asset was cropped to that box (3499 × 612, 5.7173)
+and resampled to 700 × 122, about 3× the 232.5 css it is drawn at. Sized by width alone
+(64.6vw, unchanged), it lands at 232.5 × 40.5 against the reference's 232.5 × 39.8. The
+half-pixel of extra height is the artwork's own aspect, not a guess: forcing 39.8 would
+have squashed it by 2%.
+
+**The answer.** There is nothing behind View more, and the profile carries no script, so the
+grey line has to come from markup alone. `:target` was the first try and it worked, but
+Chrome scrolls the fragment to the top of the viewport, so the tap threw the page. The pill
+is a `<details>` summary now: tapping opens `Sorry... / there isn't actually any more.` in
+grey under it, the frame grows by 29 css, and `scrollY` and the URL stay put (verified in the
+mock: 726 → 726, hash empty). The line is broken by hand after "Sorry..." so it never lands
+as a widowed "more." on a narrow phone.
+
+Rig: 9/9, spill 0. Paste 49,579 chars.

@@ -220,11 +220,11 @@
   padding: 4.4vw 4.2vw 5.2vw;
 }
 .uma-news-ribbon {
-  position: absolute; left: -1.2vw; top: -8.6vw; z-index: 2;
+  position: absolute; left: -1.2vw; top: -7.6vw; z-index: 2;
   background: #FF79D0; color: #fff; transform: skewX(-13deg);
-  padding: .85vw 4.2vw .95vw 3.6vw;
+  padding: .95vw 4.3vw 1.05vw 3.7vw;
   box-shadow: 0 .45vw 0 rgba(214,86,160,.42);
-  font-style: italic; font-weight: 900; font-size: 5.5vw; line-height: 1.2;
+  font-style: italic; font-weight: 900; font-size: 5.7vw; line-height: 1.2;
   white-space: nowrap;
 }
 .uma-news-ribbon span { display: block; transform: skewX(13deg); }
@@ -262,14 +262,27 @@
   color: #B5D913; font-weight: 900; font-size: 3.8vw;
   letter-spacing: .12em; line-height: 1;
 }
-.uma-shell a.uma-more {
-  display: block; width: 64.6vw; margin: 5.8vw auto 0;
-  padding: 2.4vw 0 2.5vw; border-radius: 99px; text-align: center;
-  background: linear-gradient(180deg, #FA82CE 0%, #F06BBE 100%);
-  border: .5vw solid #E75FB2;
-  color: #fff !important; text-decoration: none;
-  font-style: italic; font-weight: 900; font-size: 4.4vw; letter-spacing: 0;
-  box-shadow: inset 0 .55vw 0 rgba(255,255,255,.42), 0 .55vw 1.2vw rgba(199,60,143,.26);
+/* The pill under the cards is the user's own drawing of it. The file is cropped to the
+   artwork's own edge and kept at 700px wide, so at 360 css it lands at 232.5 x 40.5,
+   against the reference's 232.5 x 39.8.
+
+   There is nothing behind View more, and the profile carries no script to say so, so the
+   pill is a <details> summary: tapping it opens one grey line underneath. That keeps the
+   URL alone and the page still, which a #anchor would not. */
+.uma-morewrap { display: block; width: 64.6vw; margin: 5.8vw auto 0; }
+.uma-morewrap > summary {
+  display: block; list-style: none; cursor: pointer; line-height: 0;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform .12s ease;
+}
+.uma-morewrap > summary::-webkit-details-marker { display: none; }
+.uma-morewrap > summary::marker { content: ""; }
+.uma-morewrap > summary img { display: block; width: 100%; height: auto; }
+.uma-morewrap > summary:active { transform: scale(.982); }
+.uma-nomore {
+  margin: 3.4vw 0 0; text-align: center;
+  font-family: "Roboto Condensed", roboto, Arial, sans-serif;
+  font-size: 3.1vw; font-weight: 700; color: #9A9A9A; line-height: 1.3;
 }
 
 /* ---------- About (sky) ---------- */
