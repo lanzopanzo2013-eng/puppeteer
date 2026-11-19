@@ -1347,13 +1347,34 @@ reference's geometry instead, in two clipped layers at the section's foot:
 | measured off the capture (3.5 px per css) | css | vw |
 | --- | --- | --- |
 | drop of the band's edge, per css of width | 0.42 | 42.2 |
-| vertical depth of the band | 62 | 17.2 |
-| top edge meeting the right edge, above the section's bottom | 112 | 31.1 |
-| bottom edge meeting the right edge, above the section's bottom | 50 | 13.9 |
-| corner of white past the band's lower edge | x 241 onward | 67.1% |
+| vertical depth of the band | 56 | 15.6 |
+| top edge meeting the right edge, above the section's bottom | 92 | 25.6 |
+| bottom edge meeting the right edge, above the section's bottom | 36 | 10.0 |
+| where the band first reaches the section's bottom, from the left | 143 | 39.7% |
 
-The section gains `padding-bottom: 36.7vw` so the strip the divider lives in sits below the
-white plate, 132 css at 360 and about 20 css of art between the plate and the band's tip at
-the right, as the reference has 18.8 between its video and the band. The pink is `#FF6DC8`,
-sampled at (255,110,203) in the middle of the band; the white below it is pure white there too.
-Both layers are `pointer-events: none` and sit at z-index 1, which is under the plate.
+The section gains `padding-bottom: 30vw` so the strip the divider lives in sits below the
+white plate, 108 css at 360 and 16 css of art between the plate and the band's tip at the
+right (the reference has 18.8 between its video and the band). The pink is `#FF6DC8`, sampled
+at (255,110,203) in the middle of the band; the white below it is pure white there too. The
+layers are `pointer-events: none` at z-index 1, under the plate.
+
+An earlier pass used the capture's figures straight — 62 deep, 112 above the bottom, a 132 css
+strip — which read long against the reference, whose About block is 452 css where ours was
+544.7. Trimmed, the section is **520.5** at 360, 24 css lighter, with the band and its white
+edge shortened in proportion so the strip does not simply crowd the plate.
+
+### The texture in the band
+
+The pink is not flat on the real page: the art carries a faint UMA emblem and URA lettering
+across it, slightly darker than the pink. That was written into the band as a PNG,
+`assets/site/about-pink.png`, 1080 x 648 for the 5:3 box the layers occupy, with the
+parallelogram baked in and everything else transparent, so an `<img>` at `width: 100%;
+height: 60vw` lands exactly on the clipped shapes at any width. It is drawn after the flat
+`::before`, which stays as the fallback if the image ever fails.
+
+The texture itself is re-projected off the capture rather than off `about_bg.jpg`, whose own
+pink corner is only a thin wedge. Column by column, the band between the capture's two edges
+is sampled across x 850-1252, averaged to its own brightness, smoothed along the length, and
+pressed onto the flat pink with an exponent of 2.2 to bring the watermark up to the level the
+reference reads at; a 1.6 exponent was too faint. The capture's band is a little deeper than
+ours, so the emblem sits closer to the lower edge than it does there.

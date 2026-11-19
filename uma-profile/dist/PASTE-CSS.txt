@@ -399,8 +399,8 @@
 /* ---------- About (sky) ---------- */
 .uma-about {
   background: #4BA8F5;
-  /* the bottom strip the pink divider lives in: 132 css at 360 */
-  padding-bottom: 36.7vw;
+  /* the bottom strip the pink divider lives in: 108 css at 360 */
+  padding-bottom: 30vw;
 }
 /* Our copy of the About art is the landscape crop, 1100 x 688, while the official phone page
    runs a taller crop of the same painting, so the stands sit lower there. Covering a 360 x 446
@@ -421,11 +421,18 @@
 }
 .uma-about::before {
   background: #FF6DC8;
-  clip-path: polygon(0 71.1vw, 100% 28.9vw, 100% 46.1vw, 0 88.3vw);
+  clip-path: polygon(0 76.7vw, 100% 34.4vw, 100% 50vw, 0 92.2vw);
 }
 .uma-about::after {
   background: #fff;
-  clip-path: polygon(0 88.3vw, 100% 46.1vw, 100% 60vw, 0 60vw);
+  clip-path: polygon(0 92.2vw, 100% 50vw, 100% 60vw, 0 60vw);
+}
+/* The band's texture, the UMA emblem and URA lettering, is a PNG sized to the same 5:3 box as
+   the layers above and drawn into the same parallelogram, so it lines up at any width. The flat
+   pink underneath stays as a fallback. */
+.uma-about-pink {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  width: 100%; height: 60vw; z-index: 1; pointer-events: none;
 }
 /* The profile card and the note are parked for now, waiting on the real About build,
    so the band shows a plain white plate where the content will go. */
