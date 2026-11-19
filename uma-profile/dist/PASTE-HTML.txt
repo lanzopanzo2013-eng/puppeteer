@@ -243,24 +243,19 @@
   <!-- ── About ─────────────────────────────────────────────── -->
   <div class="uma-sec uma-about" id="about">
     <img class="uma-sec-bg" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/about_bg.jpg">
-    <img class="uma-about-pink" alt="" aria-hidden="true" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@21c610b3beabd99486089c6fa9c08ab67217f4e0/uma-profile/assets/site/about-pink.png">
+    <img class="uma-about-pink" alt="" aria-hidden="true" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@9c867618abe4b16f7a7a976fb589e7aceedcea73/uma-profile/assets/site/about-pink.png">
     <div class="uma-tag-wrap"><div class="uma-tag blue uma-tag-white"><span>About Me</span></div></div>
 
     <div class="uma-about-ph">
-      <div class="uma-tc-head">
-        <!-- swap this src for your own profile picture -->
-        <img class="uma-tc-pfp" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@21c610b3beabd99486089c6fa9c08ab67217f4e0/uma-profile/assets/site/pfp.jpg">
-        <div class="uma-tc-id">
-          <span class="uma-tc-role"><i>Trainer</i></span>
-          <div class="uma-tc-name">Lorem Ipsum</div>
-          <div class="uma-tc-fol"><span>Followers</span><b>128,043</b></div>
-        </div>
+      <div class="uma-tc-port">
+        <img class="uma-tc-pfp" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@9c867618abe4b16f7a7a976fb589e7aceedcea73/uma-profile/assets/site/pfp.jpg">
       </div>
-      <div class="uma-tc-rule"></div>
-      <p class="uma-tc-bio">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
-      <div class="uma-tc-foot">
-        <div class="uma-tc-stat"><span>Rank</span><b>A+</b></div>
-        <div class="uma-tc-stat"><span>Posts</span><b>042</b></div>
+      <div class="uma-tc-body">
+        <span class="uma-tc-role"><i>Trainer</i></span>
+        <div class="uma-tc-name">Lorem Ipsum</div>
+        <div class="uma-tc-fol"><span>Followers</span><b>128,043</b></div>
+        <div class="uma-tc-rule"></div>
+        <p class="uma-tc-bio">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
       </div>
     </div>
   </div>

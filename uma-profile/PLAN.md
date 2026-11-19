@@ -1413,3 +1413,42 @@ and flat. The re-projection now uses one scale for both axes, 168/217, and tiles
 strip along the band instead of stretching it — the strip's 40 px wrap is crossfaded so the
 repeat has no seam. The emblem reads as a circle again and appears about twice over the visible
 run, which is what the reference does.
+
+## 45. A rectangle, a photo panel, and room from the corner
+
+The square became a rectangle: **300 x 200** at 360, `aspect-ratio: 3 / 2`, still `margin: 0 5vw`
+inside the section's padding. The format is new — the portrait is no longer a bordered thumbnail
+sitting in the card's padding, it is a panel that bleeds to the card's own edge, 36% of the width
+and the full height, cut only by the card's radius, with an inset shadow carrying the seam. The
+text panel then holds the chip, name, follower count, a rule and the bio, centred vertically.
+
+| piece | spec |
+| --- | --- |
+| card | 300 x 200 at 360, radius 2.8vw, `#fff` to `#F5FAFF` |
+| photo panel | flex 0 0 36%, full height, `object-fit: cover`, inset `-2.2vw` shadow |
+| chip | `TRAINER`, `#2F7BD8`, skewed −12deg, glyphs skewed back |
+| name | Roboto Condensed italic 900, 5.4vw |
+| followers | label over number, 5vw italic in `#E5348A` |
+| bio | 3vw / 1.45 |
+
+**The corner, again.** The previous card had grown to 316.6 tall while the strip below it stayed
+at 108, which left the card's bottom right only about 3 css from the band's upper edge — the
+collision in the screenshot. Two things fix it now. The band sits lower: its top edge at the
+right edge went from 92 to **78** css above the section's bottom (21.7vw). And the strip grew
+from 108 to **120** css (33.3vw). At the card's right edge, x = 330, the band's edge is 78 + 30
+x 0.42 = 90.7 css above the foot, so the card clears it by **29.3 css**. The white past the
+band's lower edge is 22 css. Both layers and the baked texture were regenerated to the new
+numbers, so the watermark's parallelogram still lands exactly on the clipped shapes.
+
+The section is **396.4** css at 360, down from 501.2 — the rectangle saves more than the taller
+strip costs.
+
+### On a "live" avatar and follower count
+
+The Avalon tool linked for this is a CSS studio: it renders a Janitor profile from a saved
+`.mhtml` snapshot in the browser ("parsed in the browser and never uploaded"), plus a bundled
+sample profile. It has no live feed and no API, so nothing it provides can bind our card to the
+real avatar or the real follower count, and HTML/CSS has no way to read text or an `src` from
+elsewhere on the page. Both values are therefore still literals: `.uma-tc-pfp`'s `src` and the
+`<b>` in `.uma-tc-fol`. They become live only with a script that copies them from the DOM, which
+needs Janitor to keep `<script>` in a profile — unverified.
