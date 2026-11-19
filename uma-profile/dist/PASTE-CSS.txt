@@ -239,14 +239,24 @@
   white-space: nowrap;
 }
 .uma-news-ribbon span { display: block; transform: skewX(13deg); }
+/* Each box is a <details>. Closed, the band reads like the site's news list: a topic pill,
+   the date, and one line of what happened. Open, the long copy comes up underneath and the
+   chevrons roll over to point down. */
 .uma-news .uma-card {
   display: block; background: #fff; border-radius: 2.2vw;
-  padding: 2.8vw 3.3vw 3vw; margin-bottom: 2.6vw; position: relative;
+  margin-bottom: 2.6vw; position: relative; overflow: hidden;
   box-shadow: 0 .35vw 1vw rgba(191,116,155,.2);
 }
-.uma-card-media {
-  display: block; width: 100%; aspect-ratio: 3.44; object-fit: cover;
-  border-radius: 1.5vw; margin: 0 0 3.2vw;
+.uma-news .uma-card > summary {
+  display: block; list-style: none; cursor: pointer; position: relative;
+  padding: 2.8vw 3.3vw 3vw;
+  -webkit-tap-highlight-color: transparent;
+}
+.uma-news .uma-card > summary::-webkit-details-marker { display: none; }
+.uma-news .uma-card > summary::marker { content: ""; }
+.uma-news .uma-card[open] > summary {
+  padding-bottom: 2.2vw; margin-bottom: 2.4vw;
+  border-bottom: .2vw solid #F8E4EF;
 }
 .uma-meta { display: flex; align-items: center; gap: 2.2vw; margin-bottom: .5vw; }
 .uma-ribbon {
@@ -264,14 +274,90 @@
   color: #B5D913; letter-spacing: 0;
 }
 .uma-card-txt {
+  display: block;
   font-family: "Roboto Condensed", roboto, Arial, sans-serif;
-  font-size: 3.55vw; font-weight: 400; color: #4F4F4F; line-height: 1.14;
-  padding: 1vw 8vw 0 0;
+  font-size: 3.55vw; font-weight: 400; color: #4F4F4F; line-height: 1.16;
+  padding: .8vw 8vw 0 0;
 }
 .uma-card-go {
-  position: absolute; right: 3vw; bottom: 3.4vw;
+  position: absolute; right: 3vw; bottom: 3.2vw;
   color: #B5D913; font-weight: 900; font-size: 3.8vw;
   letter-spacing: .12em; line-height: 1;
+  transition: transform .2s ease;
+}
+.uma-news .uma-card[open] .uma-card-go { transform: rotate(90deg); }
+/* the long copy a box opens onto */
+.uma-cbody {
+  padding: 0 3.3vw 3.2vw;
+  font-family: "Roboto Condensed", roboto, Arial, sans-serif;
+  font-size: 3.5vw; line-height: 1.34; color: #575757;
+}
+.uma-cbody p { margin: 0 0 2.6vw; }
+.uma-cbody p:last-child { margin-bottom: 0; }
+.uma-cbody b { color: #3A3A3A; }
+.uma-cbody a { color: #C2187E; text-decoration: underline; text-underline-offset: .4vw; }
+/* the lorebook's status: a chip with a light that breathes */
+.uma-schip {
+  display: inline-flex; align-items: center; gap: 2vw; margin-top: .6vw;
+  padding: 1vw 3.4vw 1.1vw 2.6vw; border-radius: 99px;
+  background: #F4FBD9; border: .25vw solid #CFE87A;
+  font-size: 2.9vw; font-weight: 800; letter-spacing: .14em;
+  text-transform: uppercase; color: #6C8411; font-style: italic;
+}
+.uma-dot {
+  width: 2.2vw; height: 2.2vw; border-radius: 99px; background: #8CC63F;
+  box-shadow: 0 0 0 .8vw rgba(140,198,63,.3);
+  animation: umaDot 1.9s ease-in-out infinite;
+}
+@keyframes umaDot {
+  0%, 100% { box-shadow: 0 0 0 .7vw rgba(140,198,63,.34); }
+  50%      { box-shadow: 0 0 0 1.8vw rgba(140,198,63,.06); }
+}
+@media (prefers-reduced-motion: reduce) { .uma-dot { animation: none; } }
+/* the schedule, one row per zone, each row opening onto its own local hours */
+.uma-tzlist { margin: 2.6vw 0 0; padding-top: 2.4vw; border-top: .25vw dashed #F0C6DF; }
+.uma-tz {
+  border: .25vw solid #F3D3E6; background: #FFFBFE;
+  border-radius: 1.8vw; margin-top: 1.5vw;
+}
+.uma-tz > summary {
+  display: flex; align-items: center; gap: 2vw;
+  list-style: none; cursor: pointer; padding: 2.1vw 2.4vw;
+  font-size: 2.8vw; font-weight: 800; letter-spacing: .02em;
+  text-transform: uppercase; color: #4A4A4A;
+  -webkit-tap-highlight-color: transparent;
+}
+.uma-tz > summary::-webkit-details-marker { display: none; }
+.uma-tz > summary::marker { content: ""; }
+.uma-tz > summary::before {
+  content: "\25B6"; color: #B5D913; font-size: 2.2vw;
+  transition: transform .18s ease;
+}
+.uma-tz[open] > summary::before { transform: rotate(90deg); }
+.uma-tz-body { display: flex; gap: 2vw; padding: 0 2.4vw 2.4vw; }
+.uma-tz-slot {
+  flex: 1 1 0; min-width: 0; background: #fff;
+  border: .25vw solid #F3D3E6; border-radius: 1.5vw; padding: 1.8vw 2vw 2vw;
+}
+.uma-tz-lbl {
+  display: block; margin-bottom: 1.2vw;
+  font-size: 2.45vw; font-weight: 800; letter-spacing: .16em;
+  text-transform: uppercase; color: #C08AAF;
+}
+.uma-tz-time { display: block; font-size: 3.3vw; font-weight: 800; color: #3C3C3C; line-height: 1.2; }
+/* the forms */
+.uma-forms { display: grid; gap: 1.9vw; margin-top: 2.8vw; }
+.uma-fbtn {
+  display: block; text-align: center; text-decoration: none;
+  padding: 2.3vw 3vw 2.4vw; border-radius: 99px;
+  background: linear-gradient(180deg, #C6E435 0%, #A8CC0E 100%);
+  color: #fff !important; font-style: italic; font-weight: 900; font-size: 3.3vw;
+  box-shadow: 0 .55vw 1.2vw rgba(140,170,20,.26);
+}
+.uma-fbtn:active { transform: scale(.99); }
+.uma-fnote {
+  margin: 1.1vw 0 0 !important; text-align: center;
+  font-size: 2.6vw; font-weight: 700; color: #9A9A9A;
 }
 /* The pill under the cards is the user's own drawing of it. The file is cropped to the
    artwork's own edge and kept at 700px wide, so at 360 css it lands at 232.5 x 40.5,

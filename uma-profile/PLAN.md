@@ -1240,3 +1240,41 @@ not needed, and the only thing that would break a pinned link is the repo going 
 away.
 
 Paste 50,053 chars.
+
+## 41. The band gets its real five (2026-11-09)
+
+The placeholders are gone. Five entries, every one of them a `<details>`: closed, the band
+still reads like the site's news list (topic pill, date, one line); opened, the long copy
+comes up under a hairline and the chevrons roll to point down. No images, no script.
+
+**The five.** Topic labels as sent, except the second, where the user asked for a better word
+than "publication" and left the choice open.
+
+| pill | UTC (MNL minus 8) | what it says |
+|---|---|---|
+| Lorebooks | 2026/08/18 02:47 | passion project, BETA → FV14, plus an IN PROGRESS chip |
+| Debut | 2026/11/20 01:00 | the 250 follower special on saucepan.ai |
+| Production | 2026/10/30 11:12 | quality over quantity, lorebooks pushed to Feb / Mar 2027 |
+| Schedule | 2026/11/07 01:34 | weekend releases, zone accordion, the "not a machine" note |
+| Gforms | 2026/10/04 04:47 | the three Google forms |
+
+The status chip is a pill with a lamp in it: a `#8CC63F` dot breathing through a box-shadow
+ring, switched off under `prefers-reduced-motion`.
+
+**The schedule.** The user's old bot page shows Tokyo at 10:00 AM to 12:00 PM (Weekend A) and
+9:30 PM to 12:00 AM (Weekend B). Worked back, that is 01:00 to 03:00 UTC and 12:30 to 15:00
+UTC, which is also what makes Weekend A land on a North American evening and Weekend B on a
+European and Asian one, exactly as their own note describes. All sixteen rows are those two
+windows shifted, so Tokyo reproduces their reference to the minute. Rows open one at a time,
+each onto its own WEEKEND A / WEEKEND B pair.
+
+**The forms.** Three green pills in the band's own style. The grey line under Scenario Ideas
+reads "Disregard the Umamusume only rule here."
+
+Grammar pass, no em dashes anywhere. Copy keeps the user's voice; only the dropped words,
+the run-on clauses and the curly apostrophes were tidied.
+
+One thing to raise with the user: Criticism and Scenario Ideas were sent with the **same**
+form URL, so both buttons point at the same form until they send the second link.
+
+Rig 9/9, spill 0, a real click opens a box without moving the page. Paste 61,922 chars.

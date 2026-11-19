@@ -56,27 +56,182 @@
     <div class="uma-news-frame">
       <div class="uma-news-ribbon"><span>In the Works</span></div>
 
-      <a class="uma-card" href="#">
-        <div class="uma-meta"><span class="uma-ribbon">Update</span><span class="uma-date">2026/11/06 09:15 (UTC)</span></div>
-        <div class="uma-meta"><span class="uma-pill">Bot</span><span class="uma-date">2026/11/05 13:30 (UTC)</span></div>
-        <div class="uma-card-txt">New bot: Silence Suzuka takes the lead in a quiet, hopeless romance.</div>
-        <div class="uma-card-go">&#187;&#187;</div>
-      </a>
+      <details class="uma-card">
+        <summary>
+          <span class="uma-meta"><span class="uma-pill">Lorebooks</span><span class="uma-date">2026/08/18 02:47 (UTC)</span></span>
+          <span class="uma-card-txt">@uma_enjoyer's journey of his passion project, Umamusume Lorebooks. BETA &#8594; FV14</span>
+          <span class="uma-card-go">&#187;&#187;</span>
+        </summary>
+        <div class="uma-cbody">
+          <p>The Umamusume Lorebooks. My passion project, made for everyone to enjoy chatting with the utmost quality and accuracy with Umamusume characters. It took months of updating, testing and experimenting, and it is still in progress, in the hope that it becomes one of the best publicly created lorebooks for chat bots.</p>
+          <span class="uma-schip"><i class="uma-dot"></i>In progress</span>
+        </div>
+      </details>
 
-      <a class="uma-card" href="#">
-        <img class="uma-card-media" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@0bbde63ca8f16990368cd31e66e6b3cec12b72df/uma-profile/assets/site/news2.jpg">
-        <div class="uma-meta"><span class="uma-ribbon">Update</span><span class="uma-date">2026/11/05 22:00 (UTC)</span></div>
-        <div class="uma-meta"><span class="uma-pill">Bot</span><span class="uma-date">2026/11/04 22:00 (UTC)</span></div>
-        <div class="uma-card-txt">Reworked: Unity Cup, Tokai Teio's scenario now has three new openings.</div>
-        <div class="uma-card-go">&#187;&#187;</div>
-      </a>
+      <details class="uma-card">
+        <summary>
+          <span class="uma-meta"><span class="uma-pill">Debut</span><span class="uma-date">2026/11/20 01:00 (UTC)</span></span>
+          <span class="uma-card-txt">The introduction to saucepan.ai, a 250 follower special.</span>
+          <span class="uma-card-go">&#187;&#187;</span>
+        </summary>
+        <div class="uma-cbody">
+          <p>Being mainly a Janitor AI bot creator, with old experience from older platforms, joining the <a href="https://saucepan.ai/u/uma_enjoyer">saucepan.ai</a> community is a solid step away from Janitor AI's original character definition format. I found myself overwhelmed when I first looked at it, but ultimately I preferred it, because it gives me much more freedom to fine tune the character card.</p>
+        </div>
+      </details>
 
-      <a class="uma-card" href="#">
-        <img class="uma-card-media" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@0bbde63ca8f16990368cd31e66e6b3cec12b72df/uma-profile/assets/site/news1.jpg">
-        <div class="uma-meta"><span class="uma-pill">Event</span><span class="uma-date">2026/11/01 09:15 (UTC)</span></div>
-        <div class="uma-card-txt">Aquarius Cup event bot returns later this month. Limited time only.</div>
-        <div class="uma-card-go">&#187;&#187;</div>
-      </a>
+      <details class="uma-card">
+        <summary>
+          <span class="uma-meta"><span class="uma-pill">Production</span><span class="uma-date">2026/10/30 11:12 (UTC)</span></span>
+          <span class="uma-card-txt">The shift from quality over quantity.</span>
+          <span class="uma-card-go">&#187;&#187;</span>
+        </summary>
+        <div class="uma-cbody">
+          <p>I am moving away from <i>only</i> making Umamusume bots. I want to branch out into new fandoms, try fresh ideas, and introduce my work to different communities. With that, the January 2027 Lorebooks release target is being pushed back to <b>February or March 2027</b>. Looking at the math, finishing by January meant updating each lorebook in just a week and a half. I have put way too much effort into these lorebooks to rush them now, so taking a bit more time is definitely the right move.</p>
+        </div>
+      </details>
+
+      <details class="uma-card">
+        <summary>
+          <span class="uma-meta"><span class="uma-pill">Schedule</span><span class="uma-date">2026/11/07 01:34 (UTC)</span></span>
+          <span class="uma-card-txt">What @uma_enjoyer's schedule in bot creation looks like.</span>
+          <span class="uma-card-go">&#187;&#187;</span>
+        </summary>
+        <div class="uma-cbody">
+          <p>My character cards will usually be released on weekends. During the week I am usually off thinking up scenarios and experimenting with lorebook prototypes that may be used for the next update of my passion project. Expect probably like 2 to 4 bots a week. It would commonly be 2, that is what I have to trade in order to get higher quality creations. 4 is when I have excess free time. Pick your time zone below and it opens with my schedules.</p>
+          <div class="uma-tzlist">
+        <details class="uma-tz">
+          <summary>UTC-08 &middot; LOS ANGELES (WINTER)</summary>
+          <div class="uma-tz-body">
+            <div class="uma-tz-slot"><span class="uma-tz-lbl">Weekend A</span><span class="uma-tz-time">5:00 PM to 7:00 PM</span></div>
+            <div class="uma-tz-slot"><span class="uma-tz-lbl">Weekend B</span><span class="uma-tz-time">4:30 AM to 7:00 AM</span></div>
+          </div>
+        </details>
+        <details class="uma-tz">
+          <summary>UTC-07 &middot; LOS ANGELES (SUMMER)</summary>
+          <div class="uma-tz-body">
+            <div class="uma-tz-slot"><span class="uma-tz-lbl">Weekend A</span><span class="uma-tz-time">6:00 PM to 8:00 PM</span></div>
+            <div class="uma-tz-slot"><span class="uma-tz-lbl">Weekend B</span><span class="uma-tz-time">5:30 AM to 8:00 AM</span></div>
+          </div>
+        </details>
+        <details class="uma-tz">
+          <summary>UTC-05 &middot; NEW YORK (WINTER)</summary>
+          <div class="uma-tz-body">
+            <div class="uma-tz-slot"><span class="uma-tz-lbl">Weekend A</span><span class="uma-tz-time">8:00 PM to 10:00 PM</span></div>
+            <div class="uma-tz-slot"><span class="uma-tz-lbl">Weekend B</span><span class="uma-tz-time">7:30 AM to 10:00 AM</span></div>
+          </div>
+        </details>
+        <details class="uma-tz">
+          <summary>UTC-04 &middot; NEW YORK (SUMMER)</summary>
+          <div class="uma-tz-body">
+            <div class="uma-tz-slot"><span class="uma-tz-lbl">Weekend A</span><span class="uma-tz-time">9:00 PM to 11:00 PM</span></div>
+            <div class="uma-tz-slot"><span class="uma-tz-lbl">Weekend B</span><span class="uma-tz-time">8:30 AM to 11:00 AM</span></div>
+          </div>
+        </details>
+        <details class="uma-tz">
+          <summary>UTC&plusmn;00 &middot; LONDON</summary>
+          <div class="uma-tz-body">
+            <div class="uma-tz-slot"><span class="uma-tz-lbl">Weekend A</span><span class="uma-tz-time">1:00 AM to 3:00 AM</span></div>
+            <div class="uma-tz-slot"><span class="uma-tz-lbl">Weekend B</span><span class="uma-tz-time">12:30 PM to 3:00 PM</span></div>
+          </div>
+        </details>
+        <details class="uma-tz">
+          <summary>UTC+01 &middot; BERLIN / PARIS (WINTER)</summary>
+          <div class="uma-tz-body">
+            <div class="uma-tz-slot"><span class="uma-tz-lbl">Weekend A</span><span class="uma-tz-time">2:00 AM to 4:00 AM</span></div>
+            <div class="uma-tz-slot"><span class="uma-tz-lbl">Weekend B</span><span class="uma-tz-time">1:30 PM to 4:00 PM</span></div>
+          </div>
+        </details>
+        <details class="uma-tz">
+          <summary>UTC+02 &middot; BERLIN / PARIS (SUMMER)</summary>
+          <div class="uma-tz-body">
+            <div class="uma-tz-slot"><span class="uma-tz-lbl">Weekend A</span><span class="uma-tz-time">3:00 AM to 5:00 AM</span></div>
+            <div class="uma-tz-slot"><span class="uma-tz-lbl">Weekend B</span><span class="uma-tz-time">2:30 PM to 5:00 PM</span></div>
+          </div>
+        </details>
+        <details class="uma-tz">
+          <summary>UTC+03 &middot; MOSCOW</summary>
+          <div class="uma-tz-body">
+            <div class="uma-tz-slot"><span class="uma-tz-lbl">Weekend A</span><span class="uma-tz-time">4:00 AM to 6:00 AM</span></div>
+            <div class="uma-tz-slot"><span class="uma-tz-lbl">Weekend B</span><span class="uma-tz-time">3:30 PM to 6:00 PM</span></div>
+          </div>
+        </details>
+        <details class="uma-tz">
+          <summary>UTC+05:30 &middot; MUMBAI</summary>
+          <div class="uma-tz-body">
+            <div class="uma-tz-slot"><span class="uma-tz-lbl">Weekend A</span><span class="uma-tz-time">6:30 AM to 8:30 AM</span></div>
+            <div class="uma-tz-slot"><span class="uma-tz-lbl">Weekend B</span><span class="uma-tz-time">6:00 PM to 8:30 PM</span></div>
+          </div>
+        </details>
+        <details class="uma-tz">
+          <summary>UTC+07 &middot; JAKARTA</summary>
+          <div class="uma-tz-body">
+            <div class="uma-tz-slot"><span class="uma-tz-lbl">Weekend A</span><span class="uma-tz-time">8:00 AM to 10:00 AM</span></div>
+            <div class="uma-tz-slot"><span class="uma-tz-lbl">Weekend B</span><span class="uma-tz-time">7:30 PM to 10:00 PM</span></div>
+          </div>
+        </details>
+        <details class="uma-tz">
+          <summary>UTC+08 &middot; MANILA</summary>
+          <div class="uma-tz-body">
+            <div class="uma-tz-slot"><span class="uma-tz-lbl">Weekend A</span><span class="uma-tz-time">9:00 AM to 11:00 AM</span></div>
+            <div class="uma-tz-slot"><span class="uma-tz-lbl">Weekend B</span><span class="uma-tz-time">8:30 PM to 11:00 PM</span></div>
+          </div>
+        </details>
+        <details class="uma-tz">
+          <summary>UTC+09 &middot; TOKYO</summary>
+          <div class="uma-tz-body">
+            <div class="uma-tz-slot"><span class="uma-tz-lbl">Weekend A</span><span class="uma-tz-time">10:00 AM to 12:00 PM</span></div>
+            <div class="uma-tz-slot"><span class="uma-tz-lbl">Weekend B</span><span class="uma-tz-time">9:30 PM to 12:00 AM</span></div>
+          </div>
+        </details>
+        <details class="uma-tz">
+          <summary>UTC+10 &middot; SYDNEY (WINTER)</summary>
+          <div class="uma-tz-body">
+            <div class="uma-tz-slot"><span class="uma-tz-lbl">Weekend A</span><span class="uma-tz-time">11:00 AM to 1:00 PM</span></div>
+            <div class="uma-tz-slot"><span class="uma-tz-lbl">Weekend B</span><span class="uma-tz-time">10:30 PM to 1:00 AM</span></div>
+          </div>
+        </details>
+        <details class="uma-tz">
+          <summary>UTC+11 &middot; SYDNEY (SUMMER)</summary>
+          <div class="uma-tz-body">
+            <div class="uma-tz-slot"><span class="uma-tz-lbl">Weekend A</span><span class="uma-tz-time">12:00 PM to 2:00 PM</span></div>
+            <div class="uma-tz-slot"><span class="uma-tz-lbl">Weekend B</span><span class="uma-tz-time">11:30 PM to 2:00 AM</span></div>
+          </div>
+        </details>
+        <details class="uma-tz">
+          <summary>UTC+12 &middot; AUCKLAND</summary>
+          <div class="uma-tz-body">
+            <div class="uma-tz-slot"><span class="uma-tz-lbl">Weekend A</span><span class="uma-tz-time">1:00 PM to 3:00 PM</span></div>
+            <div class="uma-tz-slot"><span class="uma-tz-lbl">Weekend B</span><span class="uma-tz-time">12:30 AM to 3:00 AM</span></div>
+          </div>
+        </details>
+        <details class="uma-tz">
+          <summary>UTC+14 &middot; KIRITIMATI</summary>
+          <div class="uma-tz-body">
+            <div class="uma-tz-slot"><span class="uma-tz-lbl">Weekend A</span><span class="uma-tz-time">3:00 PM to 5:00 PM</span></div>
+            <div class="uma-tz-slot"><span class="uma-tz-lbl">Weekend B</span><span class="uma-tz-time">2:30 AM to 5:00 AM</span></div>
+          </div>
+        </details>
+          </div>
+          <p style="margin-top:2.6vw">To be honest, I am not a machine about this. Some weekends I am early, some I am late, and once in a while motorsport competitions, work, classes and the rest of it eat the whole weekend and nothing goes up at all. The times above are what I aim for, not a contract. Weekend A suits North America, weekend B suits Europe and Asia. Writing this to stay safe.</p>
+        </div>
+      </details>
+
+      <details class="uma-card">
+        <summary>
+          <span class="uma-meta"><span class="uma-pill">Gforms</span><span class="uma-date">2026/10/04 04:47 (UTC)</span></span>
+          <span class="uma-card-txt">Captures the topic of criticism, scenario idea requests and OC/fanon idea requests.</span>
+          <span class="uma-card-go">&#187;&#187;</span>
+        </summary>
+        <div class="uma-cbody">
+          <p>One day, someone requested me to create my own Google forms. I went ahead and did it. I plan to update these forms soon, so make sure to read each description clearly.</p>
+          <div class="uma-forms">
+            <a class="uma-fbtn" href="https://docs.google.com/forms/d/e/1FAIpQLSeOV4R5t1G7zLXw0pEsVZ7GMLxIVk0Rds1V3kq13bm4AjlDRg/viewform">Criticism</a>
+            <a class="uma-fbtn" href="https://docs.google.com/forms/d/e/1FAIpQLSeOV4R5t1G7zLXw0pEsVZ7GMLxIVk0Rds1V3kq13bm4AjlDRg/viewform">Scenario Ideas</a>
+            <p class="uma-fnote">Disregard the Umamusume only rule here.</p>
+            <a class="uma-fbtn" href="https://docs.google.com/forms/d/e/1FAIpQLSefkS4rF411gpa3s3vfQAj4Orl0Gz8w_E8jHj27Wq32SwTYhQ/viewform">OC Ideas</a>
+          </div>
+        </div>
+      </details>
 
       <details class="uma-morewrap">
         <summary><img alt="View more" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@bf7537ea7507eec839ecd41452b97a4fec8f03b0/uma-profile/assets/site/view-more.png"></summary>
