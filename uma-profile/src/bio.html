@@ -580,7 +580,10 @@
 .uma-tc-bio::-webkit-scrollbar-track { background: rgba(19,41,75,.07); border-radius: 99px; }
 .uma-tc-bio::-webkit-scrollbar-thumb { background: #F0A6CE; border-radius: 99px; }
 .uma-tc-bio::-webkit-scrollbar-thumb:hover { background: #E5348A; }
-.uma-tc-bio p { margin: 0 0 calc(1.05vw * var(--uma-k)); }
+/* a full line of air between paragraphs, so each one reads as its own thought instead of
+   running on from the last — the block is scrolled, not skimmed, and this is the only
+   structure it gets */
+.uma-tc-bio p { margin: 0 0 calc(1.5vw * var(--uma-k)); }
 .uma-tc-bio p:last-child { margin-bottom: 0; }
 .uma-profile-card {
   position: relative; z-index: 1;
