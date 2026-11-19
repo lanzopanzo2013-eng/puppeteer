@@ -1772,12 +1772,14 @@ edge, and the bar is a thin one in the card's own colours (pink thumb, faint tra
 `scrollbar-width/color` and the `::-webkit-scrollbar` pseudo-elements. Two things had to change for
 it to sit right: `.uma-tc-body` gets `box-sizing: border-box` (it was content-box, so its padding
 was added to the height the card gave it and pushed the copy 4vw past the card's foot), and the
-copy itself is seven paragraphs in his voice, each one picking up the last: cars, then the
-college/cats/War Thunder/PC round, then AI and faith, then the anonymous-writing note, then
-umamusume, and a one-line sign-off. He is he/him, said once in the first line, and the line
-about not writing smut stays blunt.
+copy is his, not mine: his own draft with the grammar fixed and the joins smoothed ("then in
+spring I stopped", "AI is another thing", "and on that note", "and then there is Umamusume"),
+condensed to seven paragraphs and kept in his register — "like, really", "no, I am not a rich
+kid who wants to race", "not for you to like", "these horsegirls". The greeting is set a shade
+larger in the card's navy as the block's one piece of hierarchy; every other paragraph is one
+size and the paragraphs are separated by a full line of air rather than two thirds of one.
 
-Verified: rig 9/9 spill 0, `bio.scrollHeight` 545 -> 2315 over `clientHeight` 60 -> 283 across
+Verified: rig 9/9 spill 0, `bio.scrollHeight` 1042 -> 4426 over `clientHeight` 60 -> 283 across
 280/320/360/390/430/768/1280/2000, page body `scrollHeight == clientHeight` at every width, no
 horizontal overflow on the captured page (`scrollWidth` 355 < 360), avatar anchor still
 `[10, 1442, 138, 196]` on the card, 0 console errors. `docs/round-52.png` is the before/after.

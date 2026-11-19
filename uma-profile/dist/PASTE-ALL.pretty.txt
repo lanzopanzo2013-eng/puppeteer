@@ -570,6 +570,10 @@
    structure it gets */
 .uma-tc-bio p { margin: 0 0 calc(1.5vw * var(--uma-k)); }
 .uma-tc-bio p:last-child { margin-bottom: 0; }
+/* The greeting is the block's one bit of hierarchy: a shade larger and in the card's navy
+   rather than the body blue, so the eye lands on it first. Everything under it stays one
+   size — his copy is a run of facts, and the air between paragraphs is what separates them. */
+.uma-tc-bio p:first-child { font-size: calc(3.15vw * var(--uma-k)); line-height: 1.42; color: #13294B; }
 .uma-profile-card {
   position: relative; z-index: 1;
   background: rgba(255,255,255,.94); border-radius: 14px;
@@ -1411,6 +1415,7 @@ body:has([class*="otificationsPopover"]) .uma-sheet-foot {
   .uma-tc-fol b { font-size: 56px; }
   .uma-tc-rule { margin: 23.8px 0 22px; }
   .uma-tc-bio { font-size: 35.1px; padding-right: 8.3px; }
+  .uma-tc-bio p:first-child { font-size: 37.5px; }
   .uma-tc-bio::-webkit-scrollbar { width: 10.1px; }
 }
 /* Live binding. The profile's own avatar and follower count are lifted into the card: they
@@ -1754,13 +1759,13 @@ body:has([class*="otificationsPopover"]) .uma-sheet-foot {
         <div class="uma-tc-fol"><span>Followers</span><b>128,043</b></div>
         <div class="uma-tc-rule"></div>
         <div class="uma-tc-bio">
-          <p>Twenty-something, half Filipino and half Japanese, he/him. English, Tagalog and Japanese all work on me &mdash; use whichever feels natural.</p>
-          <p>Cars are about seventy percent of what I do for fun. I race for real, and when there is no track day I am on a sim rig. I grew up around it, since my dad ran a car club, and I lost him recently, so that side of my life carries more weight than it used to. Nobody funds this but me, either &mdash; I pay my own entry fees, save for parts, and show up.</p>
-          <p>Away from the garage I am in college, single, with cats and dogs at home. I put a lot of hours into War Thunder and Call of Duty over the years, which is a polite way of saying I know military vehicles better than is healthy, and I build my own PCs &mdash; so hardware, thermals and fan curves are all fair game.</p>
-          <p>The other thing I sink time into is AI: prompting, LLMs, getting a model to actually do what you meant instead of what you typed. It might turn into a career one day. Faith matters to me too, though the specifics stay mine.</p>
-          <p>Here I keep it anonymous on purpose &mdash; no face, no name, no hints. What I actually do is write: lorebooks, RPGs, slice-of-life Japan. I am good at it, and honest about the rest: smut is not my lane and I will not pretend otherwise.</p>
-          <p>Umamusume is where a lot of that landed. Friends dragged me in at Season 1, I have been playing the game since March 2021 &mdash; casually, no grind &mdash; and I have watched all of the anime. I even watched Arima Kinen 2022 from the grandstands on a QR ticket. Equinox won. Still the best afternoon I have had at a track.</p>
-          <p>So: talk cars, bots or races and I will answer.</p>
+          <p>Hi reader, I am uma_enjoyer &mdash; you can call me Fuji or Aki. I started creating bots back in 2023, focusing on realistic Japanese life scenarios all the way to Initial D, then in spring I stopped and switched to Janitor AI, and by August 2026 I was making story-first Umamusume bots.</p>
+          <p>As a person: male, he/him, half Filipino and half Japanese, and I speak three languages &mdash; English, Tagalog and Japanese &mdash; though my vocabulary is just okay in all of them. I do motorsports in real life and on the simulator, and I am a professional in the sport. I am a young adult who still does college classes, I am single, and I take life seriously to the fullest.</p>
+          <p>I love cars a lot, like, really. Almost 70% of the fun in my whole life comes from the car life, and that is thanks to my dad: when I was an elementary/middle schooler he was a well-known member of a car club and always took me around car meets and track days. It is unfortunate that he passed away, just recently, but for my family's privacy I won't go deeper than that. I compete in a lot of motorsport competitions, and no, I am not a rich kid who wants to race &mdash; the wins pay for my entrance fees.</p>
+          <p>AI is another thing I find highly interesting. I love experimenting with LLMs, I would consider myself a great prompter, and I could see myself having a job related to AI someday too. I love cats, and dogs too &mdash; I don't hate any kind of housepet at all &mdash; and I used to play War Thunder and Call of Duty all the time during COVID, so I know a lot when it comes to military vehicles, which is one of my strengths in bot creation. I love the world of desktops too, so if you want to discuss PC parts, I can happily take part.</p>
+          <p>I believe in God, but I will not specify which God because of privacy reasons &mdash; and on that note, I keep my identity private so I don't get known for this in real life. In bot creation I specialize in lorebooks, RPG and Japan life scenarios. I can create any kind of bot, although I am weak when it comes to smut and I don't have much experience with it, so if you are a smut-focused person, I am not for you to like.</p>
+          <p>Oh, and I do love horse racing too. One of my notable events was spectating from the grandstands at the Arima Kinen, 2022 &mdash; I got myself a QR ticket and I watched Equinox win. To be fair I am not that passionate about it compared to cars, but I still have some passion for horse racing.</p>
+          <p>And then there is Umamusume: I first watched season 1 because my friends invited me to watch with them, then I played Umamusume Pretty Derby by March 2021. I was not a try-hard at the game, I only played it lightly until now to be honest, and I think that is going to be the same forever &mdash; although I did watch all the anime series Umamusume has to offer, which strengthened my passion for these horsegirls.</p>
         </div>
       </div>
     </div>

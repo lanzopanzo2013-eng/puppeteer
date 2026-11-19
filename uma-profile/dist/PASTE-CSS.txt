@@ -569,6 +569,10 @@
    structure it gets */
 .uma-tc-bio p { margin: 0 0 calc(1.5vw * var(--uma-k)); }
 .uma-tc-bio p:last-child { margin-bottom: 0; }
+/* The greeting is the block's one bit of hierarchy: a shade larger and in the card's navy
+   rather than the body blue, so the eye lands on it first. Everything under it stays one
+   size — his copy is a run of facts, and the air between paragraphs is what separates them. */
+.uma-tc-bio p:first-child { font-size: calc(3.15vw * var(--uma-k)); line-height: 1.42; color: #13294B; }
 .uma-profile-card {
   position: relative; z-index: 1;
   background: rgba(255,255,255,.94); border-radius: 14px;
@@ -1410,6 +1414,7 @@ body:has([class*="otificationsPopover"]) .uma-sheet-foot {
   .uma-tc-fol b { font-size: 56px; }
   .uma-tc-rule { margin: 23.8px 0 22px; }
   .uma-tc-bio { font-size: 35.1px; padding-right: 8.3px; }
+  .uma-tc-bio p:first-child { font-size: 37.5px; }
   .uma-tc-bio::-webkit-scrollbar { width: 10.1px; }
 }
 /* Live binding. The profile's own avatar and follower count are lifted into the card: they
