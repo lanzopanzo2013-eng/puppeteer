@@ -80,8 +80,31 @@ const CHROME = `
        must not invent one either: the header row is measured against the bar -->
   <div class="pp-uc-about-me profile-about-me">`;
 
+/* The profile asks for Roboto and Roboto Condensed; the phone has both, the bare headless
+   chromium here has neither and would fall back to a wider grotesque, making every screenshot
+   a little narrower than the real thing. If the font files are on disk (npm i @fontsource/...)
+   they are wired in for the screenshots only — the delivered CSS still names the families and
+   never fetches anything. */
+const FONT_DIRS = [
+  ['roboto', '@fontsource/roboto/files', 'roboto-latin'],
+  ['Roboto Condensed', '@fontsource/roboto-condensed/files', 'roboto-condensed-latin'],
+];
+const FONT_ROOT = process.env.UMA_FONTS || '/tmp/nm/node_modules';
+const FONTS = FONT_DIRS.flatMap(([fam, dir, prefix]) => {
+  try {
+    return fs.readdirSync(path.join(FONT_ROOT, dir)).flatMap((f) => {
+      const m = f.match(new RegExp('^' + prefix + '-(\\d+)-(normal|italic)\\.woff2$'));
+      if (!m) return [];
+      return [`@font-face{font-family:"${fam}";font-weight:${m[1]};font-style:${m[2]};font-display:block;`
+        + `src:url("file://${path.join(FONT_ROOT, dir, f)}") format("woff2")}`];
+    });
+  } catch { return []; }
+}).join('');
+if (FONTS) console.log('fonts: local Roboto + Roboto Condensed');
+
 const PAGE = `<!doctype html><html><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">${CHROME}</head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>${FONTS}</style>${CHROME}</head>
 <body><style>${styleBlock}</style>${local}
 </div></div></div></div></body></html>`;
 

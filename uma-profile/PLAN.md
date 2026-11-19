@@ -1694,3 +1694,54 @@ nine-width sweep 9/9 spill 0; on the captured Janitor page `.uma-about` is 390 x
 `.uma-tc-port` = `.pp-uc-avatar-container` = `[10, 1450, 138, 196]`, the live count
 `[163, 1542, 94, 24]`, 0 console errors. `docs/about-50.png` is the three-up: the site's band,
 r49's full-bleed card, and this one with the site's block outlined in red.
+
+### §51 The letters in the card
+
+With the box now the size the site gives it, the type inside it was still the r47 stopgap: every
+run in the card — chip, name, label, number, bio — was set in Roboto Condensed, and everything
+except the bio's weight was bold. That is one voice at five sizes, so the name had no more
+authority than the paragraph under it, and the bio read as a second headline.
+
+What the official stylesheet actually asks for (`0.CeerEmeO.css`):
+
+```css
+@font-face{font-family:roboto;          src:url(…/Roboto-VariableFont_wdth,wght.woff2);      font-weight:100 900}
+@font-face{font-family:roboto-condensed;src:url(…/RobotoCondensed-VariableFont_wght.woff2);   font-weight:100 900}
+body{font-family:roboto,sans-serif;font-weight:400;line-height:1;…}
+```
+
+Two faces: Roboto for text, Roboto Condensed for display — and italics reserved for display
+(`.section-title`, the news links). The card now follows that split.
+
+* **Name** — the only thing in the display face: `Roboto Condensed` 900 italic, 5.9vw, `line-height
+  .94`, `-.015em`, `#13294B`.
+* **Chip** — upright `roboto` 700, 2vw, `.22em` tracking, on `#0F57FB` (the site's blue, the same
+  as the About plate's lettering), square corners like every other plate in the theme, and the
+  hard `rgba(20,80,140,.22)` offset softened to `.16` blue.
+* **The stat** — one line, `FOLLOWERS 128,043`, label pinned to the margin and the number after it
+  on a shared baseline (`display:flex; align-items:baseline`). Label first is the whole point: the
+  live count replaces the stand-in's digits and is usually *shorter*, so anything to the number's
+  left would move whenever the count changed. Set the number last and it grows into empty card
+  instead, and the gap is the same for "1" and "128,043" (verified: both the stand-in and the live
+  overlay start at x=236). Figures are `tabular-nums` so a live update cannot jitter, and the
+  overlay's font-size moved with the stand-in's (4.7vw) so it still covers it exactly.
+* **Rule** — a hairline that fades to nothing at 92%, instead of a flat 1px grey bar.
+* **Bio** — `roboto` 400 at 2.95vw/1.52, `#3E5A76`, `text-wrap:pretty`: the counterweight to the
+  heavy name rather than a second copy of it.
+* **Card** — flat `#fff` (the site's plates are flat white) rather than the white→`#F5FAFF`
+  gradient; the live overlay's background follows it, so nothing shows through on a failed paint.
+
+The 2000px step follows: the card is a flat 1111 x 625px there, so the type becomes px at
+`v x .5955 x 20` (name 70.3, stat 56, bio 35.1, label 22.6).
+
+Verified: nine-width sweep 9/9, spill 0; `scrollHeight == clientHeight` at 280, 320, 360, 390, 430,
+768, 1280 and at 900, 1600, 2000, 2400, 3200; on the captured page `.uma-tc-port` ==
+`.pp-uc-avatar-container` == `[10, 1450, 138, 196]`, stand-in `[236, 1536, 83, 19]` and live
+overlay `[236, 1536, 89, 23]` at the same 18.33px, 0 console errors.
+`docs/type-51.png` is the before/after.
+
+**Rig note.** The rig was rendering these previews in whatever grotesque headless chromium fell
+back to, which is wider than Roboto Condensed — every screenshot was a slightly different
+letterform from the phone. `tools/rig.cjs` now wires in `@fontsource/roboto` and
+`@fontsource/roboto-condensed` when they are on disk (`npm i`, or `UMA_FONTS=<dir>`), for the
+screenshots only; the delivered CSS still names the families and fetches nothing.

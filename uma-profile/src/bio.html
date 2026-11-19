@@ -495,7 +495,7 @@
   width: 93.3333vw; height: 50.1333vw;
   transform: translate3d(-50%, -50%, 0);
   filter: drop-shadow(.4vw .4vw 1.3333vw rgba(0,0,0,.25));
-  background: linear-gradient(#fff, #F5FAFF);
+  background: #fff;
   border-radius: 0; box-shadow: none;
   box-sizing: border-box; display: flex; overflow: hidden;
   font-family: "Roboto Condensed", roboto, Arial, sans-serif;
@@ -512,29 +512,49 @@
   display: flex; flex-direction: column; justify-content: center;
 }
 .uma-tc-role {
-  align-self: flex-start; background: #2F7BD8; color: #fff;
-  font-size: calc(2.4vw * var(--uma-k)); font-weight: 700; letter-spacing: .16em; text-transform: uppercase;
-  padding: calc(.8vw * var(--uma-k)) calc(1.9vw * var(--uma-k)) calc(.7vw * var(--uma-k));
-  border-radius: calc(.5vw * var(--uma-k)); line-height: 1;
-  box-shadow: 0 calc(.5vw * var(--uma-k)) 0 rgba(20,80,140,.22); transform: skewX(-12deg);
+  align-self: flex-start; background: #0F57FB; color: #fff;
+  /* upright, widely tracked caps: the display face is already carrying the italics, so the
+     chip's job is to be quiet and unmistakably a label. Roboto at 700 keeps the small size
+     legible where the condensed face would close its counters up. */
+  font-family: roboto, "Roboto", Arial, sans-serif;
+  font-size: calc(2vw * var(--uma-k)); font-weight: 700; letter-spacing: .22em; text-transform: uppercase;
+  padding: calc(.95vw * var(--uma-k)) calc(2.1vw * var(--uma-k)) calc(.85vw * var(--uma-k));
+  border-radius: 0; line-height: 1;
+  box-shadow: 0 calc(.5vw * var(--uma-k)) 0 rgba(15,87,251,.16); transform: skewX(-12deg);
 }
 .uma-tc-role i { font-style: normal; display: inline-block; transform: skewX(12deg); }
 .uma-tc-name {
-  font-style: italic; font-weight: 900; font-size: calc(5.4vw * var(--uma-k)); line-height: 1.02;
-  color: #16345A; letter-spacing: -.02em; margin: calc(1.6vw * var(--uma-k)) 0 0; overflow-wrap: anywhere;
+  font-style: italic; font-weight: 900; font-size: calc(5.9vw * var(--uma-k)); line-height: .94;
+  color: #13294B; letter-spacing: -.015em; margin: calc(1.4vw * var(--uma-k)) 0 0;
+  overflow-wrap: anywhere;
 }
-.uma-tc-fol { margin-top: calc(1.8vw * var(--uma-k)); }
+.uma-tc-fol {
+  /* Label first, number second, both on one baseline. The order matters: the live count
+     replaces the stand-in's digits and is usually shorter, so anything to the number's left
+     would move when it changes. Here the label is pinned to the card's margin and the number
+     grows into empty card instead, which keeps the gap identical for "1" and "128,043". */
+  display: flex; align-items: baseline;
+  gap: calc(1.6vw * var(--uma-k));
+  margin-top: calc(1.2vw * var(--uma-k));
+}
 .uma-tc-fol span {
-  display: block; font-size: calc(2.4vw * var(--uma-k)); font-weight: 700; letter-spacing: .14em;
-  text-transform: uppercase; color: #6E8CAA;
+  display: block; font-family: roboto, "Roboto", Arial, sans-serif;
+  font-size: calc(1.9vw * var(--uma-k)); font-weight: 700; letter-spacing: .24em;
+  text-transform: uppercase; color: #8095AD;
 }
 .uma-tc-fol b {
-  display: block; font-style: italic; font-weight: 900; font-size: calc(5vw * var(--uma-k));
+  display: block; font-style: italic; font-weight: 900; font-size: calc(4.7vw * var(--uma-k));
   color: #E5348A; line-height: 1.05;
+  /* tabular figures: the live count changes under the reader's eyes and must not jitter */
+  font-variant-numeric: tabular-nums;
 }
-.uma-tc-rule { height: 1px; background: rgba(31,80,140,.15);
-  margin: calc(2.4vw * var(--uma-k)) 0 calc(2.2vw * var(--uma-k)); }
-.uma-tc-bio { font-size: calc(3vw * var(--uma-k)); line-height: 1.45; color: #4A647C; font-weight: 600; margin: 0; }
+.uma-tc-rule { height: 1px; margin: calc(2vw * var(--uma-k)) 0 calc(1.85vw * var(--uma-k));
+  background: linear-gradient(90deg, rgba(20,60,120,.2), rgba(20,60,120,0) 92%); }
+.uma-tc-bio {
+  font-family: roboto, "Roboto", Arial, sans-serif;
+  font-size: calc(2.95vw * var(--uma-k)); line-height: 1.52; color: #3E5A76;
+  font-weight: 400; margin: 0; text-wrap: pretty;
+}
 .uma-profile-card {
   position: relative; z-index: 1;
   background: rgba(255,255,255,.94); border-radius: 14px;
@@ -1369,13 +1389,13 @@ body:has([class*="otificationsPopover"]) .uma-sheet-foot {
   /* the card is a flat size from here, so the type stops being fluid: 1vw is 20px at 2000,
      and 0.5955 * 20 turns the mobile vw values above into their pixel equivalents */
   .uma-tc-body { padding: 47.6px 45.3px; }
-  .uma-tc-role { font-size: 28.6px; padding: 9.5px 22.6px 8.3px; border-radius: 6px; }
-  .uma-tc-name { font-size: 64.3px; margin-top: 19px; }
-  .uma-tc-fol { margin-top: 21.4px; }
-  .uma-tc-fol span { font-size: 28.6px; }
-  .uma-tc-fol b { font-size: 59.5px; }
-  .uma-tc-rule { margin: 28.6px 0 26.2px; }
-  .uma-tc-bio { font-size: 35.7px; }
+  .uma-tc-role { font-size: 23.8px; padding: 11.3px 25px 10.1px; }
+  .uma-tc-name { font-size: 70.3px; margin-top: 16.7px; }
+  .uma-tc-fol { margin-top: 14.3px; gap: 19px; }
+  .uma-tc-fol span { font-size: 22.6px; }
+  .uma-tc-fol b { font-size: 56px; }
+  .uma-tc-rule { margin: 23.8px 0 22px; }
+  .uma-tc-bio { font-size: 35.1px; }
 }
 /* Live binding. The profile's own avatar and follower count are lifted into the card: they
    already exist in the page (Janitor renders them in .pp-uc-background, which this theme hides),
@@ -1444,10 +1464,10 @@ body:has([class*="otificationsPopover"]) .uma-sheet-foot {
     height: calc(anchor-size(--uma-fol height, 0px) + 1vw) !important;
     overflow: visible !important;
     margin: 0 !important; padding: 0 !important; white-space: nowrap !important;
-    background: #FAFCFF !important;
+    background: #fff !important;
     font-family: "Roboto Condensed", roboto, Arial, sans-serif !important;
     font-style: italic; font-weight: 900 !important;
-    font-size: calc(5vw * var(--uma-k, 1)) !important;
+    font-size: calc(4.7vw * var(--uma-k, 1)) !important;
     line-height: 1.05 !important; color: #E5348A !important;
     z-index: 5;
   }
@@ -1455,7 +1475,7 @@ body:has([class*="otificationsPopover"]) .uma-sheet-foot {
   /* the card stops growing with the viewport at 2000 (it is a flat 1111px there), so the live
      number has to leave vw at the same point as the stand-in it covers */
   @media (min-width: 2000px) {
-    .pp-uc-background .pp-uc-followers-count { font-size: 59.5px !important; }
+    .pp-uc-background .pp-uc-followers-count { font-size: 56px !important; }
   }
 }
 
