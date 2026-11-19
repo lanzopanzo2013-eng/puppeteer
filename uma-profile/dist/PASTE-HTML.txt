@@ -52,6 +52,7 @@
 
   <!-- ── In the Works (the site's News band) ────────────────── -->
   <div class="uma-sec uma-news" id="updates">
+    <img class="uma-news-ground" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@8c69a44d19f2ef3070f4adbca28358cd75809312/uma-profile/assets/site/news-bg.jpg">
     <div class="uma-news-frame">
       <div class="uma-news-ribbon"><span>In the Works</span></div>
 
@@ -79,7 +80,7 @@
 
       <details class="uma-morewrap">
         <summary><img alt="View more" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@bf7537ea7507eec839ecd41452b97a4fec8f03b0/uma-profile/assets/site/view-more.png"></summary>
-        <p class="uma-nomore">Sorry...<br>there isn't actually any more.</p>
+        <p class="uma-nomore"><img class="uma-nomore-face" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@8c69a44d19f2ef3070f4adbca28358cd75809312/uma-profile/assets/site/awful.jpg"><span>Sorry...<br>there isn't actually any more.</span></p>
       </details>
     </div>
   </div>

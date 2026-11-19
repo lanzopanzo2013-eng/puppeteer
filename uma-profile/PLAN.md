@@ -1204,3 +1204,39 @@ mock: 726 → 726, hash empty). The line is broken by hand after "Sorry..." so i
 as a widowed "more." on a narrow phone.
 
 Rig: 9/9, spill 0. Paste 49,579 chars.
+
+## 40. The band's ground was never arriving, and the face (2026-11-09)
+
+The user's phone showed the transition as a pale wash that stopped dead on a line, with flat
+#EFFEE7 under it. Sampling their capture settled it: every pixel of the band below the seam
+is exactly (239,254,231), the section's own background-color, while the two card banners from
+the same commit render fine. So the CSS `background-image` on `.uma-news::before` never
+loaded. Nothing about it was broken on paper: the file is on the pushed commit (verified
+through the API) and the mask was valid. Whatever the live page does with a `url()` inside a
+pseudo-element, it does not do it, so the ground stopped being a `url()`.
+
+The ground is a plain `<img class="uma-news-ground">` now, the same way every other band in
+the profile carries its art, and it is a **JPEG**: the card art that does load is JPEG from
+the same tree, so the format is no longer a question. There is no mask left anywhere, only
+gradients, which the live page demonstrably renders (its own hero wash).
+
+Three gradients make the join:
+
+| | does |
+|---|---|
+| `.uma-hero-wash` | was white, now fades the key visual to #EFFEE7 over its bottom 17% |
+| `.uma-news::after` | fades the artwork's near-white first band back out to #EFFEE7 over 20vw |
+| `.uma-news-ground` | the 1000 × 1833 art at 100% width, so 1.833 × the width tall; #EFFEE7 fills any shortfall |
+
+Since the hero's wash and the band's first pixels now land on the same colour, there is no
+seam to see, and nothing depends on mask support. Checked at 360 and 414, rig 9/9.
+
+**The face.** `awful.jpg` (320 × 427, from the user's `images.jpeg`) sits to the left of the
+grey line, 11.4vw tall, inside the same `<details>`, so it opens and closes with the text.
+
+Also answered the user's hosting question: the art lives in the public repo and is served by
+jsDelivr pinned to a full commit sha, which is immutable and does not expire, File Garden is
+not needed, and the only thing that would break a pinned link is the repo going private or
+away.
+
+Paste 50,053 chars.
