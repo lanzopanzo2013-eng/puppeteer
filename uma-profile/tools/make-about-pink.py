@@ -31,8 +31,8 @@ SRC_DEPTH = 126.5             # the source band's depth
 PERIOD = 79.0                 # one repeat of the motif, along the band, in source px
 SCALE = 1.44                  # source px -> sheet px (2px/design px -> 2.88px/design px)
 
-SHEET_W, SHEET_H = 1080, 648  # 100vw x 60vw
-SEAT_X0, SEAT_Y0 = 540.0, 642.0   # a point on the band's top edge, in the sheet
+SHEET_W, SHEET_H = 1080, 648  # 100vw x 60vw, the plate the CSS draws the band on
+SEAT_TOP0 = 753.8             # the band's top edge at x = 0, straight from the CSS polygon
 DEPTH = 178.2                 # the band's depth in the sheet: 16.5vw
 ARC = (1 + SLOPE ** 2) ** 0.5
 
@@ -76,7 +76,7 @@ def main():
 
     # 3. paint it into the sheet on the band's seat, transparent everywhere else
     ys, xs = np.mgrid[0:SHEET_H, 0:SHEET_W]
-    top = SEAT_Y0 - SLOPE * (xs - SEAT_X0)
+    top = SEAT_TOP0 - SLOPE * xs
     vv = ys - top
     inside = (vv >= 0) & (vv < th)
     out = np.zeros((SHEET_H, SHEET_W, 4))
