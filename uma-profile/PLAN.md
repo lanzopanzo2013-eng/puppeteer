@@ -1378,3 +1378,38 @@ is sampled across x 850-1252, averaged to its own brightness, smoothed along the
 pressed onto the flat pink with an exponent of 2.2 to bring the watermark up to the level the
 reference reads at; a 1.6 exponent was too faint. The capture's band is a little deeper than
 ours, so the emblem sits closer to the lower edge than it does there.
+
+## 44. A trainer card in the About plate
+
+The plate comes back to life as a trainer card: portrait left, identity right, a rule, the bio,
+and two readouts at the foot. `docs/about-44.png` sets it beside the reference.
+
+| piece | spec |
+| --- | --- |
+| plate | 300 css wide at 360 — `margin: 0 5vw` inside the section's 12 px padding, so it sits 30 css clear of the edge and about 27 css clear of the pink corner at its bottom right |
+| portrait | 31vw wide, 5:6, white border, `#A9D4F6` ring, drop shadow |
+| chip | `TRAINER`, `#2F7BD8`, skewed −12deg with the glyphs skewed back |
+| name | Roboto Condensed italic 900, 5.5vw, `#16345A` |
+| followers | label over number, number 5.2vw italic 900 in `#E5348A` |
+| rule | 1 px `rgba(31,80,140,.15)` |
+| bio | 3.25vw / 1.5, `#4A647C` |
+| readouts | two `#EDF5FD` blocks with a 0.8vw blue spine |
+
+Plate and all text are placeholders: the name and bio are lorem ipsum, the numbers are invented.
+The portrait is a crop of the hero key visual (`assets/site/pfp.jpg`, 260 x 312) standing in until
+the real avatar is dropped in — it is the `src` of `.uma-tc-pfp` and nothing else needs touching.
+The section measures **501.2** css at 360, down from 520.5, since the plate is narrower than the
+old full-width square even with its content.
+
+Two small robustness notes: the name carries `overflow-wrap: anywhere` so a long handle breaks
+inside the column instead of pushing the plate, and the follower row is stacked rather than
+inline, because inline it wrapped at some widths and not others.
+
+### The band texture, straightened
+
+The first baked band squeezed the watermark: 390 source px were stretched across 651 asset px
+while the depth went the other way, 217 down to 168, so the emblem and lettering came out wide
+and flat. The re-projection now uses one scale for both axes, 168/217, and tiles the rectified
+strip along the band instead of stretching it — the strip's 40 px wrap is crossfaded so the
+repeat has no seam. The emblem reads as a circle again and appears about twice over the visible
+run, which is what the reference does.

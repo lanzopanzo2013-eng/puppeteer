@@ -438,9 +438,55 @@
    so the band shows a plain white plate where the content will go. */
 .uma-about-ph {
   position: relative; z-index: 1;
-  width: 100%; aspect-ratio: 1 / 1; background: #fff;
+  width: auto; margin: 0 5vw; aspect-ratio: 1 / 1;
+  background: linear-gradient(#fff, #F5FAFF);
   border-radius: 2.8vw; box-shadow: 0 2.2vw 0 rgba(20,80,140,.16);
+  box-sizing: border-box; padding: 4.6vw 4.4vw;
+  display: flex; flex-direction: column; justify-content: center;
+  font-family: "Roboto Condensed", roboto, Arial, sans-serif;
 }
+.uma-tc-head { display: flex; gap: 3vw; align-items: center; }
+.uma-tc-pfp {
+  flex: none; width: 31vw; aspect-ratio: 5 / 6; object-fit: cover;
+  border-radius: 2.2vw; border: .9vw solid #fff; background: #DCEBFF;
+  box-shadow: 0 0 0 .55vw #A9D4F6, 0 1.1vw 2vw rgba(20,80,140,.18);
+}
+.uma-tc-id { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.uma-tc-role {
+  align-self: flex-start; background: #2F7BD8; color: #fff;
+  font-size: 2.5vw; font-weight: 700; letter-spacing: .16em; text-transform: uppercase;
+  padding: .8vw 1.9vw .7vw; border-radius: .5vw; line-height: 1;
+  box-shadow: 0 .5vw 0 rgba(20,80,140,.22);
+  transform: skewX(-12deg);
+}
+.uma-tc-role i { font-style: normal; display: inline-block; transform: skewX(12deg); }
+.uma-tc-name {
+  font-style: italic; font-weight: 900; font-size: 5.5vw; line-height: 1.02;
+  color: #16345A; letter-spacing: -.02em; margin: 1.5vw 0 0; overflow-wrap: anywhere;
+}
+.uma-tc-fol { margin-top: 1.8vw; }
+.uma-tc-fol span {
+  display: block; font-size: 2.5vw; font-weight: 700; letter-spacing: .14em;
+  text-transform: uppercase; color: #6E8CAA;
+}
+.uma-tc-fol b {
+  display: block; font-style: italic; font-weight: 900; font-size: 5.2vw;
+  color: #E5348A; line-height: 1.05;
+}
+.uma-tc-rule { height: 1px; background: rgba(31,80,140,.15); margin: 3.6vw 0 3vw; }
+.uma-tc-bio {
+  font-size: 3.25vw; line-height: 1.5; color: #4A647C; font-weight: 600; margin: 0;
+}
+.uma-tc-foot { display: flex; gap: 2vw; margin-top: 3vw; }
+.uma-tc-stat {
+  flex: 1; background: #EDF5FD; border-radius: 1.2vw; padding: 1.5vw 2vw 1.6vw;
+  border-left: .8vw solid #2F7BD8;
+}
+.uma-tc-stat span {
+  display: block; font-size: 2.3vw; font-weight: 700; letter-spacing: .14em;
+  text-transform: uppercase; color: #6E8CAA;
+}
+.uma-tc-stat b { font-style: italic; font-weight: 900; font-size: 3.6vw; color: #16345A; }
 .uma-profile-card {
   position: relative; z-index: 1;
   background: rgba(255,255,255,.94); border-radius: 14px;
