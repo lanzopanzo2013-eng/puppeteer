@@ -399,7 +399,8 @@
 /* ---------- About (sky) ---------- */
 .uma-about {
   background: #4BA8F5;
-  padding-bottom: 34px;
+  /* the bottom strip the pink divider lives in: 132 css at 360 */
+  padding-bottom: 36.7vw;
 }
 /* Our copy of the About art is the landscape crop, 1100 x 688, while the official phone page
    runs a taller crop of the same painting, so the stands sit lower there. Covering a 360 x 446
@@ -407,6 +408,25 @@
    low and the sky open, which is the reference's read, where centring it raised the stands
    across the whole right side. */
 .uma-about .uma-sec-bg { object-position: 20% 50%; opacity: 1; }
+/* The pink corner. On the reference the About art runs out under a pink diagonal with white
+   showing past its lower edge, and that band is part of their taller crop: our window only
+   reaches the middle of the wide painting, so the corner is drawn here instead, to the same
+   geometry. Off the capture, at 3.5 px per css: the edge falls 0.42 css per css across the
+   width, the band is 62 css deep, and its upper edge meets the right edge 112 css above the
+   section's bottom. In vw that is 42.2, 17.2 and 31.1, on a 60vw tall plate at the bottom. */
+.uma-about::before,
+.uma-about::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0;
+  height: 60vw; z-index: 1; pointer-events: none;
+}
+.uma-about::before {
+  background: #FF6DC8;
+  clip-path: polygon(0 71.1vw, 100% 28.9vw, 100% 46.1vw, 0 88.3vw);
+}
+.uma-about::after {
+  background: #fff;
+  clip-path: polygon(0 88.3vw, 100% 46.1vw, 100% 60vw, 0 60vw);
+}
 /* The profile card and the note are parked for now, waiting on the real About build,
    so the band shows a plain white plate where the content will go. */
 .uma-about-ph {

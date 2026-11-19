@@ -1336,3 +1336,24 @@ override, since this is the only section using that class.
 
 What cannot be matched exactly: their phone page runs a taller crop of the same painting. Ours
 is the wide one, so the stands arrive a little earlier down the right edge whatever the offset.
+
+### The pink corner
+
+The About art carries two corners of its own: the blue watermark wedge top-left and a pink
+diagonal bottom-right. Our cover window only reaches the middle of the 1100 wide painting, so
+the pink corner fell outside it, and the section ended on bare grass. It is now drawn to the
+reference's geometry instead, in two clipped layers at the section's foot:
+
+| measured off the capture (3.5 px per css) | css | vw |
+| --- | --- | --- |
+| drop of the band's edge, per css of width | 0.42 | 42.2 |
+| vertical depth of the band | 62 | 17.2 |
+| top edge meeting the right edge, above the section's bottom | 112 | 31.1 |
+| bottom edge meeting the right edge, above the section's bottom | 50 | 13.9 |
+| corner of white past the band's lower edge | x 241 onward | 67.1% |
+
+The section gains `padding-bottom: 36.7vw` so the strip the divider lives in sits below the
+white plate, 132 css at 360 and about 20 css of art between the plate and the band's tip at
+the right, as the reference has 18.8 between its video and the band. The pink is `#FF6DC8`,
+sampled at (255,110,203) in the middle of the band; the white below it is pure white there too.
+Both layers are `pointer-events: none` and sit at z-index 1, which is under the plate.
