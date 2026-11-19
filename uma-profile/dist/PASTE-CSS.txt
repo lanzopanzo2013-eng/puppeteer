@@ -442,14 +442,12 @@
   clip-path: polygon(0 86.3vw, 100% 44vw, 100% 60vw, 0 60vw);
 }
 /* The band's texture, the UMA emblem and URA lettering, is a PNG sized to the same 5:3 box as
-   the layers above and drawn into the same parallelogram, so it lines up at any width. The flat
-   pink underneath stays as a fallback. */
+   the layers above and drawn on the same seat as the polygon, so the two coincide at every
+   width: the band is textured edge to edge and the flat pink underneath is only the fallback
+   for a slow image. tools/make-about-pink.py builds it. */
 .uma-about-pink {
   position: absolute; left: 0; right: 0; bottom: 0;
   width: 100%; height: 60vw; z-index: 1; pointer-events: none;
-  /* the artwork was drawn to the band's old seat; the band moved up 10.8vw to the reference's
-     height, and the sheet is transparent outside the pink so it can simply travel with it */
-  transform: translateY(-10.8vw);
 }
 /* The profile card. It stands in for the site's About video block, so it takes that
    block's numbers straight from 2.BtMVfDfi.css:
@@ -493,6 +491,10 @@
 }
 .uma-tc-body {
   flex: 1; min-width: 0; padding: calc(4vw * var(--uma-k)) calc(3.8vw * var(--uma-k));
+  /* border-box, or the padding is added to the height the card gives this column and the last
+     line of the bio is pushed past the card's edge. With it, the column's content is exactly
+     the card's inside: 4vw of air at the top of the chip and at the foot of the bio. */
+  box-sizing: border-box;
   display: flex; flex-direction: column; justify-content: center;
 }
 .uma-tc-role {
@@ -501,7 +503,7 @@
      chip's job is to be quiet and unmistakably a label. Roboto at 700 keeps the small size
      legible where the condensed face would close its counters up. */
   font-family: roboto, "Roboto", Arial, sans-serif;
-  font-size: calc(2vw * var(--uma-k)); font-weight: 700; letter-spacing: .22em; text-transform: uppercase;
+  font-size: calc(2vw * var(--uma-k)); font-weight: 700; letter-spacing: .01em; text-transform: none;
   padding: calc(.95vw * var(--uma-k)) calc(2.1vw * var(--uma-k)) calc(.85vw * var(--uma-k));
   border-radius: 0; line-height: 1;
   box-shadow: 0 calc(.5vw * var(--uma-k)) 0 rgba(15,87,251,.16); transform: skewX(-12deg);
@@ -535,10 +537,32 @@
 .uma-tc-rule { height: 1px; margin: calc(2vw * var(--uma-k)) 0 calc(1.85vw * var(--uma-k));
   background: linear-gradient(90deg, rgba(20,60,120,.2), rgba(20,60,120,0) 92%); }
 .uma-tc-bio {
+  /* A scroll box, not a paragraph. The card is a fixed 50.1333vw tall whatever is in it, so
+     the bio takes what the name, chip, count and rule leave over — and when the text is
+     longer than that, it scrolls here instead of pushing the card or the page. The cap keeps
+     the block's old centred seat: at any width the box tops out at the height that leaves the
+     surrounding columns balanced, and justify-content: center spends whatever is left above
+     and below it. min-height: 0 is what lets it shrink on a short card rather than overflow. */
+  flex: 1 1 auto; min-height: 0;
+  overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch;
+  /* a thin bar in the card's own colours: pink thumb, faint track, no arrows */
+  scrollbar-width: thin;
+  scrollbar-color: #F0A6CE rgba(19,41,75,.07);
+  /* the last line fades rather than being sliced by the box's edge: the same read the band
+     wanted, and it is what tells a thumb that there is more under it */
+  -webkit-mask-image: linear-gradient(to bottom, #000 0 74%, rgba(0,0,0,.12) 100%);
+  mask-image: linear-gradient(to bottom, #000 0 74%, rgba(0,0,0,.12) 100%);
+  padding-right: calc(.7vw * var(--uma-k));
   font-family: roboto, "Roboto", Arial, sans-serif;
   font-size: calc(2.95vw * var(--uma-k)); line-height: 1.52; color: #3E5A76;
   font-weight: 400; margin: 0; text-wrap: pretty;
 }
+.uma-tc-bio::-webkit-scrollbar { width: calc(.85vw * var(--uma-k)); }
+.uma-tc-bio::-webkit-scrollbar-track { background: rgba(19,41,75,.07); border-radius: 99px; }
+.uma-tc-bio::-webkit-scrollbar-thumb { background: #F0A6CE; border-radius: 99px; }
+.uma-tc-bio::-webkit-scrollbar-thumb:hover { background: #E5348A; }
+.uma-tc-bio p { margin: 0 0 calc(1.05vw * var(--uma-k)); }
+.uma-tc-bio p:last-child { margin-bottom: 0; }
 .uma-profile-card {
   position: relative; z-index: 1;
   background: rgba(255,255,255,.94); border-radius: 14px;
@@ -1379,7 +1403,8 @@ body:has([class*="otificationsPopover"]) .uma-sheet-foot {
   .uma-tc-fol span { font-size: 22.6px; }
   .uma-tc-fol b { font-size: 56px; }
   .uma-tc-rule { margin: 23.8px 0 22px; }
-  .uma-tc-bio { font-size: 35.1px; }
+  .uma-tc-bio { font-size: 35.1px; padding-right: 8.3px; }
+  .uma-tc-bio::-webkit-scrollbar { width: 10.1px; }
 }
 /* Live binding. The profile's own avatar and follower count are lifted into the card: they
    already exist in the page (Janitor renders them in .pp-uc-background, which this theme hides),

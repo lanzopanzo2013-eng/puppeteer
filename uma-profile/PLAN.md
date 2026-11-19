@@ -1745,3 +1745,35 @@ back to, which is wider than Roboto Condensed — every screenshot was a slightl
 letterform from the phone. `tools/rig.cjs` now wires in `@fontsource/roboto` and
 `@fontsource/roboto-condensed` when they are on disk (`npm i`, or `UMA_FONTS=<dir>`), for the
 screenshots only; the delivered CSS still names the families and fetches nothing.
+
+## 52 — the band's slice, the handle, and a bio you can read
+
+**The band.** Two faults in the pink corner, both from the same sheet. `about-pink.png` was a crop
+of the band taken out of a 5:3 window, so it held the band's right half only and it brought the
+crop's own pale top edge with it: on the page that drew a bright diagonal sliced through the
+middle of the band, and left everything west of about 48vw as flat `#FF6DC8`. `tools/make-about-pink.py`
+rebuilds it from the site's tall About painting (`capture/img/about_bg.CwbgSExa.jpg`, 750x920),
+where the band falls 0.422px per px, is 126.5px deep and repeats its UMA/URA motif every ~79px
+along: one period is cut out, scaled 1.44x to the artefact's own scale, and tiled across the full
+width. The sheet is drawn on the polygon's seat (top edge through `(0, 69.8vw)`, 16.5vw deep), so
+`translateY(-10.8vw)` — the old crop's compensation for being drawn to a seat the band has since
+left — is gone, and the texture now coincides with the band at every width. The flat pink stays
+under it as the fallback for a slow image.
+
+**The chip** is the handle now: `@uma_enjoyer`, so `text-transform` and the `.22em` label tracking
+go with it (`.01em`, lowercase). Same blue plate, same skew; 52px wide at 280, 220 at 2000.
+
+**The bio** is a scroll box, not a paragraph. `.uma-tc-bio` is `flex: 1 1 auto; min-height: 0;
+overflow-y: auto`, so it takes exactly the height the chip, name, count and rule leave over and
+scrolls inside it: the card's 50.1333vw (261x140 at 280 up to 1111x625 at 2000) never changes, and
+neither does the page. The last line fades out (`mask-image`) rather than being cut by the box's
+edge, and the bar is a thin one in the card's own colours (pink thumb, faint track) via both
+`scrollbar-width/color` and the `::-webkit-scrollbar` pseudo-elements. Two things had to change for
+it to sit right: `.uma-tc-body` gets `box-sizing: border-box` (it was content-box, so its padding
+was added to the height the card gave it and pushed the copy 4vw past the card's foot), and the
+copy itself is seven paragraphs of first-person intro, in his voice.
+
+Verified: rig 9/9 spill 0, `bio.scrollHeight` 545 -> 2315 over `clientHeight` 60 -> 283 across
+280/320/360/390/430/768/1280/2000, page body `scrollHeight == clientHeight` at every width, no
+horizontal overflow on the captured page (`scrollWidth` 355 < 360), avatar anchor still
+`[10, 1442, 138, 196]` on the card, 0 console errors. `docs/round-52.png` is the before/after.

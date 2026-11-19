@@ -243,7 +243,7 @@
   <!-- ── About ─────────────────────────────────────────────── -->
   <div class="uma-sec uma-about" id="about">
     <img class="uma-sec-bg" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/about_bg.jpg">
-    <img class="uma-about-pink" alt="" aria-hidden="true" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@9c867618abe4b16f7a7a976fb589e7aceedcea73/uma-profile/assets/site/about-pink.png">
+    <img class="uma-about-pink" alt="" aria-hidden="true" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@dca1b39a0cc10301c6f20532399e4a22bc97a2f0/uma-profile/assets/site/about-pink-full.png">
     <div class="uma-tag-wrap"><div class="uma-tag blue uma-tag-white"><span>About Me</span></div></div>
 
     <div class="uma-about-ph">
@@ -251,11 +251,19 @@
         <img class="uma-tc-pfp" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@9c867618abe4b16f7a7a976fb589e7aceedcea73/uma-profile/assets/site/pfp.jpg">
       </div>
       <div class="uma-tc-body">
-        <span class="uma-tc-role"><i>Trainer</i></span>
+        <span class="uma-tc-role"><i>@uma_enjoyer</i></span>
         <div class="uma-tc-name">Lorem Ipsum</div>
         <div class="uma-tc-fol"><span>Followers</span><b>128,043</b></div>
         <div class="uma-tc-rule"></div>
-        <p class="uma-tc-bio">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <div class="uma-tc-bio">
+          <p>Twenty-something, half Filipino, half Japanese. English, Tagalog and Japanese all work on me &mdash; use whichever feels natural.</p>
+          <p>Cars are about seventy percent of what I do for fun. I race for real, and when there is no track day I am on a sim rig. I grew up around it: my dad ran a car club, and I lost him recently, so that side of my life carries more weight than it used to. Nobody funds this but me &mdash; I pay my own entry fees, save for parts, and show up.</p>
+          <p>College student. Single. Cats and dogs at home. Long history with War Thunder and Call of Duty, which is a polite way of saying I know military vehicles better than is healthy, and I build my own PCs, so hardware, thermals and fan curves are all fair game.</p>
+          <p>I am into AI &mdash; prompting, LLMs, getting a model to actually do what you meant instead of what you typed. Might turn that into a career one day. Faith matters to me; the specifics stay mine.</p>
+          <p>Anonymous on purpose. No face, no name, no hints. What I do here is write: lorebooks, RPGs, slice-of-life Japan. I am good at it, and honest about the rest &mdash; smut is not my lane and I will not pretend otherwise.</p>
+          <p>Umamusume: friends dragged me in at Season 1, I have been playing the game since March 2021, casually, and I have watched all of the anime. Arima Kinen 2022, grandstands, QR ticket, Equinox won. Still the best afternoon I have had at a track.</p>
+          <p>Talk cars, bots or races and I will answer.</p>
+        </div>
       </div>
     </div>
   </div>
