@@ -245,31 +245,7 @@
     <img class="uma-sec-bg" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/about_bg.jpg">
     <div class="uma-tag-wrap"><div class="uma-tag blue uma-tag-white"><span>About Me</span></div></div>
 
-    <div class="uma-profile-card">
-      <div class="uma-pfp">
-        <img alt="Profile picture" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/pfp.jpg">
-      </div>
-      <div class="uma-pfp-body">
-        <div class="uma-pfp-name">@uma_enjoyer</div>
-        <div class="uma-pfp-sub">Trainer · Lorebook author · Tracen Academy</div>
-        <div class="uma-pfp-txt">
-          Trainer by day, bot author by night. I write Umamusume characters that stay in
-          character. Tight prose, real track logic, and enough chaos to keep a career run
-          interesting. Expect slow burns, rivalry, and the occasional hopeless crush.
-        </div>
-        <div class="uma-pfp-rows">
-          <div class="uma-pfp-row"><span>Writing since</span><b>2025</b></div>
-          <div class="uma-pfp-row"><span>Bots live</span><b>13</b></div>
-          <div class="uma-pfp-row"><span>Lorebooks</span><b>V4 → FV14</b></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="uma-about-txt">
-      Everything here is hand-written. Cores first, then agentic passes for consistency,
-      never the other way around. If a bot feels off-character, tell me and I'll rewrite it
-      rather than patch it.
-    </div>
+    <div class="uma-about-ph" aria-hidden="true"></div>
   </div>
 
   <!-- ── Gameplay ──────────────────────────────────────────── -->

@@ -1313,3 +1313,26 @@ line-height of 1.1 in place of 1.16, and 14.8 below (15.4). Closed, the two-line
 One measurement lesson worth keeping: reading the cards at x=130 on their capture under-read
 each box by about nine css, because the 7.9 css corner radius eats into the column. The same
 scan at x=150, inside the box's padding, gives the true edges.
+
+## 43. A white plate stands in for the About Me card
+
+The About Me card and the note under the video are gone for now, as asked, and a plain white
+square holds their place: 336 css wide inside the section's 12 css padding, square by
+`aspect-ratio`, with the same 2.8vw corner radius as the other plates and a soft blue shadow
+under its edge. `docs/about-43.png` is the reference beside the new block.
+
+Removing them also fixed the crop complaint. At 446.5 css tall the section covers the art at
+2.0x rather than the 3.1x it needed while the card and note stood below the video, because the
+image is now the only thing setting the section's height.
+
+The placement was still wrong in two ways, and both are the landscape art's fault. `about_bg`
+is 1100 x 688; covering a 360 x 446 band with it means showing barely half of its width, so
+where that window sits changes the whole read. At 50% (our old value) the stadium filled the
+right side from the top down, where the reference keeps sky across the whole upper half. At
+0% the blue wedge top-left grows past the tag. **20%** keeps the roofline low and the sky open,
+which is the reference's read, and `opacity: 1` lets the painting come through at its own
+strength instead of being washed by the section's blue. Both sit in one `.uma-about .uma-sec-bg`
+override, since this is the only section using that class.
+
+What cannot be matched exactly: their phone page runs a taller crop of the same painting. Ours
+is the wide one, so the stands arrive a little earlier down the right edge whatever the offset.
