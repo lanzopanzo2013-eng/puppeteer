@@ -1626,3 +1626,71 @@ Verified: content fits its box at every width from 280 to 1280 (`scrollHeight` e
 real avatar still lands on the new, shorter frame — `.uma-tc-port` and `.pp-uc-avatar-container`
 both `[-3, 1445, 140, 150]`, with the live count over the stand-in. `docs/about-48.png` is the
 side-by-side against the reference.
+
+### §50 The real stylesheet, and the block it actually describes
+
+Round 49's numbers came off a pixel scan and were wrong in both dimensions: the capture had been
+read as a full-bleed 390 x 153 css block in a 124vw band. This round the original CSS was
+retrieved, and it says something else entirely.
+
+**How it was got.** `fetch_page` only ever returns rendered text for umamusume.com, and the
+archive, the proxies and GitHub all came up empty. The W3C CSS validator fetches the page itself
+and then *names every stylesheet it parsed*, which is enough:
+
+```
+https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fumamusume.com%2F&output=text
+  URIs: /_app/immutable/assets/0.CeerEmeO.css, 2.BtMVfDfi.css, NewsItem.BW2Y3wsu.css, Modal.DqwlE6Qt.css
+```
+
+Those files are plain text/css and fetch fine (`.../2.BtMVfDfi.css`, 9 chunks). The About band is
+`.top-about.svelte-jhqwtp`, verbatim:
+
+```css
+.top-about{position:relative;z-index:1}
+@media (max-width:899.98px){.top-about{height:122.6666666667vw}}
+@media (min-width:900px) and (max-width:1999.98px){.top-about{height:62.5vw}}
+@media (min-width:2000px){.top-about{height:1250px}}
+
+.top-about .about-movie-thumb{overflow:hidden;position:absolute;z-index:1;top:50%;left:50%;
+  transform:translate3d(-50%,-50%,0);
+  filter:drop-shadow(.4vw .4vw 1.3333333333vw rgba(0,0,0,.25))}
+@media (max-width:899.98px){.about-movie-thumb{width:93.3333333333vw;height:50.1333333333vw}}
+@media (min-width:900px) and (max-width:1999.98px){.about-movie-thumb{width:55.5555555556vw;height:31.25vw}}
+@media (min-width:2000px){.about-movie-thumb{width:1111.1111111111px;height:625px}}
+```
+
+The site runs a 375 px design on phones and a 720 px one on desktop, so every value divides by
+3.75 (or 7.2): 350 x 188 px for the block, 460 px for the band. That is **1.862:1, inset
+3.3333vw from each edge and centred** — not 2.6:1 and not full bleed.
+
+**Checked against the capture, not assumed.** Screenshot 132227 is 1260 px wide at 390 css, so
+12.6 px per vw. Measured: the band top edge at y=760 (the first row of `#2B5CFA`), the green
+Gameplay band at y=2304, so 1544 px = 122.5vw (stylesheets: 122.667); the block's left edge a
+constant x=42 = 3.3333vw, top y=1215, bottom y=1847, so 632 px = 50.1vw; and its centre y=1531
+is the band's centre. Everything agrees.
+
+Changes:
+
+* `.uma-about` is `height: 122.6667vw` with `box-sizing: border-box` (62.5vw past 900, 1250px past
+  2000). A fixed height, because the card left the flow — nothing below it sizes the band now.
+  The old `padding-bottom: 64.4vw` made the height drift with the fixed-px furniture inside it.
+* `.uma-about-ph` becomes the block: `position: absolute; left/top: 50%; translate3d(-50%,-50%,0);
+  width: 93.3333vw; height: 50.1333vw`, the original's `drop-shadow(.4vw .4vw 1.3333vw
+  rgba(0,0,0,.25))`, corners still square, and the 55.5556 x 31.25vw / 1111 x 625px steps above.
+* **One scale factor for everything inside.** The desktop block is *relatively* shorter than the
+  phone one (16:9 against 1.862), so vw type overran the card at 1280 (512 into 400). `:root {
+  --uma-k }` is 1 on phones and .5955 (= 55.5556/93.3333) past 900, and every inner size is
+  `calc(<phone vw> * var(--uma-k))`. It lives on `:root` because the live follower count is not a
+  child of the card and has to read the same number. Past 2000 the card is a flat size, so the
+  type switches to px there (mobile vw x .5955 x 20).
+* Portrait panel 36% -> 38%: the card is now 196 css tall at 390, and the panel keeps a sane
+  portrait crop (138 x 196) for the anchored live avatar.
+* The white title plate moved 5 px down in this band only: the site's sits 31 css under the band's
+  top edge (measured 860 device against a band top of 760), the shared section padding leaves 26.
+
+Verified: card 261x140 @280, 336x180 @360, 364x196 @390, 401x216 @430, 717x385 @768, 711x400
+@1280; content fits its box at 280-1280 *and* at 1600, 1920, 2000, 2400, 3200 (the px step);
+nine-width sweep 9/9 spill 0; on the captured Janitor page `.uma-about` is 390 x 478 at y=1309,
+`.uma-tc-port` = `.pp-uc-avatar-container` = `[10, 1450, 138, 196]`, the live count
+`[163, 1542, 94, 24]`, 0 console errors. `docs/about-50.png` is the three-up: the site's band,
+r49's full-bleed card, and this one with the site's block outlined in red.

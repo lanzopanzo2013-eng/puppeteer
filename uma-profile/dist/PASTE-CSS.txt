@@ -399,11 +399,23 @@
 /* ---------- About (sky) ---------- */
 .uma-about {
   background: #4BA8F5;
-  /* the strip the pink divider lives in. The reference keeps a wide band of sky between its
-     video block and the pink diagonal, so the card no longer fills the section: this is the
-     air under it, sized so the section lands at ~124vw like the reference's. */
-  padding-bottom: 64.4vw;
+  /* The band is now exactly as tall as the official stylesheet makes it. From
+     _app/immutable/assets/2.BtMVfDfi.css:
+       .top-about.svelte-jhqwtp{height:122.6666666667vw}                 (<=899.98)
+       @media (min-width:900px){.top-about{height:62.5vw}}
+       @media (min-width:2000px){.top-about{height:1250px}}
+     122.6667vw is 460px in the site's 375px design. A fixed height, because the card no
+     longer sits in the flow (it stands in for .about-movie-thumb, which is absolutely
+     centred), so nothing below it is sizing the band any more. border-box keeps the 26px
+     top padding inside that height, which is what puts top:50% on the band's real middle. */
+  box-sizing: border-box;
+  height: 122.6667vw;
+  padding-bottom: 0;
 }
+/* The site's white title plate sits 31 css under the band's top edge (860 device on the
+   132227 capture, band top 760); the shared 26px section padding leaves ours 5 short, and
+   this is the one band where the gap was measured against the real thing. */
+.uma-about .uma-tag-wrap { margin-top: 5px; }
 /* Our copy of the About art is the landscape crop, 1100 x 688, while the official phone page
    runs a taller crop of the same painting, so the stands sit lower there. Covering a 360 x 446
    band with this one means showing about half of its width: the left half keeps the roofline
@@ -439,49 +451,74 @@
      height, and the sheet is transparent outside the pink so it can simply travel with it */
   transform: translateY(-10.8vw);
 }
-/* The profile card and the note are parked for now, waiting on the real About build,
-   so the band shows a plain white plate where the content will go. */
+/* The profile card. It stands in for the site's About video block, so it takes that
+   block's numbers straight from 2.BtMVfDfi.css:
+
+     .top-about .about-movie-thumb{overflow:hidden;position:absolute;z-index:1;
+        top:50%;left:50%;transform:translate3d(-50%,-50%,0);
+        filter:drop-shadow(.4vw .4vw 1.3333333333vw rgba(0,0,0,.25))}
+     @media (max-width:899.98px){.about-movie-thumb{width:93.3333333333vw;height:50.1333333333vw}}
+     @media (min-width:900px){.about-movie-thumb{width:55.5555555556vw;height:31.25vw}}
+     @media (min-width:2000px){.about-movie-thumb{width:1111.1111px;height:625px}}
+
+   93.3333 x 50.1333vw is 350 x 188 in the 375px design: inset 3.3333vw from either edge of
+   the band, 1.862:1, and centred on it — not the full-bleed 2.6:1 ribbon of the last pass.
+   The soft shadow is theirs too; the corner stays square, which the stylesheet confirms
+   (no radius on the block). */
+/* One number sizes everything inside the card. The block is 93.3333vw wide on a phone and
+   55.5556vw on a desktop, so the same design has to be drawn 0.595x smaller there to keep its
+   proportions: --uma-k is that ratio, and every inner size is written as calc(<mobile vw> * k).
+   It lives on :root because the live follower count, which is not a child of the card, has to
+   read the same number. */
+:root { --uma-k: 1; }
+@media (min-width: 900px) { :root { --uma-k: .5955; } }
+
 .uma-about-ph {
-  position: relative; z-index: 1;
-  width: auto; margin: 0 -12px; aspect-ratio: 2.6; top: 14.6vw;
+  position: absolute; z-index: 2;
+  left: 50%; top: 50%;
+  width: 93.3333vw; height: 50.1333vw;
+  transform: translate3d(-50%, -50%, 0);
+  filter: drop-shadow(.4vw .4vw 1.3333vw rgba(0,0,0,.25));
   background: linear-gradient(#fff, #F5FAFF);
   border-radius: 0; box-shadow: none;
   box-sizing: border-box; display: flex; overflow: hidden;
   font-family: "Roboto Condensed", roboto, Arial, sans-serif;
 }
-/* portrait panel: the photo runs to the card's own edge, so only the card's radius cuts it */
-.uma-tc-port { flex: 0 0 36%; position: relative; background: #DCEBFF; }
+/* portrait panel: the photo runs to the card's own edge, so only the card's edge cuts it */
+.uma-tc-port { flex: 0 0 38%; position: relative; background: #DCEBFF; }
 .uma-tc-pfp { width: 100%; height: 100%; object-fit: cover; display: block; }
 .uma-tc-port::after {
   content: ""; position: absolute; inset: 0;
-  box-shadow: inset -2.2vw 0 3vw rgba(20,80,140,.12);
+  box-shadow: inset calc(-2.2vw * var(--uma-k)) 0 calc(3vw * var(--uma-k)) rgba(20,80,140,.12);
 }
 .uma-tc-body {
-  flex: 1; min-width: 0; padding: 4vw 3.8vw;
+  flex: 1; min-width: 0; padding: calc(4vw * var(--uma-k)) calc(3.8vw * var(--uma-k));
   display: flex; flex-direction: column; justify-content: center;
 }
 .uma-tc-role {
   align-self: flex-start; background: #2F7BD8; color: #fff;
-  font-size: 2.4vw; font-weight: 700; letter-spacing: .16em; text-transform: uppercase;
-  padding: .8vw 1.9vw .7vw; border-radius: .5vw; line-height: 1;
-  box-shadow: 0 .5vw 0 rgba(20,80,140,.22); transform: skewX(-12deg);
+  font-size: calc(2.4vw * var(--uma-k)); font-weight: 700; letter-spacing: .16em; text-transform: uppercase;
+  padding: calc(.8vw * var(--uma-k)) calc(1.9vw * var(--uma-k)) calc(.7vw * var(--uma-k));
+  border-radius: calc(.5vw * var(--uma-k)); line-height: 1;
+  box-shadow: 0 calc(.5vw * var(--uma-k)) 0 rgba(20,80,140,.22); transform: skewX(-12deg);
 }
 .uma-tc-role i { font-style: normal; display: inline-block; transform: skewX(12deg); }
 .uma-tc-name {
-  font-style: italic; font-weight: 900; font-size: 5.4vw; line-height: 1.02;
-  color: #16345A; letter-spacing: -.02em; margin: 1.6vw 0 0; overflow-wrap: anywhere;
+  font-style: italic; font-weight: 900; font-size: calc(5.4vw * var(--uma-k)); line-height: 1.02;
+  color: #16345A; letter-spacing: -.02em; margin: calc(1.6vw * var(--uma-k)) 0 0; overflow-wrap: anywhere;
 }
-.uma-tc-fol { margin-top: 1.8vw; }
+.uma-tc-fol { margin-top: calc(1.8vw * var(--uma-k)); }
 .uma-tc-fol span {
-  display: block; font-size: 2.4vw; font-weight: 700; letter-spacing: .14em;
+  display: block; font-size: calc(2.4vw * var(--uma-k)); font-weight: 700; letter-spacing: .14em;
   text-transform: uppercase; color: #6E8CAA;
 }
 .uma-tc-fol b {
-  display: block; font-style: italic; font-weight: 900; font-size: 5vw;
+  display: block; font-style: italic; font-weight: 900; font-size: calc(5vw * var(--uma-k));
   color: #E5348A; line-height: 1.05;
 }
-.uma-tc-rule { height: 1px; background: rgba(31,80,140,.15); margin: 2.4vw 0 2.2vw; }
-.uma-tc-bio { font-size: 3vw; line-height: 1.45; color: #4A647C; font-weight: 600; margin: 0; }
+.uma-tc-rule { height: 1px; background: rgba(31,80,140,.15);
+  margin: calc(2.4vw * var(--uma-k)) 0 calc(2.2vw * var(--uma-k)); }
+.uma-tc-bio { font-size: calc(3vw * var(--uma-k)); line-height: 1.45; color: #4A647C; font-weight: 600; margin: 0; }
 .uma-profile-card {
   position: relative; z-index: 1;
   background: rgba(255,255,255,.94); border-radius: 14px;
@@ -1302,11 +1339,27 @@ body:has([class*="otificationsPopover"]) .uma-sheet-foot {
   .uma-tag { font-size: 23px; padding: 8px 26px 9px; }
   .uma-hl { font-size: 22px; }
 }
-/* Past ~900 the plate's type stops scaling with vw while the card keeps its 2.6:1 window, so
-   the bio would be cut. The video proportion only matters where the reference is looked at —
-   on a phone — so the card goes back to hugging its content on wide screens. */
+/* The two wider-step sizes are the site's own: the same block is 55.5556 x 31.25vw from 900
+   (400 x 225 in their 720px desktop design, i.e. 16:9) and a flat 1111.1 x 625px past 2000.
+   Everything inside the card is sized in vw, so it grows with the card and needs no other
+   breakpoint except the last one, where the card stops growing in px terms. */
 @media (min-width: 900px) {
-  .uma-about-ph { aspect-ratio: auto; }
+  .uma-about { height: 62.5vw; }
+  .uma-about-ph { width: 55.5556vw; height: 31.25vw; }
+}
+@media (min-width: 2000px) {
+  .uma-about { height: 1250px; }
+  .uma-about-ph { width: 1111.1111px; height: 625px; }
+  /* the card is a flat size from here, so the type stops being fluid: 1vw is 20px at 2000,
+     and 0.5955 * 20 turns the mobile vw values above into their pixel equivalents */
+  .uma-tc-body { padding: 47.6px 45.3px; }
+  .uma-tc-role { font-size: 28.6px; padding: 9.5px 22.6px 8.3px; border-radius: 6px; }
+  .uma-tc-name { font-size: 64.3px; margin-top: 19px; }
+  .uma-tc-fol { margin-top: 21.4px; }
+  .uma-tc-fol span { font-size: 28.6px; }
+  .uma-tc-fol b { font-size: 59.5px; }
+  .uma-tc-rule { margin: 28.6px 0 26.2px; }
+  .uma-tc-bio { font-size: 35.7px; }
 }
 /* Live binding. The profile's own avatar and follower count are lifted into the card: they
    already exist in the page (Janitor renders them in .pp-uc-background, which this theme hides),
@@ -1377,9 +1430,15 @@ body:has([class*="otificationsPopover"]) .uma-sheet-foot {
     margin: 0 !important; padding: 0 !important; white-space: nowrap !important;
     background: #FAFCFF !important;
     font-family: "Roboto Condensed", roboto, Arial, sans-serif !important;
-    font-style: italic; font-weight: 900 !important; font-size: 5vw !important;
+    font-style: italic; font-weight: 900 !important;
+    font-size: calc(5vw * var(--uma-k, 1)) !important;
     line-height: 1.05 !important; color: #E5348A !important;
     z-index: 5;
   }
   .pp-uc-background .pp-uc-followers-count span + span { display: none !important; }
+  /* the card stops growing with the viewport at 2000 (it is a flat 1111px there), so the live
+     number has to leave vw at the same point as the stand-in it covers */
+  @media (min-width: 2000px) {
+    .pp-uc-background .pp-uc-followers-count { font-size: 59.5px !important; }
+  }
 }
