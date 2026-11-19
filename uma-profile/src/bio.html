@@ -455,7 +455,7 @@
    so the band shows a plain white plate where the content will go. */
 .uma-about-ph {
   position: relative; z-index: 1;
-  width: auto; margin: 0 5vw; aspect-ratio: 3 / 2; top: 5.8vw;
+  width: auto; margin: 0 1.8vw; aspect-ratio: 3 / 2; top: 20.1vw;
   background: linear-gradient(#fff, #F5FAFF);
   border-radius: 2.8vw; box-shadow: 0 2.2vw 0 rgba(20,80,140,.16);
   box-sizing: border-box; display: flex; overflow: hidden;
@@ -1316,15 +1316,26 @@ body:has([class*="otificationsPopover"]) .uma-sheet-foot {
 }
 /* Live binding. The profile's own avatar and follower count are lifted into the card: they
    already exist in the page (Janitor renders them in .pp-uc-background, which this theme hides),
-   and anchor positioning lets an element be placed against a named element anywhere inside its
-   containing block, so the real .pp-uc-avatar-container can sit exactly on .uma-tc-port without
-   being a DOM child of it. Everything here is inside @supports, so browsers without anchor
-   positioning (Safari for now) keep the stand-in portrait and number untouched. body:has() guards
-   the text swap, so if Janitor ever renames the class the stand-in simply stays. */
+   and anchor positioning places an element against a named element inside the same containing
+   block, so the real .pp-uc-avatar-container can sit exactly on .uma-tc-port without being a DOM
+   child of it.
+
+   Every geometric value is written twice: first parked off-canvas at zero size, then the
+   anchor()/anchor-size() value that replaces it. A browser that parses the @supports test but
+   cannot resolve the anchor therefore keeps the parked values and paints nothing, instead of
+   dropping a full-size avatar at the top of the page. The stand-in portrait and number are never
+   hidden, so a failed binding still shows a finished card; when the binding works the live
+   follower count covers the stand-in exactly (same box, opaque card colour). */
 .uma-tc-port { anchor-name: --uma-pfp; }
-.uma-tc-fol b { anchor-name: --uma-fol; }
+.uma-tc-fol b { display: inline-block; anchor-name: --uma-fol; }
 @supports (position-anchor: --uma-pfp) {
-  .pp-uc-background { position: relative !important; }
+  /* Deliberately NOT position:relative here. An anchor only counts while it shares a
+     containing block with the element being placed, and Janitor is free to move the About Me
+     block out of .pp-uc-background between releases (its own Studio mock and the September
+     capture already disagree about nothing else). Leaving the wrapper static pushes the
+     containing block up to whatever ancestor holds both, which is true for either layout —
+     verified against the captured page with the block inside the wrapper and outside it. */
+  .pp-uc-background { position: static !important; }
   .pp-uc-background .profile-info-wrapper-box,
   .pp-uc-background .profile-info-stack {
     position: static !important; overflow: visible !important;
@@ -1342,9 +1353,12 @@ body:has([class*="otificationsPopover"]) .uma-sheet-foot {
   }
   .pp-uc-background .pp-uc-avatar-container {
     display: block !important; position: absolute !important;
-    position-anchor: --uma-pfp;
-    top: anchor(top); left: anchor(left);
-    width: anchor-size(width); height: anchor-size(height);
+    top: -9999px !important; left: -9999px !important;
+    width: 0 !important; height: 0 !important; overflow: hidden !important;
+    top: anchor(--uma-pfp top, -9999px) !important;
+    left: anchor(--uma-pfp left, -9999px) !important;
+    width: anchor-size(--uma-pfp width, 0px) !important;
+    height: anchor-size(--uma-pfp height, 0px) !important;
     margin: 0 !important; padding: 0 !important; border: 0 !important;
     border-radius: 0 !important; background: none !important; box-shadow: none !important;
     z-index: 4;
@@ -1357,16 +1371,23 @@ body:has([class*="otificationsPopover"]) .uma-sheet-foot {
   }
   .pp-uc-background .pp-uc-followers-count {
     display: block !important; position: absolute !important;
-    position-anchor: --uma-fol;
-    top: anchor(top); left: anchor(left);
+    top: -9999px !important; left: -9999px !important;
+    width: 0 !important; height: 0 !important; overflow: hidden !important;
+    top: anchor(--uma-fol top, -9999px) !important;
+    left: anchor(--uma-fol left, -9999px) !important;
+    /* a touch wider than the stand-in box: the italic glyphs overhang their advance width,
+       and a sliver of the old number would otherwise peek out beside the live one */
+    width: calc(anchor-size(--uma-fol width, 0px) + 1.4vw) !important;
+    height: calc(anchor-size(--uma-fol height, 0px) + 1vw) !important;
+    overflow: visible !important;
     margin: 0 !important; padding: 0 !important; white-space: nowrap !important;
+    background: #FAFCFF !important;
     font-family: "Roboto Condensed", roboto, Arial, sans-serif !important;
     font-style: italic; font-weight: 900 !important; font-size: 5vw !important;
     line-height: 1.05 !important; color: #E5348A !important;
-    z-index: 4;
+    z-index: 5;
   }
   .pp-uc-background .pp-uc-followers-count span + span { display: none !important; }
-  body:has(.pp-uc-followers-count) .uma-tc-fol b { color: transparent !important; }
 }
 
 </style>

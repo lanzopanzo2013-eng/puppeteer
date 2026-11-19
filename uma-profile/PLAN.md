@@ -1457,10 +1457,14 @@ needs Janitor to keep `<script>` in a profile — unverified.
 
 The card drops via `top` rather than a margin: a margin collapsed into the tag's own bottom
 margin and moved nothing, while stealing height from the strip below. The strip's bottom padding
-took the first cut (33.3 → 37.4vw) and `top` the rest, landing at `5.8vw`. Measured at 360:
-section 411.2, tag bottom 86.5, card 97.4 → 297.4 (300×200), so **10.9 css above and 113.8
-below** — the same proportion as the user's own live page, which measures ~11 above and ~121
-below. Clear of both cropped corners at every width from 280 to 1280.
+took the first cut (33.3 → 37.4vw) and `top` the rest.
+
+The user then asked for it bigger and "centred along the corners", and picked the reading
+"balanced gaps, band stays put". Card margin 5 → 1.8vw and `top` 3.9 → 20.1vw. Measured at 360:
+section 426.5, tag bottom 86.5, card 62.4 below the tag, 323×215, **62.3 css of air under it** —
+equal, i.e. centred, and the pink band keeps its full width below the card (the card rides about
+a fifth of the way onto it, which is what was chosen). Same balance at 280 (46.3 / 48.5) and 430
+(76.4 / 74.4); at 1280 the plate's type hits its px cap, so the two gaps drift to 247 / 221.
 
 ### Research: can a card show the live avatar and follower count?
 
@@ -1545,3 +1549,35 @@ sweep exercises the binding instead of a page shape that does not exist. Still 9
 
 `docs/about-47.png` puts the two states side by side: own art on the left, the real profile's
 avatar and follower count on the right, both at 360.
+
+### §47c The failure the phone found, and what makes it survivable
+
+`9ee371f` worked in every harness and failed on the user's phone (Chrome, so the feature is
+there): the avatar appeared at the top of the page, over the hero, at full size, and the follower
+line was blank. Two separate causes, both now fixed:
+
+1. **The containing block was pinned to the wrong element.** The block forced
+   `.pp-uc-background { position: relative }` so the avatar would resolve against it. An anchor
+   only counts while it shares a containing block with the element being placed, so if Janitor
+   moves the About Me region out from under `.pp-uc-background` — which the September capture and
+   the Studio mock already disagree about elsewhere — our card lands outside that containing block
+   and every `anchor()` returns its fallback. The block now forces `position: static` instead,
+   pushing the containing block up to whichever ancestor holds *both*; measured identical in the
+   captured page with the block inside the wrapper and with it moved outside.
+2. **A failed resolution had no safe value.** `top: anchor(top)` with no fallback computes to
+   `auto`, which parks the element at its static position at full size — the avatar over the hero.
+   Every geometric declaration is now written twice: parked at `top/left: -9999px`, `width/height:
+   0`, then replaced by `anchor(--uma-pfp …, <fallback>)`. A browser that parses the `@supports`
+   test but cannot resolve the anchor keeps the parked values and paints nothing.
+
+The follower count also stopped going blank. `body:has(.pp-uc-followers-count) .uma-tc-fol b`
+used to turn the stand-in number transparent, so a failed binding left an empty line. The stand-in
+now always renders, and the live count *covers* it: same box (`anchor-size`), opaque card colour,
+`z-index: 5`. The cover is 1.4vw wider than the stand-in box because italic figures overhang their
+advance width — without that, the tail of the old number peeked out beside the new one.
+
+Verified three ways: the captured page with the block inside `.pp-uc-background` (avatar rect
+identical to `.uma-tc-port`, 116×215 at 360), the same page with the block moved outside it
+(identical, 116×215), and the deliberately broken shape where neither can resolve (both elements
+at −9999px, 0×0, and the card still showing its own art and `128,043`). The nine-width sweep is
+unchanged at 9/9.
