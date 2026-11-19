@@ -1758,7 +1758,8 @@ along: one period is cut out, scaled 1.44x to the artefact's own scale, and tile
 width. The sheet is drawn on the polygon's seat (top edge through `(0, 69.8vw)`, 16.5vw deep), so
 `translateY(-10.8vw)` — the old crop's compensation for being drawn to a seat the band has since
 left — is gone, and the texture now coincides with the band at every width. The flat pink stays
-under it as the fallback for a slow image.
+under it as the fallback for a slow image, and the sheet takes the band's own `clip-path`, so
+the texture's edge *is* the band's edge — no pale line where the image stops.
 
 **The chip** is the handle now: `@uma_enjoyer`, so `text-transform` and the `.22em` label tracking
 go with it (`.01em`, lowercase). Same blue plate, same skew; 52px wide at 280, 220 at 2000.
