@@ -1772,7 +1772,10 @@ edge, and the bar is a thin one in the card's own colours (pink thumb, faint tra
 `scrollbar-width/color` and the `::-webkit-scrollbar` pseudo-elements. Two things had to change for
 it to sit right: `.uma-tc-body` gets `box-sizing: border-box` (it was content-box, so its padding
 was added to the height the card gave it and pushed the copy 4vw past the card's foot), and the
-copy itself is seven paragraphs of first-person intro, in his voice.
+copy itself is seven paragraphs in his voice, each one picking up the last: cars, then the
+college/cats/War Thunder/PC round, then AI and faith, then the anonymous-writing note, then
+umamusume, and a one-line sign-off. He is he/him, said once in the first line, and the line
+about not writing smut stays blunt.
 
 Verified: rig 9/9 spill 0, `bio.scrollHeight` 545 -> 2315 over `clientHeight` 60 -> 283 across
 280/320/360/390/430/768/1280/2000, page body `scrollHeight == clientHeight` at every width, no
