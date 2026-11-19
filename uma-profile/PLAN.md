@@ -1778,6 +1778,8 @@ condensed to seven paragraphs and kept in his register — "like, really", "no, 
 kid who wants to race", "not for you to like", "these horsegirls". The greeting is set a shade
 larger in the card's navy as the block's one piece of hierarchy; every other paragraph is one
 size and the paragraphs are separated by a full line of air rather than two thirds of one.
+He does not want em dashes, colons or semicolons in his copy, so every pause is a comma or a
+full stop now, and the name on the card reads `Fuji/Aki`.
 
 Verified: rig 9/9 spill 0, `bio.scrollHeight` 1042 -> 4426 over `clientHeight` 60 -> 283 across
 280/320/360/390/430/768/1280/2000, page body `scrollHeight == clientHeight` at every width, no
