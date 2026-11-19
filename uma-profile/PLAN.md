@@ -1452,3 +1452,37 @@ real avatar or the real follower count, and HTML/CSS has no way to read text or 
 elsewhere on the page. Both values are therefore still literals: `.uma-tc-pfp`'s `src` and the
 `<b>` in `.uma-tc-fol`. They become live only with a script that copies them from the DOM, which
 needs Janitor to keep `<script>` in a profile — unverified.
+
+## 46. Lowered, and what the profile can actually hand us
+
+The card dropped 3vw (10.8 css at 360) via `top` rather than a margin: a margin collapsed into
+the tag's own bottom margin and moved nothing, while stealing height from the strip below. The
+section stays at 396.4 and the gap to the band's edge at the card's right corner is now 18.5
+css, still clear.
+
+### Research: can a card show the live avatar and follower count?
+
+Sources: Janitor's own CSS guide, the community CSS guide at jai-css-guide-resources.ju.mp,
+the from-avalon studio's README, and a public profile template.
+
+| finding | consequence |
+| --- | --- |
+| "JavaScript is not allowed. This is for security reasons and cannot be bypassed." (Janitor CSS guide) | no script can copy a value from the page |
+| About Me is dropped into `.pp-uc-about-me`; a `<style>` there restyles the whole page | we can *restyle* the real elements, but not read them |
+| `url(...)`, `@import` and `data:` images are stripped from CSS | no background-image tricks, as we already knew |
+| stable classes: `.profile-avatar`, `.pp-uc-avatar-container`, `.pp-uc-title`, `.pp-uc-followers-count`, `.profile-info-hstack`, `.profile-about-me`, `.profile-page-flex` | the elements are reachable, and our theme already hides them under `.pp-uc-background` |
+| community templates flatten with `.profile-about-me, .profile-info-hstack { display: contents }` | the only CSS route to re-flow them into a custom box |
+| the About Me field is capped around **70,000 characters** (community figure) | our paste is 63,699, about 91% of it |
+
+Why the flattening route does not work here: `display: contents` makes the header's children
+siblings of our content, and they can then share a grid cell with our card — but only if the
+card is also a direct child of that grid. Ours sits inside `.uma-shell`, which is one block of
+many sections; flattening `.uma-shell` as well would drop every section into the grid and undo
+the layout. The alternative, positioning the real avatar on the card with absolute coordinates
+anchored to `.profile-page-flex`, is exact only while nothing above the About section changes
+height — and our five News cards are `<details>`, each of which shifts that section down by a
+row when opened. The avatar would drift out of its frame every time one is expanded.
+
+So the card keeps literals: `.uma-tc-pfp`'s `src` and the `<b>` in `.uma-tc-fol`. Baking real
+values in (avatar URL from the profile, current follower count) is a two-line edit; only a
+script could keep them current, and Janitor forbids script.
