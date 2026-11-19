@@ -63,14 +63,18 @@ const CHROME = `
   <button class="pp-top-bar-notifications-button"><svg width="16" height="16" viewBox="0 0 16 16"><path d="M8 1a4 4 0 0 0-4 4v3l-1 3h10l-1-3V5a4 4 0 0 0-4-4z"/></svg></button>
 </div></div>
 <div class="pp-page-background">
+  <!-- Janitor's real nesting, taken from the captured profile DOM: the About Me block
+       lives *inside* the profile card, under the row that holds the avatar and the
+       follower count. The live-binding rules depend on that shape, so the rig has to
+       reproduce it or it would be testing a page that does not exist. -->
   <div class="pp-uc-background">
+  <div class="profile-info-stack">
   <div class="profile-info-hstack">
-    <div class="pp-uc-avatar-container"></div>
+    <div class="pp-uc-avatar-container"><img class="pp-uc-avatar" src="file://${path.join(ROOT, 'assets', 'site', 'pfp.jpg')}" alt=""></div>
     <div class="profile-info-stack-inner">
       <h2 class="pp-uc-title">uma_enjoyer</h2>
       <div class="pp-uc-followers-count"><span>1,192</span> <span>followers</span></div>
     </div>
-  </div>
   </div>
   <!-- the live profile shows no tab strip above the About Me block, so the rig
        must not invent one either: the header row is measured against the bar -->
@@ -78,8 +82,8 @@ const CHROME = `
 
 const PAGE = `<!doctype html><html><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">${CHROME}</head>
-<body><div class="pp-uc-about-me profile-about-me"><style>${styleBlock}</style>${local}</div>
-</div></div></body></html>`;
+<body><style>${styleBlock}</style>${local}
+</div></div></div></div></body></html>`;
 
 /* phones from the narrowest thing Android still ships (a fold's 280 css) up
    through the big slabs, then a laptop */

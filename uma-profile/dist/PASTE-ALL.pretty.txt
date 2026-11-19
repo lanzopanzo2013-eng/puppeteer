@@ -400,8 +400,9 @@
 /* ---------- About (sky) ---------- */
 .uma-about {
   background: #4BA8F5;
-  /* the bottom strip the pink divider lives in: 120 css at 360 */
-  padding-bottom: 33.3vw;
+  /* the bottom strip the pink divider lives in: 135 css at 360, enough for the card to sit
+     centred between the tag and the band */
+  padding-bottom: 37.4vw;
 }
 /* Our copy of the About art is the landscape crop, 1100 x 688, while the official phone page
    runs a taller crop of the same painting, so the stands sit lower there. Covering a 360 x 446
@@ -439,7 +440,7 @@
    so the band shows a plain white plate where the content will go. */
 .uma-about-ph {
   position: relative; z-index: 1;
-  width: auto; margin: 0 5vw; aspect-ratio: 3 / 2; top: 3vw;
+  width: auto; margin: 0 5vw; aspect-ratio: 3 / 2; top: 5.8vw;
   background: linear-gradient(#fff, #F5FAFF);
   border-radius: 2.8vw; box-shadow: 0 2.2vw 0 rgba(20,80,140,.16);
   box-sizing: border-box; display: flex; overflow: hidden;
@@ -1297,6 +1298,60 @@ body:has([class*="otificationsPopover"]) .uma-sheet-foot {
   .uma-lb-bg.b3 { object-position: 100% 50%; }
   .uma-tag { font-size: 23px; padding: 8px 26px 9px; }
   .uma-hl { font-size: 22px; }
+}
+/* Live binding. The profile's own avatar and follower count are lifted into the card: they
+   already exist in the page (Janitor renders them in .pp-uc-background, which this theme hides),
+   and anchor positioning lets an element be placed against a named element anywhere inside its
+   containing block, so the real .pp-uc-avatar-container can sit exactly on .uma-tc-port without
+   being a DOM child of it. Everything here is inside @supports, so browsers without anchor
+   positioning (Safari for now) keep the stand-in portrait and number untouched. body:has() guards
+   the text swap, so if Janitor ever renames the class the stand-in simply stays. */
+.uma-tc-port { anchor-name: --uma-pfp; }
+.uma-tc-fol b { anchor-name: --uma-fol; }
+@supports (position-anchor: --uma-pfp) {
+  .pp-uc-background { position: relative !important; }
+  .pp-uc-background .profile-info-wrapper-box,
+  .pp-uc-background .profile-info-stack {
+    position: static !important; overflow: visible !important;
+  }
+  /* the rows still have to be rendered for their children to be, so they are kept and
+     flattened to nothing */
+  .pp-uc-background .profile-info-hstack,
+  .pp-uc-background .profile-info-stack-inner {
+    display: block !important; position: static !important;
+    height: 0 !important; min-height: 0 !important;
+    margin: 0 !important; padding: 0 !important; overflow: visible !important;
+  }
+  .pp-uc-background .profile-info-stack-inner > *:not(.pp-uc-followers-count) {
+    display: none !important;
+  }
+  .pp-uc-background .pp-uc-avatar-container {
+    display: block !important; position: absolute !important;
+    position-anchor: --uma-pfp;
+    top: anchor(top); left: anchor(left);
+    width: anchor-size(width); height: anchor-size(height);
+    margin: 0 !important; padding: 0 !important; border: 0 !important;
+    border-radius: 0 !important; background: none !important; box-shadow: none !important;
+    z-index: 4;
+  }
+  .pp-uc-background .pp-uc-avatar-container > a { display: none !important; }
+  .pp-uc-background .pp-uc-avatar,
+  .pp-uc-background .pp-uc-avatar-container img {
+    display: block !important; width: 100% !important; height: 100% !important;
+    object-fit: cover !important; border-radius: 0 !important;
+  }
+  .pp-uc-background .pp-uc-followers-count {
+    display: block !important; position: absolute !important;
+    position-anchor: --uma-fol;
+    top: anchor(top); left: anchor(left);
+    margin: 0 !important; padding: 0 !important; white-space: nowrap !important;
+    font-family: "Roboto Condensed", roboto, Arial, sans-serif !important;
+    font-style: italic; font-weight: 900 !important; font-size: 5vw !important;
+    line-height: 1.05 !important; color: #E5348A !important;
+    z-index: 4;
+  }
+  .pp-uc-background .pp-uc-followers-count span + span { display: none !important; }
+  body:has(.pp-uc-followers-count) .uma-tc-fol b { color: transparent !important; }
 }
 </style>
 

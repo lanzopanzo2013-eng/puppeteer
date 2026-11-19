@@ -1455,10 +1455,12 @@ needs Janitor to keep `<script>` in a profile — unverified.
 
 ## 46. Lowered, and what the profile can actually hand us
 
-The card dropped 3vw (10.8 css at 360) via `top` rather than a margin: a margin collapsed into
-the tag's own bottom margin and moved nothing, while stealing height from the strip below. The
-section stays at 396.4 and the gap to the band's edge at the card's right corner is now 18.5
-css, still clear.
+The card drops via `top` rather than a margin: a margin collapsed into the tag's own bottom
+margin and moved nothing, while stealing height from the strip below. The strip's bottom padding
+took the first cut (33.3 → 37.4vw) and `top` the rest, landing at `5.8vw`. Measured at 360:
+section 411.2, tag bottom 86.5, card 97.4 → 297.4 (300×200), so **10.9 css above and 113.8
+below** — the same proportion as the user's own live page, which measures ~11 above and ~121
+below. Clear of both cropped corners at every width from 280 to 1280.
 
 ### Research: can a card show the live avatar and follower count?
 
@@ -1472,7 +1474,6 @@ the from-avalon studio's README, and a public profile template.
 | `url(...)`, `@import` and `data:` images are stripped from CSS | no background-image tricks, as we already knew |
 | stable classes: `.profile-avatar`, `.pp-uc-avatar-container`, `.pp-uc-title`, `.pp-uc-followers-count`, `.profile-info-hstack`, `.profile-about-me`, `.profile-page-flex` | the elements are reachable, and our theme already hides them under `.pp-uc-background` |
 | community templates flatten with `.profile-about-me, .profile-info-hstack { display: contents }` | the only CSS route to re-flow them into a custom box |
-| the About Me field is capped around **70,000 characters** (community figure) | our paste is 63,699, about 91% of it |
 
 Why the flattening route does not work here: `display: contents` makes the header's children
 siblings of our content, and they can then share a grid cell with our card — but only if the
@@ -1483,6 +1484,64 @@ anchored to `.profile-page-flex`, is exact only while nothing above the About se
 height — and our five News cards are `<details>`, each of which shifts that section down by a
 row when opened. The avatar would drift out of its frame every time one is expanded.
 
-So the card keeps literals: `.uma-tc-pfp`'s `src` and the `<b>` in `.uma-tc-fol`. Baking real
-values in (avatar URL from the profile, current follower count) is a two-line edit; only a
-script could keep them current, and Janitor forbids script.
+`display: contents` was a dead end, and absolute coordinates against the page are too brittle —
+but neither is needed. **Anchor positioning does the job**, and it is the real answer to the
+brief, not a workaround.
+
+### §47b What actually binds the live values
+
+The captured profile DOM (the studio's own `preview/frame.html` plus a real About Me paste) settles
+what the page looks like: our card lives in `.pp-uc-about-me`, and the avatar, the handle and the
+follower count live in `.profile-info-stack` **inside the same `.pp-uc-background`**. Those are
+siblings of our block, not ancestors, so `anchor-name` / `position-anchor` / `anchor()` /
+`anchor-size()` can place them onto our card without moving a single node:
+
+```css
+.uma-tc-port { anchor-name: --uma-pfp; }           /* the frame we want filled */
+.uma-tc-fol b { anchor-name: --uma-fol; }          /* the number we want replaced */
+@supports (position-anchor: --uma-pfp) {
+  .pp-uc-background .pp-uc-avatar-container {
+    display: block !important; position: absolute !important;
+    position-anchor: --uma-pfp;
+    top: anchor(top); left: anchor(left);
+    width: anchor-size(width); height: anchor-size(height);
+  }
+  .pp-uc-background .pp-uc-followers-count {
+    position: absolute !important; position-anchor: --uma-fol;
+    top: anchor(top); left: anchor(left);
+  }
+  body:has(.pp-uc-followers-count) .uma-tc-fol b { color: transparent !important; }
+}
+```
+
+Three things had to be right before it worked, each found by measuring rather than guessing:
+
+1. **The row has to be rendered.** `display: none` on an ancestor means no box, so the rule that
+   hides `.profile-info-hstack` was quietly killing the avatar: `top` stayed `auto` and the box
+   measured 0×0 no matter how many `!important` overrides pointed at it. The fix keeps the row and
+   flattens it instead — `display: block; height: 0; overflow: visible` — and hides only the
+   *siblings* the theme does not want (`:not(.pp-uc-followers-count)`).
+2. **Anchor and anchored element need the same containing block.** They do here: both resolve
+   against `.pp-uc-background`, so `.uma-shell` being `position: relative` stops mattering. That is
+   why the anchored box lands on the frame to the pixel (27,198 → 108×200 at 360, the frame exactly).
+3. **The winning rules have to come last.** The theme's own hides sit at the end of the sheet; the
+   live-binding block is appended after them, otherwise the earlier `display: none !important`
+   wins on source order.
+
+What the page now shows, measured in the captured DOM at 360: `.uma-tc-port` `[27,198,108,200]`
+and `.pp-uc-avatar-container` `[27,198,108,200]` — identical, i.e. the user's own picture, live,
+in the card's frame; `.pp-uc-followers-count` lands on `.uma-tc-fol b` and prints the real
+`1,192`.
+
+Degradation is deliberate. Everything sits inside `@supports (position-anchor: …)`, so Safari
+(which has no anchor positioning yet) still gets the painted portrait and `128,043`; the
+`:has()` guard means that if Janitor ever renames `.pp-uc-followers-count`, the stand-in number
+simply stays instead of the slot going blank; and the real avatar is painted *over* the painted
+portrait, so a failed binding shows our art, never a hole.
+
+The rig grew to match: its mock header now reproduces the real nesting (about-me inside
+`.profile-info-stack`, under the avatar row) and carries an `<img>` avatar, so the nine-width
+sweep exercises the binding instead of a page shape that does not exist. Still 9/9, spill 0.
+
+`docs/about-47.png` puts the two states side by side: own art on the left, the real profile's
+avatar and follower count on the right, both at 360.
