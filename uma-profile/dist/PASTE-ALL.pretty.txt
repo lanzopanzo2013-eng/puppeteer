@@ -538,8 +538,14 @@
   /* tabular figures: the live count changes under the reader's eyes and must not jitter */
   font-variant-numeric: tabular-nums;
 }
-.uma-tc-rule { height: 1px; margin: calc(2vw * var(--uma-k)) 0 calc(1.85vw * var(--uma-k));
-  background: linear-gradient(90deg, rgba(20,60,120,.2), rgba(20,60,120,0) 92%); }
+/* ---------- the break ----------
+   His own divider: the site's horseshoe sitting in a rule that runs the column's width. It is
+   an <img> and not a mask or a background — this profile drops every url() the stylesheet
+   carries, so the file itself is cut out and coloured the brand pink, and CSS only places it. */
+.uma-tc-break {
+  display: block; width: 100%; height: auto;
+  margin: calc(2.2vw * var(--uma-k)) 0 calc(2vw * var(--uma-k));
+}
 .uma-tc-bio {
   /* A scroll box, not a paragraph. The card is a fixed 50.1333vw tall whatever is in it, so
      the bio takes what the name, chip, count and rule leave over — and when the text is
@@ -574,6 +580,15 @@
    rather than the body blue, so the eye lands on it first. Everything under it stays one
    size — his copy is a run of facts, and the air between paragraphs is what separates them. */
 .uma-tc-bio p:first-child { font-size: calc(3.15vw * var(--uma-k)); line-height: 1.42; color: #13294B; }
+/* Bold is for the handful of facts worth a thumb: the names he goes by, what he is, the number
+   the whole paragraph hangs on, the one race he names. Navy rather than body blue, so a bold
+   word reads as a headword and not as a link. */
+.uma-tc-bio strong { font-weight: 700; color: #13294B; }
+/* the same break, quieter and inside the scroll: a page break between movements, not a rule */
+.uma-tc-bio .uma-tc-break {
+  margin: calc(2.6vw * var(--uma-k)) 0 calc(2.4vw * var(--uma-k));
+  opacity: .45;
+}
 .uma-profile-card {
   position: relative; z-index: 1;
   background: rgba(255,255,255,.94); border-radius: 14px;
@@ -1137,11 +1152,16 @@ body:has([class*="otificationsPopover"]) .uma-sheet-foot {
    instead of only the About Me block.
    ============================================================ */
 .pp-page-background {
-  /* the gap between Janitor's profile bar and .uma-topbar is this background
-     showing through, so it carries the header blue and the seam disappears */
-  background: #0F57FB !important;
+  /* Was #0F57FB. That backdrop is what turned into a blue band over the hero the moment the
+     page had room to move — Janitor's newer layout, or a pull at the top — and a blue band above
+     the artwork reads as a header that grew. The blue belongs to the bar, and the bar is a
+     layer of our own (.uma-hdr, 57px), so the page's backdrop goes back to paper. */
+  background: #fff !important;
   overflow-x: clip !important;
 }
+/* the window itself, for the moment the page is pulled past its top: Chrome paints the
+   backdrop there, and a blue bounce above the key visual looks like a second header */
+html, body { background-color: #fff !important; }
 /* Janitor wraps the About Me block in its own padded column. Zeroing the
    padding and letting the wrapper disappear (display:contents — the same trick
    the previous theme used) is what lets .uma-shell span the whole viewport. */
@@ -1242,6 +1262,16 @@ body:has([class*="otificationsPopover"]) .uma-sheet-foot {
 .pp-uc-background {
   min-height: 0 !important; padding: 0 !important; margin: 0 !important;
   background: transparent !important; box-shadow: none !important; border: 0 !important;
+}
+/* The list above names the classes the profile card had when it was measured. Janitor renames
+   them freely, and a renamed row does not disappear: it stays as an empty, transparent band the
+   height of the avatar and the handle, which shows the page behind it as a stretch of colour
+   under the bar — a header that looks like it grew overnight. So the rule now says what to keep
+   instead of what to drop: inside the profile card, the About block is the only survivor, and
+   anything that merely *contains* it is left alone (:has keeps the wrapper, and a browser
+   without :has simply drops this rule and falls back to the list above). */
+.pp-uc-background > *:not(.pp-uc-about-me):not(.profile-about-me):not(:has(.pp-uc-about-me)):not(:has(.profile-about-me)) {
+  display: none !important;
 }
 
 /* Janitor's bar is sticky at top:0 and ours is too, so the two stacked and cut
@@ -1413,7 +1443,8 @@ body:has([class*="otificationsPopover"]) .uma-sheet-foot {
   .uma-tc-fol { margin-top: 14.3px; gap: 19px; }
   .uma-tc-fol span { font-size: 22.6px; }
   .uma-tc-fol b { font-size: 56px; }
-  .uma-tc-rule { margin: 23.8px 0 22px; }
+  .uma-tc-break { margin: 26px 0 23.8px; }
+  .uma-tc-bio .uma-tc-break { margin: 30.9px 0 28.5px; }
   .uma-tc-bio { font-size: 35.1px; padding-right: 8.3px; }
   .uma-tc-bio p:first-child { font-size: 37.5px; }
   .uma-tc-bio::-webkit-scrollbar { width: 10.1px; }
@@ -1757,15 +1788,17 @@ body:has([class*="otificationsPopover"]) .uma-sheet-foot {
         <span class="uma-tc-role"><i>@uma_enjoyer</i></span>
         <div class="uma-tc-name">Fuji/Aki</div>
         <div class="uma-tc-fol"><span>Followers</span><b>128,043</b></div>
-        <div class="uma-tc-rule"></div>
+        <img class="uma-tc-break" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@071c6ccac752ace2c0d8a19a4b5ecfa6d3cffdd8/uma-profile/assets/site/horseshoe-break.png">
         <div class="uma-tc-bio">
-          <p>Hi reader, I am uma_enjoyer, and you can call me Fuji or Aki. I started creating bots back in 2023, focusing on realistic Japanese life scenarios all the way to Initial D, then in spring I stopped and switched to Janitor AI, and by August 2026 I was making story-first Umamusume bots.</p>
-          <p>As a person I am male, he/him, half Filipino and half Japanese, and I speak three languages. They are English, Tagalog and Japanese, though my vocabulary is just okay in all of them. I do motorsports in real life and on the simulator, and I am a professional in the sport. I am a young adult who still does college classes, I am single, and I take life seriously to the fullest.</p>
-          <p>I love cars a lot, like, really. Almost 70% of the fun in my whole life comes from the car life, and that is thanks to my dad. When I was an elementary/middle schooler he was a well-known member of a car club and always took me around car meets and track days. It is unfortunate that he passed away, just recently, but for my family's privacy I won't go deeper than that. I compete in a lot of motorsport competitions, and no, I am not a rich kid who wants to race. The wins pay for my entrance fees.</p>
-          <p>AI is another thing I find highly interesting. I love experimenting with LLMs, I would consider myself a great prompter, and I could see myself having a job related to AI someday too. I love cats, and dogs too, and I don't hate any kind of housepet at all. I used to play War Thunder and Call of Duty all the time during COVID, so I know a lot when it comes to military vehicles, which is one of my strengths in bot creation. I love the world of desktops too, so if you want to discuss PC parts, I can happily take part.</p>
-          <p>I believe in God, but I will not specify which God because of privacy reasons, and on that note I keep my identity private so I don't get known for this in real life. In bot creation I specialize in lorebooks, RPG and Japan life scenarios. I can create any kind of bot, although I am weak when it comes to smut and I don't have much experience with it, so if you are a smut-focused person, I am not for you to like.</p>
-          <p>Oh, and I do love horse racing too. One of my notable events was spectating from the grandstands at the Arima Kinen, 2022. I got myself a QR ticket and I watched Equinox win. To be fair I am not that passionate about it compared to cars, but I still have some passion for horse racing.</p>
-          <p>And then there is Umamusume. I first watched season 1 because my friends invited me to watch with them, then I played Umamusume Pretty Derby by March 2021. I was not a try-hard at the game, I only played it lightly until now to be honest, and I think that is going to be the same forever, although I did watch all the anime series Umamusume has to offer, which strengthened my passion for these horsegirls.</p>
+          <p>Hi reader, I am uma_enjoyer, and you can call me <strong>Fuji or Aki</strong>. I started creating bots back in 2023, focusing on realistic Japanese life scenarios all the way to <strong>Initial D</strong>, then in spring I stopped and switched to Janitor AI, and by August 2026 I was making story-first Umamusume bots.</p>
+          <p>As a person I am male, he/him, <strong>half Filipino and half Japanese</strong>, and I speak three languages. They are English, Tagalog and Japanese, though my vocabulary is just okay in all of them. I do motorsports in real life and on the simulator, and I am a professional in the sport. I am a young adult who still does college classes, I am single, and I take life seriously to the fullest.</p>
+          <img class="uma-tc-break" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@071c6ccac752ace2c0d8a19a4b5ecfa6d3cffdd8/uma-profile/assets/site/horseshoe-break.png">
+          <p>I love cars a lot, like, really. Almost <strong>70%</strong> of the fun in my whole life comes from the car life, and that is thanks to my dad. When I was an elementary/middle schooler he was a well-known member of a car club and always took me around car meets and track days. It is unfortunate that he passed away, just recently, but for my family's privacy I won't go deeper than that. I compete in a lot of motorsport competitions, and no, I am not a rich kid who wants to race. <strong>The wins pay for my entrance fees.</strong></p>
+          <p>AI is another thing I find highly interesting. I love experimenting with LLMs, I would consider myself a great prompter, and I could see myself having a job related to AI someday too. I love cats, and dogs too, and I don't hate any kind of housepet at all. I used to play <strong>War Thunder and Call of Duty</strong> all the time during COVID, so I know a lot when it comes to military vehicles, which is one of my strengths in bot creation. I love the world of desktops too, so if you want to discuss PC parts, I can happily take part.</p>
+          <p>I believe in God, but I will not specify which God because of privacy reasons, and on that note I keep my identity private so I don't get known for this in real life. In bot creation I specialize in <strong>lorebooks, RPG and Japan life scenarios</strong>. I can create any kind of bot, although I am weak when it comes to smut and I don't have much experience with it, so if you are a smut-focused person, I am not for you to like.</p>
+          <img class="uma-tc-break" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@071c6ccac752ace2c0d8a19a4b5ecfa6d3cffdd8/uma-profile/assets/site/horseshoe-break.png">
+          <p>Oh, and I do love horse racing too. One of my notable events was spectating from the grandstands at the <strong>Arima Kinen, 2022</strong>. I got myself a QR ticket and I watched <strong>Equinox</strong> win. To be fair I am not that passionate about it compared to cars, but I still have some passion for horse racing.</p>
+          <p>And then there is Umamusume. I first watched season 1 because my friends invited me to watch with them, then I played <strong>Umamusume Pretty Derby</strong> by March 2021. I was not a try-hard at the game, I only played it lightly until now to be honest, and I think that is going to be the same forever, although I did watch all the anime series Umamusume has to offer, which strengthened my passion for these horsegirls.</p>
         </div>
       </div>
     </div>

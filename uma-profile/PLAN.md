@@ -1785,3 +1785,36 @@ Verified: rig 9/9 spill 0, `bio.scrollHeight` 1042 -> 4426 over `clientHeight` 6
 280/320/360/390/430/768/1280/2000, page body `scrollHeight == clientHeight` at every width, no
 horizontal overflow on the captured page (`scrollWidth` 355 < 360), avatar anchor still
 `[10, 1442, 138, 196]` on the card, 0 console errors. `docs/round-52.png` is the before/after.
+
+## 53 — the band that grew, his own rule, and bold where it counts
+
+**The header.** Nothing about the bar changed; what changed is what sits behind it. `.pp-page-background`
+was painted `#0F57FB` on purpose, to close the seam between Janitor's bar and the key visual — so any
+stretch of page that no section covers came out blue, directly under the bar, and read as a header that
+had grown. Two things now: the backdrop goes back to paper (`.pp-page-background`, plus `html, body` for
+the pull-down area Chrome paints), and the blue is owned by the bar alone — the `.uma-hdr` layer is a
+fixed 57px band, so the header is exactly as tall as the band whatever the page does around it. The
+other half of it: the theme used to list the profile card's rows by name and hide them one by one
+(`.profile-info-hstack`, `.pp-uc-avatar-container`, `.pp-uc-title`…). Janitor renames them freely, and a
+renamed row does not vanish, it stays as an empty transparent band the height of an avatar and a handle
+— which is exactly the stretch of colour that showed up. The rule now says what to *keep*:
+`.pp-uc-background > *:not(.pp-uc-about-me):not(.profile-about-me):not(:has(...))` leaves the About block
+and anything that contains it, and hides everything else, named or not. A browser without `:has` drops
+that rule and falls back to the old list.
+
+**The break.** His Picsart divider — the site's horseshoe sitting in a rule — cut down to its art,
+recoloured `#E5348A` and shipped as `assets/site/horseshoe-break.png` (2400x92, 1.6 KB). It is an `<img>`
+and not a mask or a background: this profile drops every `url()` the stylesheet carries, so the colour
+has to be in the file. It appears three times: once in the card under the follower count, where the old
+hairline rule was, and twice inside the scrolling copy as the page break between movements — person and
+past, cars and the workshop, racing and Umamusume — at 45% so the copy still leads.
+
+**Bold.** Ten `<strong>`s, navy `#13294B`: the two names he goes by, `Initial D`, half Filipino and half
+Japanese, `70%`, the wins pay for my entrance fees, War Thunder and Call of Duty, lorebooks, RPG and Japan
+life scenarios, Arima Kinen 2022, Equinox, Umamusume Pretty Derby. Enough to be seen, not enough to read
+as a link farm.
+
+Verified: rig 9/9 spill 0 at 280…1280; card still 364x196 at 390 (261x140 at 280, 711x400 at 1280), bio
+scroll box 1509 over 75 at 390, page body `scrollHeight == clientHeight` at every width; the `:has` rule
+tested against a mock card with a renamed row (hidden), a wrapper containing the About block (kept) and
+the About block itself (kept). `docs/round-53.png` is the card and the unrolled copy.
