@@ -1522,7 +1522,11 @@ html, body { background-color: #fff !important; }
    readable measure — the way the site behaves between phone and desktop. */
 @media (min-width: 820px) {
   .uma-sec { padding-left: calc(50% - 500px); padding-right: calc(50% - 500px); }
-  .uma-hero { height: min(58vw, 700px); background: #8FD46A; }
+  /* The band stays 161vw on wide screens too. The artwork is already cropped to
+     this band's own aspect (1600 x 2576 => 0.621, and 161vw gives exactly that),
+     so a shorter band here would make object-fit: cover trim the picture — the
+     raw image is pre-cropped to fit, and it must show whole at every width. */
+  .uma-hero { height: 161vw; background: #8FD46A; }
   /* the site scales its header logo down again on wide screens */
   .uma-hdr-brand img { width: 8.9583vw; margin-left: 1.9444vw; max-width: none; animation: none; }
   .uma-sentinel { display: none; }
