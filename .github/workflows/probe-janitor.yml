@@ -24,7 +24,7 @@ jobs:
         continue-on-error: true
         run: |
           mkdir -p probe
-          node /tmp/pw/probe.mjs > probe/log.txt 2>&1 || true
+          cd /tmp/pw && OUT="$GITHUB_WORKSPACE/probe" node probe.mjs > "$GITHUB_WORKSPACE/probe/log.txt" 2>&1 || true
           tail -60 probe/log.txt
           ls -la probe
       - name: upload

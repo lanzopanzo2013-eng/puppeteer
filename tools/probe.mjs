@@ -4,7 +4,7 @@
 import fs from 'node:fs/promises';
 import puppeteer from 'puppeteer';
 
-const OUT = 'probe';
+const OUT = process.env.OUT || 'probe';
 const UA = 'Mozilla/5.0 (Linux; Android 13; SM-S901B) AppleWebKit/537.36 (KHTML, like Gecko) '
   + 'Chrome/126.0.0.0 Mobile Safari/537.36';
 const log = (...a) => console.log(...a);
