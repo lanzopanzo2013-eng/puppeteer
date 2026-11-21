@@ -1,18 +1,12 @@
-node:internal/modules/esm/resolve:283
-    throw new ERR_MODULE_NOT_FOUND(
-          ^
+file:///tmp/pw/node_modules/puppeteer/lib/esm/puppeteer/getConfiguration.js:95
+    configuration.logLevel = getLogLevel(process.env['PUPPETEER_LOGLEVEL'] ?? configuration.logLevel);
+                           ^
 
-Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/home/runner/work/puppeteer/puppeteer/node_modules/puppeteer/lib/puppeteer/puppeteer.js' imported from /home/runner/work/puppeteer/puppeteer/tools/probe.mjs
-    at finalizeResolution (node:internal/modules/esm/resolve:283:11)
-    at moduleResolve (node:internal/modules/esm/resolve:952:10)
-    at defaultResolve (node:internal/modules/esm/resolve:1188:11)
-    at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
-    at #cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
-    at ModuleLoader.resolve (node:internal/modules/esm/loader:640:38)
-    at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:264:38)
-    at ModuleJob._link (node:internal/modules/esm/module_job:168:49) {
-  code: 'ERR_MODULE_NOT_FOUND',
-  url: 'file:///home/runner/work/puppeteer/puppeteer/node_modules/puppeteer/lib/puppeteer/puppeteer.js'
-}
+TypeError: Cannot add property logLevel, object is not extensible
+    at getConfiguration (file:///tmp/pw/node_modules/puppeteer/lib/esm/puppeteer/getConfiguration.js:95:28)
+    at file:///tmp/pw/node_modules/puppeteer/lib/esm/puppeteer/puppeteer.js:9:23
+    at ModuleJob.run (node:internal/modules/esm/module_job:325:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:606:24)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)
 
 Node.js v20.20.2
