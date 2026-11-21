@@ -1,7 +1,42 @@
 == profile https://janitorai.com/profiles/97048214-6734-4671-8ee4-eb018151280c_profile-of-shxou-huang
+attempt 1 failed: Waiting for selector `.pp-uc-about-me` failed: Waiting failed: 30000ms exceeded; url now https://janitorai.com/profiles/97048214-6734-4671-8ee4-eb018151280c_profile-of-shxou-huang
 before {"header":[0,0,384,40],"bar":[0,0,384,40],"notice":[0,40,384,58],"main":[0,98,384,3835],"about":[28,283,328,292],"shell":null,"umaHdr":null,"hero":null,"card":null,"docH":4255,"innerH":844}
 after  {"header":[0,0,384,40],"bar":[0,0,384,40],"notice":[0,0,0,0],"main":[0,40,384,7340],"about":[0,0,0,0],"shell":[-3,40,390,4037],"umaHdr":[0,0,390,57],"hero":[-3,40,390,628],"card":[10,1408,364,196],"docH":7702,"innerH":844}
 figs   {"row":[238,1423,121,22],"cardTop":1408,"imgs":[{"cls":"fig-jet","loaded":true,"nat":"320x209","drawn":"34x22"},{"cls":"fig-car","loaded":true,"nat":"320x140","drawn":"51x22"},{"cls":"fig-horse","loaded":true,"nat":"300x212","drawn":"32x22"}]}
+figwhy {
+ "chain": [
+  "DIV.uma-about-figs pos=absolute ov=visible w=121",
+  "DIV.uma-about-ph pos=absolute ov=hidden w=364",
+  "DIV.uma-sec uma-about pos=relative ov=clip w=390",
+  "DIV.uma-shell pos=relative ov=clip visible w=390",
+  "DIV.pp-uc-about-me profile-about-me _aboutMe_1nxb2_2 c pos=static ov=visible w=0",
+  "DIV.chakra-stack profile-info-stack _infoStack_1tco0_1 pos=static ov=visible w=352",
+  "DIV.profile-info-wrapper-box _wrapper_107xt_31 css-15v pos=static ov=visible w=352",
+  "DIV.pp-uc-background profile-uc-background profile-uc- pos=static ov=visible w=352",
+  "DIV.profile-page-flex _layout_1guh8_1 css-1wfbrwg pos=static ov=visible w=352",
+  "DIV.chakra-stack profile-page-container _center_rta4k_ pos=static ov=visible w=352",
+  "MAIN._main_raii8_11 _customPadding_raii8_26 pos=static ov=clip visible w=384",
+  "DIV._wrapper_13xo6_1  pos=static ov=visible w=384",
+  "DIV. pos=static ov=visible w=384",
+  "BODY.chakra-ui-dark pos=relative ov=visible w=384"
+ ],
+ "img": {
+  "rect": [
+   34,
+   22
+  ],
+  "w": "34.3281px",
+  "h": "22.4219px",
+  "maxW": "100%",
+  "pos": "static",
+  "right": "auto",
+  "top": "auto",
+  "umaK": "1",
+  "nat": "320x209"
+ },
+ "rowW": 121.171875,
+ "hits": []
+}
 chain (outermost first):
     top -300 h 7702 pad 0px mar 0px block
    _wrapper_13xo6_1  top -300 h 7702 pad 0px mar 0px flex
