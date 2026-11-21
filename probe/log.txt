@@ -1,20 +1,20 @@
 == profile https://janitorai.com/profiles/97048214-6734-4671-8ee4-eb018151280c_profile-of-shxou-huang
 before {"header":[0,0,390,40],"bar":[0,0,390,40],"notice":[0,40,390,58],"main":[0,98,390,3853],"about":[28,283,334,292],"shell":null,"umaHdr":null,"hero":null,"card":null,"docH":4273,"innerH":844}
-after  {"header":[0,0,390,40],"bar":[0,0,390,40],"notice":[0,40,390,58],"main":[0,98,390,7390],"about":[0,0,0,0],"shell":[0,122,390,4037],"umaHdr":[0,0,477,57],"hero":[0,122,390,628],"card":[13,1490,364,196],"docH":7810,"innerH":1033}
+after  {"header":[0,0,390,40],"bar":[0,0,390,40],"notice":[0,0,0,0],"main":[0,40,390,7358],"about":[0,0,0,0],"shell":[0,40,390,4037],"umaHdr":[0,0,477,57],"hero":[0,40,390,628],"card":[13,1408,364,196],"docH":7720,"innerH":1033}
 chain (outermost first):
-    top -300 h 7810 pad 0px mar 0px block
-   _wrapper_13xo6_1  top -300 h 7810 pad 0px mar 0px flex
-   _main_raii8_11 _customPadding_raii8_26 top -202 h 7390 pad 0px mar 0px block
-   chakra-stack profile-page-container _center_rta4k_2 css-14l6 top -202 h 7390 pad 16px mar 0px flex
-   profile-page-flex _layout_1guh8_1 css-1wfbrwg top -186 h 7374 pad 0px mar 0px flex
-   pp-uc-background profile-uc-background profile-uc-background top -186 h 4073 pad 0px mar 0px flex
-   profile-info-wrapper-box _wrapper_107xt_31 css-15vqpxh top -186 h 4073 pad 0px mar 0px block
-   chakra-stack profile-info-stack _infoStack_1tco0_1 css-8g8ih top -186 h 4073 pad 0px mar 0px flex
+    top -300 h 7720 pad 0px mar 0px block
+   _wrapper_13xo6_1  top -300 h 7720 pad 0px mar 0px flex
+   _main_raii8_11 _customPadding_raii8_26 top -260 h 7358 pad 0px mar 0px block
+   chakra-stack profile-page-container _center_rta4k_2 css-14l6 top -260 h 7358 pad 0px mar 0px flex
+   profile-page-flex _layout_1guh8_1 css-1wfbrwg top -260 h 7358 pad 0px mar 0px flex
+   pp-uc-background profile-uc-background profile-uc-background top -260 h 4057 pad 0px mar 0px flex
+   profile-info-wrapper-box _wrapper_107xt_31 css-15vqpxh top -260 h 4057 pad 0px mar 0px block
+   chakra-stack profile-info-stack _infoStack_1tco0_1 css-8g8ih top -260 h 4057 pad 0px mar 0px flex
    pp-uc-about-me profile-about-me _aboutMe_1nxb2_2 css-p5wazl top 0 h 0 pad 0px mar 0px contents
-   uma-shell top -178 h 4037 pad 0px mar 0px block
-trial baseline {"hero":[122,628],"hdr":[0,57],"header":[0,40],"main":[98,7390],"card":[1490,196],"docH":7810}
-trial notice hidden {"hero":[64,628],"hdr":[0,57],"header":[0,40],"main":[40,7390],"card":[1432,196],"docH":7752}
-trial + page container padding {"hero":[48,628],"hdr":[0,57],"header":[0,40],"main":[40,7374],"card":[1416,196],"docH":7736}
+   uma-shell top -260 h 4037 pad 0px mar 0px block
+trial baseline {"hero":[40,628],"hdr":[0,57],"header":[0,40],"main":[40,7358],"card":[1408,196],"docH":7720}
+trial notice hidden {"hero":[40,628],"hdr":[0,57],"header":[0,40],"main":[40,7358],"card":[1408,196],"docH":7720}
+trial + page container padding {"hero":[40,628],"hdr":[0,57],"header":[0,40],"main":[40,7358],"card":[1408,196],"docH":7720}
 trial + info stack gap {"hero":[40,628],"hdr":[0,57],"header":[0,40],"main":[40,7358],"card":[1408,196],"docH":7720}
 trial + about margins {"hero":[40,628],"hdr":[0,57],"header":[0,40],"main":[40,7358],"card":[1408,196],"docH":7720}
 trial + shell pull {"hero":[40,628],"hdr":[0,57],"header":[0,40],"main":[40,7358],"card":[1408,196],"docH":7720}
