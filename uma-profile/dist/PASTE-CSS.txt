@@ -416,30 +416,25 @@
    132227 capture, band top 760); the shared 26px section padding leaves ours 5 short, and
    this is the one band where the gap was measured against the real thing. */
 .uma-about .uma-tag-wrap { margin-top: 5px; }
-/* The three cut-outs in the band's free upper-right corner (fig-jet / fig-car / fig-horse,
-   built by tools/make-figs.py). The card is centred and only 50.1333vw of the band's
-   122.6667vw tall, so the strip between the plate and the card's top edge is empty air on
-   the right. The row hangs off the card's top edge (bottom: 50% + half the card) rather than
-   off the band's top, because that edge is what the eye reads as the box's top; it stays
-   clear of the plate at every width and can never cover the card. Heights, not widths, so
-   the three keep the proportion they were cut at, and every size carries the same .5955
-   the card's own contents shrink by at 900. */
+/* The three cut-outs, in the card's own free upper-right corner (fig-jet / fig-car /
+   fig-horse, built by tools/make-figs.py). The card's body is a column of short lines — the
+   role plate, the name, the follower count — and none of them reaches the right edge, so the
+   corner above the break is empty white at every width: 125 x 74 css at 390, 246 x 145 at
+   1280. The row is pinned to that corner by the body's own padding (4vw / 3.8vw, the numbers
+   --uma-k already scales), and it is sized by --uma-k too, so it stays the same small thing
+   against the copy instead of becoming furniture on a desktop. One height for all three, so
+   they sit on the break like a row of stickers. */
 .uma-about-figs {
-  --fk: 1;
-  position: absolute; z-index: 1; right: 12px;
-  bottom: calc(50% + 25.0667vw + 2.6vw);
-  display: flex; align-items: flex-end; gap: calc(1.6vw * var(--fk));
+  position: absolute; z-index: 3;
+  top: calc(4vw * var(--uma-k)); right: calc(3.8vw * var(--uma-k));
+  display: flex; align-items: flex-end; gap: calc(.5vw * var(--uma-k));
   pointer-events: none;
 }
 .uma-about-figs img {
   display: block; width: auto;
-  filter: drop-shadow(0 .35vw 1.1vw rgba(12,54,96,.38));
+  height: calc(5.75vw * var(--uma-k));
+  filter: drop-shadow(0 .22vw .7vw rgba(12,54,96,.30));
 }
-.uma-about-figs .fig-jet { height: calc(10.4vw * var(--fk)); }
-.uma-about-figs .fig-car { height: calc(9.6vw * var(--fk)); }
-.uma-about-figs .fig-horse { height: calc(10.8vw * var(--fk)); }
-/* under 360 the plate and the row start sharing the line, and these are decoration */
-@media (max-width: 359px) { .uma-about-figs { display: none; } }
 /* Our copy of the About art is the landscape crop, 1100 x 688, while the official phone page
    runs a taller crop of the same painting, so the stands sit lower there. Covering a 360 x 446
    band with this one means showing about half of its width: the left half keeps the roofline
@@ -1469,16 +1464,13 @@ html, body { background-color: #fff !important; }
 @media (min-width: 900px) {
   .uma-about { height: 62.5vw; }
   .uma-about-ph { width: 55.5556vw; height: 31.25vw; }
-  .uma-about-figs { --fk: .5955; bottom: calc(50% + 15.625vw + 1.55vw); }
 }
 @media (min-width: 2000px) {
   .uma-about { height: 1250px; }
   .uma-about-ph { width: 1111.1111px; height: 625px; }
   /* the card is a flat size from here, so the corner row is too (0.5955 * 1vw at 2000) */
-  .uma-about-figs { bottom: 968.5px; gap: 19px; }
-  .uma-about-figs .fig-jet { height: 123.9px; }
-  .uma-about-figs .fig-car { height: 114.3px; }
-  .uma-about-figs .fig-horse { height: 128.6px; }
+  .uma-about-figs { top: 47.6px; right: 45.3px; gap: 5.95px; }
+  .uma-about-figs img { height: 68.5px; }
   /* the card is a flat size from here, so the type stops being fluid: 1vw is 20px at 2000,
      and 0.5955 * 20 turns the mobile vw values above into their pixel equivalents */
   .uma-tc-body { padding: 47.6px 45.3px; }

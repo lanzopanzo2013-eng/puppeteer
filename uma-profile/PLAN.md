@@ -1844,40 +1844,51 @@ A note on the first row: that rule is aimed at a *temporary* banner. If Janitor 
 selector simply matches nothing. If it ever backs a real platform notice that should be visible,
 delete the one line and the theme keeps a 58px strip instead — no other change.
 
-## 55 — three cut-outs in the corner the card leaves free
+## 55 — three small cut-outs inside the card's own upper-right corner
 
-He sent three transparent renders and wanted them small, in the About box's empty upper-right
-corner. The band is a fixed 122.6667vw tall and its card is absolutely centred at 50.1333vw, so
-between the white "About Me" plate and the card's top edge there is a strip of sky on the right
-that nothing uses. The strip is 142 css tall at 390 and 22.2vw wide at 1280.
+He sent three transparent renders, and wanted them small, in the free upper-right corner of the
+**white card** — not in the band behind it. First pass put them in the sky above the card; that
+was the wrong box and he said so.
 
-The row is positioned off the **card's** top edge, not the band's top:
+The card's body is a column of short lines: the role plate (165..237 at 390), the name
+(166..233), the follower count (166..290), then the horseshoe break across the full width at
+166..362, and only then does the copy start. So from the body's own top padding down to that
+break, the right-hand side is empty white at every width — 125 x 74 css at 390, 246 x 145 at
+1280 — and it is the corner he meant.
 
 ```css
-.uma-about-figs { right: 12px; bottom: calc(50% + 25.0667vw + 2.6vw); }
+.uma-about-figs {
+  position: absolute; z-index: 3;
+  top: calc(4vw * var(--uma-k)); right: calc(3.8vw * var(--uma-k));
+  gap: calc(.5vw * var(--uma-k));
+}
+.uma-about-figs img { height: calc(5.75vw * var(--uma-k)); }
 ```
 
-`50% + half the card` is the card's top edge measured from the band's foot, so the row hangs
-2.6vw above it at every width, and the section's own 12px padding lines it up with the card's
-right edge. Heights are given, not widths (`10.4 / 9.6 / 10.8vw`, i.e. 62 x 40, 86 x 37 and
-60 x 42 at 390), and each carries the same `.5955` the card's contents shrink by at 900, so the
-three keep their proportion instead of turning into slabs on a desktop. Under 360 the plate and
-the row start sharing the line, and decoration loses.
+`4vw / 3.8vw` are the body's own padding, so the row sits in the corner the type starts in. One
+height for all three (22 css at 390: jet 34, car 51, horse 32), which is 121 of the 125 the chip
+line leaves, and `--uma-k` scales the lot with the card: 67 x 44, 100 x 44, 62 x 44 at 1280, the
+same small thing against the copy rather than furniture. At 2000 the card stops growing in px, so
+the row is pinned there too (`top: 47.6px; right: 45.3px; height: 68.5px`).
+
+Measured at 280 / 320 / 360 / 390 / 414 / 430 / 480 / 1280: the row's left edge clears the role
+plate, its right edge stays inside the card, and its foot stays above the break in all eight —
+so it never sits on a glyph at any width.
 
 **The jet is not cut out.** Its render is an opaque black plate. `tools/make-figs.py` keys it:
 black is only allowed to go transparent where it is **connected to the frame's border**, so the
 canopy, the intakes and the shadow under the wings — black that the airframe encloses — survive;
 the cut line is feathered by luminance because that is where the anti-aliasing lives; and three
 pixels inside the cut line is forced opaque, because the same ramp across the whole airframe read
-as a ghost at 62 css wide. The other two arrive with alpha and are only trimmed
+as a ghost at 34 css wide. The other two arrive with alpha and are only trimmed
 (`fig-car` 2.29:1, `fig-horse` 1.42:1, `fig-jet` 1.53:1). Sources live outside the repo; the
 script takes `UPLOADS=/path`.
 
-Verified: rig 9/9 spill 0 (280…1280) on the delivered paste, the row at `[158, 1359, 220, 42]`
-against a card top of 1412 at 390, and `[839, 2908, 429, 82]` against 3010 at 1280, so it never
-touches the card at any width. Paste 73,667 chars, one line (css 42,590 / markup 31,061) — the
-images cost 467 characters of URLs, not 238 KB of base64. `docs/round-55.png` is the band at both
-widths.
+Verified: rig 9/9 spill 0 (280…1280) on the delivered paste; the row is `[241, 1427, 362, 1450]`
+inside a card of `[13, 1412, 377, 1607]` at 390, 3px clear of the role plate's right edge and 51
+above the break, and `[730, 3041, 967, 3085]` at 1280. Paste 73,342 chars, one line (css 42,265 /
+markup 31,061) — the three images cost 467 characters of URLs, not 238 KB of base64.
+`docs/round-55.png` is the card at both widths.
 
 **The rig was lying.** Its spill number came from `documentElement.scrollWidth`, which counts the
 live follower count the theme parks inside the clipped page background (63 to 107px of chrome that
@@ -1885,11 +1896,11 @@ paints nothing). Every width had been reporting FAIL, and every `fullPage` shot 
 477px wide at a 390px viewport since r54. spill is now the body's scroll width, the raw number is
 still printed beside it, and shots are clipped to the viewport width.
 
-**Read on the real page.** The probe (r54's runner rig) applied the shipped paste to a public
-profile and reported the row at `[155, 1355, 220, 42]` against a card top of **1408**, so the
-11px gap the local rig predicted is what the live page does; the r54 numbers did not move
-(hero 40, card `[10, 1408, 364, 196]`, document 7702). All three files came back from the CDN
-at their full sizes — jet 320x209 drawn at 62x41, car 320x140 at 86x37, horse 300x212 at 60x42.
+**Read on the real page.** The probe (r54's runner rig) applies the shipped paste to a public
+profile. On the band placement it reported the row at `[155, 1355, 220, 42]` against a card top
+of 1408 and the r54 numbers unchanged (hero 40, card `[10, 1408, 364, 196]`, document 7702).
+All three files came back from the CDN at their full sizes, so the shas and the keying are
+sound on a real network — jet 320x209, car 320x140, horse 300x212.
 
 The first run had the jet at `naturalWidth 0`: a commit sha nobody has asked jsdelivr for yet is
 fetched on first request, and one cold file in a three-file burst can miss the 6s the probe

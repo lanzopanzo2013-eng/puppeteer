@@ -245,12 +245,6 @@
     <img class="uma-sec-bg" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/about_bg.jpg">
     <img class="uma-about-pink" alt="" aria-hidden="true" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@dca1b39a0cc10301c6f20532399e4a22bc97a2f0/uma-profile/assets/site/about-pink-full.png">
     <div class="uma-tag-wrap"><div class="uma-tag blue uma-tag-white"><span>About Me</span></div></div>
-    <!-- the three cut-outs, in the corner the card leaves free -->
-    <div class="uma-about-figs" aria-hidden="true">
-      <img class="fig-jet" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@003d995/uma-profile/assets/site/fig-jet.png">
-      <img class="fig-car" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@003d995/uma-profile/assets/site/fig-car.png">
-      <img class="fig-horse" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@003d995/uma-profile/assets/site/fig-horse.png">
-    </div>
 
     <div class="uma-about-ph">
       <div class="uma-tc-port">
@@ -272,6 +266,12 @@
           <p>Oh, and I do love horse racing too. One of my notable events was spectating from the grandstands at the <strong>Arima Kinen, 2022</strong>. I got myself a QR ticket and I watched <strong>Equinox</strong> win. To be fair I am not that passionate about it compared to cars, but I still have some passion for horse racing.</p>
           <p>And then there is Umamusume. I first watched season 1 because my friends invited me to watch with them, then I played <strong>Umamusume Pretty Derby</strong> by March 2021. I was not a try-hard at the game, I only played it lightly until now to be honest, and I think that is going to be the same forever, although I did watch all the anime series Umamusume has to offer, which strengthened my passion for these horsegirls.</p>
         </div>
+      </div>
+      <!-- the three cut-outs, in the card's own empty corner -->
+      <div class="uma-about-figs" aria-hidden="true">
+        <img class="fig-jet" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@003d995/uma-profile/assets/site/fig-jet.png">
+        <img class="fig-car" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@003d995/uma-profile/assets/site/fig-car.png">
+        <img class="fig-horse" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@003d995/uma-profile/assets/site/fig-horse.png">
       </div>
     </div>
   </div>
