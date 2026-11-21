@@ -1884,3 +1884,14 @@ live follower count the theme parks inside the clipped page background (63 to 10
 paints nothing). Every width had been reporting FAIL, and every `fullPage` shot had been captured
 477px wide at a 390px viewport since r54. spill is now the body's scroll width, the raw number is
 still printed beside it, and shots are clipped to the viewport width.
+
+**Read on the real page.** The probe (r54's runner rig) applied the shipped paste to a public
+profile and reported the row at `[155, 1355, 220, 42]` against a card top of **1408**, so the
+11px gap the local rig predicted is what the live page does; the r54 numbers did not move
+(hero 40, card `[10, 1408, 364, 196]`, document 7702). All three files came back from the CDN
+at their full sizes — jet 320x209 drawn at 62x41, car 320x140 at 86x37, horse 300x212 at 60x42.
+
+The first run had the jet at `naturalWidth 0`: a commit sha nobody has asked jsdelivr for yet is
+fetched on first request, and one cold file in a three-file burst can miss the 6s the probe
+waits. The second run had it. Nothing to fix in the theme, but if a fresh paste ever shows one
+cut-out missing, reload before touching it — the CDN is filling its cache, not the theme.
