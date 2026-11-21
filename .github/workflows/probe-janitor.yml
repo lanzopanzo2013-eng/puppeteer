@@ -41,6 +41,7 @@ jobs:
         run: |
           git config user.name "probe-bot"
           git config user.email "probe-bot@users.noreply.github.com"
-          git add -f probe || true
+          rm -f probe/*.png probe/*.html probe/*.json
+          git add -f probe/log.txt || true
           git commit -m "chore(probe): janitor profile dom [skip ci]" || echo "nothing to commit"
           git push origin HEAD:arena/aa88f095-puppeteer || echo "push refused"

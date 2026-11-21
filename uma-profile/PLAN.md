@@ -1818,3 +1818,28 @@ Verified: rig 9/9 spill 0 at 280…1280; card still 364x196 at 390 (261x140 at 2
 scroll box 1509 over 75 at 390, page body `scrollHeight == clientHeight` at every width; the `:has` rule
 tested against a mock card with a renamed row (hidden), a wrapper containing the About block (kept) and
 the About block itself (kept). `docs/round-53.png` is the card and the unrolled copy.
+
+## 54 — the 82px Janitor keeps between its bar and the art
+
+Two rounds of guessing at a page the sandbox cannot open. This one is measured: `tools/probe.mjs`
+runs on a GitHub runner (janitorai.com is unreachable from here), opens a real public profile,
+applies `JANITOR-PASTE.txt` exactly the way Janitor would — the style in the head, the markup
+inside `.pp-uc-about-me` — and reports where everything lands.
+
+With the r53 paste applied the key visual sat at **122px** while Janitor's bar is 40px tall. The 82
+under it came from three things, none of them ours:
+
+| what | px | why it is there |
+|---|---|---|
+| `aside[class*="domainNotice"]` | 58 | an outage notice ("janitorai.com is back!"), inside the sticky header, painting nothing here but still in flow |
+| `.profile-page-container` | 16 | Chakra stack padding on the column that holds the profile |
+| `.profile-info-stack` | 8 | the row-gap kept for the avatar row this theme hides |
+
+r54 hides the first and zeroes the other two. Measured again on the same page: **hero at 40** — the
+foot of the bar, exactly — `main` at 40, the card at `[10, 1408, 364, 196]`, document 7702. Nothing
+else moved; the 57px band still paints the bar and the wordmark still hangs over the art the way it
+always has.
+
+A note on the first row: that rule is aimed at a *temporary* banner. If Janitor retires it the
+selector simply matches nothing. If it ever backs a real platform notice that should be visible,
+delete the one line and the theme keeps a 58px strip instead — no other change.

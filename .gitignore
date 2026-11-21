@@ -45,3 +45,9 @@ yarn-error.log*
 # Wireit
 .wireit
 image-search/
+
+# probe output (screenshots and page dumps stay out of the repo)
+probe/*.png
+probe/*.html
+probe/*.json
+probe/fail-*.html

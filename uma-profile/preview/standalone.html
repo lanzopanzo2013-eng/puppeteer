@@ -1245,6 +1245,21 @@ body:has([class*="otificationsPopover"]) .uma-sheet-foot {
 /* the window itself, for the moment the page is pulled past its top: Chrome paints the
    backdrop there, and a blue bounce above the key visual looks like a second header */
 html, body { background-color: #fff !important; }
+
+/* ---------- the strip above the key visual ----------
+   Janitor's profile now puts three things between its bar and the About block, and each of them is
+   dead space once the theme owns the top of the page:
+     · an <aside class="_domainNotice_…"> the width of the screen and 58px tall — an outage notice
+       that paints nothing here but still takes its room,
+     · 16px of padding on .profile-page-container,
+     · the 8px row-gap the profile's info stack keeps for the row this theme hides.
+   82px in all, which the backdrop shows as a band under the bar — blue before, white after — and
+   which reads as a header that has grown. Measured on the live page with the paste applied: the
+   key visual sits at 122px without these rules and at 40px with them, which is the foot of the bar
+   exactly. If Janitor retires the notice the first rule simply matches nothing. */
+[class*="domainNotice"] { display: none !important; }
+.profile-page-container { padding-top: 0 !important; padding-bottom: 0 !important; }
+.profile-info-stack { row-gap: 0 !important; gap: 0 !important; }
 /* Janitor wraps the About Me block in its own padded column. Zeroing the
    padding and letting the wrapper disappear (display:contents — the same trick
    the previous theme used) is what lets .uma-shell span the whole viewport. */
