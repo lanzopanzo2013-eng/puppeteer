@@ -1906,3 +1906,9 @@ The first run had the jet at `naturalWidth 0`: a commit sha nobody has asked jsd
 fetched on first request, and one cold file in a three-file burst can miss the 6s the probe
 waits. The second run had it. Nothing to fix in the theme, but if a fresh paste ever shows one
 cut-out missing, reload before touching it — the CDN is filling its cache, not the theme.
+
+Re-read after the move, on the same live page: `figs [238, 1423, 121, 22]` inside a card of
+`[10, 1408, 364, 196]` — 15 in from both the card's top and right, exactly the body's padding —
+with the jet drawn 34x22, the car 51x22 and the horse 32x22 and all three `naturalWidth` intact.
+The local rig had predicted `[241, 1427, 362, 1450]`; the 3px is the live card sitting at x=10
+instead of 13.
