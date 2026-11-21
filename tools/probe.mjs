@@ -76,6 +76,25 @@ async function main() {
 
   const after = await page.evaluate(MEASURE);
   log('after ', JSON.stringify(after));
+
+  // r55: the three cut-outs are the first art on this page that points at a brand new commit,
+  // so ask the CDN for them here, where there is a real network, and say what came back
+  const figs = await page.evaluate(() => {
+    const row = document.querySelector('.uma-about-figs');
+    const card = document.querySelector('.uma-about-ph');
+    const b = row ? row.getBoundingClientRect() : null;
+    const c = card ? card.getBoundingClientRect() : null;
+    return {
+      row: b ? [Math.round(b.x), Math.round(b.y), Math.round(b.width), Math.round(b.height)] : null,
+      cardTop: c ? Math.round(c.y) : null,
+      imgs: [...document.querySelectorAll('.uma-about-figs img')].map((i) => ({
+        cls: (i.className || '').toString(), loaded: i.complete && i.naturalWidth > 0,
+        nat: i.naturalWidth + 'x' + i.naturalHeight,
+        drawn: Math.round(i.getBoundingClientRect().width) + 'x' + Math.round(i.getBoundingClientRect().height),
+      })),
+    };
+  });
+  log('figs  ', JSON.stringify(figs));
   await page.screenshot({ path: `${OUT}/applied-top.png` });
   await page.evaluate(() => window.scrollTo(0, 300));
   await wait(400);
