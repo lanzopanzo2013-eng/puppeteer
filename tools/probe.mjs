@@ -47,8 +47,20 @@ async function main() {
   await page.setViewport({ width: 390, height: 844, deviceScaleFactor: 3, isMobile: true, hasTouch: true });
 
   log('== profile', PROFILE);
-  await page.goto(PROFILE, { waitUntil: 'domcontentloaded', timeout: 90000 });
-  await wait(9000);
+  let ok = false;
+  for (let attempt = 1; attempt <= 3 && !ok; attempt++) {
+    try {
+      await page.goto(PROFILE, { waitUntil: 'domcontentloaded', timeout: 90000 });
+      await page.waitForSelector('.pp-uc-about-me', { timeout: 30000 });
+      ok = true;
+    } catch (e) {
+      log(`attempt ${attempt} failed: ${e.message.slice(0, 120)}; url now`, page.url());
+      await fs.writeFile(`${OUT}/fail-${attempt}.html`, (await page.content()).slice(0, 200000));
+      await wait(6000);
+    }
+  }
+  await wait(7000);
+  if (!ok) { log('could not load a profile'); await browser.close(); return; }
 
   const before = await page.evaluate(MEASURE);
   log('before', JSON.stringify(before));
