@@ -1,11 +1,1 @@
-== home
-console: A bad HTTP response code (403) was received when fetching the script.
-console: Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner.
-home html 610849 title JanitorAI - Build, share, and explore
-profile link /profiles/97048214-6734-4671-8ee4-eb018151280c_profile-of-shxou-huang
-== profile https://janitorai.com/profiles/97048214-6734-4671-8ee4-eb018151280c_profile-of-shxou-huang
-console: Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner.
-console: A bad HTTP response code (403) was received when fetching the script.
-profile html 136388
-nodes 94
-chain null
+FATAL ENOENT: no such file or directory, open 'JANITOR-PASTE.txt'     at async open (node:internal/fs/promises:637:25)
