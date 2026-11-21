@@ -993,7 +993,8 @@
   background: transparent !important;
 }
 .pp-top-bar-notifications-icon, .profile-top-bar-notifications-icon {
-  display: none !important;
+  display: block !important;
+  color: #fff !important;
 }
 /* hash-agnostic: whatever Janitor calls the count this release, it is a badge
    inside the bell button, and it becomes a disc in the horseshoe's bowl. */
@@ -1377,23 +1378,26 @@ html, body { background-color: #fff !important; }
    image reference, so the title is emptied and the wordmark is drawn behind. */
 .pp-top-bar-title, .profile-top-bar-title { color: transparent !important; }
 /* the back arrow shares the wordmark's corner on the official screen, so it
-   goes; the search glyph stays, in white; the bell is replaced by the horseshoe
-   drawn in the layer above, and the caption is what remains of this button. */
+   goes; the search glyph stays, in white; the notifications button is put back
+   at the horseshoe, drawn in white on the bar's blue. */
 .pp-top-bar-back-button { visibility: hidden !important; }
 .pp-top-bar-search-icon { color: #fff !important; }
-.pp-top-bar-notifications-button { color: transparent !important; }
+.pp-top-bar-notifications-button { color: #fff !important; }
 .pp-top-bar-search, .pp-top-bar-search-input {
   background: rgba(255,255,255,.16) !important; border: 1px solid rgba(255,255,255,.34) !important;
   color: #fff !important;
 }
 .pp-top-bar-create-char { color: #fff !important; border: 1px solid rgba(255,255,255,.45) !important; }
-/* the bell becomes the site's white horseshoe with a caption under it. The
-   button itself is re-seated on the glyph and sized by the notification block
-   above, which also owns the count and the 46px tap area; all that is left to
-   do here is keep Janitor's own glyph out of the picture. */
+/* the notifications button is back, re-seated on the glyph and sized by the
+   notification block above, which also owns the count and the 46px tap area.
+   The glyph is shown in white so it reads on the bar's blue, sitting at the
+   horseshoe's spot (the horseshoe stays behind it as the mark's frame). */
 .pp-top-bar-notifications-button svg,
 .pp-top-bar-notifications-button img,
-.profile-top-bar-notifications-button svg { opacity: 0 !important; }
+.profile-top-bar-notifications-button svg {
+  opacity: 1 !important;
+  fill: #fff !important;
+}
 
 /* ---------- Featured fandoms ---------- */
 /* The site's store rows, repurposed: black plates for the titles whose art
