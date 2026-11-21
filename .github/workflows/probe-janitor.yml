@@ -1,0 +1,28 @@
+name: probe-janitor
+on:
+  push:
+    paths:
+      - '.capture/probe'
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: install
+        run: npm i puppeteer@23 --no-audit --no-fund --loglevel=error
+      - name: probe
+        continue-on-error: true
+        run: node tools/probe.mjs 2>&1 | tee probe/run.log
+      - name: commit
+        if: always()
+        run: |
+          git config user.name "probe-bot"
+          git config user.email "probe-bot@users.noreply.github.com"
+          git add -f probe run.log 2>/dev/null || git add -f probe
+          git commit -m "chore(probe): janitor profile dom [skip ci]" || echo "nothing to commit"
+          git push
