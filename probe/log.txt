@@ -27,7 +27,7 @@ figwhy {
   ],
   "w": "34.3281px",
   "h": "22.4219px",
-  "maxW": "100%",
+  "maxW": "none",
   "pos": "static",
   "right": "auto",
   "top": "auto",
