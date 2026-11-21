@@ -44,7 +44,7 @@ async function main() {
   });
   const page = await browser.newPage();
   await page.setUserAgent(UA);
-  await page.setViewport({ width: 390, height: 844, deviceScaleFactor: 3, isMobile: true, hasTouch: true });
+  await page.setViewport({ width: 390, height: 844, deviceScaleFactor: 3, isMobile: false, hasTouch: false });
 
   log('== profile', PROFILE);
   let ok = false;
