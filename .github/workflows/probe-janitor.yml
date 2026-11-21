@@ -18,11 +18,20 @@ jobs:
       - name: probe
         continue-on-error: true
         run: node tools/probe.mjs 2>&1 | tee probe/run.log
+      - name: upload
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: probe
+          path: |
+            probe
+            run.log
+          if-no-files-found: warn
       - name: commit
         if: always()
         run: |
           git config user.name "probe-bot"
           git config user.email "probe-bot@users.noreply.github.com"
-          git add -f probe run.log 2>/dev/null || git add -f probe
+          git add -f probe || true
           git commit -m "chore(probe): janitor profile dom [skip ci]" || echo "nothing to commit"
-          git push
+          git push || echo "push refused"
