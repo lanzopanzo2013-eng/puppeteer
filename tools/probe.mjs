@@ -83,13 +83,14 @@ async function main() {
   log('chain (outermost first):');
   chain.forEach((c) => log('  ', c.cls, 'top', c.top, 'h', c.h, 'pad', c.pad, 'mar', c.mar, c.disp));
 
-  // try the fix before writing it: kill the notice, then the wrapper's own padding
+  // try the fix in place, measuring at scroll 0 after every addition
   const trials = [
+    ['baseline', ''],
     ['notice hidden', '[class*="domainNotice"]{display:none !important}'],
-    ['+ flex padding', '.profile-page-flex{padding-top:0 !important;padding-bottom:0 !important}'],
-    ['+ uc background', '.pp-uc-background{margin-top:0 !important;padding-top:0 !important}'],
-    ['+ wrapper box', '.profile-info-wrapper-box{padding-top:0 !important;margin-top:0 !important}'],
-    ['+ stack', '.profile-info-stack{padding-top:0 !important;margin-top:0 !important;row-gap:0 !important}'],
+    ['+ page container padding', '.profile-page-container{padding-top:0 !important;padding-bottom:0 !important}'],
+    ['+ info stack gap', '.profile-info-stack{row-gap:0 !important;gap:0 !important}'],
+    ['+ about margins', '.pp-uc-about-me{margin-top:0 !important;margin-bottom:0 !important;padding-top:0 !important}'],
+    ['+ shell pull', '.uma-shell{margin-top:0 !important}'],
   ];
   let css2 = '';
   for (const [name, rule] of trials) {
@@ -98,16 +99,16 @@ async function main() {
       let s = document.getElementById('probe-trials');
       if (!s) { s = document.createElement('style'); s.id = 'probe-trials'; document.head.appendChild(s); }
       s.textContent = rules;
+      window.scrollTo(0, 0);
       const b = (sel) => { const e = document.querySelector(sel); if (!e) return null;
-        const rect = e.getBoundingClientRect(); return [Math.round(rect.y), Math.round(rect.height)]; };
-      return { hero: b('.uma-hero'), shell: b('.uma-shell'), hdr: b('.uma-hdr'),
-        header: b('header.pp-top-header'), main: b('main'), docH: document.documentElement.scrollHeight };
+        const r = e.getBoundingClientRect(); return [Math.round(r.top), Math.round(r.height)]; };
+      return { hero: b('.uma-hero'), hdr: b('.uma-hdr'), header: b('header.pp-top-header'),
+        main: b('main'), card: b('.uma-about-ph'), docH: document.documentElement.scrollHeight };
     }, css2);
-    await wait(300);
+    await wait(500);
     log('trial', name, JSON.stringify(m));
   }
-  await page.evaluate(() => window.scrollTo(0, 0));
-  await wait(400);
+  await wait(500);
   await page.screenshot({ path: `${OUT}/fixed-top.png` });
 
   // and again with the outage banner taken out, since it is temporary
