@@ -970,11 +970,14 @@
 /* The bell button is re-seated on the glyph itself, so the count Janitor renders
    inside that button lands *in* the horseshoe rather than beside it. The
    container carries the popover, so it keeps its geometry; only the button's
-   hit area is widened (a pseudo-element), never the layout. */
+   hit area is widened (a pseudo-element), never the layout. display:block is
+   set explicitly: Janitor's own mobile layout hides this container, and without
+   it the bell would not show on a phone even though it is re-seated here. */
 .pp-top-bar-notifications, .profile-top-bar-notifications {
   position: fixed !important;
   top: 6px !important; right: 16px !important; left: auto !important;
   width: 29px !important; height: 29px !important;
+  display: block !important;
   z-index: 2147483000 !important;
 }
 .pp-top-bar-notifications-button, .profile-top-bar-notifications-button {
@@ -1391,12 +1394,21 @@ html, body { background-color: #fff !important; }
 /* the notifications button is back, re-seated on the glyph and sized by the
    notification block above, which also owns the count and the 46px tap area.
    The glyph is shown in white so it reads on the bar's blue, sitting at the
-   horseshoe's spot (the horseshoe stays behind it as the mark's frame). */
+   horseshoe's spot (the horseshoe stays behind it as the mark's frame). The
+   svg is filled white; an img glyph (Janitor ships the bell as an image on
+   some layouts) is forced white with a filter, so it shows on the blue either
+   way. */
 .pp-top-bar-notifications-button svg,
 .pp-top-bar-notifications-button img,
 .profile-top-bar-notifications-button svg {
   opacity: 1 !important;
+}
+.pp-top-bar-notifications-button svg,
+.profile-top-bar-notifications-button svg {
   fill: #fff !important;
+}
+.pp-top-bar-notifications-button img {
+  filter: brightness(0) invert(1) !important;
 }
 
 /* ---------- Featured fandoms ---------- */
