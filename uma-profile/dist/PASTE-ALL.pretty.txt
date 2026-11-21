@@ -1653,6 +1653,20 @@ html, body { background-color: #fff !important; }
     .pp-uc-background .pp-uc-followers-count { font-size: 56px !important; }
   }
 }
+
+/* the header band is decoration: it must never take a tap from Janitor's own bar.
+   .uma-hdr is a fixed 57px strip at the top that covers Janitor's own 40px top
+   bar, and a covering element swallows taps even where it is transparent — so the
+   notifications button (and the rest of Janitor's bar) rendered but did not
+   receive touches. Take the whole band and its subtree out of hit-testing so taps
+   fall through to Janitor's button underneath; painting is untouched, so the band
+   still draws exactly as it does now. Nothing inside the band is a link of ours
+   that needs to be clickable (the wordmark and the horseshoe are decorative), so
+   there is nothing to opt back in. */
+.uma-hdr,
+.uma-hdr *,
+.uma-hdr::before,
+.uma-hdr::after { pointer-events: none !important; }
 </style>
 
 <!-- ============================================================
