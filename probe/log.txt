@@ -1,12 +1,24 @@
 == profile https://janitorai.com/profiles/97048214-6734-4671-8ee4-eb018151280c_profile-of-shxou-huang
 before {"header":[0,0,390,40],"bar":[0,0,390,40],"notice":[0,40,390,58],"main":[0,98,390,3853],"about":[28,283,334,292],"shell":null,"umaHdr":null,"hero":null,"card":null,"docH":4273,"innerH":844}
 after  {"header":[0,0,390,40],"bar":[0,0,390,40],"notice":[0,40,390,58],"main":[0,98,390,7390],"about":[0,0,0,0],"shell":[0,122,390,4037],"umaHdr":[0,0,477,57],"hero":[0,122,390,628],"card":[13,1490,364,196],"docH":7810,"innerH":1033}
-no notice {"header":[0,0,390,40],"bar":[0,0,390,40],"notice":null,"main":[0,-202,390,7390],"about":[0,0,0,0],"shell":[0,-178,390,4037],"umaHdr":[0,0,477,57],"hero":[0,-178,390,628],"card":[13,1190,364,196],"docH":7752,"innerH":1033}
-strip 40 64
-   main _main_raii8_11 _customPadding_raii8_26 40 7390 rgba(0, 0, 0, 0) static
-   div chakra-stack profile-page-container _center_rta4k_2 css-14l6kwv 40 7390 rgba(0, 0, 0, 0) static
-   div profile-page-flex _layout_1guh8_1 css-1wfbrwg 56 7374 rgba(0, 0, 0, 0) static
-   div pp-uc-background profile-uc-background profile-uc-background-flex _car 56 4073 rgba(0, 0, 0, 0) static
-   div profile-info-wrapper-box _wrapper_107xt_31 css-15vqpxh 56 4073 rgba(0, 0, 0, 0) static
-   div chakra-stack profile-info-stack _infoStack_1tco0_1 css-8g8ihq 56 4073 rgba(0, 0, 0, 0) static
+chain (outermost first):
+    top -300 h 7810 pad 0px mar 0px block
+   _wrapper_13xo6_1  top -300 h 7810 pad 0px mar 0px flex
+   _main_raii8_11 _customPadding_raii8_26 top -202 h 7390 pad 0px mar 0px block
+   chakra-stack profile-page-container _center_rta4k_2 css-14l6 top -202 h 7390 pad 16px mar 0px flex
+   profile-page-flex _layout_1guh8_1 css-1wfbrwg top -186 h 7374 pad 0px mar 0px flex
+   pp-uc-background profile-uc-background profile-uc-background top -186 h 4073 pad 0px mar 0px flex
+   profile-info-wrapper-box _wrapper_107xt_31 css-15vqpxh top -186 h 4073 pad 0px mar 0px block
+   chakra-stack profile-info-stack _infoStack_1tco0_1 css-8g8ih top -186 h 4073 pad 0px mar 0px flex
+   pp-uc-about-me profile-about-me _aboutMe_1nxb2_2 css-p5wazl top 0 h 0 pad 0px mar 0px contents
+   uma-shell top -178 h 4037 pad 0px mar 0px block
+trial notice hidden {"hero":[-178,628],"shell":[-178,4037],"hdr":[0,57],"header":[0,40],"main":[-202,7390],"docH":7752}
+trial + flex padding {"hero":[-178,628],"shell":[-178,4037],"hdr":[0,57],"header":[0,40],"main":[-202,7390],"docH":7752}
+trial + uc background {"hero":[-178,628],"shell":[-178,4037],"hdr":[0,57],"header":[0,40],"main":[-202,7390],"docH":7752}
+trial + wrapper box {"hero":[-178,628],"shell":[-178,4037],"hdr":[0,57],"header":[0,40],"main":[-202,7390],"docH":7752}
+trial + stack {"hero":[-178,628],"shell":[-178,4037],"hdr":[0,57],"header":[0,40],"main":[-194,7374],"docH":7736}
+no notice {"header":[0,0,390,40],"bar":[0,0,390,40],"notice":null,"main":[0,40,390,7374],"about":[0,0,0,0],"shell":[0,56,390,4037],"umaHdr":[0,0,477,57],"hero":[0,56,390,628],"card":[13,1424,364,196],"docH":7736,"innerH":1033}
+strip 40 56
+   main _main_raii8_11 _customPadding_raii8_26 40 7374 rgba(0, 0, 0, 0) static
+   div chakra-stack profile-page-container _center_rta4k_2 css-14l6kwv 40 7374 rgba(0, 0, 0, 0) static
    a chakra-menu__menuitem pp-top-bar-app-menu-list-item profile-top-bar-ap 41 35 rgba(0, 0, 0, 0) static

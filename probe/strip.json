@@ -1,12 +1,12 @@
 {
  "headerBottom": 40,
- "heroTop": 64,
+ "heroTop": 56,
  "boxes": [
   {
    "tag": "main",
    "cls": "_main_raii8_11 _customPadding_raii8_26",
    "top": 40,
-   "h": 7390,
+   "h": 7374,
    "bg": "rgba(0, 0, 0, 0)",
    "pos": "static"
   },
@@ -14,39 +14,7 @@
    "tag": "div",
    "cls": "chakra-stack profile-page-container _center_rta4k_2 css-14l6kwv",
    "top": 40,
-   "h": 7390,
-   "bg": "rgba(0, 0, 0, 0)",
-   "pos": "static"
-  },
-  {
-   "tag": "div",
-   "cls": "profile-page-flex _layout_1guh8_1 css-1wfbrwg",
-   "top": 56,
    "h": 7374,
-   "bg": "rgba(0, 0, 0, 0)",
-   "pos": "static"
-  },
-  {
-   "tag": "div",
-   "cls": "pp-uc-background profile-uc-background profile-uc-background-flex _car",
-   "top": 56,
-   "h": 4073,
-   "bg": "rgba(0, 0, 0, 0)",
-   "pos": "static"
-  },
-  {
-   "tag": "div",
-   "cls": "profile-info-wrapper-box _wrapper_107xt_31 css-15vqpxh",
-   "top": 56,
-   "h": 4073,
-   "bg": "rgba(0, 0, 0, 0)",
-   "pos": "static"
-  },
-  {
-   "tag": "div",
-   "cls": "chakra-stack profile-info-stack _infoStack_1tco0_1 css-8g8ihq",
-   "top": 56,
-   "h": 4073,
    "bg": "rgba(0, 0, 0, 0)",
    "pos": "static"
   },
