@@ -861,15 +861,15 @@
    pulled up by its own height and gives that height straight back to the flow. */
 /* Their bar cannot hold an <img> (this profile strips every CSS image
    reference, and the markup of that bar is not ours to edit). So the site's
-   wordmark and horseshoe are drawn as a fixed layer at the top of the viewport
-   with the largest z-index there is: their own bar stays exactly as Janitor
-   paints it underneath, buttons and caption included, and the two marks sit on
-   it. Height follows a 44-52px bar, which is what the live site uses. */
+   wordmark and horseshoe are drawn as a bar of our own. It sits in the flow at
+   the top of the shell, just above the hero, so it never overlaps the front
+   page picture — the hero starts on the bar's bottom edge. Height follows a
+   44-52px bar, which is what the live site uses. */
 .uma-hdr {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 2147483647;
+  position: relative; z-index: 2147483647;
   height: 57px; margin: 0;
   display: flex; align-items: flex-start; justify-content: space-between;
-  padding: 0; background: #0F57FB; pointer-events: none;
+  padding: 0; background: #0F57FB;
 }
 .uma-hdr-brand { display: block; line-height: 0; }
 /* narrow phones: the label must not creep into the first plate, nor the
