@@ -277,44 +277,55 @@
   </div>
 
   <!-- ── Gameplay ──────────────────────────────────────────── -->
+  <!-- Official band is 192vw / 62.5vw / 1250px: tall enough for Special Week
+       behind the Test The Lorebooks! plate, the two captures and the white card,
+       seated to the reference. The viewport is a real overflow-x strip — one hand
+       swipe or one chevron press glides one frame with smooth scroll + snap. -->
   <div class="uma-sec uma-play" id="scripts">
-    <span id="g1" class="uma-anchor"></span>
-    <span id="g2" class="uma-anchor"></span>
-    <span id="g3" class="uma-anchor"></span>
-    <img class="uma-lb-bg b1" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/lb1.jpg">
-    <img class="uma-lb-bg b2" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/lb2.jpg">
-    <img class="uma-lb-bg b3" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/lb3.jpg">
     <div class="uma-tag-wrap"><div class="uma-tag green"><span>The Lorebooks</span></div></div>
-    <div class="uma-hl">Train your Umamusume!</div>
-
-    <!-- arrows drive the slides through :target, which is the only way to do this
-         without JavaScript. Each state keeps its own prev/next pair. -->
     <div class="uma-carousel">
-
       <div class="uma-viewport">
         <div class="uma-track">
-          <div class="uma-slide">
-            <img alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/slide1.jpg">
-            <div class="uma-slide-cap"><b>Lorebooks</b> · the world state, the schedules, the rivalry web. Dropped in, no setup.</div>
+
+          <!-- Page 1 — reference seat -->
+          <div class="uma-slide" id="g1">
+            <img class="uma-lb-bg" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/lb1.jpg">
+            <img class="uma-uma" width="750" height="900" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@64770b6e760a5b3b82cc43115ca9784ac9f3dfbb/uma-profile/assets/site/lb1-uma.png">
+            <img class="uma-hl-img" width="1200" height="169" alt="Test The Lorebooks!" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@64770b6e760a5b3b82cc43115ca9784ac9f3dfbb/uma-profile/assets/site/lb1-headline.png">
+            <img class="uma-shot-l" width="720" height="1283" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@64770b6e760a5b3b82cc43115ca9784ac9f3dfbb/uma-profile/assets/site/lb1-left.jpg">
+            <img class="uma-shot-r" width="560" height="999" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@64770b6e760a5b3b82cc43115ca9784ac9f3dfbb/uma-profile/assets/site/lb1-right.jpg">
+            <div class="uma-card">
+              <img class="uma-plate" width="1400" height="570" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@64770b6e760a5b3b82cc43115ca9784ac9f3dfbb/uma-profile/assets/site/lb1-plate.png">
+              <div class="uma-card-txt"><b>Lorebooks</b> · the world state, the schedules, the rivalry web. Dropped in, no setup.</div>
+            </div>
+          <div class="uma-ctl"><a class="uma-arrow" href="#g3" aria-label="Previous"><img class="uma-arrow-img" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/arrow_left.png"></a><a class="uma-arrow" href="#g2" aria-label="Next"><img class="uma-arrow-img" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/arrow_right.png"></a></div>
+          <div class="uma-pg"><img class="uma-hs" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/horseshoe.png"><i class="uma-dot"></i><i class="uma-dot"></i></div>
           </div>
-          <div class="uma-slide">
-            <img alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/slide2.jpg">
-            <div class="uma-slide-cap"><b>How it runs</b> · V4 today, V10 final, then FV11 to FV14. Each pass tightens canon.</div>
+
+          <!-- Page 2 -->
+          <div class="uma-slide" id="g2">
+            <img class="uma-lb-bg" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/lb2.jpg">
+            <div class="uma-slide-mid">
+              <img width="700" height="519" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/slide2.jpg">
+              <div class="uma-slide-cap"><b>How it runs</b> · V4 today, V10 final, then FV11 to FV14. Each pass tightens canon.</div>
+            </div>
+          <div class="uma-ctl"><a class="uma-arrow" href="#g1" aria-label="Previous"><img class="uma-arrow-img" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/arrow_left.png"></a><a class="uma-arrow" href="#g3" aria-label="Next"><img class="uma-arrow-img" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/arrow_right.png"></a></div>
+          <div class="uma-pg"><i class="uma-dot"></i><img class="uma-hs" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/horseshoe.png"><i class="uma-dot"></i></div>
           </div>
-          <div class="uma-slide">
-            <img alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/slide1.jpg">
-            <div class="uma-slide-cap"><b>Using them</b> · attach the book, pick a racer, start the career run. That is it.</div>
+
+          <!-- Page 3 -->
+          <div class="uma-slide" id="g3">
+            <img class="uma-lb-bg" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/lb3.jpg">
+            <div class="uma-slide-mid">
+              <img width="700" height="370" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/slide1.jpg">
+              <div class="uma-slide-cap"><b>Using them</b> · attach the book, pick a racer, start the career run. That is it.</div>
+            </div>
+          <div class="uma-ctl"><a class="uma-arrow" href="#g2" aria-label="Previous"><img class="uma-arrow-img" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/arrow_left.png"></a><a class="uma-arrow" href="#g1" aria-label="Next"><img class="uma-arrow-img" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/arrow_right.png"></a></div>
+          <div class="uma-pg"><i class="uma-dot"></i><i class="uma-dot"></i><img class="uma-hs" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/horseshoe.png"></div>
           </div>
+
         </div>
       </div>
-
-      <div class="uma-ctl c1"><a class="uma-arrow" href="#g3"><img class="uma-arrow-img" alt="Previous" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/arrow_left.png"></a><a class="uma-arrow" href="#g2"><img class="uma-arrow-img" alt="Next" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/arrow_right.png"></a></div>
-      <div class="uma-ctl c2"><a class="uma-arrow" href="#g1"><img class="uma-arrow-img" alt="Previous" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/arrow_left.png"></a><a class="uma-arrow" href="#g3"><img class="uma-arrow-img" alt="Next" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/arrow_right.png"></a></div>
-      <div class="uma-ctl c3"><a class="uma-arrow" href="#g2"><img class="uma-arrow-img" alt="Previous" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/arrow_left.png"></a><a class="uma-arrow" href="#g1"><img class="uma-arrow-img" alt="Next" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/arrow_right.png"></a></div>
-
-      <div class="uma-pg p1"><img class="uma-hs" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/horseshoe.png"><i class="uma-dot"></i><i class="uma-dot"></i></div>
-      <div class="uma-pg p2"><i class="uma-dot"></i><img class="uma-hs" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/horseshoe.png"><i class="uma-dot"></i></div>
-      <div class="uma-pg p3"><i class="uma-dot"></i><i class="uma-dot"></i><img class="uma-hs" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/horseshoe.png"></div>
     </div>
   </div>
 

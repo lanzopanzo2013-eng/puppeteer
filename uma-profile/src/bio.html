@@ -684,86 +684,131 @@
   font-size: 12.5px; line-height: 1.5; color: #2B3A47; font-weight: 600;
 }
 
-/* ---------- Gameplay (green) ---------- */
-/* The Gameplay backdrops from the site, one per slide, swapped by the same
-   :target anchors that drive the carousel. Cropped to drop the baked arrows,
-   the "Gameplay" tag and the pager. Phones show a window of each: left, middle,
-   right, so the three read as one panning scene. */
-.uma-play { background: #3CA732; }
+/* ---------- Gameplay / Lorebooks (green) ---------- */
+/* The band is the site's own 192vw (62.5vw from 900, 1250px from 2000): tall enough
+   for Special Week behind the Test The Lorebooks! plate, the two captures and the
+   white card, the way the reference seats them. Page 1 only for this round.
+   The viewport is a real overflow-x strip — hand swipe or arrow press glides one
+   frame with scroll-behavior:smooth + snap, no reload, no JS. */
+.uma-play {
+  background: #3CA732;
+  height: 192vw;
+  padding: 0; /* the band is full-bleed like the site's, not a padded .uma-sec */
+}
+.uma-play > .uma-tag-wrap {
+  position: absolute; top: 8vw; left: 4vw; z-index: 5; margin-bottom: 0;
+}
+.uma-play > .uma-carousel {
+  position: absolute; left: 0; top: 0; width: 100%; height: 100%; z-index: 1;
+}
+.uma-viewport {
+  width: 100%; height: 100%;
+  overflow-x: auto; overflow-y: hidden;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+}
+.uma-viewport::-webkit-scrollbar { display: none; }
+.uma-track { display: flex; height: 100%; }
+.uma-slide {
+  flex: 0 0 100%; width: 100%; height: 100%;
+  /* clip, not hidden: hidden makes each page a nested scroll container that
+     swallows the hand-pan before it reaches the viewport */
+  position: relative; overflow: clip;
+  scroll-snap-align: start; scroll-snap-stop: always;
+}
+/* a native image-drag eats the mousedown and the strip never pans */
+.uma-slide img { user-drag: none; -webkit-user-drag: none; user-select: none; }
+/* each page carries its own ground so a hand swipe pans the scene with it */
 .uma-lb-bg {
   position: absolute; left: 0; top: 0; width: 100%; height: 100%;
   object-fit: cover; object-position: 50% 50%;
-  /* kept sharp: the crops already drop the baked arrows, tag and pager */
-  opacity: 0; transition: opacity .45s ease; z-index: 0; pointer-events: none;
-}
-.uma-play .uma-lb-bg.b1,
-#g1:target ~ .uma-lb-bg.b1,
-#g2:target ~ .uma-lb-bg.b2,
-#g3:target ~ .uma-lb-bg.b3 { opacity: 1; }
-#g2:target ~ .uma-lb-bg.b1,
-#g3:target ~ .uma-lb-bg.b1 { opacity: 0; }
-/* a green veil so the white headline and captions keep their contrast */
-.uma-play::after {
-  content: ""; position: absolute; left: 0; top: 0; right: 0; bottom: 0;
-  background: linear-gradient(180deg, rgba(60,167,50,.3) 0%, rgba(60,167,50,.12) 42%, rgba(60,167,50,.45) 100%);
   z-index: 0; pointer-events: none;
 }
-.uma-carousel { position: relative; }
-.uma-anchor { position: absolute; top: 0; left: 0; width: 1px; height: 1px; }
-/* the lorebook shots are 700 px wide art, so the carousel keeps a 700 px
-   measure on desktop instead of stretching to a letterboxed 1000 px */
-.uma-viewport { overflow: hidden; border-radius: 12px; max-width: 700px; margin-inline: auto; }
-.uma-track {
-  display: flex; align-items: stretch;
-  transition: transform .5s cubic-bezier(.19,1,.22,1);
+.uma-slide::before {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(60,167,50,.18) 0%, rgba(60,167,50,.05) 40%, rgba(60,167,50,.32) 100%);
+  z-index: 1; pointer-events: none;
 }
-.uma-slide {
-  flex: 0 0 100%; box-sizing: border-box;
-  background: rgba(255,255,255,.16);
-  border: 2px solid rgba(255,255,255,.55); border-radius: 12px; padding: 8px;
+/* ── page 1 seat (percent of the band so it scales to 62.5vw desktop) ── */
+.uma-uma { /* Special Week, behind the headline */
+  position: absolute; top: 0; right: 0;
+  height: 33.85%; width: auto; max-width: 58%;
+  z-index: 2; pointer-events: none;
 }
-.uma-slide img {
-  width: 100%; height: clamp(190px, 26vw, 340px); border-radius: 8px;
-  object-fit: contain; object-position: 50% 50%;
-  background: transparent;
+.uma-hl-img { /* Test The Lorebooks! replaces the text headline */
+  position: absolute; top: 20.83%; left: 50%;
+  transform: translateX(-50%);
+  width: 74%; height: auto;
+  z-index: 3; pointer-events: none;
 }
+.uma-shot-l {
+  position: absolute; top: 34.79%; left: 10.7%;
+  height: 39.4%; width: auto; max-width: 42%;
+  z-index: 2; border-radius: 4px;
+}
+.uma-shot-r {
+  position: absolute; top: 39.64%; left: 57.9%;
+  height: 30.9%; width: auto; max-width: 30%;
+  z-index: 2; border-radius: 4px;
+}
+.uma-slide .uma-card { /* white tilted plate + caption (page 1 only) */
+  position: absolute; top: 76%; left: 3%;
+  width: 94%; max-height: 19%;
+  z-index: 2; line-height: 0;
+}
+.uma-slide .uma-plate {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: 50% 40%;
+  display: block;
+}
+.uma-slide .uma-card-txt {
+  position: absolute; top: 40%; left: 52%;
+  transform: translate(-50%, -50%);
+  width: 70%; margin: 0; z-index: 1;
+  font-size: 3.2vw; font-weight: 700; line-height: 1.4;
+  letter-spacing: .02em; color: #141414; text-align: center;
+}
+/* pages 2 and 3 keep a simple centered card until their rounds */
+.uma-slide-mid {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(78%, 520px); z-index: 2; text-align: center;
+}
+.uma-slide-mid img { width: 100%; height: auto; border-radius: 8px; display: block; }
 .uma-slide-cap {
-  font-size: 12px; font-weight: 700; color: #fff; margin-top: 8px; line-height: 1.35;
-  text-shadow: 0 1px 2px rgba(0,0,0,.25);
+  font-size: 13px; font-weight: 700; color: #fff; margin-top: 10px;
+  line-height: 1.4; text-shadow: 0 1px 2px rgba(0,0,0,.3);
 }
-#g2:target ~ .uma-carousel .uma-viewport .uma-track { transform: translateX(-100%); }
-#g3:target ~ .uma-carousel .uma-viewport .uma-track { transform: translateX(-200%); }
-
-.uma-ctl { display: none; justify-content: space-between; margin-top: 8px; }
-.uma-ctl.c1 { display: flex; }
-#g1:target ~ .uma-carousel .uma-ctl.c2, #g1:target ~ .uma-carousel .uma-ctl.c3,
-#g2:target ~ .uma-carousel .uma-ctl.c1, #g2:target ~ .uma-carousel .uma-ctl.c3,
-#g3:target ~ .uma-carousel .uma-ctl.c1, #g3:target ~ .uma-carousel .uma-ctl.c2 { display: none; }
-#g2:target ~ .uma-carousel .uma-ctl.c2, #g3:target ~ .uma-carousel .uma-ctl.c3 { display: flex; }
-#g1:target ~ .uma-carousel .uma-ctl.c1 { display: flex; }
-
+/* arrows + pager ride inside each page, so a hand swipe carries them and a
+   chevron press only has to scroll — no :has() state machine. The bare grey
+   chevron, no disc behind it (the reference has none). */
+.uma-slide .uma-ctl {
+  display: flex; position: absolute; top: 54%; left: 0; right: 0;
+  transform: translateY(-50%);
+  justify-content: space-between; align-items: center;
+  padding: 0 1vw; margin: 0; z-index: 6;
+  pointer-events: none; /* only the chevrons take clicks; the page still pans */
+}
 .uma-shell a.uma-arrow {
-  width: 38px; height: 38px; border-radius: 50%; background: rgba(0,0,0,.22);
   display: flex; align-items: center; justify-content: center;
+  padding: 10px 8px; background: none; border-radius: 0;
+  pointer-events: auto;
 }
-.uma-arrow-img { width: 11px; height: auto; opacity: .75; }
-
-.uma-pg {
-  display: none; justify-content: center; align-items: center; gap: 15px;
-  margin: 14px 0 8px;
+.uma-arrow-img {
+  width: 3.6vw; min-width: 22px; max-width: 36px;
+  height: auto; opacity: .8;
 }
-/* the pager is drawn, not a scaled bitmap: two dots and the horseshoe that
-   marks the live slide. At 15px the PNG row went soft and lost its right edge. */
+.uma-slide .uma-pg {
+  display: flex; position: absolute; left: 0; right: 0; bottom: 4vw;
+  justify-content: center; align-items: center; gap: 15px;
+  margin: 0; z-index: 6;
+}
 .uma-pg i { display: block; flex: 0 0 auto; }
 .uma-dot { width: 9px; height: 9px; border-radius: 50%; background: #fff; opacity: .92; }
-/* the pager mark is the real horseshoe artwork */
 .uma-hs { width: 15px; height: auto; display: block; }
-.uma-pg.p1 { display: flex; }
-#g1:target ~ .uma-carousel .uma-pg.p2, #g1:target ~ .uma-carousel .uma-pg.p3,
-#g2:target ~ .uma-carousel .uma-pg.p1, #g2:target ~ .uma-carousel .uma-pg.p3,
-#g3:target ~ .uma-carousel .uma-pg.p1, #g3:target ~ .uma-carousel .uma-pg.p2 { display: none; }
-#g2:target ~ .uma-carousel .uma-pg.p2, #g3:target ~ .uma-carousel .uma-pg.p3 { display: flex; }
-#g1:target ~ .uma-carousel .uma-pg.p1 { display: flex; }
 
 
 /* ---------- Roster (purple) ---------- */
@@ -1419,6 +1464,7 @@ html, body { background-color: #fff !important; }
    readable measure — the way the site behaves between phone and desktop. */
 @media (min-width: 820px) {
   .uma-sec { padding-left: calc(50% - 500px); padding-right: calc(50% - 500px); }
+  .uma-play { padding-left: 0; padding-right: 0; } /* the band stays edge to edge */
   .uma-hero { height: min(58vw, 700px); background: #8FD46A; }
   /* the site scales its header logo down again on wide screens */
   .uma-hdr-brand img { width: 8.9583vw; margin-left: 1.9444vw; max-width: none; animation: none; }
@@ -1495,10 +1541,12 @@ html, body { background-color: #fff !important; }
    breakpoint except the last one, where the card stops growing in px terms. */
 @media (min-width: 900px) {
   .uma-about { height: 62.5vw; }
+  .uma-play { height: 62.5vw; }
   .uma-about-ph { width: 55.5556vw; height: 31.25vw; }
 }
 @media (min-width: 2000px) {
   .uma-about { height: 1250px; }
+  .uma-play { height: 1250px; }
   .uma-about-ph { width: 1111.1111px; height: 625px; }
   /* the card is a flat size from here, so the corner row is too (0.5955 * 1vw at 2000) */
   /* the card is a flat size from here, so the type stops being fluid: 1vw is 20px at 2000,
@@ -1878,44 +1926,55 @@ html, body { background-color: #fff !important; }
   </div>
 
   <!-- ── Gameplay ──────────────────────────────────────────── -->
+  <!-- Official band is 192vw / 62.5vw / 1250px: tall enough for Special Week
+       behind the Test The Lorebooks! plate, the two captures and the white card,
+       seated to the reference. The viewport is a real overflow-x strip — one hand
+       swipe or one chevron press glides one frame with smooth scroll + snap. -->
   <div class="uma-sec uma-play" id="scripts">
-    <span id="g1" class="uma-anchor"></span>
-    <span id="g2" class="uma-anchor"></span>
-    <span id="g3" class="uma-anchor"></span>
-    <img class="uma-lb-bg b1" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/lb1.jpg">
-    <img class="uma-lb-bg b2" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/lb2.jpg">
-    <img class="uma-lb-bg b3" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/lb3.jpg">
     <div class="uma-tag-wrap"><div class="uma-tag green"><span>The Lorebooks</span></div></div>
-    <div class="uma-hl">Train your Umamusume!</div>
-
-    <!-- arrows drive the slides through :target, which is the only way to do this
-         without JavaScript. Each state keeps its own prev/next pair. -->
     <div class="uma-carousel">
-
       <div class="uma-viewport">
         <div class="uma-track">
-          <div class="uma-slide">
-            <img alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/slide1.jpg">
-            <div class="uma-slide-cap"><b>Lorebooks</b> · the world state, the schedules, the rivalry web. Dropped in, no setup.</div>
+
+          <!-- Page 1 — reference seat -->
+          <div class="uma-slide" id="g1">
+            <img class="uma-lb-bg" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/lb1.jpg">
+            <img class="uma-uma" width="750" height="900" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@64770b6e760a5b3b82cc43115ca9784ac9f3dfbb/uma-profile/assets/site/lb1-uma.png">
+            <img class="uma-hl-img" width="1200" height="169" alt="Test The Lorebooks!" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@64770b6e760a5b3b82cc43115ca9784ac9f3dfbb/uma-profile/assets/site/lb1-headline.png">
+            <img class="uma-shot-l" width="720" height="1283" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@64770b6e760a5b3b82cc43115ca9784ac9f3dfbb/uma-profile/assets/site/lb1-left.jpg">
+            <img class="uma-shot-r" width="560" height="999" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@64770b6e760a5b3b82cc43115ca9784ac9f3dfbb/uma-profile/assets/site/lb1-right.jpg">
+            <div class="uma-card">
+              <img class="uma-plate" width="1400" height="570" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@64770b6e760a5b3b82cc43115ca9784ac9f3dfbb/uma-profile/assets/site/lb1-plate.png">
+              <div class="uma-card-txt"><b>Lorebooks</b> · the world state, the schedules, the rivalry web. Dropped in, no setup.</div>
+            </div>
+          <div class="uma-ctl"><a class="uma-arrow" href="#g3" aria-label="Previous"><img class="uma-arrow-img" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/arrow_left.png"></a><a class="uma-arrow" href="#g2" aria-label="Next"><img class="uma-arrow-img" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/arrow_right.png"></a></div>
+          <div class="uma-pg"><img class="uma-hs" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/horseshoe.png"><i class="uma-dot"></i><i class="uma-dot"></i></div>
           </div>
-          <div class="uma-slide">
-            <img alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/slide2.jpg">
-            <div class="uma-slide-cap"><b>How it runs</b> · V4 today, V10 final, then FV11 to FV14. Each pass tightens canon.</div>
+
+          <!-- Page 2 -->
+          <div class="uma-slide" id="g2">
+            <img class="uma-lb-bg" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/lb2.jpg">
+            <div class="uma-slide-mid">
+              <img width="700" height="519" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/slide2.jpg">
+              <div class="uma-slide-cap"><b>How it runs</b> · V4 today, V10 final, then FV11 to FV14. Each pass tightens canon.</div>
+            </div>
+          <div class="uma-ctl"><a class="uma-arrow" href="#g1" aria-label="Previous"><img class="uma-arrow-img" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/arrow_left.png"></a><a class="uma-arrow" href="#g3" aria-label="Next"><img class="uma-arrow-img" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/arrow_right.png"></a></div>
+          <div class="uma-pg"><i class="uma-dot"></i><img class="uma-hs" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/horseshoe.png"><i class="uma-dot"></i></div>
           </div>
-          <div class="uma-slide">
-            <img alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/slide1.jpg">
-            <div class="uma-slide-cap"><b>Using them</b> · attach the book, pick a racer, start the career run. That is it.</div>
+
+          <!-- Page 3 -->
+          <div class="uma-slide" id="g3">
+            <img class="uma-lb-bg" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/lb3.jpg">
+            <div class="uma-slide-mid">
+              <img width="700" height="370" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/slide1.jpg">
+              <div class="uma-slide-cap"><b>Using them</b> · attach the book, pick a racer, start the career run. That is it.</div>
+            </div>
+          <div class="uma-ctl"><a class="uma-arrow" href="#g2" aria-label="Previous"><img class="uma-arrow-img" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/arrow_left.png"></a><a class="uma-arrow" href="#g1" aria-label="Next"><img class="uma-arrow-img" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/arrow_right.png"></a></div>
+          <div class="uma-pg"><i class="uma-dot"></i><i class="uma-dot"></i><img class="uma-hs" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/horseshoe.png"></div>
           </div>
+
         </div>
       </div>
-
-      <div class="uma-ctl c1"><a class="uma-arrow" href="#g3"><img class="uma-arrow-img" alt="Previous" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/arrow_left.png"></a><a class="uma-arrow" href="#g2"><img class="uma-arrow-img" alt="Next" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/arrow_right.png"></a></div>
-      <div class="uma-ctl c2"><a class="uma-arrow" href="#g1"><img class="uma-arrow-img" alt="Previous" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/arrow_left.png"></a><a class="uma-arrow" href="#g3"><img class="uma-arrow-img" alt="Next" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/arrow_right.png"></a></div>
-      <div class="uma-ctl c3"><a class="uma-arrow" href="#g2"><img class="uma-arrow-img" alt="Previous" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/arrow_left.png"></a><a class="uma-arrow" href="#g1"><img class="uma-arrow-img" alt="Next" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/arrow_right.png"></a></div>
-
-      <div class="uma-pg p1"><img class="uma-hs" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/horseshoe.png"><i class="uma-dot"></i><i class="uma-dot"></i></div>
-      <div class="uma-pg p2"><i class="uma-dot"></i><img class="uma-hs" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/horseshoe.png"><i class="uma-dot"></i></div>
-      <div class="uma-pg p3"><i class="uma-dot"></i><i class="uma-dot"></i><img class="uma-hs" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/horseshoe.png"></div>
     </div>
   </div>
 

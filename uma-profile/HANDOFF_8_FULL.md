@@ -112,3 +112,19 @@ Wanted, in his words:
 - Don't commit `docs/paste-*.png` every round — nine full-page screenshots are ~20 MB and that is what filled this workspace's snapshot. Gitignore them or keep one small proof sheet.
 - Runner traps: detached-HEAD push needs `HEAD:<branch>`; `npm i puppeteer` inside the repo fails (`object is not extensible`) — install in `/tmp/pw`; `gh run view --log-failed` EOFs, use `gh api …/jobs`; artifacts aren't downloadable, read the bot's commit.
 - Never switch branches; push only `arena/aa88f095-puppeteer`.
+
+---
+
+## §10 — Round 1 done (page-1 band, committed this session)
+
+Delivered in `src/bio.html` gameplay block + `assets/site/lb1-*`:
+
+- Band is the official **192vw / 62.5vw / 1250px** (height hooks at 900/2000, full-bleed padding zeroed at 820).
+- **Page-1 seat** matches `ref-official.jpg`: Special Week (`lb1-uma.png`) top-right behind the headline; `lb1-headline.png` replaces "Train your Umamusume!"; `lb1-left.jpg` larger left capture, `lb1-right.jpg` smaller right; white plate `lb1-plate.png` + caption at the bottom. Geometry verified at 390px (uma 178.8..390 × 0..253.5, hl y156, shotL 41.7..207.3, shotR 225.8..355.5, card y569, pager bottom 4vw).
+- **Real scroll strip**: `.uma-viewport` = `overflow-x:auto` + `scroll-behavior:smooth` + `scroll-snap-type:x mandatory` + snap-align start on each slide. Slides use `overflow:clip` (not hidden — hidden made each page a nested scroll container that swallowed the pan). Images inside slides get `user-drag:none` so mousedown pans instead of native image-drag.
+- **Arrows live inside each slide** (no `:has()` state machine): each page carries its own prev/next chevrons + pager with the correct active horseshoe. Arrow rule is `background:none; border-radius:0` — no circle.
+- Verified at 390: touch swipe → frame1 → frame2 (lands dead on 390/780); wheel pans + snaps; arrow cycle g1→g2→g3→g1 all land on frames; rig `paste` spill=0 at 280..1280 + stress PASS.
+- Paste **74,947** chars (under 75k). CDN sha for page-1 art: `64770b6e760a5b3b82cc43115ca9784ac9f3dfbb`.
+- Rig needs (this sandbox): `NODE_PATH=/tmp/nm2/node_modules UMA_FONTS=/tmp/nm2/node_modules LD_LIBRARY_PATH=/tmp/al2/lib:/tmp/al2023/lib node tools/rig.cjs paste` (from `uma-profile/`).
+
+**Still open:** pages 2–3 are simple centered cards (intentional — page 1 first). Desktop (900+) uses the same % seat scaled into 62.5vw; official desktop is a different two-column layout if we ever want parity. `scroll-snap-*` is on the PLAN banned list but is required by §8.6 and survived the rig — if Janitor strips it, free `overflow-x` pan still works, arrows still glide via `scroll-behavior:smooth`.

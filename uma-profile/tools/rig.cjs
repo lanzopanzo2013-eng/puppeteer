@@ -205,14 +205,14 @@ fs.writeFileSync(tmp, PAGE);
   await page.setViewport({ width: 390, height: 844, deviceScaleFactor: 1 });
   await page.goto('file://' + tmp, { waitUntil: 'load' });
   const opacities = await page.evaluate(() =>
-    [...document.querySelectorAll('.uma-roster .uma-grid, .uma-media .uma-media-row, .uma-play .uma-hl')]
+    [...document.querySelectorAll('.uma-roster .uma-grid, .uma-media .uma-media-row, .uma-play .uma-hl-img')]
       .map((e) => Number(getComputedStyle(e).opacity))
   );
   console.log('reveal at scroll 0 ->', opacities.slice(0, 6).join(','));
   await page.evaluate(() => window.scrollTo(0, 1400));
   await new Promise((r) => setTimeout(r, 400));
   const after = await page.evaluate(() =>
-    [...document.querySelectorAll('.uma-roster .uma-grid, .uma-media .uma-media-row, .uma-play .uma-hl')]
+    [...document.querySelectorAll('.uma-roster .uma-grid, .uma-media .uma-media-row, .uma-play .uma-hl-img')]
       .map((e) => Number(getComputedStyle(e).opacity))
   );
   console.log('reveal at scroll 1400 ->', after.slice(0, 6).join(','));
