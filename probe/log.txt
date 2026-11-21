@@ -1,8 +1,7 @@
 == profile https://janitorai.com/profiles/97048214-6734-4671-8ee4-eb018151280c_profile-of-shxou-huang
-attempt 1 failed: Waiting for selector `.pp-uc-about-me` failed: Waiting failed: 30000ms exceeded; url now https://janitorai.com/profiles/97048214-6734-4671-8ee4-eb018151280c_profile-of-shxou-huang
 before {"header":[0,0,384,40],"bar":[0,0,384,40],"notice":[0,40,384,58],"main":[0,98,384,3835],"about":[28,283,328,292],"shell":null,"umaHdr":null,"hero":null,"card":null,"docH":4255,"innerH":844}
 after  {"header":[0,0,384,40],"bar":[0,0,384,40],"notice":[0,0,0,0],"main":[0,40,384,7340],"about":[0,0,0,0],"shell":[-3,40,390,4037],"umaHdr":[0,0,390,57],"hero":[-3,40,390,628],"card":[10,1408,364,196],"docH":7702,"innerH":844}
-figs   {"row":[217,1355,158,42],"cardTop":1408,"imgs":[{"cls":"fig-jet","loaded":false,"nat":"0x0","drawn":"0x41"},{"cls":"fig-car","loaded":true,"nat":"320x140","drawn":"86x37"},{"cls":"fig-horse","loaded":true,"nat":"300x212","drawn":"60x42"}]}
+figs   {"row":[155,1355,220,42],"cardTop":1408,"imgs":[{"cls":"fig-jet","loaded":true,"nat":"320x209","drawn":"62x41"},{"cls":"fig-car","loaded":true,"nat":"320x140","drawn":"86x37"},{"cls":"fig-horse","loaded":true,"nat":"300x212","drawn":"60x42"}]}
 chain (outermost first):
     top -300 h 7702 pad 0px mar 0px block
    _wrapper_13xo6_1  top -300 h 7702 pad 0px mar 0px flex
