@@ -69,6 +69,47 @@ async function main() {
   await wait(400);
   await page.screenshot({ path: `${OUT}/applied-300.png` });
 
+  // the chain from Janitor's content box down to the key visual, with the computed padding
+  const chain = await page.evaluate(() => {
+    const out = [];
+    let el = document.querySelector('.uma-shell');
+    for (; el && el !== document.body; el = el.parentElement) {
+      const b = el.getBoundingClientRect(); const cs = getComputedStyle(el);
+      out.push({ cls: (el.className || '').toString().slice(0, 60), top: Math.round(b.top),
+        h: Math.round(b.height), pad: cs.paddingTop, mar: cs.marginTop, disp: cs.display });
+    }
+    return out.reverse();
+  });
+  log('chain (outermost first):');
+  chain.forEach((c) => log('  ', c.cls, 'top', c.top, 'h', c.h, 'pad', c.pad, 'mar', c.mar, c.disp));
+
+  // try the fix before writing it: kill the notice, then the wrapper's own padding
+  const trials = [
+    ['notice hidden', '[class*="domainNotice"]{display:none !important}'],
+    ['+ flex padding', '.profile-page-flex{padding-top:0 !important;padding-bottom:0 !important}'],
+    ['+ uc background', '.pp-uc-background{margin-top:0 !important;padding-top:0 !important}'],
+    ['+ wrapper box', '.profile-info-wrapper-box{padding-top:0 !important;margin-top:0 !important}'],
+    ['+ stack', '.profile-info-stack{padding-top:0 !important;margin-top:0 !important;row-gap:0 !important}'],
+  ];
+  let css2 = '';
+  for (const [name, rule] of trials) {
+    css2 += rule;
+    const m = await page.evaluate((rules) => {
+      let s = document.getElementById('probe-trials');
+      if (!s) { s = document.createElement('style'); s.id = 'probe-trials'; document.head.appendChild(s); }
+      s.textContent = rules;
+      const b = (sel) => { const e = document.querySelector(sel); if (!e) return null;
+        const rect = e.getBoundingClientRect(); return [Math.round(rect.y), Math.round(rect.height)]; };
+      return { hero: b('.uma-hero'), shell: b('.uma-shell'), hdr: b('.uma-hdr'),
+        header: b('header.pp-top-header'), main: b('main'), docH: document.documentElement.scrollHeight };
+    }, css2);
+    await wait(300);
+    log('trial', name, JSON.stringify(m));
+  }
+  await page.evaluate(() => window.scrollTo(0, 0));
+  await wait(400);
+  await page.screenshot({ path: `${OUT}/fixed-top.png` });
+
   // and again with the outage banner taken out, since it is temporary
   await page.evaluate(() => { const n = document.querySelector('[class*="domainNotice"]'); if (n) n.remove(); });
   await wait(600);
