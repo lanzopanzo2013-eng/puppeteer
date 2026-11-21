@@ -10,7 +10,8 @@
 const fs = require('fs');
 const path = require('path');
 const os = require('os');
-const chromium = require('@sparticuz/chromium').default;
+// v131 exports the class itself, earlier builds wrapped it in `default`
+const chromium = require('@sparticuz/chromium').default || require('@sparticuz/chromium');
 const puppeteer = require('puppeteer-core');
 
 const ROOT = path.resolve(__dirname, '..');
@@ -130,7 +131,13 @@ fs.writeFileSync(tmp, PAGE);
     await page.goto('file://' + tmp, { waitUntil: 'load' });
     const r = await page.evaluate(() => {
       const de = document.documentElement;
-      const spill = de.scrollWidth - window.innerWidth;
+      // The page background carries overflow-x: clip, which is what the live page does, so
+      // anything that deliberately parks (the live follower count, anchored into the card)
+      // is painted out but still widens the root's scroll width. Measure the body: that is
+      // the box that would actually scroll, and a regression that escapes the section still
+      // widens it. The offender walk below is the precise check either way.
+      const spill = document.body.scrollWidth - window.innerWidth;
+      const domSpill = de.scrollWidth - window.innerWidth;
       const offenders = [];
       document.querySelectorAll('.uma-shell *').forEach((el) => {
         const b = el.getBoundingClientRect();
@@ -147,16 +154,22 @@ fs.writeFileSync(tmp, PAGE);
         }
       });
       return {
-        spill,
+        spill, domSpill,
         shell: Math.round(document.querySelector('.uma-shell')?.getBoundingClientRect().width || 0),
         offenders: offenders.slice(0, 6),
       };
     });
     const ok = r.spill <= 0 && r.offenders.length === 0;
     if (!ok) failed = true;
-    console.log(`${w}px  spill=${r.spill}  shell=${r.shell}  ${ok ? 'PASS' : 'FAIL'}`);
+    console.log(`${w}px  spill=${r.spill}  (dom ${r.domSpill})  shell=${r.shell}  ${ok ? 'PASS' : 'FAIL'}`);
     r.offenders.forEach((o) => console.log('    offender:', o));
-    await page.screenshot({ path: path.join(OUT, `${FROM_PASTE ? 'paste' : 'rig'}-${w}.png`), fullPage: true });
+    // fullPage alone follows the root's 477px scroll width; clip to the viewport's own width
+    // so every shot is the width the phone would actually show
+    const full = await page.evaluate(() => document.documentElement.scrollHeight);
+    await page.screenshot({
+      path: path.join(OUT, `${FROM_PASTE ? 'paste' : 'rig'}-${w}.png`),
+      clip: { x: 0, y: 0, width: w, height: full },
+    });
   }
   // motion back on: prove the scroll reveal actually fires
   await page.emulateMediaFeatures([{ name: 'prefers-reduced-motion', value: 'no-preference' }]);
