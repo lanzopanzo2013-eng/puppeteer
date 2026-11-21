@@ -245,6 +245,12 @@
     <img class="uma-sec-bg" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/about_bg.jpg">
     <img class="uma-about-pink" alt="" aria-hidden="true" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@dca1b39a0cc10301c6f20532399e4a22bc97a2f0/uma-profile/assets/site/about-pink-full.png">
     <div class="uma-tag-wrap"><div class="uma-tag blue uma-tag-white"><span>About Me</span></div></div>
+    <!-- the three cut-outs, in the corner the card leaves free -->
+    <div class="uma-about-figs" aria-hidden="true">
+      <img class="fig-jet" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@003d995/uma-profile/assets/site/fig-jet.png">
+      <img class="fig-car" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@003d995/uma-profile/assets/site/fig-car.png">
+      <img class="fig-horse" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@003d995/uma-profile/assets/site/fig-horse.png">
+    </div>
 
     <div class="uma-about-ph">
       <div class="uma-tc-port">

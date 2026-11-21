@@ -1843,3 +1843,44 @@ always has.
 A note on the first row: that rule is aimed at a *temporary* banner. If Janitor retires it the
 selector simply matches nothing. If it ever backs a real platform notice that should be visible,
 delete the one line and the theme keeps a 58px strip instead — no other change.
+
+## 55 — three cut-outs in the corner the card leaves free
+
+He sent three transparent renders and wanted them small, in the About box's empty upper-right
+corner. The band is a fixed 122.6667vw tall and its card is absolutely centred at 50.1333vw, so
+between the white "About Me" plate and the card's top edge there is a strip of sky on the right
+that nothing uses. The strip is 142 css tall at 390 and 22.2vw wide at 1280.
+
+The row is positioned off the **card's** top edge, not the band's top:
+
+```css
+.uma-about-figs { right: 12px; bottom: calc(50% + 25.0667vw + 2.6vw); }
+```
+
+`50% + half the card` is the card's top edge measured from the band's foot, so the row hangs
+2.6vw above it at every width, and the section's own 12px padding lines it up with the card's
+right edge. Heights are given, not widths (`10.4 / 9.6 / 10.8vw`, i.e. 62 x 40, 86 x 37 and
+60 x 42 at 390), and each carries the same `.5955` the card's contents shrink by at 900, so the
+three keep their proportion instead of turning into slabs on a desktop. Under 360 the plate and
+the row start sharing the line, and decoration loses.
+
+**The jet is not cut out.** Its render is an opaque black plate. `tools/make-figs.py` keys it:
+black is only allowed to go transparent where it is **connected to the frame's border**, so the
+canopy, the intakes and the shadow under the wings — black that the airframe encloses — survive;
+the cut line is feathered by luminance because that is where the anti-aliasing lives; and three
+pixels inside the cut line is forced opaque, because the same ramp across the whole airframe read
+as a ghost at 62 css wide. The other two arrive with alpha and are only trimmed
+(`fig-car` 2.29:1, `fig-horse` 1.42:1, `fig-jet` 1.53:1). Sources live outside the repo; the
+script takes `UPLOADS=/path`.
+
+Verified: rig 9/9 spill 0 (280…1280) on the delivered paste, the row at `[158, 1359, 220, 42]`
+against a card top of 1412 at 390, and `[839, 2908, 429, 82]` against 3010 at 1280, so it never
+touches the card at any width. Paste 73,667 chars, one line (css 42,590 / markup 31,061) — the
+images cost 467 characters of URLs, not 238 KB of base64. `docs/round-55.png` is the band at both
+widths.
+
+**The rig was lying.** Its spill number came from `documentElement.scrollWidth`, which counts the
+live follower count the theme parks inside the clipped page background (63 to 107px of chrome that
+paints nothing). Every width had been reporting FAIL, and every `fullPage` shot had been captured
+477px wide at a 390px viewport since r54. spill is now the body's scroll width, the raw number is
+still printed beside it, and shots are clipped to the viewport width.
