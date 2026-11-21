@@ -69,9 +69,14 @@ def key_black_plate(im):
     plate = np.isin(lab, border[border > 0])
 
     # feather the keyed edge by luminance: the anti-aliased rim is the only
-    # place where the render is neither plate-black nor solid airframe
+    # place where the render is neither plate-black nor solid airframe. Inside
+    # the airframe the same ramp would turn every dark panel see-through, so
+    # three pixels in from the cut line the artwork is opaque whatever its
+    # brightness, which is what keeps the jet from reading as a ghost on a
+    # pale sky.
     edge = np.clip((lum - 2.0) / 14.0, 0.0, 1.0)
-    keyed = np.where(plate, edge, 1.0) * alpha
+    solid = ndimage.binary_erosion(~plate, iterations=3)
+    keyed = np.where(solid, 1.0, np.where(plate, edge, 1.0)) * alpha
 
     # the render is already composited on black, so it is premultiplied by the
     # new alpha; undo that or every feathered pixel keeps a dark rim
