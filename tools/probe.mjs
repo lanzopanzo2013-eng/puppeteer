@@ -95,6 +95,48 @@ async function main() {
     };
   });
   log('figs  ', JSON.stringify(figs));
+
+  // r55: why is a 5.75vw height not what the live page uses? dump the chain, the computed
+  // values, and every stylesheet rule that actually matches one of the three images
+  const figWhy = await page.evaluate(() => {
+    const row = document.querySelector('.uma-about-figs');
+    if (!row) return 'no row';
+    const img = row.querySelector('img');
+    const cs = getComputedStyle(img);
+    const chain = [];
+    for (let el = row; el && el !== document.documentElement; el = el.parentElement) {
+      const c = getComputedStyle(el);
+      chain.push((el.tagName + '.' + (el.className || '')).slice(0, 54) + ' pos=' + c.position
+        + ' ov=' + c.overflow + ' w=' + Math.round(el.getBoundingClientRect().width));
+    }
+    const hits = [];
+    for (const sheet of document.styleSheets) {
+      let rules;
+      try { rules = sheet.cssRules; } catch { continue; }
+      const walk = (list) => {
+        for (const rule of list) {
+          if (rule.cssRules) { walk(rule.cssRules); continue; }
+          const sel = rule.selectorText;
+          if (!sel || !/img|figure|markdown/i.test(sel)) continue;
+          let hit = false;
+          try { hit = img.matches(sel); } catch { }
+          if (!hit) continue;
+          hits.push((sheet.href ? 'cdn' : 'inline') + ' {' + sel.slice(0, 70) + '} '
+            + rule.style.cssText.slice(0, 150));
+        }
+      };
+      walk(rules);
+    }
+    return {
+      chain,
+      img: { rect: [Math.round(img.getBoundingClientRect().width), Math.round(img.getBoundingClientRect().height)],
+        w: cs.width, h: cs.height, maxW: cs.maxWidth, pos: cs.position, right: cs.right, top: cs.top,
+        umaK: cs.getPropertyValue('--uma-k'), nat: img.naturalWidth + 'x' + img.naturalHeight },
+      rowW: row.getBoundingClientRect().width,
+      hits: hits.slice(0, 24),
+    };
+  });
+  log('figwhy', JSON.stringify(figWhy, null, 1));
   await page.screenshot({ path: `${OUT}/applied-top.png` });
   await page.evaluate(() => window.scrollTo(0, 300));
   await wait(400);
