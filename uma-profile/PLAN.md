@@ -1912,3 +1912,31 @@ Re-read after the move, on the same live page: `figs [238, 1423, 121, 22]` insid
 with the jet drawn 34x22, the car 51x22 and the horse 32x22 and all three `naturalWidth` intact.
 The local rig had predicted `[241, 1427, 362, 1450]`; the 3px is the live card sitting at x=10
 instead of 13.
+
+**Then it drew huge on his phone.** Three 320px renders loose in a 364px card, wide enough to
+widen the document and drag the centred card off the right of his screen (his screenshot shows
+exactly that, plus the card's own padding gone).
+
+The runner probe cannot reproduce it: it injects the paste straight into the head and into
+`.pp-uc-about-me`, so it measured 34x22 while his page, which goes through Janitor's editor and
+sanitiser, drew natural size. What the difference had to be, once the two failure modes were
+tested in the rig:
+
+| failure | what it does |
+|---|---|
+| `:root { --uma-k: 1 }` not kept | every `calc(… * var(--uma-k))` becomes invalid, so paddings, type sizes **and** the row's height all fall back |
+| `img { height: auto !important }` from Janitor | the height loses even when the calc is valid |
+
+Both were reproduced in the rig and both now fail safe:
+
+- every one of the 29 reads is `var(--uma-k, 1)`, so a missing `:root` rule costs nothing;
+- the corner row no longer reads it at all: `top: 4vw`, `right: 3.8vw`, `height: 5.75vw` with
+  plain media queries at 900 and 2000, plus `!important` and a `.uma-about-ph .uma-about-figs img`
+  specificity bump so a reset cannot win;
+- the three `<img>`s carry `width`/`height` attributes at their drawn size, so even a page that
+  drops the rule draws them small instead of at 320px.
+
+And the rig grew a **stress pass**: at 390 it deletes `--uma-k` and applies
+`img{height:auto !important}` at the same time, then fails the build unless the row still
+measures 34x22 / 51x22 / 32x22 inside the card and the body keeps its padding. That is the check
+that would have caught this before he saw it.

@@ -171,6 +171,35 @@ fs.writeFileSync(tmp, PAGE);
       clip: { x: 0, y: 0, width: w, height: full },
     });
   }
+  /* Stress pass. A local render is kinder than the live page in two ways that both showed up
+     on r55's corner row: Janitor's pipeline does not always keep the `:root` rule that defines
+     --uma-k, and it puts `height: auto !important` on images. With both applied at 390 the
+     row must still be small and the card's own padding must still exist. */
+  await page.setViewport({ width: 390, height: 844, deviceScaleFactor: 1 });
+  await page.goto('file://' + tmp, { waitUntil: 'load' });
+  const stress = await page.evaluate(() => {
+    const s = document.createElement('style');
+    s.textContent = '.pp-uc-about-me img{height:auto !important}';
+    document.head.appendChild(s);
+    document.documentElement.style.setProperty('--uma-k', 'initial');
+    const row = document.querySelector('.uma-about-figs');
+    const card = document.querySelector('.uma-about-ph');
+    const body = document.querySelector('.uma-tc-body');
+    const rb = row.getBoundingClientRect(); const cb = card.getBoundingClientRect();
+    return {
+      imgs: [...row.querySelectorAll('img')].map((i) => Math.round(i.getBoundingClientRect().width)
+        + 'x' + Math.round(i.getBoundingClientRect().height)),
+      rowW: Math.round(rb.width),
+      insideCard: rb.right <= cb.right + 1 && rb.left >= cb.left - 1,
+      bodyPad: getComputedStyle(body).paddingTop,
+    };
+  });
+  const stressOk = stress.imgs.every((d) => { const [w, h] = d.split('x').map(Number);
+    return w > 8 && w < 80 && h > 8 && h < 40; }) && stress.insideCard && stress.bodyPad !== '0px';
+  console.log('stress (no --uma-k, img height:auto !important) ->',
+    JSON.stringify(stress), stressOk ? 'PASS' : 'FAIL');
+  if (!stressOk) failed = true;
+
   // motion back on: prove the scroll reveal actually fires
   await page.emulateMediaFeatures([{ name: 'prefers-reduced-motion', value: 'no-preference' }]);
   await page.setViewport({ width: 390, height: 844, deviceScaleFactor: 1 });

@@ -425,15 +425,31 @@
    against the copy instead of becoming furniture on a desktop. One height for all three, so
    they sit on the break like a row of stickers. */
 .uma-about-figs {
-  position: absolute; z-index: 3;
-  top: calc(4vw * var(--uma-k)); right: calc(3.8vw * var(--uma-k));
-  display: flex; align-items: flex-end; gap: calc(.5vw * var(--uma-k));
+  position: absolute !important; z-index: 3;
+  top: 4vw !important; right: 3.8vw !important;
+  display: flex; align-items: flex-end; gap: .5vw;
   pointer-events: none;
 }
-.uma-about-figs img {
-  display: block; width: auto;
-  height: calc(5.75vw * var(--uma-k));
+/* Everything here is plain vw and !important on purpose. Two things go wrong on the live
+   page that a local render never shows: Janitor's own reset puts `height: auto !important`
+   on images, and their pipeline does not always keep the `:root` rule that defines
+   --uma-k, which turns every calc() that reads it into an invalid declaration. A missing
+   --uma-k is survivable (`--uma-k, 1` everywhere), a missing height is not: three 320px
+   renders loose in a 364px card, wide enough to widen the document and drag the centred
+   card off screen. So the size is written out at each breakpoint instead of derived. */
+.uma-about-ph .uma-about-figs img {
+  display: block !important;
+  width: auto !important; max-width: none !important;
+  height: 5.75vw !important;
   filter: drop-shadow(0 .22vw .7vw rgba(12,54,96,.30));
+}
+@media (min-width: 900px) {
+  .uma-about-figs { top: 2.38vw !important; right: 2.26vw !important; gap: .3vw; }
+  .uma-about-ph .uma-about-figs img { height: 3.42vw !important; }
+}
+@media (min-width: 2000px) {
+  .uma-about-figs { top: 47.6px !important; right: 45.3px !important; gap: 5.95px; }
+  .uma-about-ph .uma-about-figs img { height: 68.5px !important; }
 }
 /* Our copy of the About art is the landscape crop, 1100 x 688, while the official phone page
    runs a taller crop of the same painting, so the stands sit lower there. Covering a 360 x 446
@@ -509,10 +525,10 @@
 .uma-tc-pfp { width: 100%; height: 100%; object-fit: cover; display: block; }
 .uma-tc-port::after {
   content: ""; position: absolute; inset: 0;
-  box-shadow: inset calc(-2.2vw * var(--uma-k)) 0 calc(3vw * var(--uma-k)) rgba(20,80,140,.12);
+  box-shadow: inset calc(-2.2vw * var(--uma-k, 1)) 0 calc(3vw * var(--uma-k, 1)) rgba(20,80,140,.12);
 }
 .uma-tc-body {
-  flex: 1; min-width: 0; padding: calc(4vw * var(--uma-k)) calc(3.8vw * var(--uma-k));
+  flex: 1; min-width: 0; padding: calc(4vw * var(--uma-k, 1)) calc(3.8vw * var(--uma-k, 1));
   /* border-box, or the padding is added to the height the card gives this column and the last
      line of the bio is pushed past the card's edge. With it, the column's content is exactly
      the card's inside: 4vw of air at the top of the chip and at the foot of the bio. */
@@ -525,15 +541,15 @@
      chip's job is to be quiet and unmistakably a label. Roboto at 700 keeps the small size
      legible where the condensed face would close its counters up. */
   font-family: roboto, "Roboto", Arial, sans-serif;
-  font-size: calc(2vw * var(--uma-k)); font-weight: 700; letter-spacing: .01em; text-transform: none;
-  padding: calc(.95vw * var(--uma-k)) calc(2.1vw * var(--uma-k)) calc(.85vw * var(--uma-k));
+  font-size: calc(2vw * var(--uma-k, 1)); font-weight: 700; letter-spacing: .01em; text-transform: none;
+  padding: calc(.95vw * var(--uma-k, 1)) calc(2.1vw * var(--uma-k, 1)) calc(.85vw * var(--uma-k, 1));
   border-radius: 0; line-height: 1;
-  box-shadow: 0 calc(.5vw * var(--uma-k)) 0 rgba(15,87,251,.16); transform: skewX(-12deg);
+  box-shadow: 0 calc(.5vw * var(--uma-k, 1)) 0 rgba(15,87,251,.16); transform: skewX(-12deg);
 }
 .uma-tc-role i { font-style: normal; display: inline-block; transform: skewX(12deg); }
 .uma-tc-name {
-  font-style: italic; font-weight: 900; font-size: calc(5.9vw * var(--uma-k)); line-height: .94;
-  color: #13294B; letter-spacing: -.015em; margin: calc(1.4vw * var(--uma-k)) 0 0;
+  font-style: italic; font-weight: 900; font-size: calc(5.9vw * var(--uma-k, 1)); line-height: .94;
+  color: #13294B; letter-spacing: -.015em; margin: calc(1.4vw * var(--uma-k, 1)) 0 0;
   overflow-wrap: anywhere;
 }
 .uma-tc-fol {
@@ -542,16 +558,16 @@
      would move when it changes. Here the label is pinned to the card's margin and the number
      grows into empty card instead, which keeps the gap identical for "1" and "128,043". */
   display: flex; align-items: baseline;
-  gap: calc(1.6vw * var(--uma-k));
-  margin-top: calc(1.2vw * var(--uma-k));
+  gap: calc(1.6vw * var(--uma-k, 1));
+  margin-top: calc(1.2vw * var(--uma-k, 1));
 }
 .uma-tc-fol span {
   display: block; font-family: roboto, "Roboto", Arial, sans-serif;
-  font-size: calc(1.9vw * var(--uma-k)); font-weight: 700; letter-spacing: .24em;
+  font-size: calc(1.9vw * var(--uma-k, 1)); font-weight: 700; letter-spacing: .24em;
   text-transform: uppercase; color: #8095AD;
 }
 .uma-tc-fol b {
-  display: block; font-style: italic; font-weight: 900; font-size: calc(4.7vw * var(--uma-k));
+  display: block; font-style: italic; font-weight: 900; font-size: calc(4.7vw * var(--uma-k, 1));
   color: #E5348A; line-height: 1.05;
   /* tabular figures: the live count changes under the reader's eyes and must not jitter */
   font-variant-numeric: tabular-nums;
@@ -562,7 +578,7 @@
    carries, so the file itself is cut out and coloured the brand pink, and CSS only places it. */
 .uma-tc-break {
   display: block; width: 100%; height: auto;
-  margin: calc(2.2vw * var(--uma-k)) 0 calc(2vw * var(--uma-k));
+  margin: calc(2.2vw * var(--uma-k, 1)) 0 calc(2vw * var(--uma-k, 1));
 }
 .uma-tc-bio {
   /* A scroll box, not a paragraph. The card is a fixed 50.1333vw tall whatever is in it, so
@@ -580,31 +596,31 @@
      wanted, and it is what tells a thumb that there is more under it */
   -webkit-mask-image: linear-gradient(to bottom, #000 0 74%, rgba(0,0,0,.12) 100%);
   mask-image: linear-gradient(to bottom, #000 0 74%, rgba(0,0,0,.12) 100%);
-  padding-right: calc(.7vw * var(--uma-k));
+  padding-right: calc(.7vw * var(--uma-k, 1));
   font-family: roboto, "Roboto", Arial, sans-serif;
-  font-size: calc(2.95vw * var(--uma-k)); line-height: 1.52; color: #3E5A76;
+  font-size: calc(2.95vw * var(--uma-k, 1)); line-height: 1.52; color: #3E5A76;
   font-weight: 400; margin: 0; text-wrap: pretty;
 }
-.uma-tc-bio::-webkit-scrollbar { width: calc(.85vw * var(--uma-k)); }
+.uma-tc-bio::-webkit-scrollbar { width: calc(.85vw * var(--uma-k, 1)); }
 .uma-tc-bio::-webkit-scrollbar-track { background: rgba(19,41,75,.07); border-radius: 99px; }
 .uma-tc-bio::-webkit-scrollbar-thumb { background: #F0A6CE; border-radius: 99px; }
 .uma-tc-bio::-webkit-scrollbar-thumb:hover { background: #E5348A; }
 /* a full line of air between paragraphs, so each one reads as its own thought instead of
    running on from the last — the block is scrolled, not skimmed, and this is the only
    structure it gets */
-.uma-tc-bio p { margin: 0 0 calc(1.5vw * var(--uma-k)); }
+.uma-tc-bio p { margin: 0 0 calc(1.5vw * var(--uma-k, 1)); }
 .uma-tc-bio p:last-child { margin-bottom: 0; }
 /* The greeting is the block's one bit of hierarchy: a shade larger and in the card's navy
    rather than the body blue, so the eye lands on it first. Everything under it stays one
    size — his copy is a run of facts, and the air between paragraphs is what separates them. */
-.uma-tc-bio p:first-child { font-size: calc(3.15vw * var(--uma-k)); line-height: 1.42; color: #13294B; }
+.uma-tc-bio p:first-child { font-size: calc(3.15vw * var(--uma-k, 1)); line-height: 1.42; color: #13294B; }
 /* Bold is for the handful of facts worth a thumb: the names he goes by, what he is, the number
    the whole paragraph hangs on, the one race he names. Navy rather than body blue, so a bold
    word reads as a headword and not as a link. */
 .uma-tc-bio strong { font-weight: 700; color: #13294B; }
 /* the same break, quieter and inside the scroll: a page break between movements, not a rule */
 .uma-tc-bio .uma-tc-break {
-  margin: calc(2.6vw * var(--uma-k)) 0 calc(2.4vw * var(--uma-k));
+  margin: calc(2.6vw * var(--uma-k, 1)) 0 calc(2.4vw * var(--uma-k, 1));
   opacity: .45;
 }
 .uma-profile-card {
@@ -1469,8 +1485,6 @@ html, body { background-color: #fff !important; }
   .uma-about { height: 1250px; }
   .uma-about-ph { width: 1111.1111px; height: 625px; }
   /* the card is a flat size from here, so the corner row is too (0.5955 * 1vw at 2000) */
-  .uma-about-figs { top: 47.6px; right: 45.3px; gap: 5.95px; }
-  .uma-about-figs img { height: 68.5px; }
   /* the card is a flat size from here, so the type stops being fluid: 1vw is 20px at 2000,
      and 0.5955 * 20 turns the mobile vw values above into their pixel equivalents */
   .uma-tc-body { padding: 47.6px 45.3px; }

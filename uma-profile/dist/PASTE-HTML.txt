@@ -269,9 +269,9 @@
       </div>
       <!-- the three cut-outs, in the card's own empty corner -->
       <div class="uma-about-figs" aria-hidden="true">
-        <img class="fig-jet" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@003d995/uma-profile/assets/site/fig-jet.png">
-        <img class="fig-car" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@003d995/uma-profile/assets/site/fig-car.png">
-        <img class="fig-horse" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@003d995/uma-profile/assets/site/fig-horse.png">
+        <img class="fig-jet" alt="" width="34" height="22" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@003d995/uma-profile/assets/site/fig-jet.png">
+        <img class="fig-car" alt="" width="51" height="22" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@003d995/uma-profile/assets/site/fig-car.png">
+        <img class="fig-horse" alt="" width="32" height="22" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@003d995/uma-profile/assets/site/fig-horse.png">
       </div>
     </div>
   </div>
