@@ -707,8 +707,9 @@
 /* a native image-drag eats the mousedown and the strip never pans */
 .uma-slide img { user-drag: none; -webkit-user-drag: none; user-select: none; }
 /* each page carries its own ground so a hand swipe pans the scene with it */
-.uma-lb-bg {
-  position: absolute; left: 0; top: 0; width: 100%; height: 100%;
+.uma-slide .uma-lb-bg {
+  position: absolute; left: 0; top: 0;
+  width: 100% !important; height: 100% !important;
   object-fit: cover; object-position: 50% 50%;
   z-index: 0; pointer-events: none;
 }
@@ -717,35 +718,40 @@
   background: linear-gradient(180deg, rgba(60,167,50,.18) 0%, rgba(60,167,50,.05) 40%, rgba(60,167,50,.32) 100%);
   z-index: 1; pointer-events: none;
 }
-/* ── page 1 seat (percent of the band so it scales to 62.5vw desktop) ── */
-.uma-uma { /* Special Week, behind the headline */
+/* ── page 1 seat (percent of the band so it scales to 62.5vw desktop) ──
+   Every seat dimension that must survive is !important AND two classes deep:
+   Janitor's pipeline injects `.pp-uc-about-me img { height: auto !important }`
+   (0,1,1), so a bare `.uma-shot-l !important` (0,1,0) still loses the tie and
+   the captures blow out to full band width — seen live, then re-measured in
+   the rig stress pass. Same lesson as the About corner row. */
+.uma-slide .uma-uma { /* Special Week, behind the headline */
   position: absolute; top: 0; right: 0;
-  height: 33.85%; width: auto; max-width: 58%;
+  height: 33.85% !important; width: auto !important; max-width: 58% !important;
   z-index: 2; pointer-events: none;
 }
-.uma-hl-img { /* Test The Lorebooks! replaces the text headline */
+.uma-slide .uma-hl-img { /* Test The Lorebooks! replaces the text headline */
   position: absolute; top: 20.83%; left: 50%;
   transform: translateX(-50%);
-  width: 74%; height: auto;
+  width: 74% !important; height: auto !important;
   z-index: 3; pointer-events: none;
 }
-.uma-shot-l {
+.uma-slide .uma-shot-l {
   position: absolute; top: 34.79%; left: 10.7%;
-  height: 39.4%; width: auto; max-width: 42%;
+  height: 39.4% !important; width: auto !important; max-width: 42% !important;
   z-index: 2; border-radius: 4px;
 }
-.uma-shot-r {
+.uma-slide .uma-shot-r {
   position: absolute; top: 39.64%; left: 57.9%;
-  height: 30.9%; width: auto; max-width: 30%;
+  height: 30.9% !important; width: auto !important; max-width: 30% !important;
   z-index: 2; border-radius: 4px;
 }
 .uma-slide .uma-card { /* white tilted plate + caption (page 1 only) */
   position: absolute; top: 76%; left: 3%;
-  width: 94%; max-height: 19%;
+  width: 94% !important; max-height: 19% !important;
   z-index: 2; line-height: 0;
 }
 .uma-slide .uma-plate {
-  width: 100%; height: 100%;
+  width: 100% !important; height: 100% !important;
   object-fit: cover; object-position: 50% 40%;
   display: block;
 }
@@ -783,8 +789,8 @@
   pointer-events: auto;
 }
 .uma-arrow-img {
-  width: 3.6vw; min-width: 22px; max-width: 36px;
-  height: auto; opacity: .8;
+  width: 3.6vw !important; min-width: 22px !important; max-width: 36px !important;
+  height: auto !important; opacity: .8;
 }
 .uma-slide .uma-pg {
   display: flex; position: absolute; left: 0; right: 0; bottom: 4vw;
@@ -792,8 +798,8 @@
   margin: 0; z-index: 6;
 }
 .uma-pg i { display: block; flex: 0 0 auto; }
-.uma-dot { width: 9px; height: 9px; border-radius: 50%; background: #fff; opacity: .92; }
-.uma-hs { width: 15px; height: auto; display: block; }
+.uma-slide .uma-dot { width: 9px; height: 9px; border-radius: 50%; background: #fff; opacity: .92; }
+.uma-hs { width: 15px !important; height: auto !important; display: block; }
 
 
 /* ---------- Roster (purple) ---------- */

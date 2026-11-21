@@ -186,19 +186,44 @@ fs.writeFileSync(tmp, PAGE);
     const card = document.querySelector('.uma-about-ph');
     const body = document.querySelector('.uma-tc-body');
     const rb = row.getBoundingClientRect(); const cb = card.getBoundingClientRect();
+    /* gameplay seat rides the same inject: without !important + a second
+       class, the captures blow out to full band width (seen live r56). */
+    const band = document.querySelector('.uma-play');
+    const seat = (s) => {
+      const e = document.querySelector(s);
+      if (!e) return null;
+      const r = e.getBoundingClientRect();
+      return [Math.round(r.width), Math.round(r.height)];
+    };
     return {
       imgs: [...row.querySelectorAll('img')].map((i) => Math.round(i.getBoundingClientRect().width)
         + 'x' + Math.round(i.getBoundingClientRect().height)),
       rowW: Math.round(rb.width),
       insideCard: rb.right <= cb.right + 1 && rb.left >= cb.left - 1,
       bodyPad: getComputedStyle(body).paddingTop,
+      bandH: band ? Math.round(band.getBoundingClientRect().height) : 0,
+      uma: seat('.uma-uma'),
+      shotL: seat('.uma-shot-l'),
+      shotR: seat('.uma-shot-r'),
+      hl: seat('.uma-hl-img'),
+      lbBg: seat('.uma-lb-bg'),
     };
   });
   const stressOk = stress.imgs.every((d) => { const [w, h] = d.split('x').map(Number);
     return w > 8 && w < 80 && h > 8 && h < 40; }) && stress.insideCard && stress.bodyPad !== '0px';
+  /* 192vw at 390 = 748.8 · seat must stay a seat: Special Week < 60% of band,
+     captures not full-bleed, background filling the band not its intrinsic height. */
+  const bandW = 390;
+  const seatOk = stress.bandH > 700 && stress.bandH < 800
+    && stress.uma && stress.uma[0] > 150 && stress.uma[0] < bandW * 0.6
+    && stress.shotL && stress.shotL[0] > 120 && stress.shotL[0] < bandW * 0.5
+    && stress.shotR && stress.shotR[0] > 90 && stress.shotR[0] < bandW * 0.4
+    && stress.hl && stress.hl[0] > 200 && stress.hl[0] < bandW * 0.85
+    && stress.lbBg && stress.lbBg[1] > 700;
   console.log('stress (no --uma-k, img height:auto !important) ->',
-    JSON.stringify(stress), stressOk ? 'PASS' : 'FAIL');
-  if (!stressOk) failed = true;
+    JSON.stringify(stress), (stressOk && seatOk) ? 'PASS' : 'FAIL',
+    seatOk ? '(seat ok)' : '(SEAT BROKEN)');
+  if (!stressOk || !seatOk) failed = true;
 
   // motion back on: prove the scroll reveal actually fires
   await page.emulateMediaFeatures([{ name: 'prefers-reduced-motion', value: 'no-preference' }]);

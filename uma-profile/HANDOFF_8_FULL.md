@@ -128,3 +128,16 @@ Delivered in `src/bio.html` gameplay block + `assets/site/lb1-*`:
 - Rig needs (this sandbox): `NODE_PATH=/tmp/nm2/node_modules UMA_FONTS=/tmp/nm2/node_modules LD_LIBRARY_PATH=/tmp/al2/lib:/tmp/al2023/lib node tools/rig.cjs paste` (from `uma-profile/`).
 
 **Still open:** pages 2–3 are simple centered cards (intentional — page 1 first). Desktop (900+) uses the same % seat scaled into 62.5vw; official desktop is a different two-column layout if we ever want parity. `scroll-snap-*` is on the PLAN banned list but is required by §8.6 and survived the rig — if Janitor strips it, free `overflow-x` pan still works, arrows still glide via `scroll-behavior:smooth`.
+
+## 11. Round-2: what actually broke live (and the fix)
+
+User pasted round-1 and reported "barely a change, much broke". The paste file itself was complete (all `lb1-*` URLs, `height:192vw`, one-line, markers present). The breakage was **Janitor's image pipeline vs the page-1 seat**:
+
+- Live injects `.pp-uc-about-me img { height: auto !important }` (specificity 0,1,1) — same rule the rig stress pass already models for the About corner row.
+- Round-1 seat rules (`.uma-uma`, `.uma-shot-l/r`, `.uma-lb-bg`, `.uma-hl-img`, `.uma-plate`) had **no** `!important`, so they lost the tie. Re-measured under the inject at 390: Special Week 390×468 (was 211×253), captures 390×695 (blew past max-width), background 390×217 (intrinsic height — green band lost its art), band itself stayed 749 so it read as "barely changed / broken images".
+- **Fix:** every seat dimension is now `!important` **and** two classes deep (`.uma-slide .uma-uma` etc.) so it beats (0,1,1). Verified: inject-proof run returns the exact reference seat (uma 211×253, shotL 164×295, shotR 117×231, hl 289×41, lbBg 390×749, band 749).
+- **Rig now asserts this:** stress pass includes `bandH/uma/shotL/shotR/hl/lbBg` under the same inject — seat fail = FAIL. (It previously only checked the About corner row, which is why round 1 passed.)
+- Also scoped the white pager dot to `.uma-slide .uma-dot` (was bare, painted over the News chip's green breathing light — cosmetic collision inherited from the old carousel).
+- `tools/make_paste.py` was a **second, divergent builder**: it wrote a *different* `dist/PASTE-ALL.txt` (pretty multi-line) under the same filename. Pasting that pretty file into the markdown About box turns indented lines into code blocks. It is now a thin wrapper that runs `build_paste.py`. **Only `build_paste.py` writes paste artifacts.**
+
+Paste after round 2: **75,265** chars, 1 line (css 43,199 / markup 32,050).
