@@ -51,3 +51,6 @@ probe/*.png
 probe/*.html
 probe/*.json
 probe/fail-*.html
+
+# full-page paste proofs stay out of the repo (they are ~20 MB apiece)
+**/docs/paste-*.png
