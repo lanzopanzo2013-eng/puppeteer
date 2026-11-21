@@ -14,12 +14,17 @@ jobs:
         with:
           node-version: 20
       - name: install
-        run: npm i puppeteer@23 --no-audit --no-fund --loglevel=error
+        run: |
+          mkdir -p /tmp/pw && cd /tmp/pw
+          npm init -y >/dev/null
+          npm i puppeteer@23 --no-audit --no-fund --loglevel=error
+          cp "$GITHUB_WORKSPACE/tools/probe.mjs" /tmp/pw/probe.mjs
+          ls /tmp/pw/node_modules | head -3
       - name: probe
         continue-on-error: true
         run: |
           mkdir -p probe
-          node tools/probe.mjs > probe/log.txt 2>&1 || true
+          node /tmp/pw/probe.mjs > probe/log.txt 2>&1 || true
           tail -60 probe/log.txt
           ls -la probe
       - name: upload
