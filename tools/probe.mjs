@@ -5,6 +5,7 @@ import fs from 'node:fs/promises';
 import puppeteer from 'puppeteer';
 
 const OUT = process.env.OUT || 'probe';
+const ROOT = process.env.GITHUB_WORKSPACE || process.cwd();
 const PROFILE = process.env.PROFILE
   || 'https://janitorai.com/profiles/97048214-6734-4671-8ee4-eb018151280c_profile-of-shxou-huang';
 const UA = 'Mozilla/5.0 (Linux; Android 13; SM-S901B) AppleWebKit/537.36 (KHTML, like Gecko) '
@@ -33,7 +34,7 @@ const MEASURE = () => {
 
 async function main() {
   await fs.mkdir(OUT, { recursive: true });
-  const paste = await fs.readFile('JANITOR-PASTE.txt', 'utf8');
+  const paste = await fs.readFile(`${ROOT}/JANITOR-PASTE.txt`, 'utf8');
   const css = paste.match(/<style>([\s\S]*?)<\/style>/)[1];
   const markup = paste.slice(paste.indexOf('</style>') + 8);
 
