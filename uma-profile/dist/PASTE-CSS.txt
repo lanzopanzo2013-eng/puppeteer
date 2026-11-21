@@ -27,6 +27,11 @@
   background-color: #0F57FB;
   overflow-x: clip;
   position: relative;
+  /* the fixed header (57px) sits over Janitor's own 40px top-bar strip; this
+     padding gives that strip's height back to the flow so the hero starts on
+     the header's bottom edge instead of under it. The sentinel is absolutely
+     positioned, so the logo-settle timeline is untouched by this. */
+  padding-top: 17px;
   line-height: 1.35;
   -webkit-font-smoothing: antialiased;
 }
@@ -860,12 +865,18 @@
    pulled up by its own height and gives that height straight back to the flow. */
 /* Their bar cannot hold an <img> (this profile strips every CSS image
    reference, and the markup of that bar is not ours to edit). So the site's
-   wordmark and horseshoe are drawn as a bar of our own. It sits in the flow at
-   the top of the shell, just above the hero, so it never overlaps the front
-   page picture — the hero starts on the bar's bottom edge. Height follows a
+   wordmark and horseshoe are drawn as a bar of our own.
+   The bar is fixed at the top of the page, not in the flow: Janitor's own
+   top bar still occupies the top 40px of the document even though this theme
+   has made it paint nothing, and with the bar in the flow that transparent
+   strip showed the page's white backdrop through it — a white band sitting
+   above the header. Fixed puts our blue back over that strip, exactly as the
+   site's own header does. The shell then carries padding-top equal to the bar's
+   height minus that 40px strip, so the hero still starts on the bar's bottom
+   edge and nothing is left sitting under the fixed bar. Height follows a
    44-52px bar, which is what the live site uses. */
 .uma-hdr {
-  position: relative; z-index: 2147483647;
+  position: fixed; top: 0; left: 0; right: 0;
   height: 57px; margin: 0;
   display: flex; align-items: flex-start; justify-content: space-between;
   padding: 0; background: #0F57FB;
