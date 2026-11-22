@@ -1,5 +1,7 @@
 # HANDOFF 9 — Lorebooks Page 1 rebuild (copy reference 094329 to the small details)
 
+**STATUS — REBUILT (2026-11-22, branch `arena/fd37cb2f-puppeteer`)**: page 1 now copies 094329. Scroll-snap scrapped; `:target` page swap restored (g1/g2/g3 anchors at band top, pages `display:none` unless addressed). Official seats: tag 8vw/4vw, headline artwork 56vw/4.4vw/90vw wide, captures row 77.7% wide at 68.7vw (large left 54.83% / small right 40.93%, gap 4.25%, vertically centred), white card 85% wide at 148.3vw carrying the description text, pager bottom 3.3vw, glyph arrows at the captures' sides 106.7vw. Special Week `height:102vw; right:-10vw; top:-1vw` — her PNG has ~6% transparent margins, so the visible art lands at ~5vw–96vw like the reference. Note text lives in one `<span>` (a flex container with a bare `<b>` splits the line). Rig + stress PASS all widths; proof `docs/proof-lb.jpg`. **Section 3's pixel analysis below was based on a misread crop — §7.1/§7.2 geometry is superseded by this rebuild** (user-confirmed: reference image + official CSS, not the §7.1 structure).
+
 Branch: `arena/04bd7464-puppeteer`. HEAD at handoff: `f05b863` (notifications/header fixes, pushed).
 Working tree at handoff: clean except the reference screenshots + this handoff (untracked).
 

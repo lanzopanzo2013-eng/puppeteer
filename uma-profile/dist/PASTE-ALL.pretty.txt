@@ -675,17 +675,12 @@
 }
 
 /* ---------- Gameplay (green) ---------- */
-/* The Gameplay backdrops from the site, one per slide, swapped by the same
-   :target anchors that drive the carousel. Cropped to drop the baked arrows,
-   the "Gameplay" tag and the pager. Phones show a window of each: left, middle,
-   right, so the three read as one panning scene. */
-/* The band is exactly as tall as the official stylesheet makes the Gameplay
-   section on a phone: 192vw. That proportion is kept wherever the carousel
-   below still fits inside the band; from 900px up the official's own desktop
-   rule (62.5vw) is shorter than this in-flow carousel's content, so the band
-   wraps the content there instead of clipping it. The backdrop is the site's
-   own gameplay painting, one static band backdrop — the per-slide swap is gone
-   with the :target page states, because the carousel scrolls now. */
+/* The band copies the official Gameplay section (reference 094329): 192vw of
+   #3CA732 on a phone, the tag plate at 8vw/4vw, the headline artwork at 56vw,
+   the two captures side by side large-left/small-right, the white card with
+   the description under them and the pager on the floor of the band. From
+   900px up the band wraps its content instead, on a 700px measure, because
+   the official's own desktop rule (62.5vw) is shorter than this content. */
 .uma-play { background: #3CA732; height: 192vw; }
 @media (min-width: 900px) { .uma-play { height: auto; } }
 .uma-lb-bg {
@@ -700,95 +695,131 @@
   background: linear-gradient(180deg, rgba(60,167,50,.3) 0%, rgba(60,167,50,.12) 42%, rgba(60,167,50,.45) 100%);
   z-index: 0; pointer-events: none;
 }
-.uma-carousel { position: relative; }
-/* the lorebook shots are 700 px wide art, so the carousel keeps a 700 px
-   measure on desktop instead of stretching to a letterboxed 1000 px */
+/* page swap: 1px anchors at the band top. An arrow press changes the URL,
+   the :target page renders, and nothing ever scrolls inside the band. */
+.uma-anchor { position: absolute; top: 0; left: 0; width: 1px; height: 1px; }
+/* the carousel layer spans the band, so every seat below resolves against
+   the band the way the official stylesheet seats its own parts */
+.uma-play > .uma-carousel { position: absolute; inset: 0; z-index: 2; }
+/* the stage holds the three pages stacked; only the addressed one renders.
+   Phone seats: from the captures row (68.7vw) down to the card floor
+   (183vw), so the pages swap inside a fixed box and the band never moves. */
 .uma-viewport {
-  overflow-x: auto; overflow-y: hidden;
-  scroll-snap-type: x mandatory; scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch; scrollbar-width: none;
-  border-radius: 12px; max-width: 700px; margin-inline: auto;
+  position: absolute; left: 0; right: 0; top: 68.7vw; bottom: 9vw;
 }
-.uma-viewport::-webkit-scrollbar { display: none; width: 0; height: 0; }
-.uma-track { display: flex; align-items: stretch; }
 .uma-slide {
-  flex: 0 0 100%; box-sizing: border-box;
-  /* every slide starts exactly on the frame edge, so the snap lands on the
-     phone frame and one swipe or one arrow press moves exactly one slide */
-  scroll-snap-align: start;
-  display: flex; flex-direction: column;
-  background: rgba(255,255,255,.16);
-  border: 2px solid rgba(255,255,255,.55); border-radius: 12px; padding: 8px;
+  position: absolute; inset: 0; display: none;
+  flex-direction: column; align-items: center;
 }
-.uma-slide img {
-  width: 100%; height: clamp(190px, 26vw, 340px); border-radius: 8px;
+.uma-slide.s1 { display: flex; }
+#g2:target ~ .uma-carousel .uma-slide.s1,
+#g3:target ~ .uma-carousel .uma-slide.s1 { display: none; }
+#g2:target ~ .uma-carousel .uma-slide.s2 { display: flex; }
+#g3:target ~ .uma-carousel .uma-slide.s3 { display: flex; }
+.uma-play .uma-slide > img {
+  width: 100%; height: clamp(190px, 26vw, 340px) !important; border-radius: 8px;
   object-fit: contain; object-position: 50% 50%;
-  background: transparent;
 }
 .uma-slide-cap {
-  font-size: 12px; font-weight: 700; color: #fff; margin-top: auto; padding-top: 8px;
-  line-height: 1.35;
+  font-size: 12px; font-weight: 700; color: #fff; margin-top: 8px;
+  line-height: 1.35; text-align: center;
   text-shadow: 0 1px 2px rgba(0,0,0,.25);
 }
 
-/* the headline is the user's own "change the text to" artwork now. It sits in
-   the same seat as the old type and is drawn at the old headline's own clamp,
-   so the seat does not move. The Special Week cut-out stands behind it. */
-.uma-hl { position: relative; }
+/* the headline layer covers the band: the artwork sits at the official
+   headline seat (56vw down, 4.4vw in, 90vw wide) and the Special Week
+   cut-out stands behind it against the right edge, 91vw tall, the way the
+   reference lets her run behind the type and into the captures. */
+.uma-play > .uma-hl {
+  position: absolute; inset: 0; display: block; margin: 0;
+  pointer-events: none; z-index: 1;
+}
 .uma-hl img.uma-lb-hl-img {
-  position: relative; z-index: 2; display: block; width: auto;
-  height: clamp(19px, 6.2vw, 36px) !important;
+  position: absolute; top: 56vw; left: 4.4vw; z-index: 2;
+  display: block; width: 90vw !important; height: auto !important;
 }
-.uma-lb-char {
-  position: absolute; left: 50%; top: 50%; z-index: 1;
-  transform: translate(-50%, -50%);
-  height: 40vw; width: auto; pointer-events: none;
+.uma-play .uma-lb-char {
+  position: absolute; top: -1vw; right: -10vw; left: auto; z-index: 1;
+  transform: none;
+  height: 102vw !important; width: auto; pointer-events: none;
 }
-@media (min-width: 900px) { .uma-lb-char { height: 24vw; } }
-@media (min-width: 2000px) { .uma-lb-char { height: 480px; } }
-/* the page-1 captures: the left one large, the right one smaller, side by side
-   as the reference has them */
-.uma-lb-shots { display: flex; align-items: flex-start; gap: 4%; }
-.uma-lb-shots img { height: auto !important; border-radius: 8px; display: block; }
-.uma-lb-shots img.l { width: 54% !important; }
-.uma-lb-shots img.r { width: 36% !important; }
-/* the tag plate stays above the character behind the headline */
-.uma-play > .uma-tag-wrap { z-index: 2; }
+/* page 1: the captures side by side — large left (54.83%), small right
+   (40.93%), 4.25% between, centred on the band like the reference — then the
+   white card carrying the description 3.6vw under them. */
+.uma-lb-shots {
+  width: 77.7%; display: flex; align-items: center; justify-content: center;
+  gap: 4.25%;
+}
+.uma-lb-shots img { height: auto !important; display: block; }
+.uma-lb-shots img.l { width: 54.83% !important; }
+.uma-lb-shots img.r { width: 40.93% !important; }
+.uma-lb-note { position: relative; width: 85%; margin-top: 3.6vw; }
+.uma-play .uma-lb-note img { display: block; width: 100% !important; height: auto !important; }
+.uma-lb-note-t {
+  position: absolute; inset: 0; display: flex; align-items: center;
+  padding: 0 9% 0 13%;
+  font-family: roboto, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 700; font-size: min(3.73vw, 15px); line-height: 1.4;
+  letter-spacing: .02em; color: #181818; text-align: left;
+}
+/* the tag plate takes the official seat: 8vw down, 4vw in */
+.uma-play > .uma-tag-wrap { position: absolute; top: 8vw; left: 4vw; margin: 0; z-index: 2; }
 
-/* one arrow pair per slide state, chosen by which slide is :target. Each pair
-   points at the true neighbours, so one press always moves exactly one slide;
-   the container scrolls smoothly to the target (scroll-behavior above), so the
-   move is a scroll, not a page swap. */
-.uma-ctl { display: none; justify-content: space-between; margin-top: 8px; }
-.uma-ctl.c1 { display: flex; }
-.uma-carousel:has(#s2:target) .uma-ctl.c1,
-.uma-carousel:has(#s3:target) .uma-ctl.c1 { display: none; }
-.uma-carousel:has(#s2:target) .uma-ctl.c2 { display: flex; }
-.uma-carousel:has(#s3:target) .uma-ctl.c3 { display: flex; }
+/* one arrow pair per page state, hung at the sides of the captures the way
+   the site's splide arrows are: next alone on page 1 (right edge), both in
+   the middle, prev alone on page 3 (left edge). */
+.uma-ctl {
+  position: absolute; left: 0; right: 0; top: 106.7vw; z-index: 3;
+  display: none; justify-content: flex-start; margin: 0;
+  transform: translateY(-50%);
+}
+.uma-ctl.c1 { display: flex; justify-content: flex-end; }
+.uma-ctl.c2 { justify-content: space-between; }
+.uma-ctl.c3 { justify-content: flex-start; }
+#g2:target ~ .uma-carousel .uma-ctl.c1,
+#g3:target ~ .uma-carousel .uma-ctl.c1 { display: none; }
+#g2:target ~ .uma-carousel .uma-ctl.c2 { display: flex; }
+#g3:target ~ .uma-carousel .uma-ctl.c3 { display: flex; }
 
 /* the arrows are the glyph alone — no circular button behind it */
 .uma-shell a.uma-arrow {
   width: 38px; height: 38px;
   display: flex; align-items: center; justify-content: center;
 }
-.uma-arrow-img { width: 11px; height: auto; opacity: .75; }
+.uma-play .uma-arrow-img { height: min(7vw, 34px) !important; width: auto; opacity: .85; }
 
+/* the pager sits on the band floor: the horseshoe marks the current page,
+   the dots link to the other two. */
 .uma-pg {
+  position: absolute; left: 50%; bottom: 3.3vw; transform: translateX(-50%);
+  z-index: 3;
   display: none; justify-content: center; align-items: center; gap: 15px;
-  margin: 14px 0 8px;
+  margin: 0;
 }
-/* the pager is drawn, not a scaled bitmap: the dots are links into the same
-   scroll container and the horseshoe marks the :target slide. At 15px the PNG
-   row went soft and lost its right edge. */
 .uma-pg i, .uma-pg a { display: block; flex: 0 0 auto; }
 .uma-dot { width: 9px; height: 9px; border-radius: 50%; background: #fff; opacity: .92; }
-/* the pager mark is the real horseshoe artwork */
 .uma-hs { width: 15px; height: auto; display: block; }
 .uma-pg.p1 { display: flex; }
-.uma-carousel:has(#s2:target) .uma-pg.p1,
-.uma-carousel:has(#s3:target) .uma-pg.p1 { display: none; }
-.uma-carousel:has(#s2:target) .uma-pg.p2 { display: flex; }
-.uma-carousel:has(#s3:target) .uma-pg.p3 { display: flex; }
+#g2:target ~ .uma-carousel .uma-pg.p1,
+#g3:target ~ .uma-carousel .uma-pg.p1 { display: none; }
+#g2:target ~ .uma-carousel .uma-pg.p2 { display: flex; }
+#g3:target ~ .uma-carousel .uma-pg.p3 { display: flex; }
+
+/* from 900px the seats return to the flow on a 700px measure: the band wraps
+   its content, the stage gets a fixed 800px so no page swap changes the
+   band's height, and the cut-out goes back behind the headline. */
+@media (min-width: 900px) {
+  .uma-play > .uma-tag-wrap { position: static; margin-bottom: 16px; }
+  .uma-play > .uma-hl { position: relative; inset: auto; display: inline-block; margin: 2px 0 18px; pointer-events: auto; }
+  .uma-hl img.uma-lb-hl-img { position: relative; top: auto; left: auto; width: auto !important; height: clamp(19px, 6.2vw, 36px) !important; }
+  .uma-play .uma-lb-char { top: 50%; right: auto; left: 50%; transform: translate(-50%, -50%); height: 24vw !important; }
+  .uma-play > .uma-carousel { position: relative; inset: auto; z-index: 1; }
+  .uma-viewport { position: relative; left: auto; right: auto; top: auto; bottom: auto; height: 800px; max-width: 700px; margin-inline: auto; }
+  .uma-lb-note { margin-top: 16px; }
+  .uma-ctl { position: static; transform: none; margin-top: 8px; }
+  .uma-pg { position: static; transform: none; margin: 14px 0 8px; }
+}
+@media (min-width: 2000px) { .uma-play .uma-lb-char { height: 480px !important; } }
 
 
 /* ---------- Roster (purple) ---------- */
@@ -1949,48 +1980,44 @@ html, body { background-color: #fff !important; }
 
   <!-- ── Gameplay ──────────────────────────────────────────── -->
   <div class="uma-sec uma-play" id="scripts">
+    <span id="g1" class="uma-anchor"></span><span id="g2" class="uma-anchor"></span><span id="g3" class="uma-anchor"></span>
     <img class="uma-lb-bg b1" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/lb1.jpg">
     <div class="uma-tag-wrap"><div class="uma-tag green"><span>The Lorebooks</span></div></div>
-    <!-- the headline is the "change the text to" artwork; the Special Week
-         cut-out stands behind it, the way the official band has its character
-         behind the headline -->
+    <!-- the headline is the user's own artwork in the official seat, with the
+         Special Week cut-out running behind it against the right edge -->
     <div class="uma-hl">
-      <img class="uma-lb-char" alt="" width="117" height="156" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@10b3cec3e055531e205ab41177e8cabb31ffe6fc/uma-profile/assets/site/lb-p1-specialweek.png">
-      <img class="uma-lb-hl-img" alt="Test The Lorebooks!" width="230" height="24" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@10b3cec3e055531e205ab41177e8cabb31ffe6fc/uma-profile/assets/site/lb-p1-headline.png">
+      <img class="uma-lb-char" alt="" width="750" height="900" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@10b3cec3e055531e205ab41177e8cabb31ffe6fc/uma-profile/assets/site/lb-p1-specialweek.png">
+      <img class="uma-lb-hl-img" alt="Test The Lorebooks!" width="2560" height="361" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@10b3cec3e055531e205ab41177e8cabb31ffe6fc/uma-profile/assets/site/lb-p1-headline.png">
     </div>
 
-    <!-- the carousel is a real scroll container: hand-swipes work, and the
-         arrows and pager dots are anchor links into it, so one press scrolls
-         exactly one slide smoothly instead of swapping pages -->
+    <!-- three pages stacked in one stage; the g1/g2/g3 anchors at the band
+         top pick which one renders, so an arrow press loads the page -->
     <div class="uma-carousel">
-
       <div class="uma-viewport">
-        <div class="uma-track">
-          <div class="uma-slide" id="s1">
-            <div class="uma-lb-shots">
-              <img class="l" alt="" width="189" height="337" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@10b3cec3e055531e205ab41177e8cabb31ffe6fc/uma-profile/assets/site/lb-p1-left.jpg">
-              <img class="r" alt="" width="126" height="225" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@10b3cec3e055531e205ab41177e8cabb31ffe6fc/uma-profile/assets/site/lb-p1-right.jpg">
-            </div>
-            <div class="uma-slide-cap"><b>Lorebooks</b> · the world state, the schedules, the rivalry web. Dropped in, no setup.</div>
+        <div class="uma-slide s1">
+          <div class="uma-lb-shots">
+            <img class="l" alt="" width="2298" height="4096" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@10b3cec3e055531e205ab41177e8cabb31ffe6fc/uma-profile/assets/site/lb-p1-left.jpg">
+            <img class="r" alt="" width="2295" height="4096" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@10b3cec3e055531e205ab41177e8cabb31ffe6fc/uma-profile/assets/site/lb-p1-right.jpg">
           </div>
-          <div class="uma-slide" id="s2">
-            <img alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/slide2.jpg">
-            <div class="uma-slide-cap"><b>How it runs</b> · V4 today, V10 final, then FV11 to FV14. Each pass tightens canon.</div>
-          </div>
-          <div class="uma-slide" id="s3">
-            <img alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/slide1.jpg">
-            <div class="uma-slide-cap"><b>Using them</b> · attach the book, pick a racer, start the career run. That is it.</div>
-          </div>
+          <div class="uma-lb-note"><img alt="" width="4096" height="1670" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@10b3cec3e055531e205ab41177e8cabb31ffe6fc/uma-profile/assets/site/lb-card.png"><div class="uma-lb-note-t"><span><b>Lorebooks</b> · the world state, the schedules, the rivalry web. Dropped in, no setup.</span></div></div>
+        </div>
+        <div class="uma-slide s2">
+          <img alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/slide2.jpg">
+          <div class="uma-slide-cap"><b>How it runs</b> · V4 today, V10 final, then FV11 to FV14. Each pass tightens canon.</div>
+        </div>
+        <div class="uma-slide s3">
+          <img alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/slide1.jpg">
+          <div class="uma-slide-cap"><b>Using them</b> · attach the book, pick a racer, start the career run. That is it.</div>
         </div>
       </div>
 
-      <div class="uma-ctl c1"><a class="uma-arrow" href="#s2"><img class="uma-arrow-img" alt="Next" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/arrow_right.png"></a></div>
-      <div class="uma-ctl c2"><a class="uma-arrow" href="#s1"><img class="uma-arrow-img" alt="Previous" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/arrow_left.png"></a><a class="uma-arrow" href="#s3"><img class="uma-arrow-img" alt="Next" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/arrow_right.png"></a></div>
-      <div class="uma-ctl c3"><a class="uma-arrow" href="#s2"><img class="uma-arrow-img" alt="Previous" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/arrow_left.png"></a></div>
+      <div class="uma-ctl c1"><a class="uma-arrow" href="#g2"><img class="uma-arrow-img" alt="Next" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/arrow_right.png"></a></div>
+      <div class="uma-ctl c2"><a class="uma-arrow" href="#g1"><img class="uma-arrow-img" alt="Previous" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/arrow_left.png"></a><a class="uma-arrow" href="#g3"><img class="uma-arrow-img" alt="Next" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/arrow_right.png"></a></div>
+      <div class="uma-ctl c3"><a class="uma-arrow" href="#g2"><img class="uma-arrow-img" alt="Previous" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/arrow_left.png"></a></div>
 
-      <div class="uma-pg p1"><img class="uma-hs" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/horseshoe.png"><a class="uma-dot" href="#s1"></a><a class="uma-dot" href="#s2"></a><a class="uma-dot" href="#s3"></a></div>
-      <div class="uma-pg p2"><a class="uma-dot" href="#s1"></a><img class="uma-hs" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/horseshoe.png"><a class="uma-dot" href="#s3"></a></div>
-      <div class="uma-pg p3"><a class="uma-dot" href="#s1"></a><a class="uma-dot" href="#s2"></a><img class="uma-hs" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/horseshoe.png"></div>
+      <div class="uma-pg p1"><img class="uma-hs" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/horseshoe.png"><a class="uma-dot" href="#g2"></a><a class="uma-dot" href="#g3"></a></div>
+      <div class="uma-pg p2"><a class="uma-dot" href="#g1"></a><img class="uma-hs" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/horseshoe.png"><a class="uma-dot" href="#g3"></a></div>
+      <div class="uma-pg p3"><a class="uma-dot" href="#g1"></a><a class="uma-dot" href="#g2"></a><img class="uma-hs" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/horseshoe.png"></div>
     </div>
   </div>
 
