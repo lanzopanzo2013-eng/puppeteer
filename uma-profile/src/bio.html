@@ -234,8 +234,8 @@
 /* The ground is a plain <img>, the way every other band in this profile carries its
    artwork. A CSS background-image here never reached the live page: the band came out as
    flat #EFFEE7 with the pattern missing, while the card art from the same commit loaded,
-   so the url() is the only thing that could have failed. The image is 1000 x 1833, so at
-   any width it is 1.833 x the width tall; where a band grows past that, the #EFFEE7 under
+   so the url() is the only thing that could have failed. The image is 2304 x 4256, so at
+   any width it is 1.847 x the width tall; where a band grows past that, the #EFFEE7 under
    it finishes the job. */
 .uma-news-ground {
   position: absolute; left: 0; top: 0; width: 100%;
@@ -478,36 +478,7 @@
    low and the sky open, which is the reference's read, where centring it raised the stands
    across the whole right side. */
 .uma-about .uma-sec-bg { object-position: 20% 50%; opacity: 1; }
-/* The pink corner. On the reference the About art runs out under a pink diagonal with white
-   showing past its lower edge, and that band is part of their taller crop: our window only
-   reaches the middle of the wide painting, so the corner is drawn here instead, to the same
-   geometry. Off the capture, at 3.5 px per css: the edge falls 0.42 css per css across the
-   width, the band is 62 css deep, and its upper edge meets the right edge 112 css above the
-   section's bottom. In vw that is 42.2, 17.2 and 31.1, on a 60vw tall plate at the bottom. */
-.uma-about::before,
-.uma-about::after {
-  content: ""; position: absolute; left: 0; right: 0; bottom: 0;
-  height: 60vw; z-index: 1; pointer-events: none;
-}
-.uma-about::before {
-  background: #FF6DC8;
-  clip-path: polygon(0 69.8vw, 100% 27.5vw, 100% 44vw, 0 86.3vw);
-}
-.uma-about::after {
-  background: #fff;
-  clip-path: polygon(0 86.3vw, 100% 44vw, 100% 60vw, 0 60vw);
-}
-/* The band's texture, the UMA emblem and URA lettering, is a PNG sized to the same 5:3 box as
-   the layers above and drawn on the same seat as the polygon, so the two coincide at every
-   width: the band is textured edge to edge and the flat pink underneath is only the fallback
-   for a slow image. tools/make-about-pink.py builds it. */
-.uma-about-pink {
-  position: absolute; left: 0; right: 0; bottom: 0;
-  width: 100%; height: 60vw; z-index: 1; pointer-events: none;
-  /* the same parallelogram as the band itself, so the texture's edge is the band's edge and
-     not the image's own antialiased one: no pale line where the sheet stops */
-  clip-path: polygon(0 69.8vw, 100% 27.5vw, 100% 44vw, 0 86.3vw);
-}
+
 /* The profile card. It stands in for the site's About video block, so it takes that
    block's numbers straight from 2.BtMVfDfi.css:
 
@@ -698,18 +669,19 @@
    the official's own desktop rule (62.5vw) is shorter than this content. */
 .uma-play { background: #3CA732; height: 192vw; }
 @media (min-width: 900px) { .uma-play { height: auto; } }
+/* one backdrop per page. The baked arrows, pager and stripes ARE the band's
+   chrome now, so each sheet is cut to the band's 1:1.92 and shown as shot;
+   only the addressed page's sheet is up. */
 .uma-lb-bg {
   position: absolute; left: 0; top: 0; width: 100%; height: 100%;
   object-fit: cover; object-position: 50% 50%;
-  /* kept sharp: the crop already drops the baked arrows, tag and pager */
   opacity: 1; z-index: 0; pointer-events: none;
 }
-/* a green veil so the white headline and captions keep their contrast */
-.uma-play::after {
-  content: ""; position: absolute; left: 0; top: 0; right: 0; bottom: 0;
-  background: linear-gradient(180deg, rgba(60,167,50,.3) 0%, rgba(60,167,50,.12) 42%, rgba(60,167,50,.45) 100%);
-  z-index: 0; pointer-events: none;
-}
+.uma-lb-bg.b2, .uma-lb-bg.b3 { display: none; }
+#g2:target ~ .uma-lb-bg.b1, #g3:target ~ .uma-lb-bg.b1 { display: none; }
+#g2:target ~ .uma-lb-bg.b2 { display: block; }
+#g3:target ~ .uma-lb-bg.b3 { display: block; }
+
 /* page swap: 1px anchors at the band top. An arrow press changes the URL,
    the :target page renders, and nothing ever scrolls inside the band. */
 .uma-anchor { position: absolute; top: 0; left: 0; width: 1px; height: 1px; }
@@ -732,13 +704,15 @@
 #g2:target ~ .uma-carousel .uma-slide.s2 { display: flex; }
 #g3:target ~ .uma-carousel .uma-slide.s3 { display: flex; }
 .uma-play .uma-slide > img {
-  width: 100%; height: clamp(190px, 26vw, 340px) !important; border-radius: 8px;
+  /* same 77.7% column as the page-1 shots: keeps the wide slide photo off
+     the baked arrows parked at the band's edges (they are the navigation). */
+  width: 77.7%; height: clamp(190px, 26vw, 340px) !important; border-radius: 8px;
   object-fit: contain; object-position: 50% 50%;
 }
 .uma-slide-cap {
   font-size: 12px; font-weight: 700; color: #fff; margin-top: 8px;
   line-height: 1.35; text-align: center;
-  text-shadow: 0 1px 2px rgba(0,0,0,.25);
+  text-shadow: 0 1px 2px rgba(0,0,0,.7), 0 0 7px rgba(0,0,0,.5);
 }
 
 /* the headline layer covers the band: the artwork sits at the official
@@ -780,45 +754,24 @@
 /* the tag plate takes the official seat: 8vw down, 4vw in */
 .uma-play > .uma-tag-wrap { position: absolute; top: 8vw; left: 4vw; margin: 0; z-index: 2; }
 
-/* one arrow pair per page state, hung at the sides of the captures the way
-   the site's splide arrows are: next alone on page 1 (right edge), both in
-   the middle, prev alone on page 3 (left edge). */
-.uma-ctl {
-  position: absolute; left: 0; right: 0; top: 106.7vw; z-index: 3;
-  display: none; justify-content: flex-start; margin: 0;
-  transform: translateY(-50%);
+/* the arrows live in the backdrop art now: these are the invisible tap
+   targets seated over the baked glyphs. Band-centred (top:50%) because every
+   sheet is cut to the band, so cover parks each glyph at the image's middle
+   at every width — the same seat works on the phone band and the desktop one. */
+.uma-hit {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  width: 16vw; height: 16vw; z-index: 3;
 }
-.uma-ctl.c1 { display: flex; justify-content: flex-end; }
-.uma-ctl.c2 { justify-content: space-between; }
-.uma-ctl.c3 { justify-content: flex-start; }
-#g2:target ~ .uma-carousel .uma-ctl.c1,
-#g3:target ~ .uma-carousel .uma-ctl.c1 { display: none; }
-#g2:target ~ .uma-carousel .uma-ctl.c2 { display: flex; }
-#g3:target ~ .uma-carousel .uma-ctl.c3 { display: flex; }
+.uma-hit.r1 { right: -3vw; }
+.uma-hit.l2, .uma-hit.r2, .uma-hit.l3 { display: none; }
+.uma-hit.l2, .uma-hit.l3 { left: -3vw; }
+.uma-hit.r2 { right: -3vw; }
+#g2:target ~ .uma-hit.r1 { display: none; }
+#g2:target ~ .uma-hit.l2, #g2:target ~ .uma-hit.r2 { display: block; }
+#g3:target ~ .uma-hit.r1 { display: none; }
+#g3:target ~ .uma-hit.l3 { display: block; }
 
-/* the arrows are the glyph alone — no circular button behind it */
-.uma-shell a.uma-arrow {
-  width: 38px; height: 38px;
-  display: flex; align-items: center; justify-content: center;
-}
-.uma-play .uma-arrow-img { height: min(7vw, 34px) !important; width: auto; opacity: .85; }
 
-/* the pager sits on the band floor: the horseshoe marks the current page,
-   the dots link to the other two. */
-.uma-pg {
-  position: absolute; left: 50%; bottom: 3.3vw; transform: translateX(-50%);
-  z-index: 3;
-  display: none; justify-content: center; align-items: center; gap: 15px;
-  margin: 0;
-}
-.uma-pg i, .uma-pg a { display: block; flex: 0 0 auto; }
-.uma-dot { width: 9px; height: 9px; border-radius: 50%; background: #fff; opacity: .92; }
-.uma-hs { width: 15px; height: auto; display: block; }
-.uma-pg.p1 { display: flex; }
-#g2:target ~ .uma-carousel .uma-pg.p1,
-#g3:target ~ .uma-carousel .uma-pg.p1 { display: none; }
-#g2:target ~ .uma-carousel .uma-pg.p2 { display: flex; }
-#g3:target ~ .uma-carousel .uma-pg.p3 { display: flex; }
 
 /* from 900px the seats return to the flow on a 700px measure: the band wraps
    its content, the stage gets a fixed 800px so no page swap changes the
@@ -831,9 +784,7 @@
   .uma-play > .uma-carousel { position: relative; inset: auto; z-index: 1; }
   .uma-viewport { position: relative; left: auto; right: auto; top: auto; bottom: auto; height: 800px; max-width: 700px; margin-inline: auto; }
   .uma-lb-note { margin-top: 16px; }
-  .uma-ctl { position: static; transform: none; margin-top: 8px; }
-  .uma-pg { position: static; transform: none; margin: 14px 0 8px; }
-}
+  }
 @media (min-width: 2000px) { .uma-play .uma-lb-char { height: 480px !important; } }
 
 
@@ -1770,7 +1721,7 @@ html, body { background-color: #fff !important; }
 
   <!-- ── In the Works (the site's News band) ────────────────── -->
   <div class="uma-sec uma-news" id="updates">
-    <img class="uma-news-ground" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@8c69a44d19f2ef3070f4adbca28358cd75809312/uma-profile/assets/site/news-bg.jpg">
+    <img class="uma-news-ground" alt="" width="2304" height="4256" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@e04e0c7d954983540d0f55eba3e62c3bf98828eb/uma-profile/assets/site/news-bg.webp">
     <div class="uma-news-frame">
       <div class="uma-news-ribbon"><span>In the Works</span></div>
 
@@ -1960,8 +1911,7 @@ html, body { background-color: #fff !important; }
 
   <!-- ── About ─────────────────────────────────────────────── -->
   <div class="uma-sec uma-about" id="about">
-    <img class="uma-sec-bg" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/about_bg.jpg">
-    <img class="uma-about-pink" alt="" aria-hidden="true" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@dca1b39a0cc10301c6f20532399e4a22bc97a2f0/uma-profile/assets/site/about-pink-full.png">
+    <img class="uma-sec-bg" alt="" width="2816" height="3488" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@e04e0c7d954983540d0f55eba3e62c3bf98828eb/uma-profile/assets/site/about-bg.webp">
     <div class="uma-tag-wrap"><div class="uma-tag blue uma-tag-white"><span>About Me</span></div></div>
 
     <div class="uma-about-ph">
@@ -1997,7 +1947,13 @@ html, body { background-color: #fff !important; }
   <!-- ── Gameplay ──────────────────────────────────────────── -->
   <div class="uma-sec uma-play" id="scripts">
     <span id="g1" class="uma-anchor"></span><span id="g2" class="uma-anchor"></span><span id="g3" class="uma-anchor"></span>
-    <img class="uma-lb-bg b1" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/lb1.jpg">
+    <img class="uma-lb-bg b1" alt="" width="1246" height="2392" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@e04e0c7d954983540d0f55eba3e62c3bf98828eb/uma-profile/assets/site/lb-bg1.jpg">
+    <img class="uma-lb-bg b2" alt="" width="4980" height="9562" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@e04e0c7d954983540d0f55eba3e62c3bf98828eb/uma-profile/assets/site/lb-bg2.jpg">
+    <img class="uma-lb-bg b3" alt="" width="2272" height="4362" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@e04e0c7d954983540d0f55eba3e62c3bf98828eb/uma-profile/assets/site/lb-bg3.webp">
+    <a class="uma-hit r1" href="#g2" aria-label="Next page"></a>
+    <a class="uma-hit l2" href="#g1" aria-label="Previous page"></a>
+    <a class="uma-hit r2" href="#g3" aria-label="Next page"></a>
+    <a class="uma-hit l3" href="#g2" aria-label="Previous page"></a>
     <div class="uma-tag-wrap"><div class="uma-tag green"><span>The Lorebooks</span></div></div>
     <!-- the headline is the user's own artwork in the official seat, with the
          Special Week cut-out running behind it against the right edge -->
@@ -2027,13 +1983,6 @@ html, body { background-color: #fff !important; }
         </div>
       </div>
 
-      <div class="uma-ctl c1"><a class="uma-arrow" href="#g2"><img class="uma-arrow-img" alt="Next" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/arrow_right.png"></a></div>
-      <div class="uma-ctl c2"><a class="uma-arrow" href="#g1"><img class="uma-arrow-img" alt="Previous" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/arrow_left.png"></a><a class="uma-arrow" href="#g3"><img class="uma-arrow-img" alt="Next" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/arrow_right.png"></a></div>
-      <div class="uma-ctl c3"><a class="uma-arrow" href="#g2"><img class="uma-arrow-img" alt="Previous" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/arrow_left.png"></a></div>
-
-      <div class="uma-pg p1"><img class="uma-hs" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/horseshoe.png"><a class="uma-dot" href="#g2"></a><a class="uma-dot" href="#g3"></a></div>
-      <div class="uma-pg p2"><a class="uma-dot" href="#g1"></a><img class="uma-hs" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/horseshoe.png"><a class="uma-dot" href="#g3"></a></div>
-      <div class="uma-pg p3"><a class="uma-dot" href="#g1"></a><a class="uma-dot" href="#g2"></a><img class="uma-hs" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/horseshoe.png"></div>
     </div>
   </div>
 
