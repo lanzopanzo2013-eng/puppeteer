@@ -54,3 +54,8 @@ probe/fail-*.html
 
 # full-page paste proofs stay out of the repo (they are ~20 MB apiece)
 **/docs/paste-*.png
+
+# proof screenshots: regenerate with tools/rig.cjs, never commit
+uma-profile/docs/rig-*.png
+capture/
+!probe/log.txt

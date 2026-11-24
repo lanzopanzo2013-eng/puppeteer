@@ -1,3 +1,0 @@
-attempt 1: public CORS proxies
-attempt 2: headless chrome
-DONE
