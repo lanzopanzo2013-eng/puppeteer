@@ -711,10 +711,13 @@
   position: absolute; top: 56vw; left: 4.4vw; z-index: 2;
   display: block; width: 90vw !important; height: auto !important;
 }
+/* official -umamusume seat: left:4vw, top:-.5333vw at the art's intrinsic
+   100vw width (height 120vw for the 750x900 canvas) — the PNG's transparent
+   margins then land the figure where the reference screenshot puts her. */
 .uma-play .uma-lb-char {
-  position: absolute; top: -1vw; right: -10vw; left: auto; z-index: 1;
+  position: absolute; top: -0.5333vw; left: 4vw; right: auto; z-index: 1;
   transform: none;
-  height: 102vw !important; width: auto; pointer-events: none;
+  height: 120vw !important; width: auto; pointer-events: none;
 }
 /* page 1: the captures side by side — large left (54.83%), small right
    (40.93%), 4.25% between, centred on the band like the reference — then the
@@ -726,14 +729,21 @@
 .uma-lb-shots img { height: auto !important; display: block; }
 .uma-lb-shots img.l { width: 54.83% !important; }
 .uma-lb-shots img.r { width: 40.93% !important; }
-.uma-lb-note { position: relative; width: 85%; margin-top: 3.6vw; }
-.uma-play .uma-lb-note img { display: block; width: 100% !important; height: auto !important; }
+/* the white description panel is baked into lb-bg1 now (official seat:
+   top 148vw, 93.6% wide). The text block follows the official -text rules:
+   69.33vw wide, horizontally centred, vertically centred on the panel
+   (band-rel 163vw = 94.3vw down the stage that starts at 68.7vw), font-size
+   3.7333vw, line-height 1.4, letter-spacing .02em, colour --color-text-gray. */
+.uma-lb-note {
+  position: absolute; top: 93.4vw; left: 51.7%;
+  transform: translate(-50%, -50%);
+  width: 69.3333vw; margin-top: 0;
+}
+.uma-play .uma-lb-note img { display: none; }
 .uma-lb-note-t {
-  position: absolute; inset: 0; display: flex; align-items: center;
-  padding: 0 9% 0 13%;
   font-family: roboto, "Helvetica Neue", Arial, sans-serif;
-  font-weight: 700; font-size: min(3.73vw, 15px); line-height: 1.4;
-  letter-spacing: .02em; color: #181818; text-align: left;
+  font-weight: 700; font-size: 3.7333vw; line-height: 1.4;
+  letter-spacing: .02em; color: #141414; text-align: left;
 }
 /* the tag plate takes the official seat: 8vw down, 4vw in */
 .uma-play > .uma-tag-wrap { position: absolute; top: 8vw; left: 4vw; margin: 0; z-index: 2; }
@@ -767,7 +777,15 @@
   .uma-play .uma-lb-char { top: 50%; right: auto; left: 50%; transform: translate(-50%, -50%); height: 24vw !important; }
   .uma-play > .uma-carousel { position: relative; inset: auto; z-index: 1; }
   .uma-viewport { position: relative; left: auto; right: auto; top: auto; bottom: auto; height: 800px; max-width: 700px; margin-inline: auto; }
-  .uma-lb-note { margin-top: 16px; }
+  .uma-lb-note {
+    position: relative; top: auto; left: auto; transform: none;
+    width: 85%; margin-top: 16px;
+  }
+  .uma-play .uma-lb-note img { display: block; width: 100% !important; height: auto !important; }
+  .uma-lb-note-t {
+    position: absolute; inset: 0; display: flex; align-items: center;
+    padding: 0 9% 0 13%; font-size: min(1.528vw, 30.56px);
+  }
   }
 @media (min-width: 2000px) { .uma-play .uma-lb-char { height: 480px !important; } }
 
