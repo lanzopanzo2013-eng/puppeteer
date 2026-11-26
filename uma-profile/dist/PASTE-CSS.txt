@@ -729,18 +729,24 @@
 .uma-lb-shots img { height: auto !important; display: block; }
 .uma-lb-shots img.l { width: 54.83% !important; }
 .uma-lb-shots img.r { width: 40.93% !important; }
-/* the white description panel is baked into lb-bg1 now (official seat:
-   top 148vw, 93.6% wide). The text block follows the official -text rules:
-   69.33vw wide, horizontally centred, vertically centred on the panel
-   (band-rel 163vw = 94.3vw down the stage that starts at 68.7vw), font-size
-   3.7333vw, line-height 1.4, letter-spacing .02em, colour --color-text-gray. */
+/* crisp mobile-proportioned Picsart panel (lb-card.png, 2910x774 = 115.48vw x
+   30.71vw, 9-sliced along its pure-white slant so the 20.5deg angle, 29.5px
+   lime stripe, horseshoes and grey corner stay undistorted) seated at official
+   top 147.45vw..178.16vw over untouched lb-bg1, with the official .4vw/.4vw/
+   1.3333vw drop-shadow; -text stays 69.3333vw centred at band-rel 51.7%/163vw. */
 .uma-lb-note {
-  position: absolute; top: 93.4vw; left: 51.7%;
-  transform: translate(-50%, -50%);
-  width: 69.3333vw; margin-top: 0;
+  position: absolute; top: 78.75vw; left: -6.18vw;
+  transform: none;
+  width: 115.48vw; margin-top: 0;
 }
-.uma-play .uma-lb-note img { display: none; }
+.uma-play .uma-lb-note img {
+  display: block; width: 100% !important; max-width: none !important;
+  height: auto !important;
+  filter: drop-shadow(.4vw .4vw 1.3333vw rgba(0,0,0,.25));
+}
 .uma-lb-note-t {
+  position: absolute; top: 14.65vw; left: 57.88vw; z-index: 1;
+  transform: translate(-50%, -50%); width: 69.3333vw;
   font-family: roboto, "Helvetica Neue", Arial, sans-serif;
   font-weight: 700; font-size: 3.7333vw; line-height: 1.4;
   letter-spacing: .02em; color: #141414; text-align: left;
@@ -781,9 +787,13 @@
     position: relative; top: auto; left: auto; transform: none;
     width: 85%; margin-top: 16px;
   }
-  .uma-play .uma-lb-note img { display: block; width: 100% !important; height: auto !important; }
+  .uma-play .uma-lb-note img {
+    display: block; width: 100% !important; height: auto !important;
+    filter: drop-shadow(2px 2px 7px rgba(0,0,0,.25));
+  }
   .uma-lb-note-t {
-    position: absolute; inset: 0; display: flex; align-items: center;
+    position: absolute; inset: 0; width: auto; transform: none;
+    display: flex; align-items: center;
     padding: 0 9% 0 13%; font-size: min(1.528vw, 30.56px);
   }
   }

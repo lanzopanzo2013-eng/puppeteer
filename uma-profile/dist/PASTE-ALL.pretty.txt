@@ -730,18 +730,24 @@
 .uma-lb-shots img { height: auto !important; display: block; }
 .uma-lb-shots img.l { width: 54.83% !important; }
 .uma-lb-shots img.r { width: 40.93% !important; }
-/* the white description panel is baked into lb-bg1 now (official seat:
-   top 148vw, 93.6% wide). The text block follows the official -text rules:
-   69.33vw wide, horizontally centred, vertically centred on the panel
-   (band-rel 163vw = 94.3vw down the stage that starts at 68.7vw), font-size
-   3.7333vw, line-height 1.4, letter-spacing .02em, colour --color-text-gray. */
+/* crisp mobile-proportioned Picsart panel (lb-card.png, 2910x774 = 115.48vw x
+   30.71vw, 9-sliced along its pure-white slant so the 20.5deg angle, 29.5px
+   lime stripe, horseshoes and grey corner stay undistorted) seated at official
+   top 147.45vw..178.16vw over untouched lb-bg1, with the official .4vw/.4vw/
+   1.3333vw drop-shadow; -text stays 69.3333vw centred at band-rel 51.7%/163vw. */
 .uma-lb-note {
-  position: absolute; top: 93.4vw; left: 51.7%;
-  transform: translate(-50%, -50%);
-  width: 69.3333vw; margin-top: 0;
+  position: absolute; top: 78.75vw; left: -6.18vw;
+  transform: none;
+  width: 115.48vw; margin-top: 0;
 }
-.uma-play .uma-lb-note img { display: none; }
+.uma-play .uma-lb-note img {
+  display: block; width: 100% !important; max-width: none !important;
+  height: auto !important;
+  filter: drop-shadow(.4vw .4vw 1.3333vw rgba(0,0,0,.25));
+}
 .uma-lb-note-t {
+  position: absolute; top: 14.65vw; left: 57.88vw; z-index: 1;
+  transform: translate(-50%, -50%); width: 69.3333vw;
   font-family: roboto, "Helvetica Neue", Arial, sans-serif;
   font-weight: 700; font-size: 3.7333vw; line-height: 1.4;
   letter-spacing: .02em; color: #141414; text-align: left;
@@ -782,9 +788,13 @@
     position: relative; top: auto; left: auto; transform: none;
     width: 85%; margin-top: 16px;
   }
-  .uma-play .uma-lb-note img { display: block; width: 100% !important; height: auto !important; }
+  .uma-play .uma-lb-note img {
+    display: block; width: 100% !important; height: auto !important;
+    filter: drop-shadow(2px 2px 7px rgba(0,0,0,.25));
+  }
   .uma-lb-note-t {
-    position: absolute; inset: 0; display: flex; align-items: center;
+    position: absolute; inset: 0; width: auto; transform: none;
+    display: flex; align-items: center;
     padding: 0 9% 0 13%; font-size: min(1.528vw, 30.56px);
   }
   }
@@ -1930,7 +1940,7 @@ html, body { background-color: #fff !important; }
           <p>As a person I am male, he/him, <strong>half Filipino and half Japanese</strong>, and I speak three languages. They are English, Tagalog and Japanese, though my vocabulary is just okay in all of them. I do motorsports in real life and on the simulator, and I am a professional in the sport. I am a young adult who still does college classes, I am single, and I take life seriously to the fullest.</p>
           <img class="uma-tc-break" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@071c6ccac752ace2c0d8a19a4b5ecfa6d3cffdd8/uma-profile/assets/site/horseshoe-break.png">
           <p>I love cars a lot, like, really. Almost <strong>70%</strong> of the fun in my whole life comes from the car life, and that is thanks to my dad. When I was an elementary/middle schooler he was a well-known member of a car club and always took me around car meets and track days. It is unfortunate that he passed away, just recently, but for my family's privacy I won't go deeper than that. I compete in a lot of motorsport competitions, and no, I am not a rich kid who wants to race. <strong>The wins pay for my entrance fees.</strong></p>
-          <p>AI is another thing I find highly interesting. I love experimenting with LLMs, I would consider myself a great prompter, and I could see myself having a job related to AI someday too. I love cats, and dogs too, and I don't hate any kind of housepet at all. I used to play <strong>War Thunder and Call of Duty</strong> all the time during COVID, so I know a lot when it comes to military vehicles, which is one of my strengths in bot creation. I love the world of desktops too, so if you want to discuss PC parts, I can happily take part.</p>
+          <p>AI is another thing I find highly interesting. I love experimenting with LLMs, I would consider myself a great prompter, and I could see myself having a job related to AI someday too. I love cats, and dogs too, and I don't hate any kind of housepet at all. I used to play <strong>War Thunder and Call of Duty</strong> all the time during COVID, so I am capable of creating military-themed bots. I love the world of desktops too, so if you want to discuss PC parts, I can happily take part.</p>
           <p>I believe in God, but I will not specify which God because of privacy reasons, and on that note I keep my identity private so I don't get known for this in real life. In bot creation I specialize in <strong>lorebooks, RPG and Japan life scenarios</strong>. I can create any kind of bot, although I am weak when it comes to smut and I don't have much experience with it, so if you are a smut-focused person, I am not for you to like.</p>
           <img class="uma-tc-break" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@071c6ccac752ace2c0d8a19a4b5ecfa6d3cffdd8/uma-profile/assets/site/horseshoe-break.png">
           <p>Oh, and I do love horse racing too. One of my notable events was spectating from the grandstands at the <strong>Arima Kinen, 2022</strong>. I got myself a QR ticket and I watched <strong>Equinox</strong> win. To be fair I am not that passionate about it compared to cars, but I still have some passion for horse racing.</p>
@@ -1973,7 +1983,7 @@ html, body { background-color: #fff !important; }
             <img class="l" alt="" width="2298" height="4096" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@10b3cec3e055531e205ab41177e8cabb31ffe6fc/uma-profile/assets/site/lb-p1-left.jpg">
             <img class="r" alt="" width="2295" height="4096" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@10b3cec3e055531e205ab41177e8cabb31ffe6fc/uma-profile/assets/site/lb-p1-right.jpg">
           </div>
-          <div class="uma-lb-note"><img alt="" width="4096" height="1670" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@e04e0c7d954983540d0f55eba3e62c3bf98828eb/uma-profile/assets/site/lb-card.png"><div class="uma-lb-note-t"><span><b>Lorebooks</b> · the world state, the schedules, the rivalry web. Dropped in, no setup.</span></div></div>
+          <div class="uma-lb-note"><img alt="" width="2910" height="774" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@654084faab3071d3c5e43c73eec8f1732f06ccf0/uma-profile/assets/site/lb-card.png"><div class="uma-lb-note-t"><span><b>Lorebooks</b> · the world state, the schedules, the rivalry web. Dropped in, no setup.</span></div></div>
         </div>
         <div class="uma-slide s2">
           <img alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/slide2.jpg">
