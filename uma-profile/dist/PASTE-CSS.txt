@@ -40,6 +40,59 @@
 .uma-shell img { display: block; max-width: 100%; border: 0; }
 .uma-shell p { margin: 0; }
 
+/* ---- splash screen (#loading on umamusume.com, calibrated to 161636) ---- */
+@keyframes uma-splash-out {
+  0% {
+    transform: translate3d(0, 0, 0);
+    visibility: visible;
+  }
+  99.9% {
+    transform: translate3d(-100%, 0, 0);
+    visibility: visible;
+  }
+  100% {
+    transform: translate3d(-100%, 0, 0);
+    visibility: hidden;
+  }
+}
+.uma-splash {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  z-index: 2147483647 !important;
+  background: #fff;
+  box-shadow: 0 20vh 0 0 #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none !important;
+  backface-visibility: hidden;
+  animation: uma-splash-out .55s 1.65s cubic-bezier(.77, 0, .175, 1) forwards;
+}
+.uma-splash .uma-splash-gif {
+  display: block !important;
+  width: 66.2vw !important;
+  max-width: none !important;
+  height: auto !important;
+  margin: 7.7vw 0 0 -0.8vw !important;
+  pointer-events: none !important;
+}
+@media (min-width: 900px) {
+  .uma-splash .uma-splash-gif {
+    width: 25.86vw !important;
+    margin: 3.01vw 0 0 -0.31vw !important;
+  }
+}
+@media (min-width: 2000px) {
+  .uma-splash .uma-splash-gif {
+    width: 517px !important;
+    margin: 60px 0 0 -6px !important;
+  }
+}
+
 /* ---- top bar ---- */
 /* ---- hero ---- */
 /* The intro art is shown whole on phones, the way the site shows it, instead of
@@ -1067,7 +1120,7 @@
   top: 0 !important; right: 16px !important; left: auto !important;
   width: 40px !important; height: 40px !important;
   display: block !important;
-  z-index: 2147483647 !important;
+  z-index: 2147483646 !important;
 }
 .pp-top-bar-notifications-button, .profile-top-bar-notifications-button {
   position: absolute !important;
@@ -1614,6 +1667,7 @@ html, body { background-color: #fff !important; }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .uma-splash { display: none !important; }
   .uma-shell *, .uma-shell *::before, .uma-shell *::after {
     animation-duration: .001ms !important; animation-iteration-count: 1 !important;
     transition-duration: .001ms !important; scroll-behavior: auto !important;
