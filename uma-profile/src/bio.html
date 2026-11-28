@@ -768,14 +768,26 @@
   filter: drop-shadow(.4vw .4vw 1.3333vw rgba(0,0,0,.25));
 }
 .uma-lb-note-t {
-  position: absolute; top: 13.88vw; left: 55.19vw; z-index: 1;
-  transform: translate(-50%, -50%); width: 69.3333vw;
+  position: absolute; top: 5vw; bottom: 5vw; left: 55.19vw; z-index: 1;
+  transform: translateX(-50%); width: 69.3333vw;
+  overflow-y: auto; overflow-x: hidden;
+  overscroll-behavior: contain; -webkit-overflow-scrolling: touch; touch-action: pan-y;
+  scrollbar-width: none; -ms-overflow-style: none;
   font-family: roboto, "Helvetica Neue", Arial, sans-serif;
   font-weight: 700; font-size: 3.7333vw; line-height: 1.4;
   letter-spacing: .02em; color: #141414; text-align: left;
 }
-/* the tag plate takes the official seat: 8vw down, 4vw in */
+.uma-lb-note-t::-webkit-scrollbar { display: none; width: 0; height: 0; }
+/* the tag plate takes the official .section-title seat & scale: 8vw down, 4vw
+   in, 9.6vw tall, 7.4667vw bold-italic type (beats the <=575.98px .uma-tag cap) */
 .uma-play > .uma-tag-wrap { position: absolute; top: 8vw; left: 4vw; margin: 0; z-index: 2; }
+.uma-play > .uma-tag-wrap .uma-tag {
+  height: 9.6vw; padding: 0;
+  font-size: 7.4667vw; letter-spacing: .05em;
+}
+.uma-play > .uma-tag-wrap .uma-tag span {
+  padding-left: 6.1333vw; padding-right: 6.9333vw;
+}
 
 /* the arrows live in the backdrop art now: these are the invisible tap
    targets seated over the baked glyphs. Band-centred (top:50%) because every
@@ -801,6 +813,13 @@
    band's height, and the cut-out goes back behind the headline. */
 @media (min-width: 900px) {
   .uma-play > .uma-tag-wrap { position: static; margin-bottom: 16px; }
+  .uma-play > .uma-tag-wrap .uma-tag {
+    height: min(4.1667vw, 83px); padding: 0;
+    font-size: min(3.0556vw, 61px);
+  }
+  .uma-play > .uma-tag-wrap .uma-tag span {
+    padding-left: min(2.0833vw, 42px); padding-right: min(2.0833vw, 42px);
+  }
   .uma-play > .uma-hl { position: relative; inset: auto; display: inline-block; margin: 2px 0 18px; pointer-events: auto; }
   .uma-play .uma-hl img.uma-lb-hl-img { position: relative; top: auto; left: auto; width: auto !important; height: clamp(19px, 6.2vw, 36px) !important; }
   .uma-play .uma-lb-char { top: 50%; right: auto; left: 50%; transform: translate(-50%, -50%); height: 24vw !important; }
@@ -815,9 +834,9 @@
     filter: drop-shadow(2px 2px 7px rgba(0,0,0,.25));
   }
   .uma-lb-note-t {
-    position: absolute; inset: 0; width: auto; transform: none;
-    display: flex; align-items: center;
-    padding: 0 9% 0 13%; font-size: min(1.528vw, 30.56px);
+    position: absolute; top: 16%; bottom: 16%; left: 13%; right: 9%;
+    width: auto; transform: none; display: block;
+    padding: 0; font-size: min(1.528vw, 30.56px);
   }
   }
 @media (min-width: 2000px) { .uma-play .uma-lb-char { height: 480px !important; } }
@@ -2006,7 +2025,7 @@ html, body { background-color: #fff !important; }
             <img class="l" alt="" width="2298" height="4096" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@10b3cec3e055531e205ab41177e8cabb31ffe6fc/uma-profile/assets/site/lb-p1-left.jpg">
             <img class="r" alt="" width="2295" height="4096" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@10b3cec3e055531e205ab41177e8cabb31ffe6fc/uma-profile/assets/site/lb-p1-right.jpg">
           </div>
-          <div class="uma-lb-note"><img alt="" width="2700" height="756" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@f21c4f4114b0a2c63e03530c266a9f30e52f3bba/uma-profile/assets/site/lb-card.png"><div class="uma-lb-note-t"><span><b>Lorebooks</b> · the world state, the schedules, the rivalry web. Dropped in, no setup.</span></div></div>
+          <div class="uma-lb-note"><img alt="" width="2700" height="756" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@f21c4f4114b0a2c63e03530c266a9f30e52f3bba/uma-profile/assets/site/lb-card.png"><div class="uma-lb-note-t"><span><b>Lorebooks</b> · lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Curabitur pretium tincidunt lacus, nulla gravida orci a odio, nullam varius turpis et commodo pharetra, est eros bibendum elit, nec luctus magna felis sollicitudin mauris.</span></div></div>
         </div>
         <div class="uma-slide s2">
           <img alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/slide2.jpg">
