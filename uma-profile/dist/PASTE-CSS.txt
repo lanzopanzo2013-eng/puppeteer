@@ -752,7 +752,7 @@
   filter: drop-shadow(.4vw .4vw 1.3333vw rgba(0,0,0,.25));
 }
 .uma-lb-note-t {
-  position: absolute; top: 5.4vw; bottom: 5.4vw; left: 20.29vw; z-index: 1;
+  position: absolute; top: 4.8vw; bottom: 5.8vw; left: 20.29vw; z-index: 1;
   transform: none; width: 75.2vw;
   overflow-y: auto; overflow-x: hidden;
   overscroll-behavior: contain; -webkit-overflow-scrolling: touch; touch-action: pan-y;
@@ -765,6 +765,32 @@
 .uma-lb-note-t p { margin: 0 0 .85em; }
 .uma-lb-note-t p:first-child { margin-bottom: 1.35em; }
 .uma-lb-note-t p:last-child { margin-bottom: 0; }
+@keyframes uma-lb-hide {
+  from { color: rgba(110,110,115,0); opacity: 0; }
+  to   { color: rgba(110,110,115,0); opacity: 0; }
+}
+.uma-lb-hint {
+  position: absolute; bottom: 1.7vw; left: 20.29vw; z-index: 2;
+  width: 75.2vw; pointer-events: none;
+  font-family: roboto, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 600; font-size: 2.75vw; line-height: 1.2;
+  letter-spacing: .01em; text-align: center;
+  color: rgba(110,110,115,.55); opacity: 1;
+}
+.uma-lb-hint span {
+  color: inherit;
+  transition: color .2s linear 999999s;
+}
+@supports (animation-timeline: view()) {
+  .uma-lb-note { timeline-scope: --uma-lb-scr; }
+  .uma-lb-note-t { scroll-timeline: --uma-lb-scr block; }
+  .uma-shell .uma-play .uma-lb-hint {
+    animation: uma-lb-hide linear;
+    animation-duration: auto !important;
+    animation-timeline: --uma-lb-scr;
+    animation-range: 3px 100%;
+  }
+}
 /* the tag plate takes the official .section-title seat & scale: 8vw down, 4vw
    in, 9.6vw tall, 7.4667vw bold-italic type with tighter tracking and slightly
    widened glyphs (skew(15deg) scaleX(1.065) -> pure 1.065x horizontal scale in
@@ -825,9 +851,13 @@
     filter: drop-shadow(2px 2px 7px rgba(0,0,0,.25));
   }
   .uma-lb-note-t {
-    position: absolute; top: 22%; bottom: 22%; left: 12.5%; right: 5%;
+    position: absolute; top: 19%; bottom: 24%; left: 12.5%; right: 5%;
     width: auto; transform: none; display: block;
     padding: 0; font-size: min(1.46vw, 29.2px); line-height: 1.37;
+  }
+  .uma-lb-hint {
+    bottom: 6.5%; left: 12.5%; right: 5%; width: auto;
+    font-size: min(1.08vw, 21.6px);
   }
   }
 @media (min-width: 2000px) { .uma-play .uma-lb-char { height: 480px !important; } }
