@@ -753,7 +753,7 @@
   filter: drop-shadow(.4vw .4vw 1.3333vw rgba(0,0,0,.25));
 }
 .uma-lb-note-t {
-  position: absolute; top: 4.8vw; bottom: 5.8vw; left: 20.29vw; z-index: 1;
+  position: absolute; top: 4.8vw; bottom: 1.5vw; left: 20.29vw; z-index: 1;
   transform: none; width: 75.2vw;
   overflow-y: auto; overflow-x: hidden;
   overscroll-behavior: contain; -webkit-overflow-scrolling: touch; touch-action: pan-y;
@@ -764,31 +764,45 @@
 }
 .uma-lb-note-t::-webkit-scrollbar { display: none; width: 0; height: 0; }
 .uma-lb-note-t p { margin: 0 0 .85em; }
-.uma-lb-note-t p:first-child { margin-bottom: 1.35em; }
-.uma-lb-note-t p:last-child { margin-bottom: 0; }
+.uma-lb-note-t p.uma-lb-lead { margin: 0; }
+.uma-lb-more {
+  position: relative; z-index: 3;
+  margin-top: 5.2vw; padding-top: 4vw;
+}
+.uma-lb-more::before {
+  content: ""; position: absolute; top: 3.7vw; bottom: 0; left: 15%; right: 15%;
+  background: linear-gradient(110.5deg, #fff 48%, #f9f9f9 52%);
+  z-index: -1; pointer-events: none;
+}
+.uma-lb-more p:last-child { margin-bottom: 0; }
 @keyframes uma-lb-hide {
   from { color: rgba(110,110,115,0); opacity: 0; }
   to   { color: rgba(110,110,115,0); opacity: 0; }
 }
 .uma-lb-hint {
-  position: absolute; bottom: 1.7vw; left: 20.29vw; z-index: 2;
-  width: 75.2vw; pointer-events: none;
+  position: sticky; bottom: .2vw; z-index: 1;
+  display: block; width: 100%; height: 3.6vw; margin-top: -3.8vw;
+  pointer-events: none;
   font-family: roboto, "Helvetica Neue", Arial, sans-serif;
-  font-weight: 600; font-size: 2.75vw; line-height: 1.2;
+  font-weight: 600; font-size: 2.7vw; line-height: 3.6vw;
   letter-spacing: .01em; text-align: center;
   color: rgba(110,110,115,.55); opacity: 1;
+  transition: opacity .2s ease 999999s;
+}
+.uma-lb-more:hover + .uma-lb-hint,
+.uma-lb-more:active + .uma-lb-hint {
+  opacity: 0;
+  transition: opacity 0s linear 0s;
 }
 .uma-lb-hint span {
   color: inherit;
   transition: color .2s linear 999999s;
 }
-@supports (animation-timeline: view()) {
-  .uma-lb-note { timeline-scope: --uma-lb-scr; }
-  .uma-lb-note-t { scroll-timeline: --uma-lb-scr block; }
+@supports (animation-timeline: scroll()) {
   .uma-shell .uma-play .uma-lb-hint {
     animation: uma-lb-hide linear;
     animation-duration: auto !important;
-    animation-timeline: --uma-lb-scr;
+    animation-timeline: scroll();
     animation-range: 3px 100%;
   }
 }
@@ -852,13 +866,15 @@
     filter: drop-shadow(2px 2px 7px rgba(0,0,0,.25));
   }
   .uma-lb-note-t {
-    position: absolute; top: 19%; bottom: 24%; left: 12.5%; right: 5%;
+    position: absolute; top: 18%; bottom: 6%; left: 12.5%; right: 5%;
     width: auto; transform: none; display: block;
     padding: 0; font-size: min(1.46vw, 29.2px); line-height: 1.37;
   }
+  .uma-lb-more { margin-top: min(2.2vw, 28px); padding-top: min(1.9vw, 24px); }
+  .uma-lb-more::before { top: min(1.7vw, 22px); }
   .uma-lb-hint {
-    bottom: 6.5%; left: 12.5%; right: 5%; width: auto;
-    font-size: min(1.08vw, 21.6px);
+    bottom: 2px; height: 22px; margin-top: -24px;
+    font-size: min(1.08vw, 21.6px); line-height: 22px;
   }
   }
 @media (min-width: 2000px) { .uma-play .uma-lb-char { height: 480px !important; } }
@@ -2046,7 +2062,7 @@ html, body { background-color: #fff !important; }
             <img class="l" alt="" width="2298" height="4096" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@10b3cec3e055531e205ab41177e8cabb31ffe6fc/uma-profile/assets/site/lb-p1-left.jpg">
             <img class="r" alt="" width="2295" height="4096" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@10b3cec3e055531e205ab41177e8cabb31ffe6fc/uma-profile/assets/site/lb-p1-right.jpg">
           </div>
-          <div class="uma-lb-note"><img alt="" width="2700" height="756" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@f21c4f4114b0a2c63e03530c266a9f30e52f3bba/uma-profile/assets/site/lb-card.png"><div class="uma-lb-note-t"><p>Test @uma_enjoyer's created Lorebooks by choosing one of his created bots or other creators' bots using the same Lorebooks!</p><p>The Umamusume Lorebooks of @uma_enjoyer consist of 15 creations provisionally. The Flagships are L.E11, S.E12, E.E13, D.E14, and B.E15, and each version has its differences in optimization, token count, and information packed into the lorebook.</p><p>L.E11 is the lite edition specifically built for weak LLMs with low context windows like JLLM, etcetera. L.E11 still packs most of the important information to set up a roleplay for Umamusume, and it is best for stability, long chats, and reliability.</p><p>S.E12 is the standard edition, averaging a 58% increase in token amount compared to L.E11, adding more facts to its entries. S.E12 is the recommended lorebook for every Umamusume chatbot because it is still optimized, yet it holds almost all of the information you need to roleplay with Umamusume scenarios. This is the best all-rounder choice.</p><p>E.E13 is the enlarged edition, averaging a 41% increase in token amount compared to S.E12, again adding more information and even some AU additions to its entries. E.E13 is recommended if you prefer immersion with stability. This is best for Umamusume chatbots built for immersive roleplays while proving to be stable, though it requires a stronger LLM similar to JLLM+ for the best experience.</p><p>D.E14 is the definitive edition, averaging a 75% increase in token amount compared to E.E13, adding most of the information given by the Umamusume series, and also a lot of AU additions. D.E14 is recommended only if you have a very strong and capable LLM. This is best for Umamusume RPG bots that value immersion above all things.</p><p>And the last of the Flagships, but not the least, is B.E15. B.E15 has a slightly different architecture compared to its peers because this one is created for users who only want the canon information in the lorebook. Think of this like both S.E12 and E.E13 mixed, although AU additions are removed. Instead of them being already included, the creator will make AU lorebook attachments specific to B.E15 so that users can choose what they want to add in or not.</p><p>Overall, this is all provisional, as they do not exist as of now. They might come around Q1 or Q2 of 2027, and they might be cancelled if Janitor AI destroys itself.</p></div><div class="uma-lb-hint" aria-hidden="true"><span>you can scroll down to see more</span></div></div>
+          <div class="uma-lb-note"><img alt="" width="2700" height="756" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@f21c4f4114b0a2c63e03530c266a9f30e52f3bba/uma-profile/assets/site/lb-card.png"><div class="uma-lb-note-t"><p class="uma-lb-lead">Test @uma_enjoyer's created Lorebooks by choosing one of his created bots or other creators' bots using the same Lorebooks!</p><div class="uma-lb-more"><p>The Umamusume Lorebooks of @uma_enjoyer consist of 15 creations provisionally. The Flagships are L.E11, S.E12, E.E13, D.E14, and B.E15, and each version has its differences in optimization, token count, and information packed into the lorebook.</p><p>L.E11 is the lite edition specifically built for weak LLMs with low context windows like JLLM, etcetera. L.E11 still packs most of the important information to set up a roleplay for Umamusume, and it is best for stability, long chats, and reliability.</p><p>S.E12 is the standard edition, averaging a 58% increase in token amount compared to L.E11, adding more facts to its entries. S.E12 is the recommended lorebook for every Umamusume chatbot because it is still optimized, yet it holds almost all of the information you need to roleplay with Umamusume scenarios. This is the best all-rounder choice.</p><p>E.E13 is the enlarged edition, averaging a 41% increase in token amount compared to S.E12, again adding more information and even some AU additions to its entries. E.E13 is recommended if you prefer immersion with stability. This is best for Umamusume chatbots built for immersive roleplays while proving to be stable, though it requires a stronger LLM similar to JLLM+ for the best experience.</p><p>D.E14 is the definitive edition, averaging a 75% increase in token amount compared to E.E13, adding most of the information given by the Umamusume series, and also a lot of AU additions. D.E14 is recommended only if you have a very strong and capable LLM. This is best for Umamusume RPG bots that value immersion above all things.</p><p>And the last of the Flagships, but not the least, is B.E15. B.E15 has a slightly different architecture compared to its peers because this one is created for users who only want the canon information in the lorebook. Think of this like both S.E12 and E.E13 mixed, although AU additions are removed. Instead of them being already included, the creator will make AU lorebook attachments specific to B.E15 so that users can choose what they want to add in or not.</p><p>Overall, this is all provisional, as they do not exist as of now. They might come around Q1 or Q2 of 2027, and they might be cancelled if Janitor AI destroys itself.</p></div><div class="uma-lb-hint" aria-hidden="true"><span>you can scroll down to see more</span></div></div></div>
         </div>
         <div class="uma-slide s2">
           <img alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/slide2.jpg">
