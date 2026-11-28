@@ -791,9 +791,15 @@
   position: absolute; inset: 0; display: block; margin: 0;
   pointer-events: none; z-index: 1;
 }
-.uma-hl img.uma-lb-hl-img {
-  position: absolute; top: 56vw; left: 4.4vw; z-index: 2;
-  display: block; width: 90vw !important; height: auto !important;
+/* official -left-contents/-headline seat: bottom 3.2vw above the captures
+   (68.7vw - 3.2vw = 65.5vw), clearing Special Week's purple thigh bow
+   (66.0..71.9vw). Accounting for lb-p1-headline.png's 18.8% top / 14.4% bottom
+   transparent canvas margins, top:53.1vw + height:14.2vw seats the visible
+   letters+bar at 55.78..65.26vw (official 123836: 56.00..65.29vw, h 9.29vw),
+   widened only slightly (90vw -> 92.5vw) so the glyphs aren't stretched. */
+.uma-play .uma-hl img.uma-lb-hl-img {
+  position: absolute; top: 53.1vw; left: 4.5vw; z-index: 2;
+  display: block; width: 92.5vw !important; height: 14.2vw !important;
 }
 /* official -umamusume seat: left:4vw, top:-.5333vw at the art's intrinsic
    100vw width (height 120vw for the 750x900 canvas) — the PNG's transparent
@@ -813,15 +819,16 @@
 .uma-lb-shots img { height: auto !important; display: block; }
 .uma-lb-shots img.l { width: 54.83% !important; }
 .uma-lb-shots img.r { width: 40.93% !important; }
-/* crisp mobile-proportioned Picsart panel (lb-card.png, 2910x774 = 115.48vw x
-   30.71vw, 9-sliced along its pure-white slant so the 20.5deg angle, 29.5px
-   lime stripe, horseshoes and grey corner stay undistorted) seated at official
-   top 147.45vw..178.16vw over untouched lb-bg1, with the official .4vw/.4vw/
-   1.3333vw drop-shadow; -text stays 69.3333vw centred at band-rel 51.7%/163vw. */
+/* crisp mobile-proportioned Picsart panel (lb-card.png, 2700x756 = 107.14vw x
+   30.00vw, 9-sliced along its pure-white slant so the 20.5deg angle, 28.5px
+   lime stripe, horseshoes and grey corner stay undistorted) seated at exact
+   official 123836 coordinates (top 148.22vw..178.22vw, left_top 7.63vw,
+   right_bot 92.45vw) over raw pre-bake lb-bg1, with the official .4vw/.4vw/
+   1.3333vw drop-shadow; -text stays 69.3333vw centred at band-rel 51.7%/162.1vw. */
 .uma-lb-note {
-  position: absolute; top: 78.75vw; left: -6.18vw;
+  position: absolute; top: 79.52vw; left: -3.49vw;
   transform: none;
-  width: 115.48vw; margin-top: 0;
+  width: 107.14vw; margin-top: 0;
 }
 .uma-play .uma-lb-note img {
   display: block; width: 100% !important; max-width: none !important;
@@ -829,7 +836,7 @@
   filter: drop-shadow(.4vw .4vw 1.3333vw rgba(0,0,0,.25));
 }
 .uma-lb-note-t {
-  position: absolute; top: 14.65vw; left: 57.88vw; z-index: 1;
+  position: absolute; top: 13.88vw; left: 55.19vw; z-index: 1;
   transform: translate(-50%, -50%); width: 69.3333vw;
   font-family: roboto, "Helvetica Neue", Arial, sans-serif;
   font-weight: 700; font-size: 3.7333vw; line-height: 1.4;
@@ -863,7 +870,7 @@
 @media (min-width: 900px) {
   .uma-play > .uma-tag-wrap { position: static; margin-bottom: 16px; }
   .uma-play > .uma-hl { position: relative; inset: auto; display: inline-block; margin: 2px 0 18px; pointer-events: auto; }
-  .uma-hl img.uma-lb-hl-img { position: relative; top: auto; left: auto; width: auto !important; height: clamp(19px, 6.2vw, 36px) !important; }
+  .uma-play .uma-hl img.uma-lb-hl-img { position: relative; top: auto; left: auto; width: auto !important; height: clamp(19px, 6.2vw, 36px) !important; }
   .uma-play .uma-lb-char { top: 50%; right: auto; left: 50%; transform: translate(-50%, -50%); height: 24vw !important; }
   .uma-play > .uma-carousel { position: relative; inset: auto; z-index: 1; }
   .uma-viewport { position: relative; left: auto; right: auto; top: auto; bottom: auto; height: 800px; max-width: 700px; margin-inline: auto; }
@@ -2043,7 +2050,7 @@ html, body { background-color: #fff !important; }
   <!-- ── Gameplay ──────────────────────────────────────────── -->
   <div class="uma-sec uma-play" id="scripts">
     <span id="g1" class="uma-anchor"></span><span id="g2" class="uma-anchor"></span><span id="g3" class="uma-anchor"></span>
-    <img class="uma-lb-bg b1" alt="" width="1246" height="2392" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@c09373f86cbe7040a885f86abcc8855113335f46/uma-profile/assets/site/lb-bg1.jpg">
+    <img class="uma-lb-bg b1" alt="" width="1246" height="2392" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@f21c4f4114b0a2c63e03530c266a9f30e52f3bba/uma-profile/assets/site/lb-bg1.jpg">
     <img class="uma-lb-bg b2" alt="" width="4980" height="9562" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@e04e0c7d954983540d0f55eba3e62c3bf98828eb/uma-profile/assets/site/lb-bg2.jpg">
     <img class="uma-lb-bg b3" alt="" width="2272" height="4362" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@e04e0c7d954983540d0f55eba3e62c3bf98828eb/uma-profile/assets/site/lb-bg3.webp">
     <a class="uma-hit r1" href="#g2" aria-label="Next page"></a>
@@ -2067,7 +2074,7 @@ html, body { background-color: #fff !important; }
             <img class="l" alt="" width="2298" height="4096" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@10b3cec3e055531e205ab41177e8cabb31ffe6fc/uma-profile/assets/site/lb-p1-left.jpg">
             <img class="r" alt="" width="2295" height="4096" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@10b3cec3e055531e205ab41177e8cabb31ffe6fc/uma-profile/assets/site/lb-p1-right.jpg">
           </div>
-          <div class="uma-lb-note"><img alt="" width="2910" height="774" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@654084faab3071d3c5e43c73eec8f1732f06ccf0/uma-profile/assets/site/lb-card.png"><div class="uma-lb-note-t"><span><b>Lorebooks</b> · the world state, the schedules, the rivalry web. Dropped in, no setup.</span></div></div>
+          <div class="uma-lb-note"><img alt="" width="2700" height="756" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@f21c4f4114b0a2c63e03530c266a9f30e52f3bba/uma-profile/assets/site/lb-card.png"><div class="uma-lb-note-t"><span><b>Lorebooks</b> · the world state, the schedules, the rivalry web. Dropped in, no setup.</span></div></div>
         </div>
         <div class="uma-slide s2">
           <img alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/slide2.jpg">
