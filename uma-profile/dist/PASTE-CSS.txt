@@ -752,7 +752,7 @@
   filter: drop-shadow(.4vw .4vw 1.3333vw rgba(0,0,0,.25));
 }
 .uma-lb-note-t {
-  position: absolute; top: 5vw; bottom: 5vw; left: 55.19vw; z-index: 1;
+  position: absolute; top: 4.4vw; bottom: 4.4vw; left: 55.19vw; z-index: 1;
   transform: translateX(-50%); width: 69.3333vw;
   overflow-y: auto; overflow-x: hidden;
   overscroll-behavior: contain; -webkit-overflow-scrolling: touch; touch-action: pan-y;
@@ -762,14 +762,19 @@
   letter-spacing: .02em; color: #141414; text-align: left;
 }
 .uma-lb-note-t::-webkit-scrollbar { display: none; width: 0; height: 0; }
+.uma-lb-note-t p { margin: 0 0 .85em; }
+.uma-lb-note-t p:last-child { margin-bottom: 0; }
 /* the tag plate takes the official .section-title seat & scale: 8vw down, 4vw
-   in, 9.6vw tall, 7.4667vw bold-italic type (beats the <=575.98px .uma-tag cap) */
+   in, 9.6vw tall, 7.4667vw bold-italic type with tighter tracking and slightly
+   widened glyphs (skew(15deg) scaleX(1.065) -> pure 1.065x horizontal scale in
+   screen space after the parent's skew(-15deg)). */
 .uma-play > .uma-tag-wrap { position: absolute; top: 8vw; left: 4vw; margin: 0; z-index: 2; }
 .uma-play > .uma-tag-wrap .uma-tag {
   height: 9.6vw; padding: 0;
-  font-size: 7.4667vw; letter-spacing: .05em;
+  font-size: 7.4667vw; letter-spacing: .005em; word-spacing: -.04em;
 }
 .uma-play > .uma-tag-wrap .uma-tag span {
+  transform: skew(15deg) scaleX(1.065);
   padding-left: 6.1333vw; padding-right: 6.9333vw;
 }
 
@@ -799,9 +804,10 @@
   .uma-play > .uma-tag-wrap { position: static; margin-bottom: 16px; }
   .uma-play > .uma-tag-wrap .uma-tag {
     height: min(4.1667vw, 83px); padding: 0;
-    font-size: min(3.0556vw, 61px);
+    font-size: min(3.0556vw, 61px); letter-spacing: .005em; word-spacing: -.04em;
   }
   .uma-play > .uma-tag-wrap .uma-tag span {
+    transform: skew(15deg) scaleX(1.065);
     padding-left: min(2.0833vw, 42px); padding-right: min(2.0833vw, 42px);
   }
   .uma-play > .uma-hl { position: relative; inset: auto; display: inline-block; margin: 2px 0 18px; pointer-events: auto; }
@@ -818,7 +824,7 @@
     filter: drop-shadow(2px 2px 7px rgba(0,0,0,.25));
   }
   .uma-lb-note-t {
-    position: absolute; top: 16%; bottom: 16%; left: 13%; right: 9%;
+    position: absolute; top: 21%; bottom: 21%; left: 13%; right: 9%;
     width: auto; transform: none; display: block;
     padding: 0; font-size: min(1.528vw, 30.56px);
   }
