@@ -803,9 +803,9 @@
 #g2:target ~ .uma-lb-bg.b2 { display: block; }
 #g3:target ~ .uma-lb-bg.b3 { display: block; }
 
-/* page swap: 1px anchors at the band top. An arrow press changes the URL,
-   the :target page renders, and nothing ever scrolls inside the band. */
-.uma-anchor { position: absolute; top: 0; left: 0; width: 1px; height: 1px; }
+/* page swap: 1px anchors at the band top (with 57px scroll-margin-top so
+   tapping < or > frames the band flush beneath the fixed blue header). */
+.uma-anchor { position: absolute; top: 0; left: 0; width: 1px; height: 1px; scroll-margin-top: 57px; }
 /* the carousel layer spans the band, so every seat below resolves against
    the band the way the official stylesheet seats its own parts */
 .uma-play > .uma-carousel { position: absolute; inset: 0; z-index: 2; }
@@ -824,35 +824,38 @@
 #g3:target ~ .uma-carousel .uma-slide.s1 { display: none; }
 #g2:target ~ .uma-carousel .uma-slide.s2 { display: flex; }
 #g3:target ~ .uma-carousel .uma-slide.s3 { display: flex; }
-.uma-play .uma-slide > img {
-  /* same 77.7% column as the page-1 shots: keeps the wide slide photo off
-     the baked arrows parked at the band's edges (they are the navigation). */
-  width: 77.7%; height: clamp(190px, 26vw, 340px) !important; border-radius: 8px;
-  object-fit: contain; object-position: 50% 50%;
-}
-.uma-slide-cap {
-  font-size: 12px; font-weight: 700; color: #fff; margin-top: 8px;
-  line-height: 1.35; text-align: center;
-  text-shadow: 0 1px 2px rgba(0,0,0,.7), 0 0 7px rgba(0,0,0,.5);
-}
 
-/* the headline layer covers the band: the artwork sits at the official
-   headline seat (56vw down, 4.4vw in, 90vw wide) and the Special Week
-   cut-out stands behind it against the right edge, 91vw tall, the way the
-   reference lets her run behind the type and into the captures. */
+/* one headline + character layer per page (h1/h2/h3), mirroring official
+   .splide__slide per-page .-umamusume + .-headline composition. */
 .uma-play > .uma-hl {
   position: absolute; inset: 0; display: block; margin: 0;
   pointer-events: none; z-index: 1;
 }
-/* official -left-contents/-headline seat: bottom 3.2vw above the captures
-   (68.7vw - 3.2vw = 65.5vw), clearing Special Week's purple thigh bow
-   (66.0..71.9vw). Accounting for lb-p1-headline.png's 18.8% top / 14.4% bottom
-   transparent canvas margins, top:53.1vw + height:14.2vw seats the visible
-   letters+bar at 55.78..65.26vw (official 123836: 56.00..65.29vw, h 9.29vw),
-   widened only slightly (90vw -> 92.5vw) so the glyphs aren't stretched. */
+.uma-play > .uma-hl.h2, .uma-play > .uma-hl.h3 { display: none; }
+#g2:target ~ .uma-hl.h1, #g3:target ~ .uma-hl.h1 { display: none; }
+#g2:target ~ .uma-hl.h2 { display: block; }
+#g3:target ~ .uma-hl.h3 { display: block; }
+/* official -left-contents/-headline seats (captures top 68.7vw, margin-top 3.2vw
+   -> visible headline bottom ~65.1..65.4vw on all 3 pages):
+   - p1 (2560x361, vis y 18.8%..85.6%): top 53.1vw, left 4.5vw, 92.5x14.2vw
+     -> visible 55.78..65.26vw (ref 123836: 55.86..65.14vw).
+   - p2 (2170x725, vis x 2.40%..98.06%, y 12.69%..81.38%): top 37.3vw, left .27vw,
+     99x34.4vw -> visible x 2.64..97.35vw, y 41.67..65.30vw (ref 170209: x 2.54..
+     97.22vw, y 41.41..65.38vw).
+   - p3 (2078x316, vis x 0.96%..98.99%, y 6.33%..93.35%): top 53.4vw, left 8.85vw,
+     82.3x12.51vw -> visible x 9.64..90.32vw, y 54.19..65.08vw (ref 170217: x 9.60..
+     90.24vw, y 54.75..65.14vw). */
 .uma-play .uma-hl img.uma-lb-hl-img {
   position: absolute; top: 53.1vw; left: 4.5vw; z-index: 2;
   display: block; width: 92.5vw !important; height: 14.2vw !important;
+}
+.uma-play .uma-hl.h2 img.uma-lb-hl-img {
+  top: 37.3vw; left: .27vw;
+  width: 99vw !important; height: 34.4vw !important;
+}
+.uma-play .uma-hl.h3 img.uma-lb-hl-img {
+  top: 53.4vw; left: 8.85vw;
+  width: 82.3vw !important; height: 12.51vw !important;
 }
 /* official -umamusume seat: left:4vw, top:-.5333vw at the art's intrinsic
    100vw width (height 120vw for the 750x900 canvas) — the PNG's transparent
@@ -983,8 +986,21 @@
     transform: skew(15deg) scaleX(1.065);
     padding-left: min(2.0833vw, 42px); padding-right: min(2.0833vw, 42px);
   }
-  .uma-play > .uma-hl { position: relative; inset: auto; display: inline-block; margin: 2px 0 18px; pointer-events: auto; }
-  .uma-play .uma-hl img.uma-lb-hl-img { position: relative; top: auto; left: auto; width: auto !important; height: clamp(19px, 6.2vw, 36px) !important; }
+  .uma-play > .uma-hl {
+    position: relative; inset: auto; display: inline-flex;
+    align-items: flex-end; justify-content: center; min-height: 92px;
+    margin: 2px 0 18px; pointer-events: auto;
+  }
+  .uma-play > .uma-hl.h2, .uma-play > .uma-hl.h3 { display: none; }
+  #g2:target ~ .uma-hl.h1, #g3:target ~ .uma-hl.h1 { display: none; }
+  #g2:target ~ .uma-hl.h2, #g3:target ~ .uma-hl.h3 { display: inline-flex; }
+  .uma-play .uma-hl img.uma-lb-hl-img,
+  .uma-play .uma-hl.h2 img.uma-lb-hl-img,
+  .uma-play .uma-hl.h3 img.uma-lb-hl-img {
+    position: relative; top: auto; left: auto; width: auto !important;
+    height: clamp(19px, 6.2vw, 36px) !important;
+  }
+  .uma-play .uma-hl.h2 img.uma-lb-hl-img { height: clamp(48px, 15.8vw, 92px) !important; }
   .uma-play .uma-lb-char { top: 50%; right: auto; left: 50%; transform: translate(-50%, -50%); height: 24vw !important; }
   .uma-play > .uma-carousel { position: relative; inset: auto; z-index: 1; }
   .uma-viewport { position: relative; left: auto; right: auto; top: auto; bottom: auto; height: 800px; max-width: 700px; margin-inline: auto; }
@@ -2178,11 +2194,18 @@ html, body { background-color: #fff !important; }
     <a class="uma-hit r2" href="#g3" aria-label="Next page"></a>
     <a class="uma-hit l3" href="#g2" aria-label="Previous page"></a>
     <div class="uma-tag-wrap"><div class="uma-tag green"><span>The Lorebooks</span></div></div>
-    <!-- the headline is the user's own artwork in the official seat, with the
-         Special Week cut-out running behind it against the right edge -->
-    <div class="uma-hl">
+    <!-- one headline + character layer per page (h1/h2/h3), swapped by #g1/#g2/#g3 -->
+    <div class="uma-hl h1">
       <img class="uma-lb-char" alt="" width="750" height="900" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@10b3cec3e055531e205ab41177e8cabb31ffe6fc/uma-profile/assets/site/lb-p1-specialweek.png">
       <img class="uma-lb-hl-img" alt="Test The Lorebooks!" width="2560" height="361" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@10b3cec3e055531e205ab41177e8cabb31ffe6fc/uma-profile/assets/site/lb-p1-headline.png">
+    </div>
+    <div class="uma-hl h2">
+      <img class="uma-lb-char" alt="" width="750" height="900" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@596228be57ffaae20d6522e4a3d42c1fe79c6e7d/uma-profile/assets/site/lb-p2-suzuka.png">
+      <img class="uma-lb-hl-img" alt="Forge lasting memories and experiences with the lorebooks!" width="2170" height="725" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@596228be57ffaae20d6522e4a3d42c1fe79c6e7d/uma-profile/assets/site/lb-p2-headline.png">
+    </div>
+    <div class="uma-hl h3">
+      <img class="uma-lb-char" alt="" width="750" height="900" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@596228be57ffaae20d6522e4a3d42c1fe79c6e7d/uma-profile/assets/site/lb-p3-ticket.png">
+      <img class="uma-lb-hl-img" alt="And chat now!" width="2078" height="316" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@596228be57ffaae20d6522e4a3d42c1fe79c6e7d/uma-profile/assets/site/lb-p3-headline.png">
     </div>
 
     <!-- three pages stacked in one stage; the g1/g2/g3 anchors at the band
@@ -2197,12 +2220,18 @@ html, body { background-color: #fff !important; }
           <div class="uma-lb-note"><img alt="" width="2700" height="756" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@f21c4f4114b0a2c63e03530c266a9f30e52f3bba/uma-profile/assets/site/lb-card.png"><div class="uma-lb-note-t"><p class="uma-lb-lead">Test @uma_enjoyer's created Lorebooks by choosing one of his created bots or other creators' bots using the same Lorebooks!</p><div class="uma-lb-more"><p>The Umamusume Lorebooks of @uma_enjoyer consist of 15 creations provisionally. The Flagships are L.E11, S.E12, E.E13, D.E14, and B.E15, and each version has its differences in optimization, token count, and information packed into the lorebook.</p><p>L.E11 is the lite edition specifically built for weak LLMs with low context windows like JLLM, etcetera. L.E11 still packs most of the important information to set up a roleplay for Umamusume, and it is best for stability, long chats, and reliability.</p><p>S.E12 is the standard edition, averaging a 58% increase in token amount compared to L.E11, adding more facts to its entries. S.E12 is the recommended lorebook for every Umamusume chatbot because it is still optimized, yet it holds almost all of the information you need to roleplay with Umamusume scenarios. This is the best all-rounder choice.</p><p>E.E13 is the enlarged edition, averaging a 41% increase in token amount compared to S.E12, again adding more information and even some AU additions to its entries. E.E13 is recommended if you prefer immersion with stability. This is best for Umamusume chatbots built for immersive roleplays while proving to be stable, though it requires a stronger LLM similar to JLLM+ for the best experience.</p><p>D.E14 is the definitive edition, averaging a 75% increase in token amount compared to E.E13, adding most of the information given by the Umamusume series, and also a lot of AU additions. D.E14 is recommended only if you have a very strong and capable LLM. This is best for Umamusume RPG bots that value immersion above all things.</p><p>And the last of the Flagships, but not the least, is B.E15. B.E15 has a slightly different architecture compared to its peers because this one is created for users who only want the canon information in the lorebook. Think of this like both S.E12 and E.E13 mixed, although AU additions are removed. Instead of them being already included, the creator will make AU lorebook attachments specific to B.E15 so that users can choose what they want to add in or not.</p><p>Overall, this is all provisional, as they do not exist as of now. They might come around Q1 or Q2 of 2027, and they might be cancelled if Janitor AI destroys itself.</p></div><div class="uma-lb-hint" aria-hidden="true"><span>you can scroll down to see more</span></div></div></div>
         </div>
         <div class="uma-slide s2">
-          <img alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/slide2.jpg">
-          <div class="uma-slide-cap"><b>How it runs</b> · V4 today, V10 final, then FV11 to FV14. Each pass tightens canon.</div>
+          <div class="uma-lb-shots">
+            <img class="l" alt="" width="1140" height="2043" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@596228be57ffaae20d6522e4a3d42c1fe79c6e7d/uma-profile/assets/site/lb-p2-left.jpg">
+            <img class="r" alt="" width="1154" height="2048" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@596228be57ffaae20d6522e4a3d42c1fe79c6e7d/uma-profile/assets/site/lb-p2-right.jpg">
+          </div>
+          <div class="uma-lb-note"><img alt="" width="2700" height="756" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@f21c4f4114b0a2c63e03530c266a9f30e52f3bba/uma-profile/assets/site/lb-card.png"><div class="uma-lb-note-t"><p class="uma-lb-lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p><div class="uma-lb-more"><p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p><p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p><p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p></div><div class="uma-lb-hint" aria-hidden="true"><span>you can scroll down to see more</span></div></div></div>
         </div>
         <div class="uma-slide s3">
-          <img alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/slide1.jpg">
-          <div class="uma-slide-cap"><b>Using them</b> · attach the book, pick a racer, start the career run. That is it.</div>
+          <div class="uma-lb-shots">
+            <img class="l" alt="" width="1146" height="2048" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@596228be57ffaae20d6522e4a3d42c1fe79c6e7d/uma-profile/assets/site/lb-p3-left.jpg">
+            <img class="r" alt="" width="1152" height="2047" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@596228be57ffaae20d6522e4a3d42c1fe79c6e7d/uma-profile/assets/site/lb-p3-right.jpg">
+          </div>
+          <div class="uma-lb-note"><img alt="" width="2700" height="756" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@f21c4f4114b0a2c63e03530c266a9f30e52f3bba/uma-profile/assets/site/lb-card.png"><div class="uma-lb-note-t"><p class="uma-lb-lead">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip commodo.</p><div class="uma-lb-more"><p>Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur.</p><p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.</p><p>Similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.</p><p>Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae.</p></div><div class="uma-lb-hint" aria-hidden="true"><span>you can scroll down to see more</span></div></div></div>
         </div>
       </div>
 
