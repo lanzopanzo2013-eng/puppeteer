@@ -820,6 +820,12 @@
 .uma-lb-note-t::-webkit-scrollbar { display: none; width: 0; height: 0; }
 .uma-lb-note-t p { margin: 0 0 .85em; }
 .uma-lb-note-t p.uma-lb-lead { margin: 0; }
+.uma-slide.s2 .uma-lb-note-t,
+.uma-slide.s3 .uma-lb-note-t {
+  top: 0; bottom: 0;
+  display: flex; align-items: center;
+  overflow: hidden; touch-action: auto;
+}
 .uma-lb-more {
   position: relative; z-index: 3;
   margin-top: 3.3vw; padding-top: 3.3vw;
@@ -931,7 +937,11 @@
   .uma-lb-note-t {
     position: absolute; top: 26.5%; bottom: 6%; left: 12.5%; right: 5%;
     width: auto; transform: none; display: block;
-    padding: 0; font-size: min(1.46vw, 29.2px); line-height: 1.37;
+    padding: 0; font-size: min(1.46vw, 19.5px); line-height: 1.37;
+  }
+  .uma-slide.s2 .uma-lb-note-t,
+  .uma-slide.s3 .uma-lb-note-t {
+    top: 0; bottom: 0; display: flex; align-items: center;
   }
   .uma-lb-more { margin-top: min(1.5vw, 19px); padding-top: min(1.5vw, 19px); }
   .uma-lb-hint {

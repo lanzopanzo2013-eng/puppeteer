@@ -821,6 +821,12 @@
 .uma-lb-note-t::-webkit-scrollbar { display: none; width: 0; height: 0; }
 .uma-lb-note-t p { margin: 0 0 .85em; }
 .uma-lb-note-t p.uma-lb-lead { margin: 0; }
+.uma-slide.s2 .uma-lb-note-t,
+.uma-slide.s3 .uma-lb-note-t {
+  top: 0; bottom: 0;
+  display: flex; align-items: center;
+  overflow: hidden; touch-action: auto;
+}
 .uma-lb-more {
   position: relative; z-index: 3;
   margin-top: 3.3vw; padding-top: 3.3vw;
@@ -932,7 +938,11 @@
   .uma-lb-note-t {
     position: absolute; top: 26.5%; bottom: 6%; left: 12.5%; right: 5%;
     width: auto; transform: none; display: block;
-    padding: 0; font-size: min(1.46vw, 29.2px); line-height: 1.37;
+    padding: 0; font-size: min(1.46vw, 19.5px); line-height: 1.37;
+  }
+  .uma-slide.s2 .uma-lb-note-t,
+  .uma-slide.s3 .uma-lb-note-t {
+    top: 0; bottom: 0; display: flex; align-items: center;
   }
   .uma-lb-more { margin-top: min(1.5vw, 19px); padding-top: min(1.5vw, 19px); }
   .uma-lb-hint {
@@ -2140,14 +2150,14 @@ html, body { background-color: #fff !important; }
             <img class="l" alt="" width="1140" height="2043" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@596228be57ffaae20d6522e4a3d42c1fe79c6e7d/uma-profile/assets/site/lb-p2-left.jpg">
             <img class="r" alt="" width="1154" height="2048" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@596228be57ffaae20d6522e4a3d42c1fe79c6e7d/uma-profile/assets/site/lb-p2-right.jpg">
           </div>
-          <div class="uma-lb-note"><img alt="" width="2700" height="756" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@f21c4f4114b0a2c63e03530c266a9f30e52f3bba/uma-profile/assets/site/lb-card.png"><div class="uma-lb-note-t"><p class="uma-lb-lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p><div class="uma-lb-more"><p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p><p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p><p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p></div><div class="uma-lb-hint" aria-hidden="true"><span>you can scroll down to see more</span></div></div></div>
+          <div class="uma-lb-note"><img alt="" width="2700" height="756" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@f21c4f4114b0a2c63e03530c266a9f30e52f3bba/uma-profile/assets/site/lb-card.png"><div class="uma-lb-note-t"><p class="uma-lb-lead">Interact with a variety of unique Umamusume with the Lorebooks! Chat with it, and you just might learn more about Umamusume!</p></div></div>
         </div>
         <div class="uma-slide s3">
           <div class="uma-lb-shots">
             <img class="l" alt="" width="1146" height="2048" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@596228be57ffaae20d6522e4a3d42c1fe79c6e7d/uma-profile/assets/site/lb-p3-left.jpg">
             <img class="r" alt="" width="1152" height="2047" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@596228be57ffaae20d6522e4a3d42c1fe79c6e7d/uma-profile/assets/site/lb-p3-right.jpg">
           </div>
-          <div class="uma-lb-note"><img alt="" width="2700" height="756" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@f21c4f4114b0a2c63e03530c266a9f30e52f3bba/uma-profile/assets/site/lb-card.png"><div class="uma-lb-note-t"><p class="uma-lb-lead">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip commodo.</p><div class="uma-lb-more"><p>Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur.</p><p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.</p><p>Similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.</p><p>Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae.</p></div><div class="uma-lb-hint" aria-hidden="true"><span>you can scroll down to see more</span></div></div></div>
+          <div class="uma-lb-note"><img alt="" width="2700" height="756" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@f21c4f4114b0a2c63e03530c266a9f30e52f3bba/uma-profile/assets/site/lb-card.png"><div class="uma-lb-note-t"><p class="uma-lb-lead">Up to 240+ sourced characters to chat with canon realistic personalities&#8212;watch them go all out as you tune in to the game's built in live RPG mode.</p></div></div>
         </div>
       </div>
 
