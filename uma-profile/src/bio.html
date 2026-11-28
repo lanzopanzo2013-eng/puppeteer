@@ -968,64 +968,25 @@
 @media (min-width: 2000px) { .uma-play .uma-lb-char { height: 480px !important; } }
 
 
-/* ---------- Roster (purple) ---------- */
-.uma-roster { background: linear-gradient(180deg, #8C83FF 0%, #7D75E3 100%); }
-.uma-grid { display: flex; flex-wrap: wrap; justify-content: space-between; }
-/* five favourites, two per row: the last one spans the row instead of
-   leaving a hole, the way the site closes its grids. */
-.uma-tile:last-child { width: 100%; aspect-ratio: 16 / 7; }
-.uma-tile:last-child img { object-fit: cover; object-position: 50% 28%; }
-.uma-tile {
-  position: relative; background: #C9BFFF; border-radius: 8px; overflow: hidden;
-  margin-bottom: 8px; width: 48.6%;
-  aspect-ratio: 3 / 4;
-  transition: transform .14s ease;
+/* ---------- Characters + Media combined ground ----------
+   Official umamusume.com seats both .top-characters and .top-media over a
+   single continuous 750x1626 (100vw x 216.8vw) white/lavender low-poly
+   ground starting flush beneath Gameplay (y=8640 in 133324-fullsite.jpg). */
+.uma-cm {
+  background: #F6F5FC;
+  box-sizing: border-box;
+  height: 216.8vw;
+  padding: 0 !important;
 }
-.uma-tile:hover { transform: translateY(-3px); }
-.uma-tile img {
-  width: 100%; height: 100%; display: block;
-  object-fit: contain; object-position: 50% 100%;
+.uma-shell .uma-cm img.uma-cm-bg {
+  position: absolute; left: 0; top: 0;
+  width: 100% !important; max-width: none !important; height: 100% !important;
+  object-fit: cover; object-position: 50% 0%;
+  opacity: 1; z-index: 0; pointer-events: none;
+  display: block;
 }
-.uma-tile-name {
-  position: absolute; right: 0; top: 0; bottom: 0;
-  display: flex; align-items: center; justify-content: center;
-  background: linear-gradient(180deg,rgba(28,20,74,.72),rgba(28,20,74,.52));
-  color: #fff;
-  font-size: 10px; font-weight: 800; letter-spacing: .1em; line-height: 1;
-  writing-mode: vertical-rl; text-orientation: mixed;
-  padding: 8px 4px;
-}
-.uma-shell a.uma-explore {
-  display: inline-flex; align-items: center; margin-top: 6px;
-  color: #fff !important; font-weight: 900; font-style: italic; font-size: 14px;
-  letter-spacing: -.2px; text-shadow: 0 1px 2px rgba(0,0,0,.3);
-}
-.uma-explore span { margin-left: 8px; }
-
-/* ---------- Media (blue) ---------- */
-.uma-media { background: linear-gradient(180deg, #4CAEFF 0%, #449BE3 100%); }
-.uma-media-row { display: flex; flex-direction: column; gap: 10px; }
-.uma-media-tile {
-  width: 100%; border-radius: 10px; overflow: hidden; border: 3px solid rgba(255,255,255,.85);
-  position: relative; display: block;
-}
-.uma-media-tile { aspect-ratio: 16 / 9; }
-.uma-media-tile > img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.uma-media-tile::after {
-  content: ""; position: absolute; inset: 55% 0 0 0; z-index: 1;
-  background: linear-gradient(180deg, rgba(6,26,70,0), rgba(6,26,70,.62));
-  pointer-events: none;
-}
-.uma-media-tile img.uma-media-plate {
-  position: absolute; left: -3px; bottom: 8px; width: 74%; height: auto; z-index: 2;
-  filter: drop-shadow(0 3px 5px rgba(0,0,0,.45));
-}
-.uma-media-lbl {
-  position: absolute; left: 20px; bottom: 15px; z-index: 3; color: #fff;
-  font-family: "Roboto Condensed", roboto, Arial, sans-serif;
-  font-weight: 700; font-style: italic; font-size: 15px;
-  letter-spacing: .05em; line-height: 1;
-  text-shadow: 0 2px 4px rgba(0,0,0,.45);
+@media (min-width: 900px) {
+  .uma-cm { height: min(101.8vw, 2036px); }
 }
 
 
@@ -1665,8 +1626,6 @@ html, body { background-color: #fff !important; }
   .uma-playnow { left: calc(50% - 500px + 4px); }
   .uma-side { right: calc(50% - 500px + 7px); }
   .uma-dl { padding-left: calc(50% - 500px); padding-right: calc(50% - 500px); }
-  .uma-tile, .uma-tile:last-child { width: 18.4%; aspect-ratio: 3 / 4; }
-  .uma-tile:last-child img { object-position: 50% 100%; }
   .uma-fan-t { height: 74px; padding: 12px 18px; }
   .uma-fan-t img { max-height: 46px; }
   .uma-fan-t.multi img { max-height: 30px; }
@@ -1677,8 +1636,6 @@ html, body { background-color: #fff !important; }
   .uma-acc .uma-fan-links a:first-child img { max-height: 30px; }
   .uma-hero-stack { top: auto; bottom: 24px; padding-left: calc(50% - 500px); padding-right: calc(50% - 500px); }
   .uma-playnow img { height: 25px; }
-  .uma-media-row { flex-direction: row; }
-  .uma-media-tile { width: 48.6%; }
 }
 
 /* Sections settle in as they arrive, so the page has some life as you scroll.
@@ -2180,52 +2137,9 @@ html, body { background-color: #fff !important; }
     </div>
   </div>
 
-  <!-- ── Roster (Characters) ───────────────────────────────── -->
-  <div class="uma-sec uma-roster" id="characters">
-    <img class="uma-band-pat" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/pattern.png">
-    <div class="uma-tag-wrap"><div class="uma-tag purple xlong"><span>My Favourite Umamusume Characters</span></div></div>
-
-    <div class="uma-grid">
-      <a class="uma-tile" href="#">
-        <img alt="" src="https://en-portal.g.kuroco-img.app/v=1768440412/files/user/character/astonmachan/astonmachan_top.png">
-        <span class="uma-tile-name">Aston Machan</span>
-      </a>
-      <a class="uma-tile" href="#">
-        <img alt="" src="https://en-portal.g.kuroco-img.app/v=1768440020/files/user/character/mrcb/mrcb_top.png">
-        <span class="uma-tile-name">Mr. C.B.</span>
-      </a>
-      <a class="uma-tile" href="#" ><img alt="" src="https://en-portal.g.kuroco-img.app/v=1750748798/files/user/character/tamamocross/tamamocross_top.png">
-        <span class="uma-tile-name">Tamamo Cross</span>
-      </a>
-      <a class="uma-tile" href="#" ><img alt="" src="https://en-portal.g.kuroco-img.app/v=1749211789/files/user/character/nicenature/nicenature_top.png">
-        <span class="uma-tile-name">Nice Nature</span>
-      </a>
-      <a class="uma-tile" href="#" ><img alt="" src="https://en-portal.g.kuroco-img.app/v=1749211687/files/user/character/winningticket/winningticket_top.png">
-        <span class="uma-tile-name">Winning Ticket</span>
-      </a>
-    </div>
-
-    <a class="uma-explore" href="#"><span>Explore</span><span>››</span></a>
-  </div>
-
-  <!-- ── Media ─────────────────────────────────────────────── -->
-  <div class="uma-sec uma-media">
-    <img class="uma-band-pat" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/pattern.png">
-    <div class="uma-tag-wrap"><div class="uma-tag blue"><span>Fandoms</span></div></div>
-
-    <div class="uma-media-row">
-      <a class="uma-media-tile" href="#">
-        <img alt="" style="object-position:50% 30%" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/kv_vfgo.jpg">
-        <img class="uma-media-plate" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/title_anime.png">
-        <span class="uma-media-lbl">Anime</span>
-      </a>
-      <a class="uma-media-tile" href="#">
-        <img alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/media_b.jpg">
-        <img class="uma-media-plate" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/title_music.png">
-        <span class="uma-media-lbl">Music</span>
-      </a>
-    </div>
-    <a class="uma-explore" href="#"><span>Explore</span><span>››</span></a>
+  <!-- ── Characters + Media combined ground ───────────────── -->
+  <div class="uma-sec uma-cm" id="characters">
+    <img class="uma-cm-bg" alt="" width="750" height="1626" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@864eab35d15f7c7927ac48f2de8d31bddc7ed5b8/uma-profile/assets/site/cm-bg.jpg">
   </div>
 
   <!-- ── Download (the site's blue band) ──────────────────── -->

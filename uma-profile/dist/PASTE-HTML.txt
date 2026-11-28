@@ -330,52 +330,9 @@
     </div>
   </div>
 
-  <!-- ── Roster (Characters) ───────────────────────────────── -->
-  <div class="uma-sec uma-roster" id="characters">
-    <img class="uma-band-pat" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/pattern.png">
-    <div class="uma-tag-wrap"><div class="uma-tag purple xlong"><span>My Favourite Umamusume Characters</span></div></div>
-
-    <div class="uma-grid">
-      <a class="uma-tile" href="#">
-        <img alt="" src="https://en-portal.g.kuroco-img.app/v=1768440412/files/user/character/astonmachan/astonmachan_top.png">
-        <span class="uma-tile-name">Aston Machan</span>
-      </a>
-      <a class="uma-tile" href="#">
-        <img alt="" src="https://en-portal.g.kuroco-img.app/v=1768440020/files/user/character/mrcb/mrcb_top.png">
-        <span class="uma-tile-name">Mr. C.B.</span>
-      </a>
-      <a class="uma-tile" href="#" ><img alt="" src="https://en-portal.g.kuroco-img.app/v=1750748798/files/user/character/tamamocross/tamamocross_top.png">
-        <span class="uma-tile-name">Tamamo Cross</span>
-      </a>
-      <a class="uma-tile" href="#" ><img alt="" src="https://en-portal.g.kuroco-img.app/v=1749211789/files/user/character/nicenature/nicenature_top.png">
-        <span class="uma-tile-name">Nice Nature</span>
-      </a>
-      <a class="uma-tile" href="#" ><img alt="" src="https://en-portal.g.kuroco-img.app/v=1749211687/files/user/character/winningticket/winningticket_top.png">
-        <span class="uma-tile-name">Winning Ticket</span>
-      </a>
-    </div>
-
-    <a class="uma-explore" href="#"><span>Explore</span><span>››</span></a>
-  </div>
-
-  <!-- ── Media ─────────────────────────────────────────────── -->
-  <div class="uma-sec uma-media">
-    <img class="uma-band-pat" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/pattern.png">
-    <div class="uma-tag-wrap"><div class="uma-tag blue"><span>Fandoms</span></div></div>
-
-    <div class="uma-media-row">
-      <a class="uma-media-tile" href="#">
-        <img alt="" style="object-position:50% 30%" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/kv_vfgo.jpg">
-        <img class="uma-media-plate" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/title_anime.png">
-        <span class="uma-media-lbl">Anime</span>
-      </a>
-      <a class="uma-media-tile" href="#">
-        <img alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/media_b.jpg">
-        <img class="uma-media-plate" alt="" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@fa8143d4090cc4fd61e9796724e261aefa5ee977/uma-profile/assets/site/title_music.png">
-        <span class="uma-media-lbl">Music</span>
-      </a>
-    </div>
-    <a class="uma-explore" href="#"><span>Explore</span><span>››</span></a>
+  <!-- ── Characters + Media combined ground ───────────────── -->
+  <div class="uma-sec uma-cm" id="characters">
+    <img class="uma-cm-bg" alt="" width="750" height="1626" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@864eab35d15f7c7927ac48f2de8d31bddc7ed5b8/uma-profile/assets/site/cm-bg.jpg">
   </div>
 
   <!-- ── Download (the site's blue band) ──────────────────── -->
