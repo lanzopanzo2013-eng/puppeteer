@@ -279,8 +279,8 @@
   <div class="uma-sec uma-play" id="scripts">
     <span id="g1" class="uma-anchor"></span><span id="g2" class="uma-anchor"></span><span id="g3" class="uma-anchor"></span>
     <img class="uma-lb-bg b1" alt="" width="1246" height="2392" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@f21c4f4114b0a2c63e03530c266a9f30e52f3bba/uma-profile/assets/site/lb-bg1.jpg">
-    <img class="uma-lb-bg b2" alt="" width="4980" height="9562" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@e04e0c7d954983540d0f55eba3e62c3bf98828eb/uma-profile/assets/site/lb-bg2.jpg">
-    <img class="uma-lb-bg b3" alt="" width="2272" height="4362" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@e04e0c7d954983540d0f55eba3e62c3bf98828eb/uma-profile/assets/site/lb-bg3.webp">
+    <img class="uma-lb-bg b2" alt="" width="4980" height="9562" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@d03270c4cac4227ecf0a47dccd88702241ddcbf9/uma-profile/assets/site/lb-bg2.jpg">
+    <img class="uma-lb-bg b3" alt="" width="2272" height="4362" src="https://cdn.jsdelivr.net/gh/lanzopanzo2013-eng/puppeteer@d03270c4cac4227ecf0a47dccd88702241ddcbf9/uma-profile/assets/site/lb-bg3.webp">
     <a class="uma-hit r1" href="#g2" aria-label="Next page"></a>
     <a class="uma-hit l2" href="#g1" aria-label="Previous page"></a>
     <a class="uma-hit r2" href="#g3" aria-label="Next page"></a>
